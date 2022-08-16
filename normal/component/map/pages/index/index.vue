@@ -4,8 +4,6 @@
 		<navigator url="/pages/chooseLocation/chooseLocation">chooseLocation</navigator>
 		<navigator url="/pages/slot-callout/slot-callout">slot-callout</navigator>
 		<navigator url="/pages/getFuzzyLocation/getFuzzyLocation">getFuzzyLocation</navigator>
-		<TestPluginWrapper></TestPluginWrapper>
-		<button type="primary" @click="test">test</button>
 		<view>
 			<map id="map" class='map' :latitude="latitude" :longitude="longitude" @tap="mapTap" @markertap="markerTap"
 				@click="mapClick" :scale="scale" :controls='controls' :show-location='true' :polyline='polyline'
@@ -20,11 +18,7 @@
 </template>
 
 <script>
-	import TestPluginWrapper from '../../components/TestPluginWrapper.vue'
 	export default {
-		components: {
-			TestPluginWrapper
-		},
 		data() {
 			return {
 				title: 'Hello-3',
@@ -312,11 +306,6 @@
 			},
 			labelTap(e) {
 				console.log('label tap', e)
-			},
-			test() {
-				uni.navigateTo({
-					url: '/pages/test'
-				})
 			}
 		}
 	}
