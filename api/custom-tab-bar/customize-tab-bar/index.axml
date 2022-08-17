@@ -1,0 +1,5 @@
+<view class="tab-bar">
+    <view a:for="{{list}}" onTap="onTabbarTap" data-url={{item.pagePath}} data-index={{index}}>
+      <view style="color: {{selected == index ? selectedColor : textColor}}">{{index}}:{{selected}}:{{item.name}}</view>
+    </view>
+</view>

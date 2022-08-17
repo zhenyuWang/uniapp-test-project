@@ -1,0 +1,11 @@
+<view class="tabbar-wrap">
+  <view 
+	wx:for="{{tabbarList}}" 
+	wx:key="index" class="{{index===selected?'active item':'item'}}" 
+	bindtap="onTabbarTap"
+	data-url="{{item.url}}"
+	data-index="{{index}}"
+  >
+  {{index}}:{{selected}}:{{item.text}}
+  </view>
+</view>
