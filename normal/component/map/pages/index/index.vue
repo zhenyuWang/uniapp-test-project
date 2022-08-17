@@ -5,15 +5,16 @@
 		<navigator url="/pages/slot-callout/slot-callout">slot-callout</navigator>
 		<navigator url="/pages/getFuzzyLocation/getFuzzyLocation">getFuzzyLocation</navigator>
 		<view>
-			<map id="map" class='map' :latitude="latitude" :longitude="longitude" @tap="mapTap" @markertap="markerTap"
+			<map id="map" class='map' :key="mapKey" :latitude="latitude" :longitude="longitude" @tap="mapTap" @markertap="markerTap"
 				@click="mapClick" :scale="scale" :controls='controls' :show-location='true' :polyline='polyline'
-				:circles='circles' :markers="markers" :min-scale='20' :max-scale="20"
+				:circles='circles' :markers="markers" :min-scale='10' :max-scale="20"
 				:polygons='polygons'
 				@regionchange='mapRegionchange'
 				@controltap='controlTap' @labeltap='labelTap' @callouttap='callouttap' @updated="onUpdated"
 				:include-points="includePoints">
 			</map>
 		</view>
+		<button @click="changeLatLng">changeLatLng</button>
 	</view>
 </template>
 
@@ -24,7 +25,7 @@
 				title: 'Hello-3',
 				latitude: 39.909,
 				longitude: 116.39742,
-				scale: 20,
+				scale: 14,
 				markers: [{
 					id: 123456789123,
 					latitude: 39.9085,
@@ -203,9 +204,18 @@
 						zIndex: 3
 					}
 				],
-				map: null
+				map: null,
+				mapKey:Date.now()
 			}
 		},
+    onLoad(){
+    //   let self = this;
+    //   setTimeout(() => {
+    //     self.latitude = 31.974413599615424;
+    //     self.longitude = 118.77566781789994;
+				// this.mapKey = Date.now()
+    //   }, 500);
+    },
 		onReady() {
 			this.map = uni.createMapContext('map', this)
 			// #ifdef MP-WEIXIN
@@ -306,6 +316,11 @@
 			},
 			labelTap(e) {
 				console.log('label tap', e)
+			},
+			changeLatLng(){
+				this.latitude = 39.91
+				this.longitude = 116.40
+				// this.mapKey = Date.now()
 			}
 		}
 	}
