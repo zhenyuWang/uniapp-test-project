@@ -1,0 +1,101 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"app-plus": {
+					"pullToRefresh": {
+						"support": true,
+						"color": "#ff0000",
+						"style": "circle",
+						"contentdown": {
+							"caption": "下拉可刷新自定义文本"
+						},
+						"contentover": {
+							"caption": "释放可刷新自定义文本"
+						},
+						"contentrefresh": {
+							"caption": "正在刷新自定义文本"
+						}
+					},
+					"app-plus": {
+						"titleNView": {
+							"titleSize": "24px",
+							"titleAlign": "left",
+							"buttons": [{
+								"text": "滴",
+								"fontSrc": "/static/aaa.ttf"
+							}, {
+								"text": "水",
+								"fontSrc": "/static/aaa.ttf"
+							}]
+						}
+					}
+				}
+			}
+		}, {
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "about",
+				"enablePullDownRefresh": false
+			}
+		}
+	],
+	"globalStyle": {
+		"navigationStyle":"custom"
+		// "navigationBarTextStyle": "black",
+		// "navigationBarTitleText": "uni-app",
+		// "navigationBarBackgroundColor": "#F8F8F8",
+		// "backgroundColor": "#ff00ff",
+		// "app-plus": {
+			// "titleNView": {
+			// 	"titleSize": "24px",
+			// 	"titleAlign": "left",
+			// 	"buttons": [{
+			// 		"text": "滴",
+			// 		"fontSrc": "/static/aaa.ttf"
+			// 	}, {
+			// 		"text": "水",
+			// 		"fontSrc": "/static/aaa.ttf"
+			// 	}],
+			// 	"backButton": {
+			// 		"text": "哈哈",
+			// 		"colorPressed": "blue",
+			// 		"color": "#00ff00",
+			// 		"width": "90px"
+			// 	}
+			// }
+		// }
+	},
+	"tabBar": {
+		"color": "#00ff00",
+		"selectedColor": "#ff0000",
+		"borderStyle": "black",
+		"backgroundColor": "#ff0000",
+		"list": [{
+				"pagePath": "pages/index/index",
+				"text": "首页"
+			},
+			{
+				"pagePath": "pages/about/about",
+				"text": "H5 about"
+			}
+		],
+		"midButton": {
+			"width": "80px",
+			"height": "50px",
+			"text": "文字",
+			"iconPath": "static/test-gif2.gif",
+			"iconWidth": "24px"
+		}
+	},
+	"usingComponents": {},
+	"condition": { //模式配置，仅开发期间生效
+		"current": 0, //当前激活的模式(list 的索引项)
+		"list": [{
+			"name": "", //模式名称
+			"path": "", //启动页面，必选
+			"query": "" //启动参数，在页面的onLoad函数里面得到
+		}]
+	}
+}
