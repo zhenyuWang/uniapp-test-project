@@ -5,8 +5,6 @@
 		<view @click="test">111</view>
 		<view @click="test">222</view>
 		<view @click="test">333</view>
-		<view>444</view>
-		<view>555</view>
 	</view>
 </template>
 
@@ -57,8 +55,9 @@
 
 <style lang="scss" scoped>
 	.box {
-		height: 100vh;
 		width: 100vw;
+		height: calc(100vh - var(--window-top));
+		background-color: aqua;
 	}
 </style>
 
