@@ -1,0 +1,14 @@
+:deep #home{
+  .a1{
+    background-color: red;
+    .a11{
+      color: #fff;
+    }
+  }
+  .b1{
+    background-color: yellow;
+    .b11{
+      color: green;
+    }
+  }
+}
