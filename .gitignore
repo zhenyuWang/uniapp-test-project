@@ -5,3 +5,4 @@ yarn-error.log
 .hbuilderx
 .vite
 unpackage
+dev-dist
