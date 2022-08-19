@@ -1,0 +1,13 @@
+<view class="intro">
+    <view>Welcome to Mini Program</view>
+    <button bindtap="openLocation">
+        openLocation
+    </button>
+    <button bindtap="chooseLocation">
+        chooseLocation
+    </button>
+    <button bindtap="chooseVideo">chooseVideo</button>
+    <button open-type="uploadDouyinVideo" id="1" data-hello="world">
+        uploadDouyinVideo
+    </button>
+</view>
