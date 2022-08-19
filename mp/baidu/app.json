@@ -1,0 +1,17 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/editor/editor"
+    ],
+    "window": {
+        "navigationBarBackgroundColor": "#ffffff",
+        "navigationBarTextStyle": "black",
+        "navigationBarTitleText": "智能小程序",
+        "backgroundTextStyle": "light"
+    },
+    "dynamicLib": {
+        "editorLib": {
+            "provider": "swan-editor"
+        }
+    }
+}

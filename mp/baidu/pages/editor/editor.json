@@ -1,0 +1,5 @@
+{
+    "usingSwanComponents": {
+        "editor": "dynamicLib://editorLib/editor"
+    }
+}

@@ -1,0 +1,6 @@
+{
+    "navigationBarTitleText": "智能小程序示例",
+    "usingComponents": {
+        "test-video": "/components/TestVideo/TestVideo"
+    }
+}
