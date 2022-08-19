@@ -1,0 +1,26 @@
+<template>
+  <view>
+    <rich-text style="font-size: 14px;" :nodes="nodes"></rich-text>
+  </view>
+</template>
+
+<script>
+
+export default {
+  data() {
+    return {
+      nodes: [{
+        name: 'div',
+        attrs: {
+          class: 'div-class',
+          style: 'line-height: 60px; color: red; text-align:center;'
+        },
+        children: [{
+          type: 'text',
+          text: 'Hello uni-app nvue3!'
+        }]
+      }],
+    };
+  },
+};
+</script>
