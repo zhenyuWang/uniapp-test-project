@@ -1,0 +1,5 @@
+<view class="list-wrapper">
+    <view wx:for="list" wx:key="index">  
+        <slot name="item" :data="item"></slot>
+    </view>  
+</view>

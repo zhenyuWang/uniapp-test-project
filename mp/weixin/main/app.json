@@ -1,0 +1,47 @@
+{
+    "pages": [
+        "pages/index/index",
+        "pages/test-video/test-video",
+        "pages/test-page/test-page",
+        "pages/logs/logs",
+        "pages/previewImage/previewImage",
+        "pages/scroll-view/scroll-view",
+        "pages/map-slot-callout/map-slot-callout",
+        "pages/getFuzzyLocation/getFuzzyLocation",
+        "pages/editorContext/editorContext"
+    ],
+    "requiredPrivateInfos": [
+        "choosePoi",
+        "chooseAddress",
+        "getFuzzyLocation"
+    ],
+    "window": {
+        "backgroundTextStyle": "light",
+        "navigationBarBackgroundColor": "#fff",
+        "navigationBarTitleText": "Weixin",
+        "navigationBarTextStyle": "black"
+    },
+    "tabBar": {
+        "custom": true,
+        "textColor": "#00ff00",
+        "selectedColor": "#ff0000",
+        "backgroundColor": "#09c",
+        "list": [
+            {
+                "pagePath": "pages/index/index",
+                "name": "首页"
+            },
+            {
+                "pagePath": "pages/logs/logs",
+                "name": "日志"
+            }
+        ]
+    },
+    "permission": {
+        "scope.userLocation": {
+            "desc": "你的位置信息将用于小程序位置接口的效果展示"
+        }
+    },
+    "style": "v2",
+    "sitemapLocation": "sitemap.json"
+}

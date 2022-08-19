@@ -1,0 +1,23 @@
+/* pages/scroll-view.wxss */
+.scroll-view{
+    height: 80vh;
+    padding-top:88rpx;
+    background-color: #f8f8f8;
+}
+.item-container {
+    display: flex;
+    margin: 30rpx;
+    line-height: 200rpx;
+}
+.item-container .item{
+    flex:1
+}
+.item-container .item.pink{
+    background-color: pink;
+}
+.item-container .item.blue{
+    background-color: blue;
+}
+.item-container .item.red{
+    background-color: red;
+}

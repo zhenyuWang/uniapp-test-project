@@ -1,0 +1,20 @@
+<!--pages/scroll-view.wxml-->
+<view>
+		<scroll-view 
+			class="scroll-view" 
+			scroll-y="true" 
+			show-scrollbar="false" 
+			bindscrolltolower="loadmore">
+			<view class="item-container" wx:for="{{list}}" wx:key="{{index}}">
+				<view bindtap="clickItem('粉色'+item)" class="item pink">
+					粉{{item}}
+				</view>
+				<view bindtap="clickItem('粉色'+item)" class="item blue">
+					蓝{{item}}
+				</view>
+				<view bindtap="clickItem('粉色'+item)" class="item red">
+					红{{item}}
+				</view>
+			</view>
+		</scroll-view>
+	</view>

@@ -1,0 +1,7 @@
+<!--test-page.wxml-->
+<view class="container">
+    <view>this is test page</view>
+	<test-slots>
+        <view slot="item">test-slot:{{data.name}}</view>
+    </test-slots>
+</view>

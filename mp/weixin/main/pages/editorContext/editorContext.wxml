@@ -1,0 +1,5 @@
+<!--pages/editorContext.wxml-->
+<view>
+    <editor id="editor"></editor>
+    <button bindtap="insertImg" type="primary">insert image</button>
+</view>

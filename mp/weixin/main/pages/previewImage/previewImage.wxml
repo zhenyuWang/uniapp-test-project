@@ -1,0 +1,3 @@
+<!--pages/previewImage.wxml-->
+<text>pages/previewImage.wxml</text>
+<button bindtap="onPreivewImage">preview image</button>

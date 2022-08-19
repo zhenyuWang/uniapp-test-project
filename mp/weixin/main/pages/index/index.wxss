@@ -1,0 +1,10 @@
+.uploader__input{
+    width: 100px;
+    height: 100px;
+    background-color: aqua;
+}
+input{
+    height: 30px;
+    margin-top: 10px;
+    background-color: aqua;
+}

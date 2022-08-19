@@ -1,0 +1,20 @@
+<view class="container">
+    <text :decode='true'>{{text}}</text>
+    <map latitude="{{latitude}}"  longitude="{{longitude}}" bindtap="onMapTap" bindmarkertap="onMarkerTap" markers="{{markers}}">
+    </map>
+    <input value='' bindfocus="nameFocus" bindblur="nameBlur" type="text" placeholder="请输入用户名3"/>
+    <input value='' bindfocus="pasFocus" bindblur="pasBlur" type="password" placeholder="请输入密码3"/>
+    <input bindblur="handleNicknameBlur" type="nickname"/>
+    <button open-type="chooseAvatar" bind:chooseavatar="chooseAvatarCallback">chooseAvatar</button>
+    <view>{{avatarUrl}}</view>
+    <navigator url="/pages/previewImage/previewImage">previewImage</navigator>
+    <navigator url="/pages/scroll-view/scroll-view">scroll-view</navigator>
+    <navigator url="/pages/test-page/test-page">test-page</navigator>
+    <navigator url="/pages/map-slot-callout/map-slot-callout">map-slot-callout</navigator>
+    <navigator url="/pages/getFuzzyLocation/getFuzzyLocation">getFuzzyLocation</navigator>
+    <navigator url="/pages/test/test">test on page not found</navigator>
+    <button bindtap="openLocation">openLocation</button>
+    <button bindtap="chooseLocation">chooseLocation</button>
+    <navigator url="/pages/editorContext/editorContext">editorContext</navigator>
+    <input type="number"/>
+</view>
