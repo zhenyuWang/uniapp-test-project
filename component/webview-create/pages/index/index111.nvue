@@ -1,0 +1,49 @@
+<template>
+	<view>
+		<!-- <web-view style="width:750rpx;height:1000px;" src="http://114.115.235.59/test.html"></web-view> -->
+		<!-- <view style="width:100%;height:1200px;background-color: red;">
+			<view class="">1111</view>
+			<view class="">2222</view>
+			<view class="">3333</view>
+		</view> -->
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+
+			}
+		},
+		onReady() {
+			// #ifdef APP-PLUS
+			const wv = plus.webview.create('http://114.115.235.59/test.html', 'custom-webview', {
+				// 'top': uni.getWindowInfo().statusBarHeight+44,
+				'width': `300px`,
+				'height': `400px`,
+			});
+			const currentWebview = this.$scope.$getAppWebview(); //此对象相当于html5plus里的plus.webview.currentWebview()。在uni-app里vue页面直接使用plus.webview.currentWebview()无效
+			currentWebview.append(wv);
+
+			// const wv = plus.webview.create('http://114.115.235.59/test.html', 'custom-webview', {
+			// 	// 'top': uni.getWindowInfo().statusBarHeight+44,
+			// 	// 'width': `100%`,
+			// 	// 'height': `100%`,
+			// 	'width':'200px',
+			// 	'height':'200px',
+			// 	// 'contentAdjust':false,
+			// });
+			// const currentWebview = this.$scope.$getAppWebview(); //此对象相当于html5plus里的plus.webview.currentWebview()。在uni-app里vue页面直接使用plus.webview.currentWebview()无效
+			// currentWebview.append(wv);
+			// #endif
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style>
+
+</style>
