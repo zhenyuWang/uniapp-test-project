@@ -1,0 +1,27 @@
+{
+  "pages":[
+    "pages/index/index",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "QQ小程序",
+    "navigationBarTextStyle":"black"
+  },
+  "tabBar": {
+    "custom": true,
+		"color": "#00ff00",
+		"selectedColor": "#ff0000",
+		"borderStyle": "black",
+		"backgroundColor": "#09c",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "home"
+		}, {
+			"pagePath": "pages/logs/logs",
+			"text": "logs"
+		}]
+  },
+	"usingComponents": {}
+}

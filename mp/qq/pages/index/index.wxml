@@ -1,0 +1,4 @@
+<view class="container">
+    <text class="user-motto">{{motto}}</text>
+    <button bindtap='onSwitchTab'>switch tab logs</button>
+</view>
