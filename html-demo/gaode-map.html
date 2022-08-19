@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #container {
+      width: 300px;
+      height: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container"></div>
+  <button onclick="chooseLocation()">test chooseLocation</button>
+</body>
+<script>
+  function chooseLocation(){
+    console.log('chooseLocation');
+    window.open(`https://m.amap.com/picker/?keywords=明光村&center=116.403322,39.920255&key=3379fdc239f9886c383f9bde0ca095d9`)
+  }
+  window.onLoad = function () {
+    var map = new AMap.Map('container');
+
+    // 创建一个 Icon
+    var startIcon = new AMap.Icon({
+      // 图标尺寸
+      size: new AMap.Size(40, 40),
+      // 图标的取图地址
+      image: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad',
+      // 图标所用图片大小
+      imageSize: new AMap.Size(40, 40),
+    });
+
+    // 将 icon 传入 marker
+    var startMarker = new AMap.Marker({
+      position: new AMap.LngLat(116.35, 39.89),
+      icon: startIcon,
+    });
+
+    map.add(startMarker)
+
+    var text = new AMap.Text({
+        text:'纯文本标记',
+        anchor:'center', // 设置文本标记锚点
+        draggable:true,
+        cursor:'pointer',
+        angle:10,
+        style:{
+            'padding': '.75rem 1.25rem',
+            'margin-bottom': '1rem',
+            'border-radius': '.25rem',
+            'background-color': 'white',
+            'width': '15rem',
+            'border-width': 0,
+            'box-shadow': '0 2px 6px 0 rgba(114, 124, 245, .5)',
+            'text-align': 'center',
+            'font-size': '20px',
+            'color': 'blue'
+        },
+        position: [116.396923,40.918203]
+    });
+
+    text.setMap(map);
+
+    map.on('click',() => {console.log('map click')})
+    // startMarker.on('click',() => {console.log('marker click')})
+    window.AMap.Event.addListener(startMarker,'click',e => {
+      console.log('marker click')
+    })
+  }
+        // var url = 'https://webapi.amap.com/maps?v=1.4.15&key=您申请的key值&callback=onLoad';
+  // var jsapi = doc.createElement('script');
+  // jsapi.charset = 'utf-8';
+  // jsapi.src = url;
+  // document.head.appendChild(jsapi);
+</script>
+<script src="https://webapi.amap.com/maps?v=2.0&key=3379fdc239f9886c383f9bde0ca095d9&callback=onLoad"></script>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body{
+      background-color: #09c;
+    }
+    video{
+      width: 100vw;
+      height: 100vh;
+      background-color: blueviolet;
+    }
+  </style>
+</head>
+<body>
+  <button id="button" onclick="reload()">reload</button>
+  <video autoplay controls></video>
+  <script>
+    function reload(){
+      location.reload()
+    }
+    setTimeout(() => {
+      document.getElementById('button').innerText = 'test button'
+    },2000)
+    const video = document.querySelector('video')
+    if (
+      navigator.mediaDevices
+      || navigator.getUserMedia
+      || navigator.webkitGetUserMedia
+      || navigator.mozGetUserMedia
+    ) {
+      alert('111')
+      navigator.mediaDevices.getUserMedia({ audio: true, video: false }).then(stream => {
+        video.srcObject = stream
+        const mediaRecorder = new MediaRecorder(stream)
+        mediaRecorder.start(1000)
+      })
+    }else{
+      alert('222')
+    }
+  </script>
+</body>
+
+</html>

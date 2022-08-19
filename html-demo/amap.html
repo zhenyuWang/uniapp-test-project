@@ -1,0 +1,87 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>默认点标记</title>
+  <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" />
+  <style>
+    html,
+    body,
+    #container {
+      height: 100%;
+      width: 100%;
+    }
+    .marker {
+      position: absolute;
+      top: -20px;
+      right: -118px;
+      color: #fff;
+      padding: 4px 10px;
+      box-shadow: 1px 1px 1px rgba(10, 10, 10, .2);
+      white-space: nowrap;
+      font-size: 12px;
+      font-family: "";
+      background-color: #25A5F7;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container" onclick="mapClick()"></div>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=3379fdc239f9886c383f9bde0ca095d9"></script>
+  <script type="text/javascript">
+    var marker, map = new AMap.Map("container", {
+      resizeEnable: true,
+      center: [116.397428, 39.90923],
+      bubble:false,
+      zoom: 13
+    });
+    function mapClick() {
+      console.log('map click');
+    }
+    marker = new AMap.Marker({
+      icon: "//a.amap.com/jsapi_demos/static/demo-center/icons/poi-marker-default.png",
+      position: [116.406315, 39.908775],
+      offset: new AMap.Pixel(-13, -30)
+    });
+
+    // marker.on('click', (e) => {
+    //   console.log('marker click')
+    // })
+    // marker.on('mousedown',(e) => {
+    //   console.log('marker mousedown')
+    //   const event = e.originEvent
+    //   event.stopPropagation();
+    //   event.preventDefault();
+    // })
+    // marker.on('pointerdown',(e) => {
+    //   console.log('marker mousedown')
+    //   const event = e.originEvent
+    //   event.stopPropagation();
+    //   event.preventDefault();
+    // })
+    // marker.on('touchstart',(e) => {
+    //   console.log('marker touchstart')
+    //   const event = e.originEvent
+    //   event.stopPropagation();
+    //   event.preventDefault();
+    // })
+    marker.setMap(map);
+    const markerDom = document.querySelector('.amap-icon')
+    console.log('markerDom',markerDom);
+    markerDom.addEventListener('click',e => {
+      console.log('marker click')
+      e.stopPropagation();
+    })
+    markerDom.addEventListener('touchend',handleMarkerTouchend)
+
+    function handleMarkerTouchend(e){
+      console.log('marker click',e)
+      e.stopPropagation();
+    }
+  </script>
+</body>
+</html>

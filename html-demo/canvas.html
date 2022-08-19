@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <canvas id="myCanvas"  width="500" height="300" style="border:1px solid red;"></canvas>
+  <script>
+      var c=document.getElementById("myCanvas");
+      var ctx=c.getContext("2d");
+      const list = [
+      {
+          x:10,
+          y:10,
+          width:40,
+          height:40,
+        },
+        {
+          x:60,
+          y:60,
+          width:40,
+          height:40,
+        },
+        {
+          x:110,
+          y:110,
+          width:40,
+          height:40,
+        }
+      ]
+      for(let i = 0;i<list.length;i++){
+        const item = list[i]
+        ctx.save()
+        ctx.translate(item.x / 2, item.y / 2)
+        ctx.strokeRect(0, 0, item.width / 2, item.height / 2)
+        ctx.translate(item.x / 4, item.y / 4)
+        ctx.rotate(30 * Math.PI / 180)
+        ctx.fillRect(-item.x / 4, -item.y / 4, item.width / 2,item.height / 2)
+        ctx.restore()
+      }
+  </script>
+</body>
+</html>
