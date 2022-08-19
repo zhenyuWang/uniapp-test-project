@@ -1,0 +1,38 @@
+<template>
+	<view>
+		<list class="list" ref="list" loadmoreoffset='10' @loadmore="loadmore">
+			<cell class="item" v-for="(item,index) in list" :key="index">
+				<text>{{item}}</text>
+			</cell>
+		</list>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				list:[1,2,3,4,5,6,7,8]
+			}
+		},
+		methods: {
+			loadmore(){
+				console.log('list loadmore');
+				this.list.push(1,2,3,4,5,6,7,8)
+			}
+		}
+	}
+</script>
+
+<style>
+	.list{
+		width: 300px;
+		height: 200px;
+		border:1px solid #09c;
+	}
+	.item{
+		height: 30px;
+		margin-bottom: 10px;
+		background-color: aqua;
+	}
+</style>
