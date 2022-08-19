@@ -1,0 +1,5 @@
+<view class="tab-bar">
+    <view a:for="{{list}}" onTap="tap" data-value={{item}} data-index={{index}}>
+      <view style="color: {{selected == index ? selectedColor : textColor}}">{{selected}}:{{item.name}}</view>
+    </view>
+</view>

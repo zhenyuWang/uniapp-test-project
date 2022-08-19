@@ -1,0 +1,7 @@
+
+<view>
+  this is a blank page
+  <button size="default" type="primary" onTap="openLocation">openLocation</button>
+  <button size="default" type="primary" onTap="chooseLocation">chooseLocation</button>
+  <button size="default" type="primary" onTap="saveImage">saveImage</button>
+</view>

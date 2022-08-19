@@ -1,0 +1,8 @@
+{
+  "modes": [
+    {
+      "title": "Specify the launch page",
+      "page": "pages/test/test"
+    }
+  ]
+}
