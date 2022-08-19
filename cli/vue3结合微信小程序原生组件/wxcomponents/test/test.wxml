@@ -1,0 +1,3 @@
+<view>
+	<button>{{name.text}}</button>
+</view>
