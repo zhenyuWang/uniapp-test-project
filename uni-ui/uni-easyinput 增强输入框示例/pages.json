@@ -1,0 +1,17 @@
+{
+  "pages": [
+    {
+      "path": "pages/easyinput/easyinput",
+      "style": {
+        "navigationBarTitleText": "Easyinput 增强输入框",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}

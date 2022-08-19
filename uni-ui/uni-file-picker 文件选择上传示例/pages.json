@@ -1,0 +1,17 @@
+{
+  "pages": [
+    {
+      "path": "pages/file-picker/file-picker",
+      "style": {
+        "navigationBarTitleText": "FilePicker 文件选择上传",
+        "enablePullDownRefresh": false
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}

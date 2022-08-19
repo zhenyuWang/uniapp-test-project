@@ -1,0 +1,12 @@
+{
+	"AES": {
+		"mod": "aes-128-cbc",
+		"pasword": "DCloud&2*0^1#600",
+		"iv": "HTML5PLUSRUNTIME",
+		"charset": "utf8",
+		"encodeReturnType": "base64"
+	},
+	"MD5": {
+		"encodeReturnType": "hex"
+	}
+}

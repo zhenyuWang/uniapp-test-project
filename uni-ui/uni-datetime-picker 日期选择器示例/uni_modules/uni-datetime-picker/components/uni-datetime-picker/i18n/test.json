@@ -1,0 +1,22 @@
+{
+	"uni-datetime-picker.selectDate": "test date",
+	"uni-datetime-picker.selectTime": "test time",
+	"uni-datetime-picker.selectDateTime": "test datetime",
+	"uni-datetime-picker.startDate": "test start date",
+	"uni-datetime-picker.endDate": "test end date",
+	"uni-datetime-picker.startTime": "test start time",
+	"uni-datetime-picker.endTime": "test end time",
+	"uni-datetime-picker.ok": "test ok",
+	"uni-datetime-picker.clear": "test clear",
+	"uni-datetime-picker.cancel": "test cancel",
+	"uni-datetime-picker.year": "test year",
+	"uni-datetime-picker.month": "test month",
+	"uni-calender.MON": "MON",
+	"uni-calender.TUE": "TUE",
+	"uni-calender.WED": "WED",
+	"uni-calender.THU": "THU",
+	"uni-calender.FRI": "FRI",
+	"uni-calender.SAT": "SAT",
+	"uni-calender.SUN": "SUN",
+	"uni-calender.confirm": "test confirm"
+}
