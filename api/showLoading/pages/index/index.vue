@@ -18,6 +18,11 @@
 			}
 		},
 		methods: {
+			showLoading() {
+				uni.showLoading({
+					title: 'test loading'
+				})
+			}
 		}
 	}
 </script>
@@ -52,7 +57,7 @@
 		color: #8f8f94;
 	}
 
-	.test-text{
+	.test-text {
 		font-size: 40rpx;
 	}
 </style>
