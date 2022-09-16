@@ -1,0 +1,82 @@
+<template>
+	<view class="content">
+		<image class="logo" src="/static/logo.png"></image>
+		<view class="text-area">
+			<text class="title">{{title}}</text>
+		</view>
+		<view>倒计时{{time}}s</view>
+		<button @click="startCountdown" type="primary">startCountdown</button>
+		<navigator url="/pages/about/about">go about</navigator>
+<!-- 		<view class="block">
+			<view class="bottom">bottom</view>
+		</view> -->
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello',
+				time: 60,
+				timer: null
+			}
+		},
+		onReady() {
+			// console.log('sysInfo windowBottom',uni.getSystemInfoSync())
+			// console.log('windowInfo',uni.getWindowInfo());
+		},
+		methods: {
+			startCountdown(){
+				this.timer = setInterval(() => {
+					this.time--
+					if(this.time<1){
+						clearInterval(this.timer)
+						this.time = 60
+					}
+				},1000)
+			}
+		}
+	}
+</script>
+
+<style>
+	.content {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.logo {
+		height: 200rpx;
+		width: 200rpx;
+		margin-top: 200rpx;
+		margin-left: auto;
+		margin-right: auto;
+		margin-bottom: 50rpx;
+	}
+
+	.text-area {
+		display: flex;
+		justify-content: center;
+	}
+
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
+	.block{
+		height: 522px;
+		width:100px;
+		position: fixed;
+		top:0;left:0;
+		background-color: aqua;
+	}
+	.bottom{
+		position: absolute;
+		color:#fff;
+		bottom:0;left:0;
+		width:100px;height:30px;background-color: red;
+	}
+</style>

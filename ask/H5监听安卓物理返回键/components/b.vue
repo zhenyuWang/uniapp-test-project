@@ -1,0 +1,5 @@
+<template>
+  <view class="b1">
+    <view class="b11">组件b</view>
+  </view>
+</template>
