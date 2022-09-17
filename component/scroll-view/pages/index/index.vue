@@ -1,7 +1,6 @@
 <template>
 	<view>
 		<view>{{testIndex}}</view>
-		<Popup @onChange='handlePopupChange'></Popup>
 		<button @click="addTestIndex">add testIndex</button>
 		<scroll-view
 			class="scroll-view"
@@ -26,10 +25,8 @@
 </template>
 <script>
 	import {defineComponent} from 'vue'
-	import Popup from '../../components/Popup.vue'
 	const originData = [1,2,3,4,5,6,7,8,9,10]
 	export default defineComponent({
-		components:{Popup},
 		data() {
 			return {
 				page:1,
@@ -51,6 +48,9 @@
 				this.testIndex = val
 			},
 			getdata: function() {
+				if(this.page>5){
+					return
+				}
 				this.loading = true;
 				console.log('getdata page : ',this.page);
 				// 模拟 api 请求刷新数据

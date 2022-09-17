@@ -1,19 +1,23 @@
 <template>
 	<view class="content">
 		<video
-		v-show="showVideo1"
+		v-if="showVideo1"
 		:src="videoSrc1"
 		id='video1'
+		:show-mute-btn='true'
+		:muted="true"
 		controls
 		></video>
 		<video
-		v-show="!showVideo1"
+		v-if="!showVideo1"
 		id='video2'
 		:src="videoSrc2"
 		controls
 		></video>
 		<input type="text">
-		<button type="primary" @click="changeVideo">test button</button>
+		<button type="primary" @click="setPlaybackRate">setPlaybackRate</button>
+		<button type="primary" @click="changeVideo">changeVideo</button>
+		<button type="primary" @click="changeSeek">changeSeek</button>
 	</view>
 </template>
 
@@ -31,19 +35,28 @@
 		onReady() {
 			this.video1Context = uni.createVideoContext('video1')
 			this.video2Context = uni.createVideoContext('video2')
+			this.video1Context.seek(100)
 			this.video1Context.play()
 		},
 		methods: {
+			setPlaybackRate() {  
+				this.video1Context.playbackRate(2);  
+			},
+			changeSeek(){
+				this.video1Context.seek(100)
+			},
 			changeVideo(){
-				if(this.showVideo1){
-					this.video1Context.pause()
-					this.video2Context.play()
-					this.showVideo1 = false
-				}else{
-					this.video2Context.pause()
-					this.video1Context.play()
-					this.showVideo1 = true
-				}
+				this.videoSrc1 = this.videoSrc2
+				this.video1Context.play()
+				// if(this.showVideo1){
+				// 	this.video1Context.pause()
+				// 	this.video2Context.play()
+				// 	this.showVideo1 = false
+				// }else{
+				// 	this.video2Context.pause()
+				// 	this.video1Context.play()
+				// 	this.showVideo1 = true
+				// }
 			}
 		}
 	}
