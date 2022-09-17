@@ -16,6 +16,10 @@
 			}
 		},
 		onLoad() {
+			console.log('index onLoad');
+		},
+		onReady() {
+			console.log('index onReady');
 		},
 		onUploadDouyinVideo(uploadOptions) {
 			console.log('onUploadDouyinVideoOptions hook: ', uploadOptions)
