@@ -1,0 +1,10 @@
+<!--index.ksml-->
+<view class="container">
+  <view class="usermotto">
+    <text class="user-motto">{{motto}}</text>
+  </view>
+  <cover-view class="box">
+        <cover-view class="block block1" />
+        <cover-view class="block block2" />
+    </cover-view>
+</view>
