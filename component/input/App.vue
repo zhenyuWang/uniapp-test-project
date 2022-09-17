@@ -1,5 +1,4 @@
-<script lang="ts">
-	import Vue from 'vue';
+<script>
 	export default {
 		onLaunch() {
 			console.log('App Launch')
