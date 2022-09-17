@@ -1,6 +1,6 @@
 {
-    "name" : "test-slot",
-    "appid" : "__UNI__669E8FD",
+    "name" : "page-meta",
+    "appid" : "__UNI__D551027",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -50,8 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "wxff068e9eaa9e6b9b",
-        "scopedSlotsCompiler" : "augmented", // legacy augmented auto
+        "appid" : "",
         "setting" : {
             "urlCheck" : false
         },
@@ -69,5 +68,10 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3"
+    "vueVersion" : "3",
+		"h5" : {
+		    "router" : {
+		        "mode" : "history"
+		    }
+		}
 }
