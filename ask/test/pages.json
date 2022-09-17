@@ -1,17 +1,82 @@
 {
 	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
 		{
-			"path": "pages/home/home",
-			"style": {
-				"navigationBarTitleText": "uni-app"
-			}
-		},{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		}, {
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/setting/setting",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+
+		}, {
+			"path": "pages/user/user",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 		}
+		// {
+		// 	"path": "pages/test-nvue/test-nvue",
+		// 	"style": {
+		// 		"navigationBarTitleText": "",
+		// 		"enablePullDownRefresh": false
+		// 	}
+		// }, 
+		// {
+		// 	"path": "pages/test-vue/test-vue",
+		// 	"style": {
+		// 		"navigationBarTitleText": "DatetimePicker 日期时间",
+		// 		"enablePullDownRefresh": false,
+		// 		"app-plus": {
+		// 			"titleNView": {
+		// 				"titleSize": "24px",
+		// 				"titleAlign": "left",
+		// 				"buttons": [{
+		// 					"text": "滴"
+		// 				}, {
+		// 					"text": "水"
+		// 				}]
+		// 			}
+		// 		}
+		// 	}
+		// }
 	],
+	"tabBar": {
+		"color": "#7A7E83",
+		"selectedColor": "#3cc51f",
+		"borderStyle": "black",
+		"backgroundColor": "#ffffff",
+		"list": [{
+			"pagePath": "pages/index/index",
+			"text": "index"
+		}, {
+			"pagePath": "pages/home/home",
+			"text": "home"
+		}],
+		"midButton": {
+			"width": "70px",
+			"height": "70px",
+			"iconPath": "static/logo.png",
+			"text": "midButton"
+		}
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

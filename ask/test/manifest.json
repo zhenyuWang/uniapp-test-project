@@ -60,7 +60,8 @@
         "usingComponents" : true
     },
     "mp-baidu" : {
-        "usingComponents" : true
+        "usingComponents" : true,
+        "appid" : "15155506"
     },
     "mp-toutiao" : {
         "usingComponents" : true
@@ -68,5 +69,13 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3"
+    "vueVersion" : "3",
+    "h5" : {
+        "router" : {
+            "mode" : "history"
+        }
+    },
+    "mp-kuaishou" : {
+        "appid" : "ks4645646131681"
+    }
 }
