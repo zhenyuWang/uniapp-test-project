@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no, width=device-width">
+  <title>默认点标记</title>
+  <!-- <link rel="stylesheet" href="https://a.amap.com/jsapi_demos/static/demo-center/css/demo-center.css" /> -->
+  <style>
+    html,
+    body,
+    #container {
+      height: 100%;
+      width: 100%;
+    }
+    .marker {
+      position: absolute;
+      top: -20px;
+      right: -118px;
+      color: #fff;
+      padding: 4px 10px;
+      box-shadow: 1px 1px 1px rgba(10, 10, 10, .2);
+      white-space: nowrap;
+      font-size: 12px;
+      font-family: "";
+      background-color: #25A5F7;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="container" onclick="mapClick()"></div>
+  <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=3379fdc239f9886c383f9bde0ca095d9"></script>
+  <script type="text/javascript" src="https://webapi.amap.com/mapsplugin?v=2.0.5.9&cls=AMap.PlaceSearch&key=3379fdc239f9886c383f9bde0ca095d9"></script>
+  <script type="text/javascript" src="https://restapi.amap.com/v3/place/around?platform=JS&s=rsv3&logversion=2.0&key=3379fdc239f9886c383f9bde0ca095d9&sdkversion=2.0.5.9&appname=http%253A%252F%252Flocalhost%253A8083%252F%2523%252Fchoose-location&csid=3FBD7971-0CA8-4D54-8B44-EE4AEB425C40&jscode=9a18f0c922ee5cc244016a10c7a033fa&city=%E5%85%A8%E5%9B%BD&page=1&offset=10&language=zh_cn&location=115,38&radius=5000&s=rsv3&children=&key=3379fdc239f9886c383f9bde0ca095d9&type_=NEARBY&antiCrab=true&keywords=&callback=mycallback"></script>
+  <script>
+    function mycallback(res){
+      console.log('res',res);
+    }
+  </script>
+</body>
+</html>
