@@ -10,6 +10,10 @@
             <text class="userinfo-nickname">{{userInfo.nickName}}</text>
         </view>
     </view>
+    <cover-view class="box">
+        <cover-view class="block block1" />
+        <cover-view class="block block2" />
+    </cover-view>
     <navigator open-type="navigate" url="/pages/editor/editor" hover-stop-propagation="true">
         go editor
     </navigator>
@@ -17,5 +21,7 @@
     <button bindtap="chooseLocation"> chooseLocation </button>
     <button open-type="login">login open-type</button>
     <button bindtap="handleLogin"> login-api </button>
+    <input placeholder="test inpput 1" />
+    <input placeholder="test inpput 2" />
     <test-video></test-video>
 </view>

@@ -40,3 +40,23 @@
     color: #aaa;
     width: 150rpx;
 }
+
+.box {
+    height: 500rpx;
+    background-color: aquamarine;
+    display: flex;
+    flex-direction: row;
+}
+
+.block {
+    width: 50rpx;
+    height: 50rpx;
+}
+
+.block1 {
+    background-color: bisque;
+}
+
+.block2 {
+    background-color: blue;
+}
