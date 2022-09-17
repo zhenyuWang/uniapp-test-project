@@ -1,6 +1,10 @@
 
 <template>
 	<view>
+		<slot :name="'title1'+index1" data="test data"></slot>
+	<!-- 		<slot :name="'title'+index1"></slot>
+			<slot :name="'title'+index2"></slot>
+			<slot :name="'title'+index3"></slot> -->
 			<!-- <slot :name="'title'+index" :content="{name:'标题1'}"></slot> -->
 			<!-- <slot name="title1" :content="{name:'标题1'}"></slot> -->
 			<!-- <slot :name="'title'+index"></slot> -->
@@ -16,7 +20,10 @@
 	export default {
 		data(){
 			return {
-				index:1
+				index1:0,
+				index2:1,
+				index3:2,
+				
 			}
 		}
 	}

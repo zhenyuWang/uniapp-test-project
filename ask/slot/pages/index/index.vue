@@ -16,9 +16,9 @@
 			</template>
 			<template v-slot:title2>
 				222222
-			</template>
-			 -->
-			<template #title0="props1">
+			</template> -->
+			
+	<!-- 		<template #title0="props1">
 				{{props1}} 111
 			</template>
 			<template #title1="props2">
@@ -26,8 +26,11 @@
 			</template>
 			<template #title2="props3">
 				{{props3}} 333
+			</template> -->
+			<template #title1="data">
+			<!-- <template> -->
+				this is default slot data:{{data.content}}
 			</template>
-			
 		</MySlot>
 	</view>
 </template>
