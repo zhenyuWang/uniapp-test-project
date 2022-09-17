@@ -14,6 +14,11 @@ Page({
       });
     }
   },
+  events:{
+    onKeyboardHeight(e){
+      console.log('监听键盘高度',e);
+    }
+  },
   onHide() {
     // 页面隐藏
   },
