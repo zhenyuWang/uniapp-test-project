@@ -2,6 +2,7 @@
 	<view class="content">
 		<view>
 			<map id="map" class='map' :key="mapKey" :latitude="latitude" :longitude="longitude"
+				@tap="mapTap"
 			  @click="mapClick"
 				@markertap="markerTap" :scale="scale" :controls='controls' :show-location='true'
 				:polyline='polyline' :circles='circles' :markers="markers" :min-scale='10' :max-scale="20"
@@ -10,6 +11,9 @@
 			</map>
 		</view>
 		<button @click="changeLatLng">changeLatLng</button>
+		<button type="primary" @click="removeControls">removeControls</button>
+		<button type="primary" @click="addControls">addControls</button>
+		<button type="primary" @click="changeControl">changeControl</button>
 	</view>
 </template>
 
@@ -20,7 +24,7 @@
 				title: 'Hello-3',
 				latitude: 39.909,
 				longitude: 116.39742,
-				scale: 14,
+				scale: 12,
 				markers: [{
 					id: 123456789123,
 					latitude: 39.9085,
@@ -51,7 +55,7 @@
 						// display: 'ALWAYS',
 					}
 				}, {
-					id: 2,
+					id: 213,
 					latitude: 39.90,
 					longitude: 116.4,
 					width: 40,
@@ -92,6 +96,16 @@
 				],
 				controls: [{
 					id: 1,
+						position: {
+							left: 5,
+							top: 100,
+							width: 30,
+							height: 30
+						},
+						iconPath: '/static/logo.png',
+						clickable: true
+					},
+					{id: 2,
 					position: {
 						left: 5,
 						top: 180,
@@ -209,37 +223,37 @@
 			console.log('index onReady');
 			this.map = uni.createMapContext('map', this)
 			// #ifdef MP-WEIXIN
-			// this.map.addGroundOverlay({
-			// 	id: 'testAddGroundOverlayId',
-			// 	// id:123456,
-			// 	src: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad',
-			// 	bounds: {
-			// 		southwest: {
-			// 			longitude: 116.23,
-			// 			latitude: 39.85
-			// 		},
-			// 		northeast: {
-			// 			longitude: 116.55,
-			// 			latitude: 39.97
-			// 		}
-			// 	},
-			// 	visible: true,
-			// 	complete(res) {
-			// 		console.log('addGroundOverlay complate', res)
-			// 	}
-			// })
+			this.map.addGroundOverlay({
+				id: 'testAddGroundOverlayId',
+				// id:123456,
+				src: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad',
+				bounds: {
+					southwest: {
+						longitude: 116.23,
+						latitude: 39.85
+					},
+					northeast: {
+						longitude: 116.55,
+						latitude: 39.97
+					}
+				},
+				visible: true,
+				complete(res) {
+					console.log('addGroundOverlay complate', res)
+				}
+			})
 			// #endif
-			// this.map.getCenterLocation({
-			// 	success(res) {
-			// 		console.log('getCenterLocation success', res)
-			// 	},
-			// 	fail(err) {
-			// 		console.log('getCenterLocation falil', err)
-			// 	},
-			// 	complete(res) {
-			// 		console.log('getCenterLocation complate', res)
-			// 	}
-			// })
+			this.map.getCenterLocation({
+				success(res) {
+					console.log('getCenterLocation success', res)
+				},
+				fail(err) {
+					console.log('getCenterLocation falil', err)
+				},
+				complete(res) {
+					console.log('getCenterLocation complate', res)
+				}
+			})
 			// setTimeout(() => {
 			// 	this.map.moveToLocation({
 			// 		longitude: 117,
@@ -256,38 +270,48 @@
 			// 	})
 			// }, 1000)
 
-			// this.map.getRegion({
-			// 	success(res) {
-			// 		console.log('getRegion success', res)
-			// 	},
-			// 	fail(err) {
-			// 		console.log('getRegion falil', err)
-			// 	},
-			// 	complete(res) {
-			// 		console.log('getRegion complate', res)
-			// 	}
-			// })
+			this.map.getRegion({
+				success(res) {
+					console.log('getRegion success', res)
+				},
+				fail(err) {
+					console.log('getRegion falil', err)
+				},
+				complete(res) {
+					console.log('getRegion complate', res)
+				}
+			})
 
-			// this.map.getScale({
-			// 	success(res) {
-			// 		console.log('getScale success', res)
-			// 	},
-			// 	fail(err) {
-			// 		console.log('getScale falil', err)
-			// 	},
-			// 	complete(res) {
-			// 		console.log('getScale complate', res)
-			// 	}
-			// })
-
-
+			this.map.getScale({
+				success(res) {
+					console.log('getScale success', res)
+				},
+				fail(err) {
+					console.log('getScale falil', err)
+				},
+				complete(res) {
+					console.log('getScale complate', res)
+				}
+			})
 		},
 		methods: {
 			mapTap(e) {
 				console.log('map tap vue2', e);
+				uni.showLoading({
+					title:'map tap'
+				})
+				setTimeout(() => {
+					uni.hideLoading()
+				},500)
 			},
 			mapClick(e) {
 				console.log('map click vue2', e);
+				uni.showLoading({
+					title:'map click'
+				})
+				setTimeout(() => {
+					uni.hideLoading()
+				},500)
 			},
 			markerTap(e) {
 				console.log('marker tap vue2', e)
@@ -311,7 +335,33 @@
 				this.latitude = 39.91
 				this.longitude = 116.40
 				// this.mapKey = Date.now()
-			}
+			},
+			removeControls(){
+				this.controls = []
+			},
+			addControls(){
+				const len = this.controls.length
+				const nextLen = len+1
+				console.log('nextLen',nextLen);
+				this.controls.push({
+					id: nextLen,
+					position: {
+						left: 20*nextLen,
+						top: 180,
+						width: 30,
+						height: 30
+					},
+					iconPath: '/static/voice.png',
+					clickable: !!(nextLen%2)
+				})
+			},
+			changeControl(){
+				this.controls.forEach(item => {
+					item.position.left += 10
+					item.position.height += 5
+					item.position.width += 5
+				})
+			},
 		}
 	}
 </script>

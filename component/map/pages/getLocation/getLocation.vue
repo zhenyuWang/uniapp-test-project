@@ -13,8 +13,8 @@
 		},
 		onReady() {
 			uni.getLocation({
-				// type:'wgs84',
-				type: 'gcj02',
+				type:'wgs84',
+				// type: 'gcj02',
 				success:(res) => {
 					console.log('getLocation success',res);
 				},

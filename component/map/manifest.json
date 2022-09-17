@@ -95,11 +95,10 @@
         "sdkConfigs" : {
             "maps" : {
                 "qqmap" : {
-									// "key" : "JMRBZ-R4HCD-X674O-PXLN4-B7CLH-42BSB"
+									"key" : "JMRBZ-R4HCD-X674O-PXLN4-B7CLH-42BSB"
 								},
-                "google" : {
-									// "key": "AIzaSyDSIuMzLOPmHFc50609sp2U5l4cExOyfl4"
-								},
+                "google" : {},
+                // "key" : "AIzaSyDSIuMzLOPmHFc50609sp2U5l4cExOyfl4"
                 "amap" : {
                     "key" : "3379fdc239f9886c383f9bde0ca095d9",
                     "securityJsCode" : "9a18f0c922ee5cc244016a10c7a033fa"
