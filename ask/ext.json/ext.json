@@ -1,3 +1,6 @@
 {
-    "extEnable": true
+    "extEnable": true,
+		// #ifdef MP-ALIPAY
+		"alipay": "test alipay"
+		// #endif
 }

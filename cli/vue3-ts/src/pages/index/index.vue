@@ -1,5 +1,6 @@
 <template>
   <view>
+    <navigator url="/pages/setting/setting">go setting</navigator>
     <navigator url="/pages/previewImage/previewImage">previewImage</navigator>
     <input open-type="chooseavatar" @chooseAvatar="myClick" />
     <video id="myVideo"
@@ -26,7 +27,7 @@ import UniBadge from '@dcloudio/uni-ui/lib/uni-badge/uni-badge.vue'
 import UniIcons from '@dcloudio/uni-ui/lib/uni-icons/uni-icons.vue'
 import Container from '../../components/Container.vue'
 import Child from '../../components/Child.vue'
-
+console.log('index setup')
 const title = ref('Hello')
 const videoPlay = () => {
   console.log('video play');
