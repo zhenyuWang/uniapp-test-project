@@ -1,0 +1,5 @@
+<!--index.wxml-->
+<view class="container">
+    <canvas type="2d" id="myCanvas"></canvas>
+    <navigator url="/pages/canvasNode/canvasNode">go canvasNode</navigator>
+</view>

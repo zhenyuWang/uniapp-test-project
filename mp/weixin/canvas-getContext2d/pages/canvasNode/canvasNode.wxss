@@ -1,0 +1,4 @@
+/* pages/canvasNode.wxss */
+.myCanvas {
+    border: 1px solid blue;
+}

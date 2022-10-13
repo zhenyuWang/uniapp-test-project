@@ -1,0 +1,3 @@
+<view class="container">
+    <canvas type="2d" class="myCanvas"></canvas>
+</view>
