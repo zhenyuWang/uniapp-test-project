@@ -2,6 +2,42 @@
 	"pages": [
 		{
 			"path": "pages/index/index"
+		},
+		{
+			"path": "pages/getImageData_putImageData/index",
+			"style": {
+				"navigationBarTitleText": "getImageData_putImageData"
+			}
+		}, {
+			"path": "pages/styleMethods/index",
+			"style": {
+				"navigationBarTitleText": "styleMethods"
+			}
+		
+		}, {
+			"path": "pages/transformMethods/index",
+			"style": {
+				"navigationBarTitleText": "transformMethods"
+			}
+		
+		}, {
+			"path": "pages/drawMethods/index",
+			"style": {
+				"navigationBarTitleText": "drawMethods"
+			}
+		
+		}, {
+			"path": "pages/createMethods/index",
+			"style": {
+				"navigationBarTitleText": "createMethods"
+			}
+		
+		}, {
+			"path": "pages/frequentDraw/index",
+			"style": {
+				"navigationBarTitleText": "frequentDraw"
+			}
+		
 		}
   ],
 	"globalStyle": {

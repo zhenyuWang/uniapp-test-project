@@ -14,4 +14,7 @@
 </script>
 <style>
 	/*每个页面公共css */
+	.canvas {
+		border: 1px solid red;
+	}
 </style>
