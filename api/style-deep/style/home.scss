@@ -1,0 +1,16 @@
+#home::v-deep{
+  .a1{
+    background-color: red;
+    .a11{
+      // background-color: blue;
+      color: #fff;
+    }
+  }
+  .b1{
+    background-color: yellow;
+    .b11{
+      // background-color: #09c;
+      color: red;
+    }
+  }
+}
