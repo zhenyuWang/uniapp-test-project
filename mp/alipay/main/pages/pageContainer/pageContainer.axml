@@ -1,0 +1,18 @@
+<view>
+  <button size="default" type="primary" onTap="changeShowPageContainer">{{showPageContainer}}</button>
+
+  <page-container show="{{showPageContainer}}"  
+    onBeforeEnter="onBeforeEnter"  
+    onEnter="onEnter"  
+    onAfterEnter="onAfterEnter"  
+    onBeforeLeave="onBeforeLeave"  
+    onLeave="onLeave"  
+    onAfterLeave="onAfterLeave"  
+    onClickOverlay="onClickOverlay">  
+    <view>  
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam dolore   
+      cupiditate esse amet deserunt velit explicabo quam fugiat, odit natus hic   
+      deleniti quisquam incidunt ipsam quia magnam quasi libero neque?  
+    </view>  
+  </page-container>  
+</view>
