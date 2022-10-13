@@ -1,0 +1,59 @@
+{
+	"pages": [ //pages数组中第一项表示应用启动页，参考：https://uniapp.dcloud.io/collocation/pages
+		{
+			"path": "pages/home/home",
+			"style": {
+				"navigationBarTitleText": "uni-app"
+			}
+		},
+		{
+			"path": "pages/getImageData_putImageData/index",
+			"style": {
+				"navigationBarTitleText": "getImageData_putImageData"
+			}
+		}, {
+			"path": "pages/styleMethods/index",
+			"style": {
+				"navigationBarTitleText": "styleMethods"
+			}
+
+		}, {
+			"path": "pages/transformMethods/index",
+			"style": {
+				"navigationBarTitleText": "transformMethods"
+			}
+
+		}, {
+			"path": "pages/drawMethods/index",
+			"style": {
+				"navigationBarTitleText": "drawMethods"
+			}
+
+		}, {
+			"path": "pages/createMethods/index",
+			"style": {
+				"navigationBarTitleText": "createMethods"
+			}
+
+		}, {
+			"path": "pages/isMethods/index",
+			"style": {
+				"navigationBarTitleText": "isMethods"
+			}
+
+		}, {
+			"path": "pages/frequentDraw/index",
+			"style": {
+				"navigationBarTitleText": "frequentDraw"
+			}
+
+		}
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}
