@@ -1,13 +1,14 @@
 <template>
 	<view class="content">
 		<view>
+				<!-- @tap="mapTap"
+			  @click="mapClick" -->
 			<map id="map" class='map' :key="mapKey" :latitude="latitude" :longitude="longitude"
-				@tap="mapTap"
-			  @click="mapClick"
+				@callouttap='callouttap'
 				@markertap="markerTap" :scale="scale" :controls='controls' :show-location='true'
 				:polyline='polyline' :circles='circles' :markers="markers" :min-scale='10' :max-scale="20"
 				:polygons='polygons' @regionchange='mapRegionchange' @controltap='controlTap' @labeltap='labelTap'
-				@callouttap='callouttap' @updated="onUpdated" :include-points="includePoints">
+				@updated="onUpdated" :include-points="includePoints">
 			</map>
 		</view>
 		<button @click="changeLatLng">changeLatLng</button>
@@ -27,7 +28,7 @@
 				scale: 12,
 				markers: [{
 					id: 123456789123,
-					latitude: 39.9085,
+					latitude: 39.9190,
 					longitude: 116.39747,
 					// title:'test marker title',
 					padding: '10px',
@@ -51,8 +52,20 @@
 						borderColor: '#333300',
 						bgColor: '#CCFF99',
 						padding: '5',
-						display: 'BYCLICK',
-						// display: 'ALWAYS',
+						// display: 'BYCLICK',
+						display: 'ALWAYS',
+					},
+					calloutCopy: {
+						content: '方恒国际 阜通东大街7号',
+						color: '#00BFFF',
+						fontSize: 10,
+						borderRadius: 4,
+						borderWidth: 1,
+						borderColor: '#333300',
+						bgColor: '#CCFF99',
+						padding: '5',
+						// display: 'BYCLICK',
+						display: 'ALWAYS',
 					}
 				}, {
 					id: 213,
@@ -74,6 +87,17 @@
 						padding: 10,
 					},
 					callout: {
+						content: '222222',
+						color: '#00BFFF',
+						fontSize: 10,
+						borderRadius: 4,
+						borderWidth: 1,
+						borderColor: '#333300',
+						bgColor: '#CCFF99',
+						padding: '5',
+						display: 'ALWAYS',
+					},
+					calloutCopy: {
 						content: '222222',
 						color: '#00BFFF',
 						fontSize: 10,
@@ -158,6 +182,7 @@
 							latitude: 39.891365
 						}
 					],
+					color:'#00ff00',
 					strokeColor: "#FF33FF",
 					strokeWeight: 6,
 					width: 6,
@@ -223,37 +248,37 @@
 			console.log('index onReady');
 			this.map = uni.createMapContext('map', this)
 			// #ifdef MP-WEIXIN
-			this.map.addGroundOverlay({
-				id: 'testAddGroundOverlayId',
-				// id:123456,
-				src: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad',
-				bounds: {
-					southwest: {
-						longitude: 116.23,
-						latitude: 39.85
-					},
-					northeast: {
-						longitude: 116.55,
-						latitude: 39.97
-					}
-				},
-				visible: true,
-				complete(res) {
-					console.log('addGroundOverlay complate', res)
-				}
-			})
+			// this.map.addGroundOverlay({
+			// 	id: 'testAddGroundOverlayId',
+			// 	// id:123456,
+			// 	src: 'https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad',
+			// 	bounds: {
+			// 		southwest: {
+			// 			longitude: 116.23,
+			// 			latitude: 39.85
+			// 		},
+			// 		northeast: {
+			// 			longitude: 116.55,
+			// 			latitude: 39.97
+			// 		}
+			// 	},
+			// 	visible: true,
+			// 	complete(res) {
+			// 		console.log('addGroundOverlay complate', res)
+			// 	}
+			// })
 			// #endif
-			this.map.getCenterLocation({
-				success(res) {
-					console.log('getCenterLocation success', res)
-				},
-				fail(err) {
-					console.log('getCenterLocation falil', err)
-				},
-				complete(res) {
-					console.log('getCenterLocation complate', res)
-				}
-			})
+			// this.map.getCenterLocation({
+			// 	success(res) {
+			// 		console.log('getCenterLocation success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.log('getCenterLocation falil', err)
+			// 	},
+			// 	complete(res) {
+			// 		console.log('getCenterLocation complate', res)
+			// 	}
+			// })
 			// setTimeout(() => {
 			// 	this.map.moveToLocation({
 			// 		longitude: 117,
@@ -270,29 +295,29 @@
 			// 	})
 			// }, 1000)
 
-			this.map.getRegion({
-				success(res) {
-					console.log('getRegion success', res)
-				},
-				fail(err) {
-					console.log('getRegion falil', err)
-				},
-				complete(res) {
-					console.log('getRegion complate', res)
-				}
-			})
+			// this.map.getRegion({
+			// 	success(res) {
+			// 		console.log('getRegion success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.log('getRegion falil', err)
+			// 	},
+			// 	complete(res) {
+			// 		console.log('getRegion complate', res)
+			// 	}
+			// })
 
-			this.map.getScale({
-				success(res) {
-					console.log('getScale success', res)
-				},
-				fail(err) {
-					console.log('getScale falil', err)
-				},
-				complete(res) {
-					console.log('getScale complate', res)
-				}
-			})
+			// this.map.getScale({
+			// 	success(res) {
+			// 		console.log('getScale success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.log('getScale falil', err)
+			// 	},
+			// 	complete(res) {
+			// 		console.log('getScale complate', res)
+			// 	}
+			// })
 		},
 		methods: {
 			mapTap(e) {
@@ -315,6 +340,7 @@
 			},
 			markerTap(e) {
 				console.log('marker tap vue2', e)
+				const markerId = e.detail.markerId
 			},
 			mapRegionchange(e) {
 				console.log('map regionchange', e);

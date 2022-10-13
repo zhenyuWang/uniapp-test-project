@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <script>
+    class MyImage {
+      constructor(width,height){
+        this.width = width || 0
+        this.height = height || 0
+        this.src = ''
+        this._img = null
+      }
+      // get src(){
+      //   return this._src
+      // }
+      // set src(val){
+      //   this._src = val
+      //   if(this._src){
+      //     this._img = new Image()
+      //     this._img.src = this._src
+      //   }
+      // }
+      // onload(){
+      //   console.log('onload')
+      //   if(arguments[0] && typeof arguments[0] === 'function'){
+      //     arguments[0]()
+      //   }
+      // }
+      // onerror(){
+      //   console.log('onerror')
+      //   if(arguments[0] && typeof arguments[0] === 'function'){
+      //     arguments[0]()
+      //   }
+      // }
+    }
+    const img = new MyImage()
+    console.log('img-1',img)
+    img.src = './img/logo.png'
+    img.onload = () => {
+      console.log('this is user onload')
+    }
+    img.onerror = () => {
+      console.log('this is user onerror')
+    }
+    console.log('img-2',img)
+  </script>
+</body>
+</html>

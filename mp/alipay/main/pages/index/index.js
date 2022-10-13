@@ -5,6 +5,8 @@ Page({
   },
   onReady() {
     // 页面加载完成
+    console.log('my.SDKVersion',my.SDKVersion)
+    console.log('my.canIUse(page-container)',my.canIUse('page-container'))
   },
   onShow() {
     // 页面显示

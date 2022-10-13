@@ -5,4 +5,5 @@
   <button size="default" type="primary" onTap="chooseLocation">chooseLocation</button>
   <button size="default" type="primary" onTap="saveImage">saveImage</button>
   <input placeholder="test keyboard height" />
+  <navigator url="/pages/pageContainer/pageContainer">go pageContainer</navigator>
 </view>

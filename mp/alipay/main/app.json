@@ -2,7 +2,8 @@
   "pages": [
     "pages/index/index",
     "pages/logs/logs",
-    "pages/test/test"
+    "pages/test/test",
+    "pages/pageContainer/pageContainer"
   ],
   "window": {
     "defaultTitle": "My App"

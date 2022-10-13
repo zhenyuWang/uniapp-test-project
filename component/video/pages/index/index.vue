@@ -6,6 +6,7 @@
 		id='video1'
 		:show-mute-btn='true'
 		:muted="true"
+		title="test title"
 		controls
 		></video>
 		<video

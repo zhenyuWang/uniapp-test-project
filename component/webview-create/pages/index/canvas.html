@@ -12,18 +12,16 @@
     window.onload = function(){
       const canvas = document.getElementById("myCanvas")
       const ctx = canvas.getContext("2d")
-      ctx.transform(1,1,0,1,0,0)
-      ctx.transform(1,1,0,1,0,0)
+      // ctx.transform(1,1,0,1,0,0)
+      // ctx.transform(1,1,0,1,0,0)
 
-      // ctx.setTransform(1,1,0,1,0,0)
-      // ctx.setTransform(1,1,0,1,0,0)
+      // // ctx.setTransform(1,1,0,1,0,0)
+      // // ctx.setTransform(1,1,0,1,0,0)
 
-      console.log(ctx.getTransform());
-      ctx.fillRect(0,0,100,30)
+      // console.log(ctx.getTransform());
 
-      // ctx.filter = 'blur(10px)'
-      // console.warn(`ctx.filter:${ctx.filter}`)
-      // ctx.fillRect(0,0,50,50)
+      ctx.filter = 'blur(10px)'
+      ctx.fillRect(0,0,50,50)
     }
   </script>
 </body>
