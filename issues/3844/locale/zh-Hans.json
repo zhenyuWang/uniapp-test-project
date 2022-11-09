@@ -1,0 +1,11 @@
+{
+  "app.name": "Hello uni-app",
+  "title": "title1",
+  "message": "message1",
+  "buttonAccept": "同意1",
+  "buttonRefuse": "拒绝1",
+	"title2": "title2",
+	"message2": "message2",
+	"buttonAccept2": "同意2",
+	"buttonRefuse2": "拒绝2"
+}

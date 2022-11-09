@@ -1,0 +1,29 @@
+{
+  "version": "1",  
+  "prompt": "template",
+  "title": "%title%",
+  "message": "%message%",
+  "buttonAccept": "%buttonAccept%",
+  "buttonRefuse": "%buttonRefuse%",
+  "hrefLoader": "system|default",
+  "second": {
+    "title": "%title2%",
+    "message": "%message2%",
+    "buttonAccept": "%buttonAccept2%",
+    "buttonRefuse": "%buttonRefuse2%"
+  },
+  "disagreeMode":{
+    "support": false,
+    "loadNativePlugins": false,
+    "visitorEntry": true
+  },
+  "styles": {
+    "backgroundColor": "#09c",
+    "buttonAccept": {
+      "color": "#ffff00"
+    },
+    "buttonRefuse": {
+      "color": "#00ffff"
+    }
+  }
+}
