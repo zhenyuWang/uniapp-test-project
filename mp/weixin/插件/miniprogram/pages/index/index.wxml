@@ -1,0 +1,7 @@
+<navigator id="nav" url="plugin-private://wxc054409cd35e5138/myFirstPlugin/index">
+  Go to Plugin page
+</navigator>
+
+<button id="add" bindtap="addItem">Add item</button>
+
+<hello-list items="{{ items }}" />
