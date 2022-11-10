@@ -1,0 +1,7 @@
+<template>
+	<view class="content">
+		<view class="block">test block</view>
+	</view>
+</template>
+
+<!-- <style></style> -->
