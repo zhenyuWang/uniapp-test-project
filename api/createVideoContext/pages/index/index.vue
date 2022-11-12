@@ -22,9 +22,9 @@
 		},
 		methods: {
 			play(){
-				console.log('play');
-				this.videoContext = uni.createVideoContext('myVideo', this);
-				// this.videoContext = uni.createVideoContext('myVideo');
+				console.log('play test my-baidu createVideoContext');
+				this.videoContext = uni.createVideoContext('myVideo',this);
+				console.log('videoContext',this.videoContext)
 				this.videoContext.play();
 			}
 		}

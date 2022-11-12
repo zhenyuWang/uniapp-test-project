@@ -37,6 +37,7 @@
 				this.innerAudioContext = uni.createInnerAudioContext();
 				// this.innerAudioContext.autoplay = true;
 				this.innerAudioContext.src = 'https://bjetxgzv.cdn.bspapp.com/VKCEYUGU-hello-uniapp/2cc220e0-c27a-11ea-9dfb-6da8e309e0d8.mp3';
+				// this.innerAudioContext.loop = true
 				this.innerAudioContext.play()
 				this.innerAudioContext.onPlay(() => {
 				  console.log('开始播放');

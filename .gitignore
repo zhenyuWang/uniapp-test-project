@@ -6,3 +6,6 @@ yarn-error.log
 .vite
 unpackage
 dev-dist
+unpackage
+Hello-uniapp
+uni-ui/*

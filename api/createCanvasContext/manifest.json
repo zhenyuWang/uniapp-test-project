@@ -1,5 +1,5 @@
 {
-    "name" : "canvasGetImageData",
+    "name" : "createCanvasContext",
     "appid" : "__UNI__F9D5450",
     "description" : "",
     "versionName" : "1.0.0",
@@ -68,7 +68,7 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3",
+    "vueVersion" : "2",
     "mp-qq" : {
         "appid" : "1112144253"
     }
