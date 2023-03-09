@@ -1,0 +1,23 @@
+<template>
+	<view class="content">
+		<view>this is user index</view>
+		<button type="primary" @click="mySwitchTab('/pages/index/index')">goIndex</button>
+		<button type="primary" @click="mySwitchTab('/pages/about/index')">goAbout</button>
+		<button type="primary" @click="mySwitchTab('/pages/setting/index')">goSetting</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		methods: {
+			mySwitchTab(url){
+				uni.switchTab({
+					url,
+					complete(res){
+						console.log('switchTab in user page',res);
+					}
+				})
+			}
+		}
+	}
+</script>
