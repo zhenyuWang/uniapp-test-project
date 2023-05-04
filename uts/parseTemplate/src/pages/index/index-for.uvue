@@ -1,0 +1,20 @@
+<template>
+    <view>
+      <view v-for="item in 3" :key="item">
+        <text style="fontSize:20px;">text</text>
+      </view>
+      <view v-for="item in 'abc'" :key="item">
+        <text style="fontSize:25px;">text</text>
+      </view>
+      <view v-for="item in [1,2,3]" :key="item">
+        <text style="fontSize:30px;">text</text>
+      </view>
+      <view v-for="(item,index) in [1,2,3]" :key="index">
+        <text style="fontSize:30px;">text</text>
+      </view>
+      <view v-for="(item,index) in [{item:'1'},{item:'2'},{item:'3'}]">
+        <text style="fontSize:25px;color:red;">text</text>
+      </view>
+    </view>
+</template>
+// TODO: key 值优化 patch 功能未明确验证，因为现在列表数据只有重新赋值才会触发列表重新渲染

@@ -1,0 +1,21 @@
+<template>
+    <view>
+      <text style="fontSize:30px;" ref="testText">this is testText</text>
+      <text @click="getRef" style="backgroundColor:red;fontSize:30px;">getRef</text>
+    </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      show: true,
+    }
+  },
+  methods: {
+    getRef(e: MouseEvent){
+      this.$refs.testText
+    }
+  }
+}
+</script>

@@ -1,0 +1,30 @@
+<template>
+    <view>
+      <template v-if="show" style="backgroundColor:red;">
+        <text>v-if show in template</text>
+      </template>
+      <template v-if="unShow" style="backgroundColor:red;">
+        <text>v-if unShow in template</text>
+      </template>
+      <template v-for="item in list">
+        <text>{{item}}</text>
+      </template>
+    </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      show: true,
+      unShow: false,
+      list: [1,2,3,4] as number[]
+    }
+  },
+  methods: {
+    getRef(e: MouseEvent){
+      this.show = true;
+    }
+  }
+}
+</script>

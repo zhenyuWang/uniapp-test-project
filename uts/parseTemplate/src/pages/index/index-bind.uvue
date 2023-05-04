@@ -1,0 +1,38 @@
+<template>
+  <view>
+    <text :class="{'cred':true}">{{title}}</text>
+    <text v-bind:class="{'cred':true}">{{title}}</text>
+    <text v-bind:class="testClass1">{{title}}</text>
+    <text v-bind:class="[testClass1,testClass2]">{{title}}</text>
+    <text v-bind:class="testClassList">{{title}}</text>
+    <text v-bind:class="[testClass2, getClass(), {'cred': true, 'fontWeight': false}]">{{title}}</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      title: 'Hello123',
+      testClass1: 'cred',
+      testClass2: 'fontSize30',
+      testClassList: ['cred','fontSize30'] as String[]
+    }
+  },
+  methods: {
+    add(e: MouseEvent){
+      this.title += '1'
+    },
+    getClass():string{
+      return 'bgBlue'
+    }
+  }
+}
+</script>
+
+<style>
+.cred{color:red;}
+.bgBlue{background-color: blue;}
+.fontSize30{font-size:30px;}
+.fontWeight{font-weight: bold;}
+</style>

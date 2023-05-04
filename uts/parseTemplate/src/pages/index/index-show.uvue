@@ -1,0 +1,23 @@
+<template>
+    <view>
+      <text style="fontSize:30px;" @click="change">change</text>
+      <text style="fontSize:30px;" v-show="show">
+        v-show
+      </text>
+    </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      show: true,
+    }
+  },
+  methods: {
+    change(e: MouseEvent){
+      this.show = !this.show
+    }
+  }
+}
+</script>

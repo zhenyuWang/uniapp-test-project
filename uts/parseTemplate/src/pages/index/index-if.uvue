@@ -1,0 +1,22 @@
+<template>
+    <view>
+      <text style="fontSize:30px;" v-if="true">
+        v-if true
+      </text>
+      <text style="fontSize:30px;" v-if="false">
+        v-if true
+      </text>
+      <text style="fontSize:30px;" v-else-if="true">
+        v-else-if true
+      </text>
+      <text style="fontSize:30px;" v-if="false">
+        v-if false
+      </text>
+      <text style="fontSize:30px;" v-else-if="false">
+        v-else-if false
+      </text>
+      <text style="fontSize:30px;" v-else>
+        v-else true
+      </text>
+    </view>
+</template>
