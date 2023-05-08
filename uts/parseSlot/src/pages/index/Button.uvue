@@ -1,0 +1,12 @@
+<template>
+   <text>test</text>
+</template>
+<script lang="ts">
+  export default {
+    data() {
+      return {
+
+      }
+    }
+  }
+</script>

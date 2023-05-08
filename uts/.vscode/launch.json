@@ -1,0 +1,16 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Run Test",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceFolder}/parseSlot",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": [
+        "dev:app"
+      ],
+      "console": "integratedTerminal"
+    }
+  ]
+}

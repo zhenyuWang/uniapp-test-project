@@ -1,0 +1,21 @@
+<template>
+    <view>
+        <text>this is index start title: {{title}}</text>
+        <Foo />
+        <Bar>text in Bar slot</Bar>
+        <text>this is index end</text>
+    </view>
+</template>
+
+<script>
+import Foo from '../../components/Foo.uvue'
+import Bar from '../../components/Bar.uvue'
+export default {
+  components: { Foo, Bar },
+  data(){
+    return {
+      title: "index title"
+    }
+  }
+}
+</script>

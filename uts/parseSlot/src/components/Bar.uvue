@@ -1,0 +1,17 @@
+<template>
+    <view>
+        <text>this is component Bar</text>
+        <text>{{title}}</text>
+        <slot></slot>
+    </view>
+</template>
+
+<script>
+export default {
+  data(){
+    return {
+      title: "Bar title"
+    }
+  }
+}
+</script>
