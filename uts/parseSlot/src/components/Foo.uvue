@@ -1,16 +1,9 @@
 <template>
     <view>
-        <text>this is component Foo</text>
-        <text>{{title}}</text>
+        <text class="cred">this is component Foo</text>
     </view>
 </template>
 
-<script>
-export default {
-  data(){
-    return {
-      title: "foo data title"
-    }
-  }
-}
-</script>
+<style>
+.cred{color: red;}
+</style>

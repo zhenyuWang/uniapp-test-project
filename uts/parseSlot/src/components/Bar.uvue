@@ -3,11 +3,23 @@
         <text>this is component Bar</text>
         <text>{{title}}</text>
         <slot></slot>
+        <text>msg: {{msg}}</text>
+        <text>desc: {{desc}}</text>
     </view>
 </template>
 
 <script>
 export default {
+  props: {
+    msg: {
+      type: String,
+      default: "default msg"
+    },
+    desc: {
+      type: String,
+      default: "default desc"
+    }
+  },
   data(){
     return {
       title: "Bar title"

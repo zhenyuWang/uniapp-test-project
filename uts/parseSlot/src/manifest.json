@@ -4,8 +4,6 @@
     "description": "",
     "versionName": "1.0.0",
     "versionCode": "100",
-    "uvue": {
-        "enable": true
-    },
+    "uni-app-x": {},
     "vueVersion": "3"
 }
