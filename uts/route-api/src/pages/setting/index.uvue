@@ -1,0 +1,40 @@
+<template>
+  <view class="page">
+    <text class="cblue">this is setting title: {{title}}</text>
+    <text @click="navigateBack">navigateBack</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      title: 'setting title',
+    }
+  },
+  onLoad(options: OnLoadOptions){
+    console.log('--------------------------setting onLoad')
+  },
+  onShow(){
+    console.log('--------------------------setting onShow')
+  },
+  onReady(){
+    console.log('--------------------------setting onReady')
+  },
+  onHide(){
+    console.log('--------------------------setting onHide')
+  },
+  onUnload(){
+    console.log('--------------------------setting onUnload')
+  },
+  methods: {
+    navigateBack(e: MouseEvent){
+      uni.navigateBack({delta: 12})
+    },
+  }
+}
+</script>
+
+<style>
+.cblue{color:blue;}
+</style>

@@ -1,0 +1,111 @@
+<template>
+  <view class="page">
+    <text class="cred">this is about title: {{title}}</text>
+    <text @click="navigateBack">navigateBack</text>
+    <text @click="redirectToSetting">redirectTo setting</text>
+    <text @click="reLaunchSetting">reLaunch setting</text>
+    <text @click="navigateToSetting">navigateTo setting</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      title: 'about title',
+    }
+  },
+  onLoad(options: OnLoadOptions){
+    console.log('--------------------------about onLoad')
+  },
+  onShow(){
+    console.log('--------------------------about onShow')
+  },
+  onReady(){
+    console.log('--------------------------about onReady')
+  },
+  onHide(){
+    console.log('--------------------------about onHide')
+  },
+  onUnload(){
+    console.log('--------------------------about onUnload')
+  },
+  onBackPress(options: OnBackPressOptions){
+    console.log('--------------------------about onBackPress')
+    console.log(options.get("from"))
+  },
+  methods: {
+    navigateBack(e: MouseEvent){
+      uni.navigateBack({
+        success(e: NavigateBackSuccess){
+          console.log('---------navigateBack success in about')
+          console.log(e.errMsg)
+        },
+        fail(e: NavigateBackFail){
+          console.log('---------navigateBack fail in about')
+          console.log(e.errMsg)
+        },
+        complete(e: NavigateBackComplete){
+          console.log('---------navigateBack complete in about')
+          console.log(e.errMsg)
+        }
+      })
+    },
+    reLaunchSetting(e: MouseEvent){
+      uni.reLaunch({
+        url: '/pages/setting/index',
+        success(e: ReLaunchSuccess){
+          console.log('---------reLaunch success in about')
+          console.log(e.errMsg)
+        },
+        fail(e: ReLaunchFail){
+          console.log('---------reLaunch fail in about')
+          console.log(e.errMsg)
+        },
+        complete(e: ReLaunchComplete){
+          console.log('---------reLaunch complete in about')
+          console.log(e.errMsg)
+        }
+      })
+    },
+    redirectToSetting(e: MouseEvent){
+      uni.redirectTo({
+        url: "/pages/setting/index",
+        success(e: RedirectToSuccess){
+          console.log('---------redirectTo success in about')
+          console.log(e.errMsg)
+        },
+        fail(e: RedirectToFail){
+          console.log('---------redirectTo fail in about')
+          console.log(e.errMsg)
+        },
+        complete(e: RedirectToComplete){
+          console.log('---------redirectTo complete in about')
+          console.log(e.errMsg)
+        }
+      })
+    },
+    navigateToSetting(e: MouseEvent){
+      uni.navigateTo({
+        url: '/pages/setting/index',
+        success(e: NavigateToSuccess){
+          console.log('---------navigateTo success in about')
+          console.log(e.errMsg)
+        },
+        fail(e: NavigateToFail){
+          console.log('---------navigateTo fail in about')
+          console.log(e.errMsg)
+        },
+        complete(e: NavigateToComplete){
+          console.log('---------navigateTo complete in about')
+          console.log(e.errMsg)
+        }
+      })
+    }
+  }
+}
+</script>
+
+<style>
+.cred{color:red;}
+</style>

@@ -1,0 +1,56 @@
+<template>
+  <view class="page">
+    <text class="cgreen">this is index title: {{title}}</text>
+    <text @click="navigateToAbout">navigateTo about</text>
+    <view class="box">box in index</view>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      title: 'index title',
+    }
+  },
+  onLoad(options: OnLoadOptions){
+    console.log('--------------------------index onLoad')
+  },
+  onShow(){
+    console.log('--------------------------index onShow')
+  },
+  onReady(){
+    console.log('--------------------------index onReady')
+  },
+  onHide(){
+    console.log('--------------------------index onHide')
+  },
+  onUnload(){
+    console.log('--------------------------index onUnload')
+  },
+  methods: {
+    navigateToAbout(e: MouseEvent){
+      uni.navigateTo({
+        url: "/pages/about/index",
+        success(e: NavigateToSuccess){
+          console.log('-------------------------navigateTo about success')
+          console.log(e.errMsg)
+        },
+        fail(e: NavigateToFail){
+          console.log('-------------------------navigateTo about fail')
+          console.log(e.errMsg)
+        },
+        complete(e: NavigateToComplete){
+          console.log('-------------------------navigateTo about complete')
+          console.log(e.errMsg)
+        }
+      })
+    },
+  }
+}
+</script>
+
+<style>
+.cgreen{color:green;}
+.box{width:100px;height:100px;background-color: green;}
+</style>

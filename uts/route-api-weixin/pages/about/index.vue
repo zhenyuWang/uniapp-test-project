@@ -1,0 +1,79 @@
+<template>
+	<view class="content">
+		<view>this is {{title}}</view>
+		<button type="primary" @click="navigateBack">navigateBack</button>
+		<button type="primary" @click="reLaunchSetting">reLaunch setting</button>
+		<button type="primary" @click="navigateToSetting">navigate setting</button>
+		<button type="primary" @click="redirectToSetting">redirectTo setting</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'about title'
+			}
+		},
+		onLoad(){
+			console.log('about onLoad')
+		},
+		onShow() {
+			console.log('about onShow')
+		},
+		onReady() {
+			console.log('about onReady')
+		},
+		onHide() {
+			console.log('about onHide')
+		},
+		onUnload() {
+			console.log('about onUnload')
+		},
+		methods: {
+			navigateBack(){
+				uni.navigateBack({
+					success(e){
+						console.log('navigateBack success in about',e)
+					},
+					fail(e){
+						console.log('navigateBack fail in about',e)
+					}
+				});
+			},
+			reLaunchSetting() {
+				uni.reLaunch({
+					url: "/pages/setting/index",
+					success(e){
+						console.log('reLaunch success in about',e)
+					},
+					fail(e){
+						console.log('reLaunch fail in about',e)
+					}
+				})
+			},
+			navigateToSetting(){
+				uni.navigateTo({
+					url: '/pages/setting/index',
+					success(e){
+						console.log('navigateTo success in about',e)
+					},
+					fail(e){
+						console.log('navigateTo fail in about',e)
+					}
+				})
+			},
+			redirectToSetting(){
+				uni.redirectTo({
+					url: '/pages/setting/aaa',
+					success(e){
+						console.log('redirectTo success in about',e)
+					},
+					fail(e){
+						console.log('redirectTo fail in about',e)
+					}
+				})
+			}
+		}
+	}
+</script>
