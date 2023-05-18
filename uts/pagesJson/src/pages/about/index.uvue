@@ -1,0 +1,36 @@
+<template>
+  <view>
+    <text class="bg-blue">this is about title: {{title}}</text>
+    <view class="button" @click="back">
+      <text class="button-text">back</text>
+    </view>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: 'about title',
+    }
+  },
+  methods: {
+    back(e: MouseEvent){
+      uni.navigateBack({
+        success(e: NavigateBackSuccess){
+          console.log('---------navigateBack success in about')
+          console.log(e.errMsg)
+        },
+        fail(e: NavigateBackFail){
+          console.log('---------navigateBack fail in about')
+          console.log(e.errMsg)
+        },
+        complete(e: NavigateBackComplete){
+          console.log('---------navigateBack complete in about')
+          console.log(e.errMsg)
+        }
+      })
+    },
+  },
+}
+</script>

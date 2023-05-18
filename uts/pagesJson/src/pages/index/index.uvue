@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <text class="bg-blue">this is index title: {{title}}</text>
+    <view class="button" @click="goAbout" style="marginBottom:1300px">
+      <text class="button-text">goAbout</text>
+    </view>
+    <text>this is bottom</text>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      title: 'index title',
+    }
+  },
+  onReachBottom(){
+    console.log('--------------------------index onReachBottom')
+  },
+  methods: {
+    goAbout(e: MouseEvent){
+      uni.navigateTo({
+        url: "/pages/about/index",
+        success(e: NavigateToSuccess){
+          console.log('-------------------------navigateTo about success')
+          console.log(e.errMsg)
+        },
+        fail(e: NavigateToFail){
+          console.log('-------------------------navigateTo about fail')
+          console.log(e.errMsg)
+        },
+        complete(e: NavigateToComplete){
+          console.log('-------------------------navigateTo about complete')
+          console.log(e.errMsg)
+        }
+      })
+    },
+  },
+}
+</script>
