@@ -1,0 +1,31 @@
+<template>
+  <view>
+    <text>this is index start</text>
+    <Foo :msg="msg" :count="count" :data="item" />
+  </view>
+</template>
+
+<script lang="ts">
+import Foo from '../../components/Foo.uvue'
+type Item = {
+  name: string,
+  price: number,
+  num: number,
+  color: string
+}
+export default {
+  components: { Foo },
+  data() {
+    return {
+      msg: 'msg from index',
+      count: 0,
+      item: {
+        name: 'iphone',
+        price: 6888,
+        num: 120,
+        color: 'black'
+      } as Item
+    }
+  }
+}
+</script>
