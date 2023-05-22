@@ -1,0 +1,15 @@
+<template>
+  <view>
+    <text :style='{color: true ? "blue" : "red"}'>test style</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      testClass: "cred"
+    }
+  }
+}
+</script>

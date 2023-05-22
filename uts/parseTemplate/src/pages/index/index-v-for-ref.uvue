@@ -1,0 +1,36 @@
+<template>
+  <view>
+    <template v-for="item in 10">
+			<text :class="getClass" :ref="`item-${item}`">this is item-{{item}}</text>
+		</template>
+    <text :class="testClass" @click="logRef">get ref</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      testClass: "cred"
+    }
+  },
+  methods: {
+      getRef(): String{
+				return 'testRef'
+			},
+			logRef(e: MouseEvent){
+				for(let i = 1;i<=10;i++){
+					(this.$refs[`item-${i}`]as INode).setAttribute('value','aaa')
+				}
+			},
+    getClass(): String{
+      return 'cred'
+    }
+  }
+}
+</script>
+
+<style>
+  .cred{color: red;}
+  .bold{font-weight: bold;}
+</style>

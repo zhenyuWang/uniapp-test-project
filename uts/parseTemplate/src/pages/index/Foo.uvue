@@ -1,0 +1,17 @@
+<template>
+  <view>
+    <text><slot /></text>
+    <!-- <slot></slot> -->
+    <text>this is Foo</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    methods: {
+      logFoo(){
+        console.log('foo')
+      }
+    }
+  }
+</script>

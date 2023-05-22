@@ -1,0 +1,31 @@
+<template>
+  <view>
+    <view class="progress" ref="progress" :style="{ width: width + 'px'}">
+      <text>{{ width }}</text>
+    </view>
+  </view>
+</template>
+<script lang="ts">
+  export default {
+    props: {
+      width: {
+        type: Number,
+        default: 0
+      }
+    },
+    mounted() {
+      setTimeout(() => {
+        const progress = this.$refs.get('progress')
+        const width = (progress as INode)?.offsetWidth as number
+        println('width' + width)
+      },400)
+    }
+  }
+</script>
+<style>
+  .progress {
+    height: 20px;
+    background-color: red;
+    margin-bottom: 30px;
+  }
+</style>

@@ -1,0 +1,44 @@
+<template>
+	<view class="content">
+		<text>test text1</text>
+		<text>test text2</text>
+		<Foo>
+			<template v-slot="props">
+					<div>this is text in default slot; msg: {{ props.msg }}; age: {{ props.age }}</div>
+			</template>
+		</Foo>
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo.vue'
+	export default {
+		components: {Foo},
+		data(){
+			return {
+				title: 'index title'
+			}
+		},
+		methods: {
+			getClass(){
+				return 'cred'
+			},
+			getRef(){
+				return 'testRef'
+			},
+			logRef(){
+				// for(let i = 1;i<=10;i++){
+				// 	console.log(this.$refs[`item-${i}`])
+				// }
+				console.log('this.$refs.testRef',this.$refs.testRef.vlaue)
+				this.$refs.testRef.setAttribute('value','aaa')
+			},
+			
+		}
+	}
+</script>
+
+<style>
+	.cred{color: red;}
+</style>
+<!-- __VLS_WithTemplateSlots -->

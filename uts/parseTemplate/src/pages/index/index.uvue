@@ -36,3 +36,20 @@ export default {
 .fontSize30{font-size:30px;}
 .fontWeight{font-weight: bold;}
 </style>
+
+<!-- <template>
+	<view>
+    <Foo :width="100" />
+    <Foo :width="200" />
+    <Foo :width="300" />
+  </view>
+</template>
+
+<script lang="ts">
+  import Foo from '../../components/Foo.uvue'
+  export default {
+    components: {
+      Foo
+    }
+  }
+</script> -->

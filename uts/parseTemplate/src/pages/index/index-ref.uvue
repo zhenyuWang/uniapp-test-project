@@ -1,21 +1,32 @@
 <template>
-    <view>
-      <text style="fontSize:30px;" ref="testText">this is testText</text>
-      <text @click="getRef" style="backgroundColor:red;fontSize:30px;">getRef</text>
-    </view>
+  <view>
+    <text :class="getClass()" ref="testRef">this is testRef</text>
+    <text :class="testClass" @click="logRef">get ref</text>
+  </view>
 </template>
 
 <script lang="ts">
 export default {
   data() {
     return {
-      show: true,
+      testClass: "cred"
     }
   },
   methods: {
-    getRef(e: MouseEvent){
-      this.$refs.testText
+      getRef(): String{
+				return 'testRef'
+			},
+			logRef(e: MouseEvent){
+        (this.$refs.get("testRef") as INode).setAttribute('value','aaa')
+			},
+    getClass(): String{
+      return 'cred'
     }
   }
 }
 </script>
+
+<style>
+  .cred{color: red;}
+  .bold{font-weight: bold;}
+</style>

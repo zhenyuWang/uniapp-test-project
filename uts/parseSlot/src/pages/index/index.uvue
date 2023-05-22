@@ -2,7 +2,14 @@
     <view>
         <text class="cblue">this is index</text>
         <Foo />
-        <Bar msg="test msg">text in Bar default slot</Bar>
+        <Bar msg="test msg">
+          <template v-slot="defaultProps">
+            text in Bar slot default {{title}} {{ defaultProps.get("age") }}
+          </template>
+          <template v-slot:header>
+            text in Bar slot header
+          </template>
+        </Bar>
     </view>
 </template>
 
@@ -10,7 +17,12 @@
 import Foo from '../../components/Foo.uvue'
 import Bar from '../../components/Bar.uvue'
 export default {
-  components: { Foo, Bar }
+  components: { Foo, Bar },
+  data(){
+    return {
+      title: "title in index"
+    }
+  }
 }
 </script>
 
