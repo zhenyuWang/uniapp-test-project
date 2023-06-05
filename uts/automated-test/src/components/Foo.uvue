@@ -1,0 +1,27 @@
+<template>
+  <view>
+    <text>this is component Foo</text>
+    <button type="primary" @click="getAttrs">getAttrs</button>
+  </view>
+</template>
+
+<script lang="ts">
+  export default {
+    props: {
+      testProps: {
+        type: String,
+        default: 'testProps'
+      }
+    },
+    data(){
+      return {
+        testData: 'testData'
+      }
+    },
+    methods: {
+      getAttrs(e: MouseEvent){
+        console.log(this.$attrs.get("msg"))
+      }
+    }
+  }
+</script>

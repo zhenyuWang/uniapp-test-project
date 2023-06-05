@@ -1,0 +1,25 @@
+<template>
+  <view>
+    <text @click="navigateBack">navigateBack</text>
+    <text @click="reLaunchIndex">reLaunchIndex</text>
+  </view>
+</template>
+
+<script lang="ts">
+import {onMessage} from 'io.dcloud.uts.automator'
+export default {
+  data() {
+    return {
+      msg: "this is about page"
+    }
+  },
+  methods: {
+    navigateBack() {
+      onMessage('{"id":"navigateBack","method":"App.callUniMethod","params":{"method":"navigateBack","args":[]}}')
+    },
+    reLaunchIndex() {
+      onMessage('{"id":"reLaunch","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url": "/pages/index/index"}]}}')
+    },
+  }
+}
+</script>

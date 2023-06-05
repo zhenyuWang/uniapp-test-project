@@ -1,0 +1,33 @@
+<template>
+  <view>
+    <text @click="navigateBack">navigateBack</text>
+    <text @click="reLaunchSetting">reLaunchSetting</text>
+    <text @click="getPageStack">getPageStack</text>
+    <text @click="getCurrentPage">getCurrentPage</text>
+  </view>
+</template>
+
+<script lang="ts">
+import {onMessage} from 'io.dcloud.uts.automator'
+export default {
+  data() {
+    return {
+      msg: "this is about page"
+    }
+  },
+  methods: {
+    navigateBack() {
+      onMessage('{"id":"navigateBack","method":"App.callUniMethod","params":{"method":"navigateBack","args":[]}}')
+    },
+    reLaunchSetting() {
+      onMessage('{"id":"reLaunch","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url": "/pages/setting/index"}]}}')
+    },
+    getPageStack() {
+      onMessage('{"id":"getPageStack","method":"App.getPageStack","params":{}}')
+    },
+    getCurrentPage() {
+      onMessage('{"id":"getPageStack","method":"App.getPageStack","params":{}}')
+    }
+  }
+}
+</script>

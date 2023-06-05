@@ -1,0 +1,50 @@
+<template>
+  <view>
+    <text @click="navigateToAbout">navigateToAbout</text>
+    <text @click="redirectToAbout">redirectToAbout</text>
+    <text @click="getData">getData</text>
+    <text @click="setData">setData</text>
+    <text @click="captureScreenshot">captureScreenshot</text>
+    <text @click="callMethodWithCallback">callMethodWithCallback</text>
+    <text>{{ msg }}{{ count }}</text>
+  </view>
+</template>
+
+<script lang="ts">
+import {onMessage} from 'io.dcloud.uts.automator'
+export default {
+  data() {
+    return {
+      msg: "this is index page",
+      count: 0
+    }
+  },
+  // callMethod
+  methods: {
+    navigateToAbout() {
+      onMessage('{"id":"navigateTo","method":"App.callUniMethod","params":{"method":"navigateTo","args":[{"url":"/pages/about/index"}]}}')
+    },
+    redirectToAbout() {
+      onMessage('{"id":"redirectTo","method":"App.callUniMethod","params":{"method":"redirectTo","args":[{"url":"/pages/about/index"}]}}')
+    },
+    getData(){
+      onMessage('{"id":"getData","method":"Page.getData","params":{"path":"","pageId":0}}')
+    },
+    setData(){
+      onMessage('{"id":"setData","method":"Page.setData","params":{"data":{"count": 100},"pageId":0}}')
+    },
+    captureScreenshot(){
+      onMessage('{"id":"captureScreenshot","method":"App.captureScreenshot","params":{"path":"test"}}')
+    },
+    callMethodWithCallback(){
+      // onMessage('{"id":"callMethodWithCallback","method":"Page.callMethodWithCallback","params":{"pageId": 0, "method":"getStorageInfo222"}}')
+      onMessage('{"id":"callMethodWithCallback","method":"Page.callMethodWithCallback","params":{"pageId": 0, "method":"getStorageInfo"}}')
+    },
+    getStorageInfo(callback:(res:any | null) => void){
+      setTimeout(() => {
+          callback('getStorageInfo res-----------------')
+      },1000)
+    }
+  }
+}
+</script>
