@@ -1,0 +1,13 @@
+import App from './App'
+import { createSSRApp } from 'vue'
+// import { initAutomator } from './automator/index.uts'
+export function createApp() {
+		// initAutomator()
+		console.warn('createApp start')
+		console.log('abc')
+		console.log(123)
+    const app = createSSRApp(App)
+    return {
+        app
+    }
+}
