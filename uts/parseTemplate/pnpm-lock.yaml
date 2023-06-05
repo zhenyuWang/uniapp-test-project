@@ -2,40 +2,40 @@ lockfileVersion: '6.0'
 
 dependencies:
   '@dcloudio/uni-app':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-app
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-app
     version: link:../../../uni-app-vue3/packages/uni-app
   '@dcloudio/uni-app-plus':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-app-plus
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-app-plus
     version: link:../../../uni-app-vue3/packages/uni-app-plus
   '@dcloudio/uni-components':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-components
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-components
     version: link:../../../uni-app-vue3/packages/uni-components
   '@dcloudio/uni-h5':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-h5
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-h5
     version: link:../../../uni-app-vue3/packages/uni-h5
   '@dcloudio/uni-mp-alipay':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-alipay
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-alipay
     version: link:../../../uni-app-vue3/packages/uni-mp-alipay
   '@dcloudio/uni-mp-baidu':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-baidu
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-baidu
     version: link:../../../uni-app-vue3/packages/uni-mp-baidu
   '@dcloudio/uni-mp-kuaishou':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-kuaishou
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-kuaishou
     version: link:../../../uni-app-vue3/packages/uni-mp-kuaishou
   '@dcloudio/uni-mp-lark':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-lark
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-lark
     version: link:../../../uni-app-vue3/packages/uni-mp-lark
   '@dcloudio/uni-mp-qq':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-qq
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-qq
     version: link:../../../uni-app-vue3/packages/uni-mp-qq
   '@dcloudio/uni-mp-toutiao':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-toutiao
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-toutiao
     version: link:../../../uni-app-vue3/packages/uni-mp-toutiao
   '@dcloudio/uni-mp-weixin':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-mp-weixin
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-mp-weixin
     version: link:../../../uni-app-vue3/packages/uni-mp-weixin
   '@dcloudio/uni-quickapp-webview':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-quickapp-webview
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-quickapp-webview
     version: link:../../../uni-app-vue3/packages/uni-quickapp-webview
   less:
     specifier: ^4.1.3
@@ -58,19 +58,19 @@ devDependencies:
     specifier: ^3.2.2
     version: 3.2.11
   '@dcloudio/uni-automator':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-automator
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-automator
     version: link:../../../uni-app-vue3/packages/uni-automator
   '@dcloudio/uni-cli-shared':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-cli-shared
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-cli-shared
     version: link:../../../uni-app-vue3/packages/uni-cli-shared
   '@dcloudio/uni-stacktracey':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-stacktracey
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-stacktracey
     version: link:../../../uni-app-vue3/packages/uni-stacktracey
   '@dcloudio/uni-uts-v1':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/uni-uts-v1
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/uni-uts-v1
     version: link:../../../uni-app-vue3/packages/uni-uts-v1
   '@dcloudio/vite-plugin-uni':
-    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-vue3/packages/vite-plugin-uni
+    specifier: /Users/zhenyuwang/work/DCloud/git/uni-app-next/packages/vite-plugin-uni
     version: link:../../../uni-app-vue3/packages/vite-plugin-uni
   vite:
     specifier: 4.0.3
