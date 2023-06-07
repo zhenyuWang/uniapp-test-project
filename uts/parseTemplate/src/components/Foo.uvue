@@ -3,6 +3,7 @@
     <view class="progress" ref="progress" :style="{ width: width + 'px'}">
       <text>{{ width }}</text>
     </view>
+    <button @click="updateWidth">updateWidth</button>
   </view>
 </template>
 <script lang="ts">
@@ -19,6 +20,12 @@
         const width = (progress as INode)?.offsetWidth as number
         println('width' + width)
       },400)
+    },
+    methods: {
+      updateWidth() {
+        println('updateWidth')
+        this.$emit('update:width', 300)
+      }
     }
   }
 </script>

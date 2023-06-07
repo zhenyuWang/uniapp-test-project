@@ -1,6 +1,6 @@
 <template>
 		<view class="content">
-				<view class="border-0">index-index-index2</view>
+				<view class="border-0" @click="fn(1,2,3)">index-index-index2</view>
 				<view class="border-0" @click="test">index-index-index {{ title }}</view>
 				<view class="border-0">测试节点</view>
 				<view class="border-1">测试节点</view>
@@ -84,6 +84,9 @@
 					setTimeout(() => {
 							callback('getStorageInfo res')
 					},1000)
+				},
+				fn(_:any,_:any,a:any){
+					console.log(a)
 				}
 			}
 		}

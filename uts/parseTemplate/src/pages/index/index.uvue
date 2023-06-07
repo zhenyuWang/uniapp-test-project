@@ -1,55 +1,31 @@
 <template>
   <view>
-    <text :class="{'cred':true}">{{title}}</text>
-    <text v-bind:class="{'cred':true}">{{title}}</text>
-    <text v-bind:class="testClass1">{{title}}</text>
-    <text v-bind:class="[testClass1,testClass2]">{{title}}</text>
-    <text v-bind:class="testClassList">{{title}}</text>
-    <text v-bind:class="[testClass2, getClass(), {'cred': true, 'fontWeight': false}]">{{title}}</text>
+    <input type="text" v-model="title" placeholder="please input" />
+    <textarea v-model="title" placeholder="please input" />
+    <text>{{title}}</text>
+    <Foo v-model:[value]="model" />
+    <view>model: {{model}}</view>
+    <button @click="changeModel">changeModel</button>
   </view>
 </template>
 
 <script lang="ts">
+import Foo from '../../components/Foo.uvue'
 export default {
+  components: {
+    Foo
+  },
   data() {
     return {
       title: 'Hello123',
-      testClass1: 'cred',
-      testClass2: 'fontSize30',
-      testClassList: ['cred','fontSize30'] as String[]
+      value: 'width',
+      model: 100
     }
   },
   methods: {
-    add(e: MouseEvent){
-      this.title += '1'
-    },
-    getClass():string{
-      return 'bgBlue'
+    changeModel(){
+      this.model = 200
     }
   }
 }
 </script>
-
-<style>
-.cred{color:red;}
-.bgBlue{background-color: blue;}
-.fontSize30{font-size:30px;}
-.fontWeight{font-weight: bold;}
-</style>
-
-<!-- <template>
-	<view>
-    <Foo :width="100" />
-    <Foo :width="200" />
-    <Foo :width="300" />
-  </view>
-</template>
-
-<script lang="ts">
-  import Foo from '../../components/Foo.uvue'
-  export default {
-    components: {
-      Foo
-    }
-  }
-</script> -->

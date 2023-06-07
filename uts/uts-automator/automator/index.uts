@@ -75,11 +75,6 @@ function onMessage(msg: string) {
         case 'Page.setData':
           pageSetData({ pageId, data, callback } as setDataParams)
           break
-        case 'Page.callMethodWithCallback':
-          const methodName = params['method'] as string
-          const args = params['args'] as Array<any | null>
-          callMethodWithCallback({pageId, methodName, args} as callMethodWithCallbackParams)
-          break;
       }
     }
   } catch (error) {
@@ -89,9 +84,11 @@ function onMessage(msg: string) {
 }
 
 export function initAutomator() {
+	console.warn('initAutomator start----')
   socketTask = uni.connectSocket({
     url: wsEndpoint
   });
+	console.warn('initAutomator after connectSocket----')
   socketTask!.onMessage((res) => {onMessage(res.data as string)})
   socketTask!.onOpen((_) => {
     console.warn("automator.onOpen")
