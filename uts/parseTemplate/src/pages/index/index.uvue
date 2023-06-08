@@ -1,31 +1,30 @@
 <template>
   <view>
-    <input type="text" v-model="title" placeholder="please input" />
-    <textarea v-model="title" placeholder="please input" />
     <text>{{title}}</text>
-    <Foo v-model:[value]="model" />
-    <view>model: {{model}}</view>
-    <button @click="changeModel">changeModel</button>
+    <text v-on:click="add">add</text>
+    <text @click="reset">reset</text>
   </view>
 </template>
 
 <script lang="ts">
-import Foo from '../../components/Foo.uvue'
 export default {
-  components: {
-    Foo
-  },
   data() {
     return {
-      title: 'Hello123',
-      value: 'width',
-      model: 100
+      title: 'Hello',
     }
   },
   methods: {
-    changeModel(){
-      this.model = 200
+    add(e: MouseEvent){
+      this.title += '1'
+    },
+    reset(e: MouseEvent){
+      this.title = "hello"
     }
   }
 }
 </script>
+
+<style>
+.cred{color:red;}
+.fontSize30{font-size:30px;}
+</style>

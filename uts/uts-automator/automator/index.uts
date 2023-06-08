@@ -4,18 +4,18 @@ import {
   callUniMethod,
   CallUniMethodParams,
   captureScreenshot,
-  captureScreenshotParams,
+  CaptureScreenshotParams,
   getPageStack,
-  getPageStackParams,
+  GetPageStackParams,
   getCurrentPage,
-  getCurrentPageParams
+  GetCurrentPageParams
 } from './apis/App.uts'
 import {
   pageGetData,
-  getDataParams,
+  GetDataParams,
   pageSetData,
-  setDataParams,
-  callMethodWithCallbackParams,
+  SetDataParams,
+  CallMethodWithCallbackParams,
   callMethodWithCallback
 } from './apis/Page.uts'
 
@@ -53,13 +53,13 @@ function onMessage(msg: string) {
           case 'App.captureScreenshot':
           const id = params['id'] !== null ? (params['id'] as string) : null
           const fullPage = params['fullPage'] !== null ? (params['fullPage'] as boolean) : false
-          captureScreenshot({ id, fullPage, path, callback } as captureScreenshotParams)
+          captureScreenshot({ id, fullPage, path, callback } as CaptureScreenshotParams)
           break
         case 'App.getPageStack':
-          getPageStack({ callback } as getPageStackParams)
+          getPageStack({ callback } as GetPageStackParams)
           break
         case 'App.getCurrentPage':
-          getCurrentPage({ callback } as getCurrentPageParams)
+          getCurrentPage({ callback } as GetCurrentPageParams)
           break
       }
     } else if (method.startsWith('Page.')) {
@@ -70,11 +70,17 @@ function onMessage(msg: string) {
           : ({} as JSONObject)
       switch (method) {
         case 'Page.getData':
-          pageGetData({ pageId, path, callback } as getDataParams)
+          pageGetData({ pageId, path, callback } as GetDataParams)
           break
         case 'Page.setData':
-          pageSetData({ pageId, data, callback } as setDataParams)
+          pageSetData({ pageId, data, callback } as SetDataParams)
           break
+        case 'Page.callMethodWithCallback':
+          const methodName = params['method'] as string
+          const args = params['args'] !== null ? params['args'] as Array<any | null> : [] as Array<any | null>
+          args.push(callback)
+          callMethodWithCallback({pageId, methodName, args, callback} as CallMethodWithCallbackParams)
+          break;
       }
     }
   } catch (error) {
@@ -84,11 +90,11 @@ function onMessage(msg: string) {
 }
 
 export function initAutomator() {
-	console.warn('initAutomator start----')
+	console.log('initAutomator start-1')
   socketTask = uni.connectSocket({
     url: wsEndpoint
   });
-	console.warn('initAutomator after connectSocket----')
+	console.log('initAutomator start-2')
   socketTask!.onMessage((res) => {onMessage(res.data as string)})
   socketTask!.onOpen((_) => {
     console.warn("automator.onOpen")
