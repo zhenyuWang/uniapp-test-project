@@ -1,8 +1,9 @@
 <template>
   <view>
-    <text>{{title}}</text>
-    <text v-on:click="add">add</text>
-    <text @click="reset">reset</text>
+    <text>{{ title }}</text>
+  </view>
+  <view>
+    <text>{{ title }}</text>
   </view>
 </template>
 
@@ -12,19 +13,6 @@ export default {
     return {
       title: 'Hello',
     }
-  },
-  methods: {
-    add(e: MouseEvent){
-      this.title += '1'
-    },
-    reset(e: MouseEvent){
-      this.title = "hello"
-    }
   }
 }
 </script>
-
-<style>
-.cred{color:red;}
-.fontSize30{font-size:30px;}
-</style>
