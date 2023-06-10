@@ -5,49 +5,54 @@
     <text @click="redirectToSetting">redirectTo setting</text>
     <text @click="reLaunchSetting">reLaunch setting</text>
     <text @click="navigateToSetting">navigateTo setting</text>
+    <Foo></Foo>
   </view>
 </template>
 
 <script lang="ts">
+import Foo from '../../components/Foo.uvue'
 export default {
+  components: {
+    Foo
+  },
   data() {
     return {
       title: 'about title',
     }
   },
   onLoad(options: OnLoadOptions){
-    console.log('--------------------------about onLoad')
+    println('--------------------------about onLoad')
   },
   onShow(){
-    console.log('--------------------------about onShow')
+    println('--------------------------about onShow')
   },
   onReady(){
-    console.log('--------------------------about onReady')
+    println('--------------------------about onReady')
   },
   onHide(){
-    console.log('--------------------------about onHide')
+    println('--------------------------about onHide')
   },
   onUnload(){
-    console.log('--------------------------about onUnload')
+    println('--------------------------about onUnload')
   },
   onBackPress(options: OnBackPressOptions){
-    console.log('--------------------------about onBackPress')
-    console.log(options.get("from"))
+    println('--------------------------about onBackPress')
+    println(options.get("from"))
   },
   methods: {
     navigateBack(e: MouseEvent){
       uni.navigateBack({
         success(e: NavigateBackSuccess){
-          console.log('---------navigateBack success in about')
-          console.log(e.errMsg)
+          println('---------navigateBack success in about')
+          println(e.errMsg)
         },
         fail(e: NavigateBackFail){
-          console.log('---------navigateBack fail in about')
-          console.log(e.errMsg)
+          println('---------navigateBack fail in about')
+          println(e.errMsg)
         },
         complete(e: NavigateBackComplete){
-          console.log('---------navigateBack complete in about')
-          console.log(e.errMsg)
+          println('---------navigateBack complete in about')
+          println(e.errMsg)
         }
       })
     },
@@ -55,16 +60,16 @@ export default {
       uni.reLaunch({
         url: '/pages/setting/index',
         success(e: ReLaunchSuccess){
-          console.log('---------reLaunch success in about')
-          console.log(e.errMsg)
+          println('---------reLaunch success in about')
+          println(e.errMsg)
         },
         fail(e: ReLaunchFail){
-          console.log('---------reLaunch fail in about')
-          console.log(e.errMsg)
+          println('---------reLaunch fail in about')
+          println(e.errMsg)
         },
         complete(e: ReLaunchComplete){
-          console.log('---------reLaunch complete in about')
-          console.log(e.errMsg)
+          println('---------reLaunch complete in about')
+          println(e.errMsg)
         }
       })
     },
@@ -72,16 +77,16 @@ export default {
       uni.redirectTo({
         url: "/pages/setting/index",
         success(e: RedirectToSuccess){
-          console.log('---------redirectTo success in about')
-          console.log(e.errMsg)
+          println('---------redirectTo success in about')
+          println(e.errMsg)
         },
         fail(e: RedirectToFail){
-          console.log('---------redirectTo fail in about')
-          console.log(e.errMsg)
+          println('---------redirectTo fail in about')
+          println(e.errMsg)
         },
         complete(e: RedirectToComplete){
-          console.log('---------redirectTo complete in about')
-          console.log(e.errMsg)
+          println('---------redirectTo complete in about')
+          println(e.errMsg)
         }
       })
     },
@@ -89,16 +94,16 @@ export default {
       uni.navigateTo({
         url: '/pages/setting/index',
         success(e: NavigateToSuccess){
-          console.log('---------navigateTo success in about')
-          console.log(e.errMsg)
+          println('---------navigateTo success in about')
+          println(e.errMsg)
         },
         fail(e: NavigateToFail){
-          console.log('---------navigateTo fail in about')
-          console.log(e.errMsg)
+          println('---------navigateTo fail in about')
+          println(e.errMsg)
         },
         complete(e: NavigateToComplete){
-          console.log('---------navigateTo complete in about')
-          console.log(e.errMsg)
+          println('---------navigateTo complete in about')
+          println(e.errMsg)
         }
       })
     }

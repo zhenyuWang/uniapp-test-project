@@ -13,19 +13,19 @@ export default {
     }
   },
   onLoad(options: OnLoadOptions){
-    console.log('--------------------------setting onLoad')
+    println('--------------------------setting onLoad')
   },
   onShow(){
-    console.log('--------------------------setting onShow')
+    println('--------------------------setting onShow')
   },
   onReady(){
-    console.log('--------------------------setting onReady')
+    println('--------------------------setting onReady')
   },
   onHide(){
-    console.log('--------------------------setting onHide')
+    println('--------------------------setting onHide')
   },
   onUnload(){
-    console.log('--------------------------setting onUnload')
+    println('--------------------------setting onUnload')
   },
   methods: {
     navigateBack(e: MouseEvent){

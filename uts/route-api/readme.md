@@ -42,11 +42,11 @@ fun testSyncWithCallback(opts: AsyncOptions): UtsJSONObject {
 test.testSyncWithCallback({
   type: "success",
   success(res: any) {
-    console.log("success", res);
+    println("success", res);
     // TODO
   },
   fail(res: any) {
-    console.log("fail", res);
+    println("fail", res);
   },
 });
 ```

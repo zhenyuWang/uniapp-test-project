@@ -21,7 +21,7 @@ export default defineConfig({
     {
       name: 'test',
       configResolved(config) {
-        // console.log(config.plugins)
+        // println(config.plugins)
       }
     }
   ],

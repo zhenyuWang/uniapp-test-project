@@ -1,0 +1,66 @@
+<template>
+    <view class="page">
+        <text>{{ title }}</text>
+        <button @click="updateTitle">updateTitle</button>
+    </view>
+</template>
+  
+<script lang="ts">
+export default {
+    data() {
+        return {
+            title: 'this is component Foo',
+        }
+    },
+    beforeCreate() {
+        println('--------------------------Foo beforeCreate')
+    },
+    created() {
+        println('--------------------------Foo created')
+    },
+    beforeMount() {
+        println('--------------------------Foo beforeMount')
+    },
+    mounted() {
+        println('--------------------------Foo mounted')
+    },
+    beforeUpdate() {
+        println('--------------------------Foo beforeUpdate')
+    },
+    updated() {
+        println('--------------------------Foo updated')
+    },
+    beforeUnmount() {
+        println('--------------------------Foo beforeUnmount')
+    },
+    unmounted() {
+        println('--------------------------Foo unmounted')
+    },
+    onLoad(options: OnLoadOptions) {
+        println('--------------------------Foo onLoad')
+    },
+    onShow() {
+        println('--------------------------Foo onShow')
+    },
+    onReady() {
+        println('--------------------------Foo onReady')
+    },
+    onHide() {
+        println('--------------------------Foo onHide')
+    },
+    onUnload() {
+        println('--------------------------Foo onUnload')
+    },
+    methods: {
+        updateTitle() {
+            this.title = 'this is component Foo updated'
+        }
+    }
+}
+</script>
+  
+<style>
+.cblue {
+    color: blue;
+}
+</style>

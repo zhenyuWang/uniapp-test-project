@@ -5,7 +5,7 @@
       "name": "Run Test",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/parseSlot",
+      "cwd": "${workspaceFolder}/parseTemplate",
       "runtimeExecutable": "yarn",
       "runtimeArgs": [
         "dev:app"

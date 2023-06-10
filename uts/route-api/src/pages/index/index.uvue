@@ -3,46 +3,49 @@
     <text class="cgreen">this is index title: {{title}}</text>
     <text @click="navigateToAbout">navigateTo about</text>
     <view class="box">box in index</view>
+    <Foo></Foo>
   </view>
 </template>
 
 <script lang="ts">
+import Foo from '../../components/Foo.uvue'
 export default {
+  components: { Foo },
   data() {
     return {
       title: 'index title',
     }
   },
   onLoad(options: OnLoadOptions){
-    console.log('--------------------------index onLoad')
+    println('--------------------------index onLoad')
   },
   onShow(){
-    console.log('--------------------------index onShow')
+    println('--------------------------index onShow')
   },
   onReady(){
-    console.log('--------------------------index onReady')
+    println('--------------------------index onReady')
   },
   onHide(){
-    console.log('--------------------------index onHide')
+    println('--------------------------index onHide')
   },
   onUnload(){
-    console.log('--------------------------index onUnload')
+    println('--------------------------index onUnload')
   },
   methods: {
     navigateToAbout(e: MouseEvent){
       uni.navigateTo({
         url: "/pages/about/index",
         success(e: NavigateToSuccess){
-          console.log('-------------------------navigateTo about success')
-          console.log(e.errMsg)
+          println('-------------------------navigateTo about success')
+          println(e.errMsg)
         },
         fail(e: NavigateToFail){
-          console.log('-------------------------navigateTo about fail')
-          console.log(e.errMsg)
+          println('-------------------------navigateTo about fail')
+          println(e.errMsg)
         },
         complete(e: NavigateToComplete){
-          console.log('-------------------------navigateTo about complete')
-          console.log(e.errMsg)
+          println('-------------------------navigateTo about complete')
+          println(e.errMsg)
         }
       })
     },
