@@ -42,6 +42,7 @@ export default {
   methods: {
     navigateBack(e: MouseEvent){
       uni.navigateBack({
+        animationDuration: 3000,
         success(e: NavigateBackSuccess){
           println('---------navigateBack success in about')
           println(e.errMsg)

@@ -6,7 +6,7 @@
         "navigationBarTitleText": "index",
         "navigationBarTextStyle": "black",
         "navigationBarBackgroundColor": "#09c",
-        "backgroundColor":"#ffff00"
+        "backgroundColor": "#ffff00"
       }
     },
     {
@@ -27,5 +27,17 @@
     "navigationBarTitleText": "uni-app",
     "navigationBarBackgroundColor": "#F8F8F8",
     "backgroundColor": "#F8F8F8"
+  },
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "index"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "text": "about"
+      }
+    ]
   }
 }

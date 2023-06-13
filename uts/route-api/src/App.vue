@@ -1,5 +1,10 @@
 <script lang="uts">
 export default {
+  data(){
+    return {
+      appData: 'app data',
+    }
+  },
   onLaunch: function () {
     println("App Launch");
   },
@@ -9,6 +14,9 @@ export default {
   onHide: function () {
     println("App Hide");
   },
+  onLastPageBackPress() {
+    println('-------------------------onLastPageBackPress')
+  }
 };
 </script>
 

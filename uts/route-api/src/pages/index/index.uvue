@@ -1,9 +1,15 @@
 <template>
   <view class="page">
-    <text class="cgreen">this is index title: {{title}}</text>
+    <text class="cgreen">this is index title: {{ title }}</text>
     <text @click="navigateToAbout">navigateTo about</text>
-    <view class="box">box in index</view>
+    <text @click="navigateToSetting">navigateTo setting</text>
+    <view class="box" @touchstart="onTouchstart" @longpress="onLongpress">box in index</view>
     <Foo></Foo>
+    <view @tap="onTap">test tap</view>
+    <view @touchstart="onTouchstart">test touchstart</view>
+    <view class="box" @touchstart="onTouchstart" @touchcancel="onTouchcancel" @touchmove="onTouchmove"
+      @touchend="onTouchend">test touch event
+    </view>
   </view>
 </template>
 
@@ -16,44 +22,75 @@ export default {
       title: 'index title',
     }
   },
-  onLoad(options: OnLoadOptions){
+  onLoad(options: OnLoadOptions) {
     println('--------------------------index onLoad')
   },
-  onShow(){
+  onShow() {
     println('--------------------------index onShow')
   },
-  onReady(){
+  onReady() {
     println('--------------------------index onReady')
   },
-  onHide(){
+  onHide() {
     println('--------------------------index onHide')
   },
-  onUnload(){
+  onUnload() {
     println('--------------------------index onUnload')
   },
   methods: {
-    navigateToAbout(e: MouseEvent){
+    navigateToAbout(e: MouseEvent) {
       uni.navigateTo({
         url: "/pages/about/index",
-        success(e: NavigateToSuccess){
+        animationDuration: 3000,
+        success(e: NavigateToSuccess) {
           println('-------------------------navigateTo about success')
           println(e.errMsg)
         },
-        fail(e: NavigateToFail){
+        fail(e: NavigateToFail) {
           println('-------------------------navigateTo about fail')
           println(e.errMsg)
         },
-        complete(e: NavigateToComplete){
+        complete(e: NavigateToComplete) {
           println('-------------------------navigateTo about complete')
           println(e.errMsg)
         }
       })
     },
+    navigateToSetting(e: MouseEvent){
+      uni.navigateTo({
+        animationDuration: 3000,
+        url: '/pages/setting/index'
+      })
+    },
+    onTap() {
+      println('-------------------------onTap')
+    },
+    onTouchstart() {
+      println('-------------------------onTouchstart')
+    },
+    onTouchcancel() {
+      println('-------------------------onTouchcancel')
+    },
+    onTouchmove(e: TouchEvent) {
+      println('-------------------------onTouchmove')
+    },
+    onTouchend() {
+      println('-------------------------ontTouchend')
+    },
+    onClick() {
+      println('-------------------------onClick')
+    },
+    onLongpress() {
+      println('-------------------------onLongpress')
+    }
   }
 }
 </script>
 
 <style>
-.cgreen{color:green;}
-.box{width:100px;height:100px;background-color: green;}
+.box {
+  width: 100px;
+  height: 100px;
+  background-color: green;
+}
 </style>

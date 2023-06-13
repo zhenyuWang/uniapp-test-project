@@ -2,6 +2,7 @@
   <view class="page">
     <text class="cblue">this is setting title: {{title}}</text>
     <text @click="navigateBack">navigateBack</text>
+    <text @click="reLaunchIndex">reLaunchIndex</text>
   </view>
 </template>
 
@@ -29,8 +30,16 @@ export default {
   },
   methods: {
     navigateBack(e: MouseEvent){
-      uni.navigateBack({delta: 12})
+      // uni.navigateBack({delta: 12})
+      uni.navigateBack({
+        animationDuration: 3000,
+      })
     },
+    reLaunchIndex(){
+      uni.reLaunch({
+        url: '/pages/index/index'
+      })
+    }
   }
 }
 </script>
