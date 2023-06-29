@@ -8,4 +8,5 @@ unpackage
 dev-dist
 unpackage
 Hello-uniapp
-uni-ui/*
+uni-ui/
+__image_snapshots__/
