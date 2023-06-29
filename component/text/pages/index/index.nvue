@@ -1,0 +1,31 @@
+<template>
+	<view class="content">
+		<text space="nbsp" :decode="true">
+			\n
+			你好你好（你好）\n\n
+			你好你好你好你好你好APP\n\n
+			你好你好
+			你好你好你好\n\n
+			你好\n\n
+			你好你好\n\n
+			你好、你好、你好...
+			\n\n
+		</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+
+		}
+	}
+</script>
