@@ -2,18 +2,11 @@
 	<view class="content">
 		<text>test text1</text>
 		<text>test text2</text>
-		<Foo>
-			<template v-slot="props">
-					<div>this is text in default slot; msg: {{ props.msg }}; age: {{ props.age }}</div>
-			</template>
-		</Foo>
 	</view>
 </template>
 
 <script>
-	import Foo from './Foo.vue'
 	export default {
-		components: {Foo},
 		data(){
 			return {
 				title: 'index title'

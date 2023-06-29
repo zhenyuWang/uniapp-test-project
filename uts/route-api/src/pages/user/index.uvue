@@ -1,9 +1,10 @@
 <template>
   <view class="page">
-    <text class="cblue">this is setting title: {{ title }}</text>
+    <text class="cblue">this is user title: {{ title }}</text>
     <text @click="navigateBack">navigateBack</text>
     <text @click="reLaunchIndex">reLaunchIndex</text>
     <text @click="reLaunchAbout">reLaunchAbout</text>
+    <text @click="redirectToSetting">redirectTo setting</text>
     <text @click="reLaunchNotFound">reLaunchNotFound</text>
   </view>
 </template>
@@ -12,23 +13,23 @@
 export default {
   data() {
     return {
-      title: 'setting title',
+      title: 'user title',
     }
   },
   onLoad(options: OnLoadOptions) {
-    println('--------------------------setting onLoad')
+    println('--------------------------user onLoad')
   },
   onShow() {
-    println('--------------------------setting onShow')
+    println('--------------------------user onShow')
   },
   onReady() {
-    println('--------------------------setting onReady')
+    println('--------------------------user onReady')
   },
   onHide() {
-    println('--------------------------setting onHide')
+    println('--------------------------user onHide')
   },
   onUnload() {
-    println('--------------------------setting onUnload')
+    println('--------------------------user onUnload')
   },
   methods: {
     navigateBack(e: MouseEvent) {
@@ -36,15 +37,15 @@ export default {
       uni.navigateBack({
         animationDuration: 300,
         success(e: NavigateBackSuccess) {
-          println('---------navigateBack success in setting')
+          println('---------navigateBack success in user')
           println(e.errMsg)
         },
         fail(e: NavigateBackFail) {
-          println('---------navigateBack fail in setting')
+          println('---------navigateBack fail in user')
           println(e.errMsg)
         },
         complete(e: NavigateBackComplete) {
-          println('---------navigateBack complete in setting')
+          println('---------navigateBack complete in user')
           println(e.errMsg)
         }
       })
@@ -53,15 +54,15 @@ export default {
       uni.reLaunch({
         url: '/pages/index/index',
         success(e: ReLaunchSuccess) {
-          println('---------reLaunch index success in setting')
+          println('---------reLaunch success in user')
           println(e.errMsg)
         },
         fail(e: ReLaunchFail) {
-          println('---------reLaunch index fail in setting')
+          println('---------reLaunch fail in user')
           println(e.errMsg)
         },
         complete(e: ReLaunchComplete) {
-          println('---------reLaunch index complete in setting')
+          println('---------reLaunch index complete in user')
           println(e.errMsg)
         }
       })
@@ -69,16 +70,8 @@ export default {
     reLaunchAbout() {
       uni.reLaunch({
         url: '/pages/about/index',
-        success(e: ReLaunchSuccess) {
-          println('---------reLaunch success in setting')
-          println(e.errMsg)
-        },
-        fail(e: ReLaunchFail) {
-          println('---------reLaunch fail in setting')
-          println(e.errMsg)
-        },
         complete(e: ReLaunchComplete) {
-          println('---------reLaunch about complete in setting')
+          println('---------reLaunch about complete in user')
           println(e.errMsg)
         }
       })
@@ -87,19 +80,36 @@ export default {
       uni.reLaunch({
         url: '/aaaa',
         success(e: ReLaunchSuccess) {
-          println('---------reLaunch success in setting')
+          println('---------reLaunch success in user')
           println(e.errMsg)
         },
         fail(e: ReLaunchFail) {
-          println('---------reLaunch fail in setting')
+          println('---------reLaunch fail in user')
           println(e.errMsg)
         },
         complete(e: ReLaunchComplete) {
-          println('---------reLaunch notFound complete in setting')
+          println('---------reLaunch notFound complete in user')
           println(e.errMsg)
         }
       })
-    }
+    },
+    redirectToSetting(e: MouseEvent) {
+      uni.redirectTo({
+        url: "/pages/setting/index",
+        success(e: RedirectToSuccess) {
+          println('---------redirectTo success in about')
+          println(e.errMsg)
+        },
+        fail(e: RedirectToFail) {
+          println('---------redirectTo fail in about')
+          println(e.errMsg)
+        },
+        complete(e: RedirectToComplete) {
+          println('---------redirectTo complete in about')
+          println(e.errMsg)
+        }
+      })
+    },
   }
 }
 </script>

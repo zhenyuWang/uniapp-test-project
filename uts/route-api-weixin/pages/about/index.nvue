@@ -65,7 +65,7 @@
 			},
 			redirectToSetting(){
 				uni.redirectTo({
-					url: '/pages/setting/aaa',
+					url: '/pages/setting/index',
 					success(e){
 						console.log('redirectTo success in about',e)
 					},

@@ -1,8 +1,12 @@
 <template>
   <view class="uni-switch">
+		<view class="mytest"> class my-test</view>
+		<view id="mytest">id my-test</view>
     <view class="uni-switch-input" :style="trackStyle" @click="_onClick">
       <view class="uni-switch-thumb" :style="thumbStyle"></view>
     </view>
+		<view>height: {{keyboardHeight}}</view>
+		<input type="text">
   </view>
 </template>
 <script lang="ts">
@@ -13,6 +17,7 @@ export default {
       isChecked1: false,
       trackStyle: '',
       thumbStyle: '',
+			keyboardHeight: 0
     }
   },
   props: {
@@ -36,6 +41,17 @@ export default {
       this.thumbStyle = val ? `transform: translateX(20px);` : ''
     },
   },
+	onReady(){
+		// uni.onKeyboardHeightChange((e) => {
+		// 	console.log('onKeyboardHeightChange', e)
+		// 	this.keyboardHeight = e.height
+		// })
+		uni.showToast({
+			title: 'title in 1.0',
+			image: '',
+			duration: 3000
+		})
+	},
   methods: {
     _onClick() {
       this.isChecked1 = !this.isChecked1

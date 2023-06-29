@@ -1,23 +1,27 @@
 <template>
-  <view class="page" @touchstart="onTouchstart" @touchcancel="onTouchcancel" @touchmove="onTouchmove">
+  <view class="page">
     <text class="cgreen">this is index title: {{ title }}</text>
     <text @click="navigateToAbout">navigateTo about</text>
     <text @click="navigateToSetting">navigateTo setting</text>
+    <text @click="navigateToUser">navigateTo user</text>
+    <text @click="navigateToNotFound">navigateTo notFound</text>
+    <text @click="redirectToSetting">redirectTo setting</text>
+    <text @click="switchTabAbout">switchTabAbout</text>
+    <text @click="navigateBack">navigateBack</text>
     <!-- <view class="box" @touchstart="onTouchstart" @longpress="onLongpress">box in index</view> -->
     <!-- <Foo></Foo>
     <view @tap="onTap">test tap</view> -->
-    <!-- <view @touchstart="onTouchstart">test touchstart</view> -->
-    <!-- <view class="box" @touchstart="onTouchstart" @touchcancel="onTouchcancel" @touchmove="onTouchmove"
+    <view @touchstart="onTouchstart">test touchstart</view>
+    <view class="box" @touchstart="onTouchstart" @touchcancel="onTouchcancel" @touchmove="onTouchmove"
       @touchend="onTouchend">test touch event
-    </view> -->
-    <view class="list"></view>
+    </view>
   </view>
 </template>
 
 <script lang="ts">
-import Foo from '../../components/Foo.uvue'
+// import Foo from '../../components/Foo.uvue'
 export default {
-  components: { Foo },
+  // components: { Foo },
   data() {
     return {
       title: 'index title',
@@ -31,6 +35,13 @@ export default {
   },
   onReady() {
     println('--------------------------index onReady')
+    uni.setTabBarItem({
+      index: 0,
+      text: 'new text'
+    })
+    uni.onUserCaptureScreen(function () {
+      println('用户截屏了')
+    });
   },
   onHide() {
     println('--------------------------index onHide')
@@ -39,10 +50,28 @@ export default {
     println('--------------------------index onUnload')
   },
   methods: {
+    navigateBack(e: MouseEvent) {
+      // uni.navigateBack({delta: 12})
+      uni.navigateBack({
+        animationDuration: 300,
+        success(e: NavigateBackSuccess) {
+          println('---------navigateBack success in index')
+          println(e.errMsg)
+        },
+        fail(e: NavigateBackFail) {
+          println('---------navigateBack fail in index')
+          println(e.errMsg)
+        },
+        complete(e: NavigateBackComplete) {
+          println('---------navigateBack complete in index')
+          println(e.errMsg)
+        }
+      })
+    },
     navigateToAbout(e: MouseEvent) {
       uni.navigateTo({
         url: "/pages/about/index",
-        animationDuration: 3000,
+        animationDuration: 300,
         success(e: NavigateToSuccess) {
           println('-------------------------navigateTo about success')
           println(e.errMsg)
@@ -57,10 +86,87 @@ export default {
         }
       })
     },
-    navigateToSetting(e: MouseEvent){
+    navigateToSetting(e: MouseEvent) {
       uni.navigateTo({
-        animationDuration: 3000,
-        url: '/pages/setting/index'
+        animationDuration: 300,
+        url: '/pages/setting/index',
+        success(e: NavigateToSuccess) {
+          println('-------------------------navigateTo setting success')
+          println(e.errMsg)
+        },
+        fail(e: NavigateToFail) {
+          println('-------------------------navigateTo setting fail')
+          println(e.errMsg)
+        },
+        complete(e: NavigateToComplete) {
+          println('-------------------------navigateTo setting complete')
+          println(e.errMsg)
+        }
+      })
+    },
+    navigateToUser() {
+      uni.navigateTo({
+        animationDuration: 300,
+        url: '/pages/user/index',
+        success(e: NavigateToSuccess) {
+          println('-------------------------navigateTo user success')
+          println(e.errMsg)
+        },
+        fail(e: NavigateToFail) {
+          println('-------------------------navigateTo user fail')
+          println(e.errMsg)
+        },
+        complete(e: NavigateToComplete) {
+          println('-------------------------navigateTo user complete')
+          println(e.errMsg)
+        }
+      })
+    },
+    navigateToNotFound() {
+      uni.navigateTo({
+        url: '/aaaa',
+        success(e: NavigateToSuccess) {
+          println('-------------------------navigateTo NotFound success')
+          println(e.errMsg)
+        },
+        fail(e: NavigateToFail) {
+          println('-------------------------navigateTo NotFound fail')
+          println(e.errMsg)
+        },
+        complete(e: NavigateToComplete) {
+          println('-------------------------navigateTo NotFound complete')
+          println(e.errMsg)
+        }
+      })
+    },
+    redirectToSetting(e: MouseEvent) {
+      uni.redirectTo({
+        url: "/pages/setting/index",
+        success(e: RedirectToSuccess) {
+          println('---------redirectTo success in about')
+          println(e.errMsg)
+        },
+        fail(e: RedirectToFail) {
+          println('---------redirectTo fail in about')
+          println(e.errMsg)
+        },
+        complete(e: RedirectToComplete) {
+          println('---------redirectTo complete in about')
+          println(e.errMsg)
+        }
+      })
+    },
+    switchTabAbout() {
+      uni.switchTab({
+        url: '/pages/about/index',
+        success(e: SwitchTabSuccessResult) {
+          println('-------------------------switchTab success')
+          println(e.errMsg)
+        },
+        fail(e: SwitchTabFailResult) {
+          println('-------------------------switchTab fail')
+          println(e.errMsg)
+        },
       })
     },
     onTap() {
@@ -89,18 +195,9 @@ export default {
 </script>
 
 <style>
-.page{
-  overflow-y: auto;
-  height:600px;
-}
 .box {
   width: 100px;
   height: 100px;
   background-color: green;
-}
-.list{
-  width:100px;
-  height:900px;
-  background-color: aqua;
 }
 </style>

@@ -20,6 +20,12 @@
       "style": {
         "navigationBarTitleText": "setting"
       }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "user"
+      }
     }
   ],
   "globalStyle": {
@@ -31,11 +37,11 @@
   "tabBar": {
     "list": [
       {
-        "pagePath": "pages/index/index",
+        "pagePath": "/pages/index/index",
         "text": "index"
       },
       {
-        "pagePath": "pages/about/index",
+        "pagePath": "/pages/about/index",
         "text": "about"
       }
     ]
