@@ -1,0 +1,96 @@
+<template>
+  <view class="index-box">
+    <Foo />
+    <text class="bg-blue" @click="test">this is index title: {{title}}</text>
+    <text class="bg-blue">next bg blue</text>
+    <text style="background-color: blue;" id="my-id">test my id</text>
+    <input style="background-color:red;" class="my-input" type="text" v-model="title" />
+    <view class="my-view" type="my-type">
+      <text>this is my view</text>
+      <Foo />
+    </view>
+    <button type="primary" class="my-button" @click="getElement">getElement</button>
+  </view>
+</template>
+
+<script>
+import Foo from '../../components/Foo.uvue'
+export default {
+  components: {Foo},
+  data() {
+    return {
+      title: 'index title',
+    }
+  },
+  onLoad() {
+    println('Page index onLoad')
+  },
+  onShow() {
+    println('Page index onShow')
+  },
+  onReady() {
+    println('Page index onReady')
+  },
+  onHide() {
+    println('Page index onHide')
+  },
+  methods: {
+    getElement() {
+      // const subTree = this.$.subTree
+      // const children = subTree.children
+      // if (children !== null && (children as any[]).length > 0) {
+      //   const child = children[1]
+      //   println('1111')
+      // }
+      uni.navigateTo({
+        url: '/pages/about/index'
+      })
+      // const myView = this.$querySelector('.my-view')
+      // println(myView)
+      // const myButton = this.$querySelector('.my-button')
+      // println(myButton)
+      // const children = this.$children
+      // println(children)
+      // const element = this.$querySelector('#my-id')
+      // const width = element?.offsetWidth
+      // println(width)
+      // const elementId = element!.id
+      // const _element = this.$innerPage!.document.getElementById(elementId)
+      // const text = _element!.getAttribute("value")
+      // println(text)
+      // const nodes = this.$querySelectorAll('.bg-blue')
+      // const node = this.$querySelector('Text')
+      // const bgBlue = this.$querySelector('.bg-blue')
+      // println('getElement')
+      // let componentFoo: ComponentPublicInstance | null = null
+      // const children = this.$children
+      // children.forEach((child) => {
+      //   if (child.$options.name == 'Foo') {
+      //     componentFoo = child
+      //   }
+      // })
+      // const dom = componentFoo?.$el
+      // println(dom?.offsetWidth)
+      // println(dom?.offsetHeight)
+
+      // componentFoo?.$callMethod('fooTest')
+
+      // const myInput = this.$querySelector('.my-input')
+      // myInput!.dispatchEvent('input', MouseEvent('input', 'test input'))
+      // const value = myInput!.getAttribute('value')
+      // println(value)
+      // const componentFoo = this.$querySelector('Foo')
+      // println(componentFoo)
+    },
+    test() {
+      println('test')
+    }
+  },
+}
+</script>
+
+<style>
+.my-input{
+  color: #fff;
+}
+</style>

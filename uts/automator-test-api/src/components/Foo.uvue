@@ -1,0 +1,23 @@
+<template>
+  <view class="component-foo">
+    <text>this is foo</text>
+    <text>this is foo</text>
+    <text>this is foo</text>
+  </view>
+</template>
+
+<script>
+export default {
+  name: 'Foo',
+  data() {
+    return {
+      title: 'component foo',
+    }
+  },
+  methods: {
+    fooTest() {
+      println('foo test')
+    }
+  },
+}
+</script>
