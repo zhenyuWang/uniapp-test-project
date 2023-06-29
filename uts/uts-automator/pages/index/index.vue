@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<!-- <input type="text" /> -->
 		<view class="border-0">测试节点1</view>
 		<view class="border-1">测试节点2</view>
 		<view class="border-2">测试节点3</view>
@@ -45,13 +46,20 @@
 	export default {
 		data() {
 			return {
+				title: '111',
 				imgSrc: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg'
 			}
 		},
 		onReady() {
-			uni.pageScrollTo({
-				scrollTop: 500
-			})
+			// uni.pageScrollTo({
+			// 	scrollTop: 500
+			// })
+			// uni.onUserCaptureScreen(function () {
+			// 	console.log('用户截屏了')
+			// });
+			// uni.onKeyboardHeightChange((e) => {
+			// 	console.log('uni.onKeyboardHeightChange', e);
+			// })
 		},
 		methods: {
 			shot() {

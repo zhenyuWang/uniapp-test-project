@@ -1,5 +1,6 @@
-import { JSONObject } from 'com.alibaba.fastjson'
 import { getCurrentPages } from 'io.dcloud.uts.framework'
+import { INode } from 'io.dcloud.uniapp.runtime'
+import { isArray } from 'io.dcloud.uts.vue.shared'
 
 function getPageId(page: BasePage): number {
   return page.$.uid
@@ -28,30 +29,25 @@ export function getPageVm(id: number): BasePage | null {
   return getPageById(id)
 }
 
-export function getData(
-  vm: BasePage | null,
+export function pageGetData(
+  vm: BasePage,
   path?: string
 ): Map<string, any | null> {
   let data = new Map<string, any | null>()
-  if (vm !== null) {
-    // TODO: path
-    if(path !== null){
-      data.set("errMsg", `getData:fail, path:${path} is not supported.`)
-    }else{
-      data = vm.$data
-    }
+  // TODO: path
+  if (path !== null && path.length != 0) {
+    data.set("errMsg", `getData:fail, path:${path} is not supported.`)
+  } else {
+    data = vm.$data
   }
   return data
 }
 
-export function setData(vm: BasePage, data: JSONObject): void {
-  for (const key in data) {
-    // @ts-ignore
-    const _key = key.key
-    // @ts-ignore
-    const value = key.value
-    vm.$data.set(_key, value)
-  }
+export function pageSetData(vm: BasePage, data: UTSJSONObject): void {
+  const _data = data.toMap()
+  _data.forEach((value: any | null, key: string) => {
+    vm.$data.set(key, value)
+  })
 }
 
 export function parsePage(page: BasePage): UTSJSONObject {
@@ -60,4 +56,194 @@ export function parsePage(page: BasePage): UTSJSONObject {
     path: getPagePath(page),
     query: getPageQuery(page),
   } as UTSJSONObject
+}
+
+export function getComponentVmBySelector(pageId: number, selector: string, callback: (res?: any | null) => void): ComponentPublicInstance | null {
+  const page = getPageVm(pageId)
+  if (page === null) {
+    callback({ result: { errMsg: `Page[${pageId}] not exists` } })
+    return null
+  }
+  let component: ComponentPublicInstance | null = null
+  page.$children.forEach((child: ComponentPublicInstance) => {
+    if (child.$options.name == selector) {
+      component = child
+    }
+  })
+  if (component === null) {
+    callback({ result: { errMsg: `component[${selector}] not exists` } })
+    return null
+  }
+  return component
+}
+
+export function getComponentVmByNodeId(pageId: number, nodeId: number, callback: (res: any) => void): ComponentPublicInstance | null {
+  const page = getPageVm(pageId)
+  if (page === null) {
+    callback({ result: { errMsg: `Page[${pageId}] not exists` } })
+    return null
+  }
+  let component: ComponentPublicInstance | null = null
+  page.$children.forEach((child: ComponentPublicInstance) => {
+    if (child.$.uid == nodeId) {
+      component = child
+    }
+  })
+  if (component === null) {
+    callback({ result: { errMsg: `component[${nodeId}] not exists` } })
+    return null
+  }
+  return component
+}
+
+export function getElementByIdOrNodeId(pageId: number, elementId: string | null, nodeId: number | null, callback: (res: any) => void): INode | null {
+  if (elementId !== null) {
+    return getElementById(pageId, elementId!, callback)
+  } else if (nodeId !== null) {
+    return getComponentDomByNodeId(pageId, nodeId!, callback)
+  }
+  return null
+}
+
+export function getComponentDomByNodeId(pageId: number, nodeId: number, callback: (res: any) => void): INode | null {
+  const component = getComponentVmByNodeId(pageId, nodeId, callback)
+  if (component === null) {
+    return null
+  }
+  return component.$el
+}
+
+export function getElementById(pageId: number, elementId: string, callback: (res: any) => void): INode | null {
+  const page = getPageVm(pageId)
+  if (page === null) {
+    callback({ result: { errMsg: `Page[${pageId}] not exists` } })
+    return null
+  }
+  const document = page.$innerPage!.document
+  const element = document.getElementById(elementId)
+  if (element === null) {
+    callback({ result: { errMsg: `element[${elementId}] not exists` } })
+    return null
+  }
+  return element
+}
+
+export function getValidComponentsOrNodes(
+  vnode: VNode | null,
+  selector: string,
+  list: UTSJSONObject[],
+  getAll = false
+): void {
+  if (vnode == null) {
+    return
+  }
+  if (isValidComponentOrNode(vnode, selector)) {
+    console.warn('vnode', vnode)
+    if (vnode.component !== null) {
+      list.push({
+        nodeId: (vnode.component as ComponentInternalInstance).uid,
+        tagName: (vnode.component as ComponentInternalInstance).options.name
+      })
+    } else {
+      list.push({
+        elementId: vnode.el!.id,
+        tagName: vnode.el!.tagName
+      })
+    }
+    if (!getAll) {
+      return
+    }
+  }
+  if (vnode.children !== null && isArray(vnode.children)) {
+    (vnode.children as VNode[]).forEach(child => {
+      getValidComponentsOrNodes(child, selector, list, getAll)
+    })
+  }
+}
+
+function isValidComponentOrNode(vnode: VNode, selector: string): boolean {
+  if (vnode.component !== null && (vnode.component as ComponentInternalInstance).options.name == selector) {
+    return true
+  }
+  if (vnode.el !== null) {
+    const node = vnode.el
+    if (selector.startsWith('.')) {
+      return (
+        node!.ext['classList'] !== null &&
+        (node!.ext['classList'] as string[]).includes(selector.substring(1))
+      )
+    } else if (selector.startsWith('#')) {
+      return node!.getAttribute('id') == selector.substring(1)
+    }
+    return node!.tagName?.toUpperCase() == selector.toUpperCase()
+  }
+  return false
+}
+
+export function getValidNodes(
+  node: INode | null,
+  selector: string,
+  list: UTSJSONObject[],
+  getAll = false
+): void {
+  if (node == null) {
+    return
+  }
+  if (isValidNode(node, selector)) {
+    list.push({
+      elementId: node!.id,
+      tagName: node!.tagName
+    })
+    if (!getAll) {
+      return
+    }
+  }
+  node.childNodes.forEach(child => {
+    getValidNodes(child, selector, list, getAll)
+  })
+}
+
+function isValidNode(node: INode, selector: string): boolean {
+  if (selector.startsWith('.')) {
+    return (
+      node.ext['classList'] !== null &&
+      (node.ext['classList'] as string[]).includes(selector.substring(1))
+    )
+  } else if (selector.startsWith('#')) {
+    return node.getAttribute('id') == selector.substring(1)
+  }
+  return node.tagName?.toUpperCase() == selector.toUpperCase()
+}
+
+export function componentGetData(
+  vm: ComponentPublicInstance,
+  path?: string
+): Map<string, any | null> {
+  let data = new Map<string, any | null>()
+  // TODO: path
+  if (path !== null && path.length != 0) {
+    data.set("errMsg", `getData:fail, path:${path} is not supported.`)
+  } else {
+    data = vm.$data
+  }
+  return data
+}
+
+export function componentSetData(vm: ComponentPublicInstance, data: UTSJSONObject): void {
+  const _data = data.toMap()
+  _data.forEach((value: any | null, key: string) => {
+    vm.$data.set(key, value)
+  })
+}
+
+export function getChildrenText(node: INode): string {
+  let result = ''
+  node.childNodes.forEach(child => {
+    if (child.tagName == 'text') {
+      result += child.getAttribute('value')
+    } else {
+      result += getChildrenText(child)
+    }
+  })
+  return result
 }

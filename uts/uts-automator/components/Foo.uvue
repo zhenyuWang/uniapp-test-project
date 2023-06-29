@@ -1,0 +1,32 @@
+<template>
+	<view>
+		<text>this is Foo</text>
+		<text>title is {{title}}</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		name:"Foo",
+		props:{
+			type: {
+				type: String,
+				default: 'default type'
+			}
+		},
+		data() {
+			return {
+				title: "foo title"
+			};
+		},
+		methods: {
+			fooTest(){
+				console.warn('foo test in component Foo')
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

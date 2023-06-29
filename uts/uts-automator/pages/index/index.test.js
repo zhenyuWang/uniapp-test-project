@@ -1,16 +1,455 @@
+jest.setTimeout(20000)
 describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('css', async () => {
-		// const image = await program.screenshot({fullPage: true})
-		const image = await program.screenshot()
-		expect(image).toMatchImageSnapshot();
+
+	// it('page.$', async () => {
+	// 	const myTest = await page.$('.my-test')
+	// 	console.log('myTest', myTest)
+	// })
+	// it('page.$$', async () => {
+	// 	const myTests = await page.$$('.my-test')
+	// 	console.log('myTests', myTests)
+	// })
+	// it('page.callMethod', async () => {
+	// 	page.callMethod('getStorageInfo')
+	// })
+	// it('element.$', async () => {
+	// 	const myTest = await page.$('.my-test')
+	// 	const testChild = await myTest.$('.test-child')
+	// 	console.log('testChild', testChild)
+	// })
+	// it('element.$$', async () => {
+	// 	const myTest = await page.$('.my-test')
+	// 	const testChilds = await myTest.$$('.test-child')
+	// 	console.log('testChilds', testChilds)
+	// })
+	// it('element.text', async () => {
+	// 	// const element = await page.$('.test-child')
+	// 	// const element = await page.$('.test-view')
+	// 	const element = await page.$('.test-button')
+	// 	let text = await element.text()
+	// 	const data = await page.data()
+	// 	expect(text).toEqual(data.title)
+	// })
+	// it('element.value', async () => {
+	// 	const myInput = await page.$('.my-input')
+	// 	const value = await myInput.value()
+	// 	const data = await page.data()
+	// 	expect(value).toEqual(data.title)
+	// })
+	// it('element.input', async () => {
+	// 	const myInput = await page.$('.my-input')
+	// 	const inputValue =  Date.now() + ''
+	// 	await myInput.input(inputValue)
+	// 	const newValue = await myInput.value()
+	// 	expect(newValue).toEqual(inputValue)
+	// })
+	// it('element.tap', async () => {
+	// 	const myTest = await page.$('.my-test')
+	// 	await myTest.tap()
+	// 	const data = await page.data()
+	// 	expect(data.title).toEqual('automatorTap')
+	// })
+	// it('element.tap for component', async () => {
+	// 	const component = await page.$('Foo')
+	// 	await component.tap()
+	// 	const data = await page.data()
+	// 	expect(data.title).toEqual('automatorTap')
+	// })
+	// it('element.callMethod', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	console.warn('componentFoo',componentFoo)
+	// 	await componentFoo.callMethod('fooTest')
+	// })
+	it('element.data', async () => {
+		const componentFoo = await page.$('Foo')
+		const data = await componentFoo.data()
+		expect(data.title).toEqual('foo title')
 	})
-	// it('methodWithCallback', () => {
-	// 	// page.callMethodWithCallback('getStorageInfo')
-	// 	page.callMethodWithCallback('getStorageInfo222')
+	// it('element.setData', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	await componentFoo.setData({title: 'new foo title'})
+	// 	const data = await componentFoo.data()
+	// 	expect(data.title).toEqual('new foo title')
+	// })
+	// it('element.size for element', async () => {
+	// 	const element = await page.$('.my-test')
+	// 	const {width, height} = await element.size()
+	// 	expect(typeof width).toBe('number');
+	// 	expect(typeof height).toBe('number');
+	// 	expect(width).toBeGreaterThan(0)
+	// 	expect(height).toBeGreaterThan(0)
+	// })
+	// it('element.size for component', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	const {width, height} = await componentFoo.size()
+	// 	expect(typeof width).toBe('number');
+	// 	expect(typeof height).toBe('number');
+	// 	expect(width).toBeGreaterThan(0)
+	// 	expect(height).toBeGreaterThan(0)
+	// })
+	// it('element.offset', async () => {
+	// 	const element = await page.$('.my-input')
+	// 	const { left, top } = await element.offset()
+	// 	expect(typeof left).toBe('number');
+	// 	expect(typeof top).toBe('number');
+	// })
+	// it('element.longpress', async () => {
+	// 	const element = await page.$('.my-test')
+	// 	await element.longpress()
+	// })
+	// it('element.longpress for component', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	await componentFoo.longpress()
+	// })
+	// it('element.touchstart', async () => {
+	// 	const element = await page.$('.my-test')
+	// 	await element.touchstart({
+	// 		touches: [{
+	// 			identifier: 1,
+	// 			pageX: 500,
+	// 			pageY: 500
+	// 		}],
+	// 		changedTouches: [{
+	// 			identifier: 1,
+	// 			pageX: 500,
+	// 			pageY: 500
+	// 		}]
+	// 	})
+	// })
+	// it('element.touchmove', async () => {
+	// 	const element = await page.$('.my-test')
+	// 	await element.touchmove({
+	// 		touches: [{
+	// 			identifier: 1,
+	// 			pageX: 500,
+	// 			pageY: 500
+	// 		}],
+	// 		changedTouches: [{
+	// 			identifier: 2,
+	// 			pageX: 500,
+	// 			pageY: 510
+	// 		}]
+	// 	})
+	// })
+	// it('element.touchend', async () => {
+	// 	const element = await page.$('.my-test')
+	// 	await element.touchend({
+	// 		touches: [],
+	// 		changedTouches: [{
+	// 			identifier: 2,
+	// 			pageX: 500,
+	// 			pageY: 510
+	// 		}]
+	// 	})
+	// })
+	// it('element.attribute', async () => {
+	// 	const element = await page.$('.logo')
+	// 	const src = await element.attribute('src')
+	// 	expect(src).toEqual('/static/logo.png')
+	// })
+	// it('element.property', async () => {
+	// 	const element = await page.$('.my-input')
+	// 	const value = await element.property('value')
+	// 	const data = await page.data()
+	// 	expect(value).toEqual(data.title)
+	// })
+	it('element.property for component', async () => {
+		const componentFoo = await page.$('Foo')
+		const mytest = await componentFoo.property('test')
+		expect(mytest).toEqual('foo-test-attribute')
+		const myclass = await componentFoo.attribute('class')
+		expect(myclass).toEqual('component-foo')
+		
+		const myButton1 = await page.$('Button')
+		const buttonType1 = await myButton1.property('type')
+		const buttonClass1 = await myButton1.attribute('class')
+		expect(buttonType1).toEqual('primary')
+		expect(buttonClass1).toEqual('ub ub-p test-button')
+		const myButton2 = await page.$('.test-button')
+		const buttonType2 = await myButton2.property('type')
+		const buttonClass2 = await myButton2.attribute('class')
+		expect(buttonType2).toEqual('primary')
+		expect(buttonClass2).toEqual('ub ub-p test-button')
+	})
+	// it('element.style', async () => {
+	// 	const element = await page.$('.my-input')
+	// 	const color = await element.style('color')
+	// 	expect(color).toEqual('#FF0000')
+	// })
+	// it('element.style for component', async () => {
+	// 	const component = await page.$('Foo')
+	// 	const color = await component.style('color')
+	// 	expect(color).toEqual('#FF0000')
+	// })
+
+
+	// it('Page.getData', async () => {
+	// 	const data = await page.data()
+	// 	console.log('data', data)
+	// 	expect(data.title).toEqual('111')
+	// })
+	// it('Page.setData', async () => {
+	// 	await page.setData({
+	// 		title: '222'
+	// 	})
+	// 	const data = await page.data()
+	// 	console.log('data', data)
+	// 	expect(data.title).toEqual('222')
+	// })
+	// it('screenshot', async () => {
+	// 	// const image = await program.screenshot({fullPage: true})
+	// 	const image = await program.screenshot()
+	// 	expect(image).toMatchImageSnapshot();
+	// })
+	// it('uni.setStorage', async () => {
+	// 	await uni.setStorage({
+	// 		key: 'storage_key1',
+	// 		data: 'hello',
+	// 		success(res) {
+	// 			console.log('setStorage success', res)
+	// 		}
+	// 	})
+	// 	const res1 = await uni.getStorage({
+	// 		key: 'storage_key1',
+	// 		success(res) {
+	// 			console.log('getStorage success:', res)
+	// 			expect(res.data).toEqual('hello')
+	// 		},
+	// 		fail(e) {
+	// 			console.log('getStorage fail:', e)
+	// 		},
+	// 		complete(res) {
+	// 			console.log('getStorage complete:', res)
+	// 		}
+	// 	});
+	// 	console.log('res1', JSON.stringify(res1))
+	// })
+	// it('uni.xxx not exists', async () => {
+	// 	const res2 = await uni.aaaa({
+	// 		complete(res) {
+	// 			console.log('uni.aaaa', res)
+	// 		}
+	// 	})
+	// 	console.log('res2', JSON.stringify(res2))
+	// 	expect(res2.errMsg).toEqual('uni.aaaa not exists.')
+	// })
+	// it('uni.setStorageSync', async () => {
+	// 	await uni.setStorageSync('storage_key2', 'hello222');
+	// 	const res3 = await uni.getStorageSync('storage_key2');
+	// 	console.log('res3', JSON.stringify(res3))
+	// 	expect(res3).toEqual('hello222')
+	// })
+	// it('uni.switchTab', async () => {
+	// 	await uni.switchTab({
+	// 		url: '/pages/test/test'
+	// 	})
+	// })
+	// it('program.switchTab', async () => {
+	// 	await program.switchTab('/pages/test/test')
+	// })
+	// it('uni.showToast', async () => {
+	// 	uni.showToast({
+	// 		title: 'this is toast',
+	// 		icon: 'error',
+	// 		image: '/static/logo.png',
+	// 		mask: true,
+	// 		duration: 5000,
+	// 		// position: 'bottom',
+	// 		success() {
+	// 			console.warn('showToast success')
+	// 		},
+	// 		fail() {
+	// 			console.warn('showToast fail')
+	// 		},
+	// 		complete() {
+	// 			console.warn('showToast complete')
+	// 		}
+	// 	})
+	// 	setTimeout(() => {
+	// 		uni.hideToast()
+	// 	}, 2000)
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		}, 3000)
+	// 	})
+	// })
+
+
+	// it('uni.showLoading', async () => {
+	// 	uni.showLoading({
+	// 		title: 'this is loading',
+	// 		// mask: true,
+	// 		success() {
+	// 			console.warn('showLoading success')
+	// 		},
+	// 		fail() {
+	// 			console.warn('showLoading fail')
+	// 		},
+	// 		complete() {
+	// 			console.warn('showLoading complete')
+	// 		}
+	// 	})
+	// 	setTimeout(() => {
+	// 		uni.hideLoading()
+	// 	},5000)
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},6000)
+	// 	})
+	// })
+
+	// it('uni.showModal', async () => {
+	// 	uni.showModal({
+	// 		title: 'this is modal title',
+	// 		content: 'this is modal content',
+	// 		cancelText: 'my cancel',
+	// 		cancelColor: '#007aff',
+	// 		confirmText: 'my confirm',
+	// 		confirmColor: '#4cd964',
+	// 		editable: true,
+	// 		placeholderText: 'my placeholder',
+	// 		success(res) {
+	// 			console.warn('showModal success',res)
+	// 		},
+	// 		fail(err) {
+	// 			console.warn('showModal fail', err)
+	// 		},
+	// 		complete(res) {
+	// 			console.warn('showModal complete', res)
+	// 		}
+	// 	})
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},6000)
+	// 	})
+	// })
+
+	// it('uni.showActionSheet', async () => {
+	// 	uni.showActionSheet({
+	// 		title: 'showActionSheet title',
+	// 		itemList: ['A', 'B', 'C'],
+	// 		itemColor: '#007aff',
+	// 		success(res) {
+	// 			console.warn('showActionSheet success',res)
+	// 		},
+	// 		fail(err) {
+	// 			console.warn('showActionSheet fail', err)
+	// 		},
+	// 		complete(res) {
+	// 			console.warn('showActionSheet complete', res)
+	// 		}
+	// 	})
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},3000)
+	// 	})
+	// })
+
+
+	// it('uni.connectSocket', async () => {
+	// 	const socketTask = await uni.connectSocket({
+	// 		url: 'ws://192.168.31.119:8080',
+	// 		success(res) {
+	// 			console.warn('connectSocket success', res)
+	// 		},
+	// 		fail(err) {
+	// 			console.warn('connectSocket fail', err)
+	// 		}
+	// 	})
+	// 	console.warn('socketTask', socketTask)
+	// 	socketTask.onOpen(res => {
+	// 		console.log('socketTask.onOpen', res)
+	// 		socketTask.onMessage((msg) => {
+	// 			console.warn('客户端 socket 收到消息', msg)
+	// 		})
+	// 		socketTask.send({
+	// 			data: 'hahaha from client in socketTask.onOpen',
+	// 			success() {
+	// 				console.log('socketTask.send success in index.test.js')
+	// 			},
+	// 			fail() {
+	// 				console.log('socketTask.send fail in index.test.js')
+	// 			},
+	// 			complete() {
+	// 				console.log('socketTask.send complete in index.test.js')
+	// 			}
+	// 		})
+	// 		socketTask.close({
+	// 			code: 1000,
+	// 			reason: 'close from automator PC',
+	// 			success() {
+	// 				console.log('socketTask.close success in index.test.js')
+	// 			},
+	// 			fail() {
+	// 				console.log('socketTask.close fail in index.test.js')
+	// 			},
+	// 			complete() {
+	// 				console.log('socketTask.close complete in index.test.js')
+	// 			}
+	// 		})
+	// 	})
+	// 	socketTask.onClose((res) => {
+	// 		console.warn('socketTask.onClose res', res)
+	// 	})
+	// 	socketTask.onError((res) => {
+	// 		console.warn('socketTask.onError res', res)
+	// 	})
+
+	// 	setTimeout(() => {
+	// 		socketTask.send({
+	// 			data: 'hahaha from client in setTimeout',
+	// 			success() {
+	// 				console.log('socketTask.send success in index.test.js')
+	// 			},
+	// 			fail() {
+	// 				console.log('socketTask.send fail in index.test.js')
+	// 			},
+	// 			complete() {
+	// 				console.log('socketTask.send complete in index.test.js')
+	// 			}
+	// 		})
+	// 		socketTask.onMessage((msg) => {
+	// 			console.warn('客户端 socket 收到消息', msg)
+	// 		})
+	// 	}, 1000)
+
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		}, 10000)
+	// 	})
+	// })
+
+
+	// it('uni.getSystemInfo', async () => {
+	// 暂不支持
+	// await uni.getSystemInfo({
+	// 	complete(res){
+	// 		console.log('getSystemInfo complete')
+	// 		console.log(res)
+	// 		println('getSystemInfo complete')
+	// 		println(res)
+	// 	}
+	// })
+	// })
+	// it('callMethodWithCallback', () => {
+	// 客户端修改了JSON.parse JSON.stringify 实现后导致传入的 args 无法 as 为 Array 无法调用数组 push 方法
+	// 且因为已支持 uni.api 调用,故该功能暂时弃用
+	// 	page.callMethodWithCallback('getStorageInfo')
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},2000)
+	// 	})
+	// 	// page.callMethodWithCallback('getStorageInfo222')
 	// })
 })

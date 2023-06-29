@@ -19,5 +19,16 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
+	"tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "index"
+			},{
+				"pagePath": "pages/test/test",
+				"text": "test"
+			}
+		]
+	},
 	"uniIdRouter": {}
 }
