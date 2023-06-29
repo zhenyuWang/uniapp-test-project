@@ -10,6 +10,7 @@
       <Foo />
     </view>
     <button type="primary" class="my-button" @click="getElement">getElement</button>
+    <button type="primary" @click="back">back</button>
   </view>
 </template>
 
@@ -42,8 +43,15 @@ export default {
       //   const child = children[1]
       //   println('1111')
       // }
+      const baseApp = getBaseApp()
+      println(baseApp)
+      const app = getApp()
+      println(app)
+      app.quit()
+      const currentPages = getCurrentPages()
+      println(currentPages)
       uni.navigateTo({
-        url: '/pages/about/index'
+        url: '/pages/detail/index'
       })
       // const myView = this.$querySelector('.my-view')
       // println(myView)
@@ -84,7 +92,23 @@ export default {
     },
     test() {
       println('test')
-    }
+    },
+    back(e: MouseEvent){
+      uni.navigateBack({
+        success(e: NavigateBackSuccess){
+          println('---------navigateBack success in detail')
+          println(e.errMsg)
+        },
+        fail(e: NavigateBackFail){
+          println('---------navigateBack fail in detail')
+          println(e.errMsg)
+        },
+        complete(e: NavigateBackComplete){
+          println('---------navigateBack complete in detail')
+          println(e.errMsg)
+        }
+      })
+    },
   },
 }
 </script>

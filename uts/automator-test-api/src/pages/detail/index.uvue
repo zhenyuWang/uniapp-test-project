@@ -1,54 +1,56 @@
 <template>
   <view>
-    <text class="bg-blue">this is about title: {{title}}</text>
+    <text class="bg-blue">this is detail title: {{title}}</text>
     <view class="button" @click="back">
       <text class="button-text">back</text>
     </view>
-    <button @click="goDetail">goDetail</button>
   </view>
 </template>
 
 <script>
+// import { getCurrentInstance } from 'vue'
+
 export default {
   data() {
     return {
-      title: 'about title',
+      title: 'detail title',
     }
   },
   onLoad() {
-    println('Page about onLoad')
+    println('Page detail onLoad')
   },
   onShow() {
-    println('Page about onShow')
+    println('Page detail onShow')
   },
   onReady() {
-    println('Page about onReady')
+    println('Page detail onReady')
+    const pages = getCurrentPages()
+    println(pages)
+  },
+  onBackPress(): Boolean {
+    println('onBackPress in detail')
+    return false
   },
   onHide() {
-    println('Page about onHide')
+    println('Page detail onHide')
   },
   methods: {
     back(e: MouseEvent){
       uni.navigateBack({
         success(e: NavigateBackSuccess){
-          println('---------navigateBack success in about')
+          println('---------navigateBack success in detail')
           println(e.errMsg)
         },
         fail(e: NavigateBackFail){
-          println('---------navigateBack fail in about')
+          println('---------navigateBack fail in detail')
           println(e.errMsg)
         },
         complete(e: NavigateBackComplete){
-          println('---------navigateBack complete in about')
+          println('---------navigateBack complete in detail')
           println(e.errMsg)
         }
       })
     },
-    goDetail() {
-      uni.navigateTo({
-        url: '/pages/detail/index'
-      })
-    }
   },
 }
 </script>

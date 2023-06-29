@@ -27,10 +27,10 @@ module.exports = {
             "executablePath": ""
         },
         "uni-app-x": {
-            "version": "/Applications/HBuilderX-Alpha-6.28.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
+            "version": "/Applications/HBuilderX-Alpha-6.29.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
             "android": {
                 "id": "bc75caa3",
-                "executablePath": "/Applications/HBuilderX-Alpha-6.28.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
+                "executablePath": "/Applications/HBuilderX-Alpha-6.29.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
             }
         }
     }

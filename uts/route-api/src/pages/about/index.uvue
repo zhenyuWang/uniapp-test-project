@@ -36,10 +36,6 @@ export default {
   onUnload() {
     println('--------------------------about onUnload')
   },
-  onBackPress(options: OnBackPressOptions) {
-    println('--------------------------about onBackPress')
-    println(options.get("from"))
-  },
   methods: {
     navigateBack(e: MouseEvent) {
       uni.navigateBack({

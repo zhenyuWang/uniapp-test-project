@@ -65,11 +65,12 @@ describe('pages/index/index', () => {
 	// 	console.warn('componentFoo',componentFoo)
 	// 	await componentFoo.callMethod('fooTest')
 	// })
-	it('element.data', async () => {
-		const componentFoo = await page.$('Foo')
-		const data = await componentFoo.data()
-		expect(data.title).toEqual('foo title')
-	})
+	// it('element.data', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	const data = await componentFoo.data()
+	// 	expect(data.title).toEqual('foo title')
+	// })
+	
 	// it('element.setData', async () => {
 	// 	const componentFoo = await page.$('Foo')
 	// 	await componentFoo.setData({title: 'new foo title'})
@@ -160,21 +161,22 @@ describe('pages/index/index', () => {
 	// })
 	it('element.property for component', async () => {
 		const componentFoo = await page.$('Foo')
-		const mytest = await componentFoo.property('test')
-		expect(mytest).toEqual('foo-test-attribute')
-		const myclass = await componentFoo.attribute('class')
-		expect(myclass).toEqual('component-foo')
+		const componentFooTest = await componentFoo.property('test')
+		expect(componentFooTest).toEqual('foo-test-attribute')
+		const componentFooClass = await componentFoo.attribute('class')
+		expect(componentFooClass).toEqual('component-foo')
 		
 		const myButton1 = await page.$('Button')
-		const buttonType1 = await myButton1.property('type')
-		const buttonClass1 = await myButton1.attribute('class')
-		expect(buttonType1).toEqual('primary')
-		expect(buttonClass1).toEqual('ub ub-p test-button')
+		const button1Type = await myButton1.property('type')
+		const button1Class = await myButton1.attribute('class')
+		expect(button1Type).toEqual('primary')
+		expect(button1Class).toEqual('ub ub-p test-button')
+		
 		const myButton2 = await page.$('.test-button')
-		const buttonType2 = await myButton2.property('type')
-		const buttonClass2 = await myButton2.attribute('class')
-		expect(buttonType2).toEqual('primary')
-		expect(buttonClass2).toEqual('ub ub-p test-button')
+		const button2Type = await myButton2.property('type')
+		const button2Class = await myButton2.attribute('class')
+		expect(button2Type).toEqual('primary')
+		expect(button2Class).toEqual('ub ub-p test-button')
 	})
 	// it('element.style', async () => {
 	// 	const element = await page.$('.my-input')

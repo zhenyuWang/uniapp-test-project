@@ -64,12 +64,7 @@ export function getComponentVmBySelector(pageId: number, selector: string, callb
     callback({ result: { errMsg: `Page[${pageId}] not exists` } })
     return null
   }
-  let component: ComponentPublicInstance | null = null
-  page.$children.forEach((child: ComponentPublicInstance) => {
-    if (child.$options.name == selector) {
-      component = child
-    }
-  })
+  const component = page.$children.find((child: ComponentPublicInstance): boolean => child.$options.name == selector)
   if (component === null) {
     callback({ result: { errMsg: `component[${selector}] not exists` } })
     return null
@@ -83,12 +78,7 @@ export function getComponentVmByNodeId(pageId: number, nodeId: number, callback:
     callback({ result: { errMsg: `Page[${pageId}] not exists` } })
     return null
   }
-  let component: ComponentPublicInstance | null = null
-  page.$children.forEach((child: ComponentPublicInstance) => {
-    if (child.$.uid == nodeId) {
-      component = child
-    }
-  })
+  const component = page.$children.find((child: ComponentPublicInstance): boolean => child.$.uid == nodeId)
   if (component === null) {
     callback({ result: { errMsg: `component[${nodeId}] not exists` } })
     return null
@@ -97,10 +87,10 @@ export function getComponentVmByNodeId(pageId: number, nodeId: number, callback:
 }
 
 export function getElementByIdOrNodeId(pageId: number, elementId: string | null, nodeId: number | null, callback: (res: any) => void): INode | null {
-  if (elementId !== null) {
-    return getElementById(pageId, elementId!, callback)
-  } else if (nodeId !== null) {
+  if (nodeId !== null) {
     return getComponentDomByNodeId(pageId, nodeId!, callback)
+  } else if (elementId !== null) {
+    return getElementById(pageId, elementId!, callback)
   }
   return null
 }
@@ -119,7 +109,7 @@ export function getElementById(pageId: number, elementId: string, callback: (res
     callback({ result: { errMsg: `Page[${pageId}] not exists` } })
     return null
   }
-  const document = page.$innerPage!.document
+  const document = page.$appPage!.document
   const element = document.getElementById(elementId)
   if (element === null) {
     callback({ result: { errMsg: `element[${elementId}] not exists` } })
@@ -138,11 +128,11 @@ export function getValidComponentsOrNodes(
     return
   }
   if (isValidComponentOrNode(vnode, selector)) {
-    console.warn('vnode', vnode)
     if (vnode.component !== null) {
       list.push({
         nodeId: (vnode.component as ComponentInternalInstance).uid,
-        tagName: (vnode.component as ComponentInternalInstance).options.name
+        tagName: (vnode.component as ComponentInternalInstance).options.name,
+        elementId: `${Date.now()}`
       })
     } else {
       list.push({

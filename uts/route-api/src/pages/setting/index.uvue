@@ -30,6 +30,11 @@ export default {
   onUnload() {
     println('--------------------------setting onUnload')
   },
+  onBackPress(options): boolean | null {
+    println('--------------------------setting onBackPress')
+    println(options)
+    return null
+  },
   methods: {
     navigateBack(e: MouseEvent) {
       // uni.navigateBack({delta: 12})

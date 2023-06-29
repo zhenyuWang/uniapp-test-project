@@ -4,56 +4,50 @@
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "index"
-        // "backgroundColor": "green"
-        // "titleImage": "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSbNDXthOskRBBQdInj-k3DyTyboB8uA2q1KGysC5VJQg&s"
       }
     },
     {
       "path": "pages/about/index",
       "style": {
         "navigationBarTitleText": "about"
-        // "backgroundColor": "red"
+      }
+    },
+    {
+      "path": "pages/detail/index",
+      "style": {
+        "navigationBarTitleText": "detail"
       }
     }
   ],
-  // 下拉刷新相关暂不支持 tabbar 相关暂不支持
+  "tabBar": {
+		"list": [
+			{
+				"pagePath": "pages/index/index",
+				"text": "index"
+			},{
+				"pagePath": "pages/about/index",
+				"text": "about"
+			}
+		]
+	},
   "globalStyle": {
-    // 导航栏标题颜色及状态栏前景颜色，仅支持 black/white 默认 white，现在不需要编译转 000 fff 客服端负责人 殷嘉呈
     "navigationBarTextStyle" : "black",
-    // 导航栏标题文字内容
     "navigationBarTitleText": "uni-app",
-    // #F7F7F7	导航栏背景颜色（同状态栏背景色）
-    // "navigationBarBackgroundColor": "#0fc",
-    // 导航栏样式，仅支持 default/custom。custom即取消默认的原生导航栏，需看使用注意
     "navigationStyle": "default",
-    // 设置页面背景色
     "backgroundColor": "red",
-    // String	dark	下拉 loading 的样式，仅支持 dark / light 不支持
     "backgroundTextStyle": "dark",
-    // 是否开启下拉刷新 false 不支持
     "enablePullDownRefresh": true,
-    // 页面上拉触底事件触发时距页面底部距离，单位只支持px 50 不支持
     "onReachBottomDistance": 300,
-    // #ffffff	顶部窗口的背景色（bounce回弹区域）	仅 iOS 平台
     "backgroundColorTop": "#ffffff",
-    // #ffffff	底部窗口的背景色（bounce回弹区域）	仅 iOS 平台
     "backgroundColorBottom": "#ffffff",
-    // 导航栏图片地址（替换当前文字标题）不支持
     "titleImage": "https://gimg2.baidu.com/image_search/src=http%3A%2F%2Fup.enterdesk.com%2Fedpic_source%2F0c%2Fef%2Fa0%2F0cefa0f17b83255217eddc20b15395f9.jpg&refer=http%3A%2F%2Fup.enterdesk.com&app=2002&size=f9999,10000&q=a80&n=0&g=0n&fmt=auto?sec=1661340039&t=59e041cc922f55fd47ab1655cc7104ad",
-    // none 导航栏整体（前景、背景）透明设置。支持 always 一直透明 / auto 滑动自适应 / none 不透明）不支持
     "transparentTitle": "always",
-    // 横屏配置，屏幕旋转设置，仅支持 auto / portrait / landscape 不支持
     "pageOrientation": "portrait",
-    // 窗口显示的动画效果 不支持
     "animationType": "none",
-    // 300	窗口显示动画的持续时间，单位为 ms 不支持
     "animationDuration": 3000,
-    // Object		设置编译到 App 平台的特定样式，配置项参考下方
     "app": {
       "backgroundColor": "green",
-      // 不支持
       "animationType": "none",
-      // 不支持
       "animationDuration": 3000
     }
 

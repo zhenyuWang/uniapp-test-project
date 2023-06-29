@@ -11,6 +11,7 @@ export type GetElementParams = {
 }
 
 export const getElement = (params: GetElementParams): void => {
+  // TODO: support get component by class or id selector
   const element = getElementById(params.pageId, params.elementId, params.callback)
   if (element !== null) {
     let selector = params.selector
@@ -19,7 +20,8 @@ export const getElement = (params: GetElementParams): void => {
       const component = getComponentVmBySelector(params.pageId, selector, params.callback)
       const result = {
         nodeId: component !== null ? component.$.uid : null,
-        tagName: component !== null ? selector : null
+        tagName: component !== null ? selector : null,
+        elementId: component !== null ? `${Date.now()}` : null
       }
       params.callback(result)
       return
@@ -167,7 +169,7 @@ export const callMethod = (params: CallMethodParams): void => {
   const component = getComponentVmByNodeId(params.pageId, params.nodeId, params.callback)
   if (component !== null) {
     const result = params.args.length > 0 ? component.$callMethod(params.method, params.args[0]) : component.$callMethod(params.method)
-    params.callback({ result: { result } })
+    params.callback({ result })
   }
 }
 

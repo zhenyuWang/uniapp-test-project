@@ -39,9 +39,6 @@ export default {
       index: 0,
       text: 'new text'
     })
-    uni.onUserCaptureScreen(function () {
-      println('用户截屏了')
-    });
   },
   onHide() {
     println('--------------------------index onHide')
@@ -50,21 +47,18 @@ export default {
     println('--------------------------index onUnload')
   },
   methods: {
-    navigateBack(e: MouseEvent) {
+    navigateBack() {
       // uni.navigateBack({delta: 12})
       uni.navigateBack({
         animationDuration: 300,
-        success(e: NavigateBackSuccess) {
+        success() {
           println('---------navigateBack success in index')
-          println(e.errMsg)
         },
-        fail(e: NavigateBackFail) {
+        fail() {
           println('---------navigateBack fail in index')
-          println(e.errMsg)
         },
-        complete(e: NavigateBackComplete) {
+        complete() {
           println('---------navigateBack complete in index')
-          println(e.errMsg)
         }
       })
     },
@@ -159,13 +153,11 @@ export default {
     switchTabAbout() {
       uni.switchTab({
         url: '/pages/about/index',
-        success(e: SwitchTabSuccessResult) {
+        success() {
           println('-------------------------switchTab success')
-          println(e.errMsg)
         },
-        fail(e: SwitchTabFailResult) {
+        fail() {
           println('-------------------------switchTab fail')
-          println(e.errMsg)
         },
       })
     },
