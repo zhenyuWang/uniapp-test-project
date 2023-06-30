@@ -1,8 +1,6 @@
 <template>
-  <view class="component-foo">
-    <text>this is foo</text>
-    <text>this is foo</text>
-    <text>this is foo</text>
+  <view class="component-foo" @click="fooTest">
+    <text>{{title}}</text>
   </view>
 </template>
 
@@ -14,9 +12,22 @@ export default {
       title: 'component foo',
     }
   },
+  beforeUpdate() {
+    println('component foo beforeUpdate')
+  },
+  updated() {
+    println('component foo updated')
+  },
+  beforeUnmount() {
+    println('component foo beforeUnmount')
+  },
+  unmounted() {
+    println('component foo unmounted')
+  },
   methods: {
     fooTest() {
       println('foo test')
+      this.title = 'new title'
     }
   },
 }

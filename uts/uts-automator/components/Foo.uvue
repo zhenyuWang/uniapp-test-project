@@ -1,7 +1,7 @@
 <template>
 	<view>
 		<text>this is Foo</text>
-		<text>title is {{title}}</text>
+		<text id="foo-text">title is {{title}}</text>
 	</view>
 </template>
 

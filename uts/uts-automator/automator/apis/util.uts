@@ -78,7 +78,19 @@ export function getComponentVmByNodeId(pageId: number, nodeId: number, callback:
     callback({ result: { errMsg: `Page[${pageId}] not exists` } })
     return null
   }
-  const component = page.$children.find((child: ComponentPublicInstance): boolean => child.$.uid == nodeId)
+  let component: ComponentPublicInstance | null = null
+  function getComponentChild(parent: ComponentPublicInstance) {
+    if (parent !== null) {
+      if (parent.$.uid == nodeId) {
+        component = parent
+        return
+      }
+      parent.$children.forEach((child: ComponentPublicInstance) => {
+        getComponentChild(child)
+      })
+    }
+  }
+  getComponentChild(page)
   if (component === null) {
     callback({ result: { errMsg: `component[${nodeId}] not exists` } })
     return null
@@ -101,6 +113,20 @@ export function getComponentDomByNodeId(pageId: number, nodeId: number, callback
     return null
   }
   return component.$el
+}
+
+export function getElementByNodeIdOrElementId(pageId: number, nodeId: number | null, elementId: string | null, callback: (res: any) => void): INode | null {
+  const page = getPageVm(pageId)
+  if (page === null) {
+    callback({ result: { errMsg: `Page[${pageId}] not exists` } })
+    return null
+  }
+  if (nodeId !== null) {
+    return getComponentDomByNodeId(pageId, nodeId!, callback)
+  } else if (elementId !== null) {
+    return getElementById(pageId, elementId!, callback)
+  }
+  return null
 }
 
 export function getElementById(pageId: number, elementId: string, callback: (res: any) => void): INode | null {
@@ -148,6 +174,10 @@ export function getValidComponentsOrNodes(
     (vnode.children as VNode[]).forEach(child => {
       getValidComponentsOrNodes(child, selector, list, getAll)
     })
+  }
+  if (vnode.component !== null) {
+    const component = vnode.component
+    getValidComponentsOrNodes(component!.subTree, selector, list, getAll)
   }
 }
 
@@ -236,4 +266,13 @@ export function getChildrenText(node: INode): string {
     }
   })
   return result
+}
+
+export function toCamelCase(str: string): string {
+  const wordList = str.split('-')
+  for (let i = 1; i < wordList.length; i++) {
+    const word = wordList[i]
+    wordList[i] = word[0].toUpperCase() + word.substring(1)
+  }
+  return wordList.join('')
 }

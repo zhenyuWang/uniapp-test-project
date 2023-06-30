@@ -1,14 +1,16 @@
 {
+	"$parent": "uni.UNIAE9EF0B.GenPagesIndexIndex ",
+	"$checkboxList": "[]",
+	"_checkboxGroupUpdateHandler": " ",
+	"$attrs": "io.dcloud.uts.Map ",
+	"$": "io.dcloud.uts.vue.ComponentInternalInstance ",
+	"$props": "io.dcloud.uts.vue.UTSReactiveMap ",
+	"$data": "io.dcloud.uts.vue.UTSReactiveMap ",
+	"$options": "io.dcloud.uts.vue.VueComponentOptions ",
 	"$refs": "io.dcloud.uts.Map ",
 	"$slots": "io.dcloud.uts.Map ",
-	"$parent": "uni.UNIAE9EF0B.GenPagesIndexIndex ",
-	"$attrs": "io.dcloud.uts.Map ",
-	"$props": "io.dcloud.uts.vue.UTSReactiveMap ",
-	"$": "io.dcloud.uts.vue.ComponentInternalInstance ",
+	"_changeHandler": " ",
 	"$styles": "io.dcloud.uts.Map ",
-	"$data": "io.dcloud.uts.vue.UTSReactiveMap ",
-	"$children": "[]",
-	"$options": "io.dcloud.uts.vue.VueComponentOptions ",
-	"$el": "io.dcloud.uniapp.dom.node.DomNode ",
-	"fooTest": " "
+	"$children": "[io.dcloud.uts.framework.UniCheckbox@289d8e4, io.dcloud.uts.framework.UniCheckbox@91f014d]",
+	"$el": "io.dcloud.uniapp.dom.node.DomNode "
 }

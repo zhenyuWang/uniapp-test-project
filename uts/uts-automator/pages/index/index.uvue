@@ -1,6 +1,12 @@
 <template>
 	<view class="content">
-		<view class="my-test" @click="automatorTap" @longpress="automatorLongpress" @touchstart="automatorTouchStart" @touchmove="automatorTouchMove" @touchend="automatorTouchEnd">
+		<checkbox-group class="uni-flex uni-row checkbox-group">
+			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
+			<checkbox value="cb" class="checkbox test-checkbox2">未选中</checkbox>
+		</checkbox-group>
+		<progress :percent="20" :stroke-width="3" class="progress p1" />
+		<view class="my-test" @click="automatorTap" @longpress="automatorLongpress" @touchstart="automatorTouchStart"
+			@touchmove="automatorTouchMove" @touchend="automatorTouchEnd">
 			<text>my-test1</text>
 			<text class="test-child">{{title}}</text>
 			<text class="test-child">my-test-child2</text>
@@ -8,7 +14,8 @@
 			<button type="primary" class="test-button">{{title}}</button>
 			<input class="my-input" style="background-color: yellow;margin-left:10px;" type="text" v-model="title" />
 		</view>
-		<Foo test="foo-test-attribute" class="component-foo"  @click="automatorTap" @longpress="automatorComponentLongpress" />
+		<Foo test="foo-test-attribute" class="component-foo" @click="automatorTap"
+			@longpress="automatorComponentLongpress" />
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="border-0">index-index-index2222</view>
 		<view class="border-0" @click="test">index-index-index {{ title }}</view>
@@ -57,7 +64,9 @@
 <script>
 	import Foo from '../../components/Foo.uvue'
 	export default {
-		components: {Foo},
+		components: {
+			Foo
+		},
 		data() {
 			return {
 				title: '111',
@@ -65,39 +74,39 @@
 			}
 		},
 		methods: {
-			automatorTap(){
+			automatorTap() {
 				console.warn('automatorTap')
 				this.title = 'automatorTap'
 			},
-			automatorLongpress(){
+			automatorLongpress() {
 				console.warn('automatorLongpress')
 			},
-			automatorComponentLongpress(){
+			automatorComponentLongpress() {
 				console.warn('automatorComponentLongpress')
 			},
-			automatorTouchStart(){
+			automatorTouchStart() {
 				console.warn('automatorTouchStart')
 			},
-			automatorTouchMove(){
+			automatorTouchMove() {
 				console.warn('automatorTouchMove')
 			},
-			automatorTouchEnd(e: TouchEvent){
-				console.warn('automatorTouchEnd',e)
+			automatorTouchEnd(e: TouchEvent) {
+				console.warn('automatorTouchEnd', e)
 			},
 			test() {
 				uni.showActionSheet({
 					itemList: ['A', 'B', 'C'],
-					success: function (res) {
-						console.log('showActionSheet success',res);
+					success: function(res) {
+						console.log('showActionSheet success', res);
 					},
-					fail: function (res) {
+					fail: function(res) {
 						console.log(res.errMsg);
 					}
 				});
 				// console.log('test in index')
 				// this.$callMethod('myTest')
 				const node = this.$querySelector('.my-test')
-				console.warn('node',node)
+				console.warn('node', node)
 				// const child = node.$querySelector('.test-child')
 				// console.warn('child',child)
 				// const fn = findVueMethod(this.$.type, this.fnName, this)
@@ -106,22 +115,24 @@
 			getStorageInfo() {
 				console.warn('method getStorageInfo')
 			},
-			myTest(): number{
+			myTest(): number {
 				const sum = 2
-				console.warn('my test--------------------------',sum);
+				console.warn('my test--------------------------', sum);
 				return sum;
 			}
 		}
 	}
 </script>
 <style>
-	.component-foo{
+	.component-foo {
 		color: red;
 	}
-	.my-input{
+
+	.my-input {
 		color: red;
 		padding-left: 20px;
 	}
+
 	.border-0 {
 		border: 100px dotted red;
 	}

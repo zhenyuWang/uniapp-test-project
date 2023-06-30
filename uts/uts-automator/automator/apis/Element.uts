@@ -1,18 +1,19 @@
-import { getElementById, getComponentVmBySelector, getValidNodes, getComponentVmByNodeId, componentGetData, componentSetData, getElementByIdOrNodeId } from './util.uts'
-import { INode, Touch } from 'io.dcloud.uniapp.runtime'
+import { getElementById, getElementByNodeIdOrElementId, getComponentVmBySelector, getValidNodes, getComponentVmByNodeId, componentGetData, componentSetData, getElementByIdOrNodeId } from './util.uts'
+import { Touch } from 'io.dcloud.uniapp.runtime'
 import { JSONObject } from 'com.alibaba.fastjson'
-import { getChildrenText } from './util.uts'
+import { getChildrenText, toCamelCase } from './util.uts'
 
 export type GetElementParams = {
   pageId: number
-  elementId: string
+  nodeId?: number | null
+  elementId?: string | null
   selector: string
   callback: (res?: any | null) => void
 }
 
 export const getElement = (params: GetElementParams): void => {
   // TODO: support get component by class or id selector
-  const element = getElementById(params.pageId, params.elementId, params.callback)
+  const element = getElementByNodeIdOrElementId(params.pageId, params.nodeId, params.elementId, params.callback)
   if (element !== null) {
     let selector = params.selector
     if (selector.startsWith('uni-')) {
@@ -34,7 +35,7 @@ export const getElement = (params: GetElementParams): void => {
 }
 
 export const getElements = (params: GetElementParams): void => {
-  const element = getElementById(params.pageId, params.elementId, params.callback)
+  const element = getElementByNodeIdOrElementId(params.pageId, params.nodeId, params.elementId, params.callback)
   if (element !== null) {
     const list: UTSJSONObject[] = []
     getValidNodes(element, params.selector, list, true)
@@ -92,7 +93,7 @@ export const getProperties = (params: GetPropertiesParams): void => {
   }
   if (dom !== null) {
     const properties = params.names.map((name: string): any | null => {
-      const attribute = dom.getAttribute(name) !== null ? dom.getAttribute(name) : component !== null ? component.$props[name] : null
+      const attribute = dom.getAttribute(name) !== null ? dom.getAttribute(name) : component !== null ? component.$props[toCamelCase(name)] : null
       return attribute
     })
     params.callback({ properties })

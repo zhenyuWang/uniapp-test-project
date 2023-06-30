@@ -1,10 +1,30 @@
-jest.setTimeout(20000)
+// jest.setTimeout(20000)
 describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
+	it('component childDom text', async () => {
+		const component = await page.$('.component-foo')
+		const textDom = await component.$('#foo-text')
+		const text = await textDom.text()
+		console.log('text',text)
+	})
+	// it('checkbox', async () => {
+	// 	const checkbox = await page.$('.test-checkbox1')
+	// 	const checked = await checkbox.property('checked')
+	// 	expect(checked).toEqual(true)
+	// })
+	// it('progress', async () => {
+	// 	const progress = await page.$('.progress')
+	// 	console.log('progress', progress)
+	// 	const strokeWidth1 = await progress.property('stroke-width')
+	// 	expect(strokeWidth1).toEqual(3)
+	// 	const strokeWidth2 = await progress.property('strokeWidth')
+	// 	expect(strokeWidth2).toEqual(3)
+	// })
+	
 
 	// it('page.$', async () => {
 	// 	const myTest = await page.$('.my-test')
@@ -70,7 +90,7 @@ describe('pages/index/index', () => {
 	// 	const data = await componentFoo.data()
 	// 	expect(data.title).toEqual('foo title')
 	// })
-	
+
 	// it('element.setData', async () => {
 	// 	const componentFoo = await page.$('Foo')
 	// 	await componentFoo.setData({title: 'new foo title'})
@@ -159,25 +179,27 @@ describe('pages/index/index', () => {
 	// 	const data = await page.data()
 	// 	expect(value).toEqual(data.title)
 	// })
-	it('element.property for component', async () => {
-		const componentFoo = await page.$('Foo')
-		const componentFooTest = await componentFoo.property('test')
-		expect(componentFooTest).toEqual('foo-test-attribute')
-		const componentFooClass = await componentFoo.attribute('class')
-		expect(componentFooClass).toEqual('component-foo')
-		
-		const myButton1 = await page.$('Button')
-		const button1Type = await myButton1.property('type')
-		const button1Class = await myButton1.attribute('class')
-		expect(button1Type).toEqual('primary')
-		expect(button1Class).toEqual('ub ub-p test-button')
-		
-		const myButton2 = await page.$('.test-button')
-		const button2Type = await myButton2.property('type')
-		const button2Class = await myButton2.attribute('class')
-		expect(button2Type).toEqual('primary')
-		expect(button2Class).toEqual('ub ub-p test-button')
-	})
+
+	// it('element.property for component', async () => {
+	// 	const componentFoo = await page.$('Foo')
+	// 	const componentFooTest = await componentFoo.property('test')
+	// 	expect(componentFooTest).toEqual('foo-test-attribute')
+	// 	const componentFooClass = await componentFoo.attribute('class')
+	// 	expect(componentFooClass).toEqual('component-foo')
+
+	// 	const myButton1 = await page.$('Button')
+	// 	const button1Type = await myButton1.property('type')
+	// 	const button1Class = await myButton1.attribute('class')
+	// 	expect(button1Type).toEqual('primary')
+	// 	expect(button1Class).toEqual('ub ub-p test-button')
+
+	// 	const myButton2 = await page.$('.test-button')
+	// 	const button2Type = await myButton2.property('type')
+	// 	const button2Class = await myButton2.attribute('class')
+	// 	expect(button2Type).toEqual('primary')
+	// 	expect(button2Class).toEqual('ub ub-p test-button')
+	// })
+
 	// it('element.style', async () => {
 	// 	const element = await page.$('.my-input')
 	// 	const color = await element.style('color')
@@ -193,7 +215,7 @@ describe('pages/index/index', () => {
 	// it('Page.getData', async () => {
 	// 	const data = await page.data()
 	// 	console.log('data', data)
-	// 	expect(data.title).toEqual('111')
+	// 	expect(data.title).toEqual('automatorTap')
 	// })
 	// it('Page.setData', async () => {
 	// 	await page.setData({

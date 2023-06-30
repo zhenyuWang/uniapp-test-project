@@ -4,13 +4,18 @@
     <view class="button" @click="back">
       <text class="button-text">back</text>
     </view>
+    <button @click="close">close current page</button>
+    <button @click="switchTabIndex">switchTabIndex</button>
+    <button @click="getPages">getPages</button>
+    <Foo />
   </view>
 </template>
 
 <script>
 // import { getCurrentInstance } from 'vue'
-
+import Foo from '../../components/Foo.uvue'
 export default {
+  components: {Foo},
   data() {
     return {
       title: 'detail title',
@@ -24,8 +29,6 @@ export default {
   },
   onReady() {
     println('Page detail onReady')
-    const pages = getCurrentPages()
-    println(pages)
   },
   onBackPress(): Boolean {
     println('onBackPress in detail')
@@ -51,6 +54,22 @@ export default {
         }
       })
     },
+    close() {
+      const pages = getCurrentPages()
+      println(pages)
+      const appPage = pages[pages.length-1].$getAppPage()
+      println(appPage)
+      appPage!.close(new Map<string, any | null>([["animationType", "none"]]))
+    },
+    switchTabIndex() {
+      uni.switchTab({
+        url: '/pages/index/index'
+      })
+    },
+    getPages() {
+      const pages = getCurrentPages()
+      println(pages)
+    }
   },
 }
 </script>

@@ -37,22 +37,30 @@ export default {
   },
   methods: {
     getElement() {
+      const launchOptions = uni.getLaunchOptionsSync()
+      println(launchOptions)
+      println(launchOptions.path)
+      const pages = getCurrentPages()
+      println(pages)
+      // const appPage = pages[0].$getAppPage()
+      // println(appPage)
+      // appPage!.close(new Map<string, any | null>([["animationType", "none"]]))
       // const subTree = this.$.subTree
       // const children = subTree.children
       // if (children !== null && (children as any[]).length > 0) {
       //   const child = children[1]
       //   println('1111')
       // }
-      const baseApp = getBaseApp()
-      println(baseApp)
-      const app = getApp()
-      println(app)
-      app.quit()
-      const currentPages = getCurrentPages()
-      println(currentPages)
-      uni.navigateTo({
-        url: '/pages/detail/index'
-      })
+      // const baseApp = getBaseApp()
+      // println(baseApp)
+      // const app = getApp()
+      // println(app)
+      // app.quit()
+      // const currentPages = getCurrentPages()
+      // println(currentPages)
+      // uni.navigateTo({
+      //   url: '/pages/detail/index'
+      // })
       // const myView = this.$querySelector('.my-view')
       // println(myView)
       // const myButton = this.$querySelector('.my-button')

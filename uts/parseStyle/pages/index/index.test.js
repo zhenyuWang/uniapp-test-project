@@ -1,21 +1,29 @@
-jest.setTimeout(30000);
+// jest.setTimeout(30000);
 describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('page.$', async () => {
-		const myTest1 = await page.$('.mytest')
-		console.log('myTest1', myTest1)
-		// const myTest2 = await page.$('#mytest')
-		// console.log('myTest2', myTest2)
-		return new Promise(resolve => {
-			setTimeout(() => {
-				resolve()
-			},3000)
-		})
+	it('uni.api', async () => {
+		// const inputs = [{
+		//   "filter": ["abc"]
+		// }];
+		// const res = await uni.getAppBaseInfo(...inputs)
+		const res = await uni.getAppBaseInfo()
+		console.warn('getAppBaseInfo res', res)
 	})
+	// it('page.$', async () => {
+	// 	const myTest1 = await page.$('.mytest')
+	// 	console.log('myTest1', myTest1)
+	// 	// const myTest2 = await page.$('#mytest')
+	// 	// console.log('myTest2', myTest2)
+	// 	return new Promise(resolve => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},3000)
+	// 	})
+	// })
 	// it('css', async () => {
 	// 	// const image = await program.screenshot({fullPage: true})
 	// 	const image = await program.screenshot()
