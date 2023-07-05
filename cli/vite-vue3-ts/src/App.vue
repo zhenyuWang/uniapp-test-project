@@ -4,7 +4,9 @@
 import HelloWorld from './components/HelloWorld.vue'
 import { getCurrentInstance } from 'vue'
 console.log('App log vue',getCurrentInstance());
-
+const myClick = (e: any) => {
+  console.log('e',e)
+}
 </script>
 
 <template>
@@ -17,7 +19,7 @@ console.log('App log vue',getCurrentInstance());
     </a>
   </div> -->
   <HelloWorld class="bgR" msg="Vite + Vue" />
-  <div>this is vite-vue3-ts</div>
+  <div @click="(e: any) => myClick(e)">this is vite-vue3-ts</div>
 </template>
 
 <style>

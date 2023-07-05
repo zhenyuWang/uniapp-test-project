@@ -1,6 +1,6 @@
 {
-    "name" : "parseStyle",
-    "appid" : "",
+    "name" : "close-loading-toast",
+    "appid" : "__UNI__747F614",
     "description" : "",
     "versionName" : "1.0.0",
     "versionCode" : "100",
@@ -50,7 +50,7 @@
     "quickapp" : {},
     /* 小程序特有相关 */
     "mp-weixin" : {
-        "appid" : "",
+        "appid" : "wxff068e9eaa9e6b9b",
         "setting" : {
             "urlCheck" : false
         },
@@ -68,6 +68,5 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3",
-    "fallbackLocale" : "zh-Hans"
+    "vueVersion" : "2"
 }

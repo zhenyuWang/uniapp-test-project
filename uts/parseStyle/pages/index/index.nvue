@@ -41,6 +41,10 @@ export default {
       this.thumbStyle = val ? `transform: translateX(20px);` : ''
     },
   },
+	onLoad(){
+		const pages = getCurrentPages()
+		console.log('pages.length---------', pages.length)
+	},
 	onReady(){
 		// uni.onKeyboardHeightChange((e) => {
 		// 	console.log('onKeyboardHeightChange', e)
@@ -55,6 +59,11 @@ export default {
   methods: {
     _onClick() {
       this.isChecked1 = !this.isChecked1
+			uni.getBatteryInfo({
+				complete(res){
+					console.warn('uni.getBatteryInfo res', res)
+				}
+			})
     },
   }
 }
@@ -63,6 +72,7 @@ export default {
 .uni-switch {
   flex-direction: row;
   align-items: center;
+	font-family: 'my test';
 }
 
 .uni-switch-input {

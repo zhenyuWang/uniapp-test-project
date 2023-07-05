@@ -5,12 +5,12 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('component childDom text', async () => {
-		const component = await page.$('.component-foo')
-		const textDom = await component.$('#foo-text')
-		const text = await textDom.text()
-		console.log('text',text)
-	})
+	// it('component childDom text', async () => {
+	// 	const component = await page.$('.component-foo')
+	// 	const textDom = await component.$('#foo-text')
+	// 	const text = await textDom.text()
+	// 	expect(text).toEqual('title is foo title')
+	// })
 	// it('checkbox', async () => {
 	// 	const checkbox = await page.$('.test-checkbox1')
 	// 	const checked = await checkbox.property('checked')
@@ -24,7 +24,7 @@ describe('pages/index/index', () => {
 	// 	const strokeWidth2 = await progress.property('strokeWidth')
 	// 	expect(strokeWidth2).toEqual(3)
 	// })
-	
+
 
 	// it('page.$', async () => {
 	// 	const myTest = await page.$('.my-test')
@@ -230,6 +230,17 @@ describe('pages/index/index', () => {
 	// 	const image = await program.screenshot()
 	// 	expect(image).toMatchImageSnapshot();
 	// })
+	// it('uni.xxx not exists', async () => {
+	// 	const res2 = await uni.aaaa({
+	// 		complete(res) {
+	// 			console.log('uni.aaaa', res)
+	// 		}
+	// 	})
+	// 	console.log('res2', JSON.stringify(res2))
+	// 	expect(res2.errMsg).toEqual('uni.aaaa not exists.')
+	// })
+
+
 	// it('uni.setStorage', async () => {
 	// 	await uni.setStorage({
 	// 		key: 'storage_key1',
@@ -251,23 +262,70 @@ describe('pages/index/index', () => {
 	// 			console.log('getStorage complete:', res)
 	// 		}
 	// 	});
-	// 	console.log('res1', JSON.stringify(res1))
-	// })
-	// it('uni.xxx not exists', async () => {
-	// 	const res2 = await uni.aaaa({
-	// 		complete(res) {
-	// 			console.log('uni.aaaa', res)
-	// 		}
-	// 	})
-	// 	console.log('res2', JSON.stringify(res2))
-	// 	expect(res2.errMsg).toEqual('uni.aaaa not exists.')
+	// 	expect(res1.data).toEqual('hello')
 	// })
 	// it('uni.setStorageSync', async () => {
 	// 	await uni.setStorageSync('storage_key2', 'hello222');
 	// 	const res3 = await uni.getStorageSync('storage_key2');
-	// 	console.log('res3', JSON.stringify(res3))
 	// 	expect(res3).toEqual('hello222')
 	// })
+	// it('uni.getStorageInfo', async () => {
+	// 	await uni.getStorageInfo({
+	// 		success: function(res) {
+	// 			expect(res.currentSize).toEqual(28)
+	// 			expect(res.keys[0]).toEqual('storage_key1')
+	// 			expect(res.keys[1]).toEqual('storage_key2')
+	// 		},
+	// 		fail: function(err) {
+	// 			console.log('getStorageInfo fail', err);
+	// 		},
+	// 		complete: function(res) {
+	// 			console.log('getStorageInfo complete', res);
+	// 		}
+	// 	});
+	// })
+	// it('uni.getStorageInfoSync', async () => {
+	// 	const storageInfo = await uni.getStorageInfoSync();
+	// 	expect(storageInfo.keys[0]).toEqual('storage_key1')
+	// 	expect(storageInfo.keys[1]).toEqual('storage_key2')
+	// })
+	// it('uni.removeStorageSync', async () => {
+	// 	await uni.removeStorageSync('storage_key1')
+	// 	const storageInfo = await uni.getStorageInfoSync();
+	// 	expect(storageInfo.keys[0]).toEqual('storage_key2')
+	// 	expect(storageInfo.keys.length).toEqual(1)
+	// })
+	// it('uni.clearStorageSync', async () => {
+	// 	await uni.clearStorageSync()
+	// 	const storageInfo = await uni.getStorageInfoSync();
+	// 	expect(storageInfo.keys.length).toEqual(0)
+	// })
+	// it('uni.clearStorage', async () => {
+	// 	await uni.setStorageSync('storage_key2', 'hello222');
+	// 	const data = await uni.getStorageSync('storage_key2');
+	// 	expect(data).toEqual('hello222')
+	// 	await uni.clearStorage()
+	// 	page.waitFor(1000)
+	// 	const storageInfo = await uni.getStorageInfoSync();
+	// 	expect(storageInfo.keys.length).toEqual(0)
+	// })
+	it('uni.clearStorage', async () => {
+		uni.clearStorage({
+			success(res){
+				console.log('clearStorage success', res);
+			},
+			fail(res){
+				console.log('clearStorage fail', res);
+			},
+		})
+		return new Promise((resolve) => {
+				setTimeout(() => {
+					resolve()
+				}, 3000)
+			})
+	})
+
+
 	// it('uni.switchTab', async () => {
 	// 	await uni.switchTab({
 	// 		url: '/pages/test/test'
@@ -381,89 +439,93 @@ describe('pages/index/index', () => {
 
 	// it('uni.connectSocket', async () => {
 	// 	const socketTask = await uni.connectSocket({
-	// 		url: 'ws://192.168.31.119:8080',
+	// 		// url: 'ws://192.168.31.119:8080',
+	// 		url: 'ws://192.168.12.106:8080/ws',
 	// 		success(res) {
-	// 			console.warn('connectSocket success', res)
+	// 			expect(res.errMsg).toEqual('connectSocket:ok')
 	// 		},
 	// 		fail(err) {
 	// 			console.warn('connectSocket fail', err)
+	// 			expect(err.errMsg).toEqual('connectSocket:fail')
 	// 		}
 	// 	})
 	// 	console.warn('socketTask', socketTask)
 	// 	socketTask.onOpen(res => {
 	// 		console.log('socketTask.onOpen', res)
-	// 		socketTask.onMessage((msg) => {
-	// 			console.warn('客户端 socket 收到消息', msg)
+	// 		socketTask.onMessage((res) => {
+	// 			expect(res).toHaveProperty('data');
 	// 		})
 	// 		socketTask.send({
 	// 			data: 'hahaha from client in socketTask.onOpen',
-	// 			success() {
-	// 				console.log('socketTask.send success in index.test.js')
+	// 			success(res) {
+	// 				expect(res.errMsg).toEqual('sendSocketMessage:ok')
 	// 			},
-	// 			fail() {
-	// 				console.log('socketTask.send fail in index.test.js')
+	// 			fail(err) {
+	// 				expect(err.errMsg.length).toBeGreaterThan(0)
 	// 			},
-	// 			complete() {
-	// 				console.log('socketTask.send complete in index.test.js')
+	// 			complete(res) {
+	// 				expect(res.errMsg).toEqual('sendSocketMessage:ok')
 	// 			}
 	// 		})
 	// 		socketTask.close({
 	// 			code: 1000,
 	// 			reason: 'close from automator PC',
-	// 			success() {
-	// 				console.log('socketTask.close success in index.test.js')
+	// 			success(res) {
+	// 				expect(res.errMsg).toEqual('closeSocket:ok')
 	// 			},
-	// 			fail() {
-	// 				console.log('socketTask.close fail in index.test.js')
+	// 			fail(err) {
+	// 				expect(err.errMsg.length).toBeGreaterThan(0)
 	// 			},
-	// 			complete() {
-	// 				console.log('socketTask.close complete in index.test.js')
+	// 			complete(res) {
+	// 				expect(res.errMsg).toEqual('closeSocket:ok')
 	// 			}
 	// 		})
 	// 	})
 	// 	socketTask.onClose((res) => {
-	// 		console.warn('socketTask.onClose res', res)
+	// 		expect(res.code).toEqual(1000)
 	// 	})
-	// 	socketTask.onError((res) => {
-	// 		console.warn('socketTask.onError res', res)
+	// 	socketTask.onError((err) => {
+	// 		expect(err.errMsg.length).toBeGreaterThan(0)
 	// 	})
-
-	// 	setTimeout(() => {
-	// 		socketTask.send({
-	// 			data: 'hahaha from client in setTimeout',
-	// 			success() {
-	// 				console.log('socketTask.send success in index.test.js')
-	// 			},
-	// 			fail() {
-	// 				console.log('socketTask.send fail in index.test.js')
-	// 			},
-	// 			complete() {
-	// 				console.log('socketTask.send complete in index.test.js')
-	// 			}
-	// 		})
-	// 		socketTask.onMessage((msg) => {
-	// 			console.warn('客户端 socket 收到消息', msg)
-	// 		})
-	// 	}, 1000)
 
 	// 	return new Promise((resolve) => {
 	// 		setTimeout(() => {
 	// 			resolve()
-	// 		}, 10000)
+	// 		}, 3000)
 	// 	})
 	// })
 
 
 	// it('uni.getSystemInfo', async () => {
-	// 暂不支持
-	// await uni.getSystemInfo({
-	// 	complete(res){
-	// 		console.log('getSystemInfo complete')
-	// 		console.log(res)
-	// 		println('getSystemInfo complete')
-	// 		println(res)
-	// 	}
+	// 	await uni.getSystemInfo({
+	// 		complete(res) {
+	// 			expect(res.appId.length).toBeGreaterThan(0)
+	// 		}
+	// 	})
 	// })
+	// it('uni.getSystemInfoSync', async () => {
+	// 	const result = await uni.getSystemInfoSync()
+	// 	expect(result.appId.length).toBeGreaterThan(0)
+	// })
+	// it('uni.getAppBaseInfo', async () => {
+	// 	const result = await uni.getAppBaseInfo()
+	// 	expect(result.appId.length).toBeGreaterThan(0)
+	// })
+	// // it('uni.getDeviceInfo', async () => {
+	// // 	const result = await uni.getDeviceInfo()
+	// // 	console.log('getDeviceInfo',result)
+	// // 	expect(result.deviceId.length).toBeGreaterThan(0)
+	// // })
+	// it('uni.getAppAuthorizeSetting', async () => {
+	// 	const result = await uni.getAppAuthorizeSetting()
+	// 	expect(result.cameraAuthorized.length).toBeGreaterThan(0)
+	// })
+	// it('uni.openAppAuthorizeSetting', async () => {
+	// 	await uni.openAppAuthorizeSetting({
+	// 		complete(res) {
+	// 			expect(typeof res.errMsg).toEqual('string')
+	// 		}
+	// 	})
 	// })
 	// it('callMethodWithCallback', () => {
 	// 客户端修改了JSON.parse JSON.stringify 实现后导致传入的 args 无法 as 为 Array 无法调用数组 push 方法

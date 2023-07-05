@@ -1,30 +1,96 @@
 <template>
   <view class="index-box">
-    <Foo />
-    <text class="bg-blue" @click="test">this is index title: {{title}}</text>
+    <text class="bg-blue" @click="test">this is index title: {{ title }}</text>
     <text class="bg-blue">next bg blue</text>
-    <text style="background-color: blue;" id="my-id">test my id</text>
-    <input style="background-color:red;" class="my-input" type="text" v-model="title" />
+    <text style="background-color: blue" id="my-id">test my id</text>
+    <input
+      style="background-color: red"
+      class="my-input"
+      type="text"
+      v-model="title"
+    />
     <view class="my-view" type="my-type">
       <text>this is my view</text>
-      <Foo />
     </view>
-    <button type="primary" class="my-button" @click="getElement">getElement</button>
+    <button type="primary" class="my-button" @click="getElement">
+      getElement
+    </button>
     <button type="primary" @click="back">back</button>
+    <rich-text
+      nodes="[{'name':'div','attrs':{'class':'div-class','style':'line-height: 60px; color: red; text-align:center;'},'children':[{'type':'text','text':'Hello&nbsp;uni-app 1111111'}]}]"
+    />
+    <rich-text
+      :nodes="[
+        {
+          name: 'div',
+          attrs: {
+            class: 'div-class',
+            style: 'line-height: 60px; color: red; text-align:center;',
+          },
+          children: [
+            { type: 'text', text: 'Hello&nbsp;this is v-bind nodes array!' },
+          ],
+        },
+      ]"
+    />
+    <rich-text :nodes="nodesStr" />
+    <rich-text :nodes="nodes" />
+    <text @click="(e: any) => myClick(e)">test click params with type</text>
+    <text class="testFont">自定义字体文字</text>
+    <text>默认字体文字</text>
   </view>
 </template>
 
 <script>
-import Foo from '../../components/Foo.uvue'
+type Attrs = {
+  class: string
+  style: string
+}
+type Child = {
+  type: string
+  text: string
+}
+type Node = {
+  name: string
+  attrs: Attrs
+  children: Child[]
+}
 export default {
-  components: {Foo},
   data() {
     return {
       title: 'index title',
+      nodesStr: "[{'name':'div','attrs':{'class':'div-class','style':'line-height: 60px; color: red; text-align:center;'},'children':[{'type':'text','text':'Hello&nbsp;uni-app 22222'}]}]",
+      nodes: [{
+        name: 'div',
+        attrs: {
+          class: 'div-class',
+          style: 'line-height: 60px; color: yellow;text-align: center;'
+        } as Attrs,
+        children: [
+          {
+            type: 'text',
+            text: 'hello uni-app 3333'
+          } as Child
+        ]
+      } as Node]
     }
   },
   onLoad() {
     println('Page index onLoad')
+    const pages = getCurrentPages()
+    println(pages)
+    uni.loadFontFace({
+        // global: true,
+        family: 'AlimamaDaoLiTi',
+        source: 'http://192.168.12.106:8080/downloadfile?filename=AlimamaDaoLiTi.ttf',
+        success() {
+          println('loadFontFace success')
+        },
+        fail(err: any) {
+          println('loadFontFace fail')
+          println(err)
+        }
+      })
   },
   onShow() {
     println('Page index onShow')
@@ -36,12 +102,29 @@ export default {
     println('Page index onHide')
   },
   methods: {
+    myClick(e: any) {
+      println('myClick-------------------------')
+      println(e)
+    },
     getElement() {
-      const launchOptions = uni.getLaunchOptionsSync()
-      println(launchOptions)
-      println(launchOptions.path)
-      const pages = getCurrentPages()
-      println(pages)
+      // uni.loadFontFace({
+      //   // global: true,
+      //   family: 'AlimamaDaoLiTi',
+      //   source: 'http://192.168.12.106:8080/downloadfile?filename=AlimamaDaoLiTi.ttf',
+      //   success() {
+      //     println('loadFontFace success')
+      //   },
+      //   fail(err: any) {
+      //     println('loadFontFace fail')
+      //     println(err)
+      //   }
+      // })
+      // const launchOptions = uni.getLaunchOptionsSync()
+      // println(launchOptions)
+      // println(launchOptions.path)
+      // const pages = getCurrentPages()
+      // println(pages)
+
       // const appPage = pages[0].$getAppPage()
       // println(appPage)
       // appPage!.close(new Map<string, any | null>([["animationType", "none"]]))
@@ -101,17 +184,16 @@ export default {
     test() {
       println('test')
     },
-    back(e: MouseEvent){
+    back() {
       uni.navigateBack({
-        success(e: NavigateBackSuccess){
+        success() {
           println('---------navigateBack success in detail')
-          println(e.errMsg)
         },
-        fail(e: NavigateBackFail){
+        fail(e: NavigateBackFail) {
           println('---------navigateBack fail in detail')
           println(e.errMsg)
         },
-        complete(e: NavigateBackComplete){
+        complete(e: NavigateBackComplete) {
           println('---------navigateBack complete in detail')
           println(e.errMsg)
         }
@@ -122,7 +204,10 @@ export default {
 </script>
 
 <style>
-.my-input{
+.my-input {
   color: #fff;
+}
+.testFont {
+  font-family: AlimamaDaoLiTi;
 }
 </style>

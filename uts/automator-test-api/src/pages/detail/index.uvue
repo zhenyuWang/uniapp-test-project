@@ -7,15 +7,11 @@
     <button @click="close">close current page</button>
     <button @click="switchTabIndex">switchTabIndex</button>
     <button @click="getPages">getPages</button>
-    <Foo />
   </view>
 </template>
 
 <script>
-// import { getCurrentInstance } from 'vue'
-import Foo from '../../components/Foo.uvue'
 export default {
-  components: {Foo},
   data() {
     return {
       title: 'detail title',

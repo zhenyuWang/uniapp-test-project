@@ -1,0 +1,18 @@
+<template>
+	<view class="content">
+		{{title}}
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'setting page'
+			}
+		},
+		onLoad() {
+			uni.hideLoading()
+		},
+	}
+</script>

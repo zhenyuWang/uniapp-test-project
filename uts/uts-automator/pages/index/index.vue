@@ -60,6 +60,14 @@
 			// uni.onKeyboardHeightChange((e) => {
 			// 	console.log('uni.onKeyboardHeightChange', e);
 			// })
+			uni.clearStorage({
+				success(res){
+					console.log('clearStorage success', res);
+				},
+				fail(res){
+					console.log('clearStorage fail', res);
+				},
+			})
 		},
 		methods: {
 			shot() {

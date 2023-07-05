@@ -73,6 +73,65 @@
 				fnName: 'getStorageInfo'
 			}
 		},
+		onReady() {
+			// uni.getSystemInfo({
+			// 	complete(res){
+			// 		console.log('getSystemInfo complete', res)
+			// 	}
+			// })
+			// 调用报错
+			// const result = uni.getDeviceInfo()
+			// setTimeout(() => {
+			// 	console.log('getDeviceInfo', result);
+			// 	this.title = 'new title'
+			// },2000)
+			// 调用报错
+			// const result = uni.getSystemSetting()
+			// console.log('getSystemSetting', result);
+			// const result = uni.getAppAuthorizeSetting()
+			// console.log('getAppAuthorizeSetting', result);
+
+			// uni.setStorage({
+			// 	key: 'storage_key',
+			// 	data: 'hello',
+			// 	success: function() {
+			// 		console.log('setStorage success');
+			// 		let data = uni.getStorageSync('storage_key')
+			// 		console.log('storage_key data', data)
+			// 		uni.removeStorageSync('storage_key')
+			// 		data = uni.getStorageSync('storage_key')
+			// 		console.log('storage_key data', data)
+			// 		// uni.clearStorage()
+			// 		// setTimeout(() => {
+			// 		// 	data = uni.getStorageSync('storage_key')
+			// 		// 	console.log('storage_key data',data)
+			// 		// }, 1000)
+			// 	}
+			// });
+
+			// const socketTask = uni.connectSocket({
+			// 	// url: 'ws://192.168.31.119:8080',
+			// 	url: 'ws://192.168.12.106:8080/ws',
+			// 	success(res) {
+			// 		console.warn('connectSocket success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.warn('connectSocket fail', err)
+			// 	}
+			// })
+			// console.warn('socketTask', socketTask)
+			// socketTask.onOpen(res => {
+			// 	console.log('socketTask.onOpen', res)
+			// })
+			// uni.clearStorage({
+			// 	success(res: any){
+			// 		console.log('clearStorage success', res);
+			// 	},
+			// 	fail(res: any){
+			// 		console.log('clearStorage fail', res);
+			// 	},
+			// })
+		},
 		methods: {
 			automatorTap() {
 				console.warn('automatorTap')

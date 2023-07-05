@@ -10,8 +10,13 @@ describe('pages/index/index', () => {
 		//   "filter": ["abc"]
 		// }];
 		// const res = await uni.getAppBaseInfo(...inputs)
-		const res = await uni.getAppBaseInfo()
-		console.warn('getAppBaseInfo res', res)
+		// const res = await uni.getAppBaseInfo()
+		// console.warn('getAppBaseInfo res', res)
+		uni.getBatteryInfo({
+			complete(res){
+				console.warn('uni.getBatteryInfo res', res)
+			}
+		})
 	})
 	// it('page.$', async () => {
 	// 	const myTest1 = await page.$('.mytest')

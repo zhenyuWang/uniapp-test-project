@@ -3,13 +3,7 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "index"
-			}
-		},
-		{
-			"path": "pages/test/test",
-			"style": {
-				"navigationBarTitleText": "test"
+				"navigationBarTitleText": "uni-app"
 			}
 		}
 	],
@@ -18,15 +12,6 @@
 		"navigationBarTitleText": "uni-app",
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
-	},
-	"tabBar": {
-		"list": [{
-			"pagePath": "pages/index/index",
-			"text": "index"
-		}, {
-			"pagePath": "pages/test/test",
-			"text": "test"
-		}]
 	},
 	"uniIdRouter": {}
 }
