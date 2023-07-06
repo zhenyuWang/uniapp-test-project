@@ -74,6 +74,13 @@
 			}
 		},
 		onReady() {
+			// uni.setStorage({
+			// 	key: 'storage_key1',
+			// 	data: 'hello',
+			// 	success(res) {
+			// 		console.log('setStorage success', res)
+			// 	}
+			// })
 			// uni.getSystemInfo({
 			// 	complete(res){
 			// 		console.log('getSystemInfo complete', res)

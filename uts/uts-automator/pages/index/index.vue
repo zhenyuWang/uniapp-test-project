@@ -51,6 +51,30 @@
 			}
 		},
 		onReady() {
+			// uni.onSocketOpen((res) => {
+			// 	console.log('uni.onSocketOpen', res)
+			// 	uni.sendSocketMessage({
+			// 		data: 'data in uni.sendSocketMessage in index.vue',
+			// 		complete(res){
+			// 			console.log('uni.sendSocketMessage complete', res)
+			// 		}
+			// 	});
+			// })
+			// uni.onSocketMessage((res) => {
+			// 	console.log('uni.onSocketMessage', res)
+			// })
+			// const socketTask = uni.connectSocket({
+			// 	url: 'ws://192.168.31.80:8080',
+			// 	// url: 'ws://192.168.12.106:8080/ws',
+			// 	success(res) {
+			// 		console.log('connectSocket success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.warn('connectSocket fail', err)
+			// 	}
+			// })
+			// console.warn('socketTask', socketTask)
+			
 			// uni.pageScrollTo({
 			// 	scrollTop: 500
 			// })
@@ -60,14 +84,28 @@
 			// uni.onKeyboardHeightChange((e) => {
 			// 	console.log('uni.onKeyboardHeightChange', e);
 			// })
-			uni.clearStorage({
-				success(res){
-					console.log('clearStorage success', res);
-				},
-				fail(res){
-					console.log('clearStorage fail', res);
-				},
-			})
+			// uni.clearStorage({
+			// 	success(res){
+			// 		console.log('clearStorage success', res);
+			// 	},
+			// 	fail(res){
+			// 		console.log('clearStorage fail', res);
+			// 	},
+			// })
+			// const socketTask = uni.connectSocket({
+			// 	// url: 'ws://192.168.31.119:8080',
+			// 	url: 'ws://192.168.12.106:8080/ws',
+			// 	success(res) {
+			// 		console.warn('connectSocket success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.warn('connectSocket fail', err)
+			// 	}
+			// })
+			// console.warn('socketTask', socketTask)
+			// uni.onSocketOpen((res) => {
+			// 	console.log('uni.onSocketOpen', res)
+			// })
 		},
 		methods: {
 			shot() {
