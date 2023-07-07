@@ -51,6 +51,18 @@
 			}
 		},
 		onReady() {
+			// uni.navigateTo({
+			// 	url: '/pages/test/test',
+			// 	success(res){
+			// 		console.log('uni.navigateTo success', res)
+			// 	},
+			// 	fail(err){
+			// 		console.log('uni.navigateTo fail', err)
+			// 	},
+			// 	complete(err){
+			// 		console.log('uni.navigateTo fail', err)
+			// 	}
+			// })
 			// uni.onSocketOpen((res) => {
 			// 	console.log('uni.onSocketOpen', res)
 			// 	uni.sendSocketMessage({

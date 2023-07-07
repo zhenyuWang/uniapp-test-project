@@ -5,17 +5,29 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
+	// it('program.pageScrollTo', async () => {
+	// 	await program.pageScrollTo(200)
+	// })
+	it('program.systemInfo', async () => {
+		const systemInfo = await program.systemInfo()
+		expect(systemInfo.appId.startsWith('__UNI__')).toEqual(true)
+	})
+
+	// it('page.scrollTop', async () => {
+	// 	const scrollTop = await page.scrollTop()
+	// 	console.log('scrollTop-----------',scrollTop)
+	// })
 	// it('uni.switchTab', async () => {
 	// 	await uni.switchTab({
 	// 		url: '/pages/test/test',
 	// 		success(res){
-	// 			console.log('uni.navigateTo success', res)
+	// 			expect(res.errMsg).toEqual('switchTab: ok')
 	// 		},
 	// 		fail(err){
 	// 			console.log('uni.navigateTo fail', err)
 	// 		},
 	// 		complete(res){
-	// 			console.log('uni.navigateTo complete', res)
+	// 			expect(res.errMsg).toEqual('switchTab: ok')
 	// 		}
 	// 	})
 	// })
@@ -27,9 +39,10 @@ describe('pages/index/index', () => {
 	// 		},
 	// 		fail(err){
 	// 			console.log('uni.navigateTo fail', err)
+	// 			expect(err.message).toEqual('can not navigateTo a tabbar page')
 	// 		},
-	// 		complete(res){
-	// 			console.log('uni.navigateTo complete', res)
+	// 		complete(err){
+	// 			expect(err.message).toEqual('can not navigateTo a tabbar page')
 	// 		}
 	// 	})
 	// })
@@ -92,7 +105,7 @@ describe('pages/index/index', () => {
 	})
 	it('element.input', async () => {
 		const myInput = await page.$('.my-input')
-		const inputValue =  Date.now() + ''
+		const inputValue = Date.now() + ''
 		await myInput.input(inputValue)
 		const newValue = await myInput.value()
 		expect(newValue).toEqual(inputValue)
@@ -111,7 +124,7 @@ describe('pages/index/index', () => {
 	})
 	it('element.callMethod', async () => {
 		const componentFoo = await page.$('Foo')
-		console.warn('componentFoo',componentFoo)
+		console.warn('componentFoo', componentFoo)
 		await componentFoo.callMethod('fooTest')
 	})
 	it('element.data', async () => {
@@ -122,13 +135,18 @@ describe('pages/index/index', () => {
 
 	it('element.setData', async () => {
 		const componentFoo = await page.$('Foo')
-		await componentFoo.setData({title: 'new foo title'})
+		await componentFoo.setData({
+			title: 'new foo title'
+		})
 		const data = await componentFoo.data()
 		expect(data.title).toEqual('new foo title')
 	})
 	it('element.size for element', async () => {
 		const element = await page.$('.my-test')
-		const {width, height} = await element.size()
+		const {
+			width,
+			height
+		} = await element.size()
 		expect(typeof width).toBe('number');
 		expect(typeof height).toBe('number');
 		expect(width).toBeGreaterThan(0)
@@ -136,7 +154,10 @@ describe('pages/index/index', () => {
 	})
 	it('element.size for component', async () => {
 		const componentFoo = await page.$('Foo')
-		const {width, height} = await componentFoo.size()
+		const {
+			width,
+			height
+		} = await componentFoo.size()
 		expect(typeof width).toBe('number');
 		expect(typeof height).toBe('number');
 		expect(width).toBeGreaterThan(0)
@@ -144,7 +165,10 @@ describe('pages/index/index', () => {
 	})
 	it('element.offset', async () => {
 		const element = await page.$('.my-input')
-		const { left, top } = await element.offset()
+		const {
+			left,
+			top
+		} = await element.offset()
 		expect(typeof left).toBe('number');
 		expect(typeof top).toBe('number');
 	})
@@ -261,7 +285,7 @@ describe('pages/index/index', () => {
 	})
 	it('uni.xxx not exists', async () => {
 		const res2 = await uni.aaaa({
-			fail(err){
+			fail(err) {
 				console.log('uni.aaaa', err)
 			},
 			complete(res) {
@@ -386,58 +410,56 @@ describe('pages/index/index', () => {
 			}, 3000)
 		})
 	})
+	// it('uni.showLoading', async () => {
+	// 	uni.showLoading({
+	// 		title: 'this is loading',
+	// 		// mask: true,
+	// 		success() {
+	// 			console.warn('showLoading success')
+	// 		},
+	// 		fail() {
+	// 			console.warn('showLoading fail')
+	// 		},
+	// 		complete() {
+	// 			console.warn('showLoading complete')
+	// 		}
+	// 	})
+	// 	setTimeout(() => {
+	// 		uni.hideLoading()
+	// 	},5000)
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},6000)
+	// 	})
+	// })
 
-
-	// // it('uni.showLoading', async () => {
-	// // 	uni.showLoading({
-	// // 		title: 'this is loading',
-	// // 		// mask: true,
-	// // 		success() {
-	// // 			console.warn('showLoading success')
-	// // 		},
-	// // 		fail() {
-	// // 			console.warn('showLoading fail')
-	// // 		},
-	// // 		complete() {
-	// // 			console.warn('showLoading complete')
-	// // 		}
-	// // 	})
-	// // 	setTimeout(() => {
-	// // 		uni.hideLoading()
-	// // 	},5000)
-	// // 	return new Promise((resolve) => {
-	// // 		setTimeout(() => {
-	// // 			resolve()
-	// // 		},6000)
-	// // 	})
-	// // })
-
-	// // it('uni.showModal', async () => {
-	// // 	uni.showModal({
-	// // 		title: 'this is modal title',
-	// // 		content: 'this is modal content',
-	// // 		cancelText: 'my cancel',
-	// // 		cancelColor: '#007aff',
-	// // 		confirmText: 'my confirm',
-	// // 		confirmColor: '#4cd964',
-	// // 		editable: true,
-	// // 		placeholderText: 'my placeholder',
-	// // 		success(res) {
-	// // 			console.warn('showModal success',res)
-	// // 		},
-	// // 		fail(err) {
-	// // 			console.warn('showModal fail', err)
-	// // 		},
-	// // 		complete(res) {
-	// // 			console.warn('showModal complete', res)
-	// // 		}
-	// // 	})
-	// // 	return new Promise((resolve) => {
-	// // 		setTimeout(() => {
-	// // 			resolve()
-	// // 		},6000)
-	// // 	})
-	// // })
+	// it('uni.showModal', async () => {
+	// 	uni.showModal({
+	// 		title: 'this is modal title',
+	// 		content: 'this is modal content',
+	// 		cancelText: 'my cancel',
+	// 		cancelColor: '#007aff',
+	// 		confirmText: 'my confirm',
+	// 		confirmColor: '#4cd964',
+	// 		editable: true,
+	// 		placeholderText: 'my placeholder',
+	// 		success(res) {
+	// 			console.warn('showModal success',res)
+	// 		},
+	// 		fail(err) {
+	// 			console.warn('showModal fail', err)
+	// 		},
+	// 		complete(res) {
+	// 			console.warn('showModal complete', res)
+	// 		}
+	// 	})
+	// 	return new Promise((resolve) => {
+	// 		setTimeout(() => {
+	// 			resolve()
+	// 		},6000)
+	// 	})
+	// })
 
 	// it('uni.showActionSheet', async () => {
 	// 	uni.showActionSheet({
@@ -462,143 +484,135 @@ describe('pages/index/index', () => {
 	// })
 
 
-	it('uni.connectSocket', async () => {
-		const socketTask = await uni.connectSocket({
-			url: 'ws://192.168.31.80:8080',
-			// url: 'ws://192.168.12.106:8080/ws',
-			success(res) {
-				expect(res.errMsg).toEqual('connectSocket:ok')
-			},
-			fail(err) {
-				console.warn('connectSocket fail', err)
-				expect(err.message).toEqual('connectSocket:fail')
-			}
-		})
-		console.warn('socketTask', socketTask)
-		
-		// await uni.onSocketOpen(async (res1) => {
-		// 	console.log('uni.onSocketOpen', res1)
-		// 	await uni.sendSocketMessage({
-		// 		data: 'message from uni.sendSocketMessage',
-		// 		success: async (res2) => {
-		// 			console.log('uni.sendSocketMessage success', res2)
-		// 			expect(res2.errMsg).toEqual('sendSocketMessage:ok')
-		// 			await uni.closeSocket({
-		// 				code: 1000,
-		// 				reason: 'close from uni.closeSocket in automator',
-		// 				success(res3){
-		// 					console.log('uni.closeSocket success', res3)
-		// 					expect(res3.errMsg).toEqual('closeSocket:ok')
-		// 				},
-		// 				fail(err3){
-		// 					console.log('uni.closeSocket fail', err3)
-		// 				}
-		// 			})
-		// 		},
-		// 		fail(err2) {
-		// 			console.log('uni.sendSocketMessage fail', err2)
-		// 		},
-		// 	})
-		// })
-		// await uni.onSocketMessage((res) => {
-		// 	console.log('uni.onSocketMessage', res)
-		// 	expect(res.data).toEqual('this is server')
-		// })
-		// await uni.onSocketError(async (res) => {
-		// 	console.log('uni.onSocketError', res)
-		// })
-		// await uni.onSocketClose(async (res) => {
-		// 	console.log('uni.onSocketClose', res)
-		// 	expect(res.code).toEqual(1000)
-		// })
-
-
-		socketTask.onOpen(res => {
-		console.log('socketTask.onOpen', res)
-		socketTask.onMessage((res) => {
-			expect(res).toHaveProperty('data');
-		})
-			socketTask.send({
-				data: 'hahaha from client in socketTask.onOpen',
-				success(res) {
-					expect(res.errMsg).toEqual('sendSocketMessage:ok')
-				},
-				fail(err) {
-					expect(err.errMsg.length).toBeGreaterThan(0)
-				},
-				complete(res) {
-					expect(res.errMsg).toEqual('sendSocketMessage:ok')
-				}
-			})
-			socketTask.close({
-				code: 1000,
-				reason: 'close from automator PC',
-				success(res) {
-					expect(res.errMsg).toEqual('closeSocket:ok')
-				},
-				fail(err) {
-					expect(err.errMsg.length).toBeGreaterThan(0)
-				},
-				complete(res) {
-					expect(res.errMsg).toEqual('closeSocket:ok')
-				}
-			})
-		})
-		socketTask.onClose((res) => {
-			expect(res.code).toEqual(1000)
-		})
-		socketTask.onError((err) => {
-			expect(err.errMsg.length).toBeGreaterThan(0)
-		})
-
-		return new Promise((resolve) => {
-			setTimeout(() => {
-				resolve()
-			}, 9000)
-		})
-	})
-
-
-	// it('uni.getSystemInfo', async () => {
-	// 	await uni.getSystemInfo({
-	// 		complete(res) {
-	// 			expect(res.appId.length).toBeGreaterThan(0)
+	// it('uni.connectSocket', async () => {
+	// 	const socketTask = await uni.connectSocket({
+	// 		url: 'ws://192.168.31.83:8080',
+	// 		// url: 'ws://192.168.12.106:8080/ws',
+	// 		success(res) {
+	// 			expect(res.errMsg).toEqual('connectSocket:ok')
+	// 		},
+	// 		fail(err) {
+	// 			console.warn('connectSocket fail', err)
+	// 			expect(err.message).toEqual('connectSocket:fail')
 	// 		}
 	// 	})
-	// })
-	// it('uni.getSystemInfoSync', async () => {
-	// 	const result = await uni.getSystemInfoSync()
-	// 	expect(result.appId.length).toBeGreaterThan(0)
-	// })
-	// it('uni.getAppBaseInfo', async () => {
-	// 	const result = await uni.getAppBaseInfo()
-	// 	expect(result.appId.length).toBeGreaterThan(0)
-	// })
-	// // it('uni.getDeviceInfo', async () => {
-	// // 	const result = await uni.getDeviceInfo()
-	// // 	console.log('getDeviceInfo',result)
-	// // 	expect(result.deviceId.length).toBeGreaterThan(0)
-	// // })
-	// it('uni.getAppAuthorizeSetting', async () => {
-	// 	const result = await uni.getAppAuthorizeSetting()
-	// 	expect(result.cameraAuthorized.length).toBeGreaterThan(0)
-	// })
-	// it('uni.openAppAuthorizeSetting', async () => {
-	// 	await uni.openAppAuthorizeSetting({
-	// 		complete(res) {
-	// 			expect(typeof res.errMsg).toEqual('string')
-	// 		}
+	// 	console.warn('socketTask', socketTask)
+
+	// 	await uni.onSocketOpen(async (res1) => {
+	// 		console.log('uni.onSocketOpen', res1)
+	// 		await uni.sendSocketMessage({
+	// 			data: 'message from uni.sendSocketMessage',
+	// 			success: async (res2) => {
+	// 				console.log('uni.sendSocketMessage success', res2)
+	// 				expect(res2.errMsg).toEqual('sendSocketMessage:ok')
+	// 				await uni.closeSocket({
+	// 					code: 1000,
+	// 					reason: 'close from uni.closeSocket in automator',
+	// 					success(res3) {
+	// 						console.log('uni.closeSocket success', res3)
+	// 						expect(res3.errMsg).toEqual('closeSocket:ok')
+	// 					},
+	// 					fail(err3) {
+	// 						console.log('uni.closeSocket fail', err3)
+	// 					}
+	// 				})
+	// 			},
+	// 			fail(err2) {
+	// 				console.log('uni.sendSocketMessage fail', err2)
+	// 			},
+	// 		})
 	// 	})
+	// await uni.onSocketMessage((res) => {
+	// 	console.log('uni.onSocketMessage', res)
+	// 	expect(res.data).toEqual('this is server')
 	// })
-	// it('callMethodWithCallback', () => {
-	// 客户端修改了JSON.parse JSON.stringify 实现后导致传入的 args 无法 as 为 Array 无法调用数组 push 方法
-	// 且因为已支持 uni.api 调用,故该功能暂时弃用
-	// 	page.callMethodWithCallback('getStorageInfo')
+	// await uni.onSocketError(async (res) => {
+	// 	console.log('uni.onSocketError', res)
+	// })
+	// await uni.onSocketClose(async (res) => {
+	// 	console.log('uni.onSocketClose', res)
+	// 	expect(res.code).toEqual(1000)
+	// })
+
+
+	// 	socketTask.onOpen(res => {
+	// 	console.log('socketTask.onOpen', res)
+	// 	socketTask.onMessage((res) => {
+	// 		expect(res).toHaveProperty('data');
+	// 	})
+	// 		socketTask.send({
+	// 			data: 'hahaha from client in socketTask.onOpen',
+	// 			success(res) {
+	// 				expect(res.errMsg).toEqual('sendSocketMessage:ok')
+	// 			},
+	// 			fail(err) {
+	// 				expect(err.errMsg.length).toBeGreaterThan(0)
+	// 			},
+	// 			complete(res) {
+	// 				expect(res.errMsg).toEqual('sendSocketMessage:ok')
+	// 			}
+	// 		})
+	// 		socketTask.close({
+	// 			code: 1000,
+	// 			reason: 'close from automator PC',
+	// 			success(res) {
+	// 				expect(res.errMsg).toEqual('closeSocket:ok')
+	// 			},
+	// 			fail(err) {
+	// 				expect(err.errMsg.length).toBeGreaterThan(0)
+	// 			},
+	// 			complete(res) {
+	// 				expect(res.errMsg).toEqual('closeSocket:ok')
+	// 			}
+	// 		})
+	// 	})
+	// 	socketTask.onClose((res) => {
+	// 		expect(res.code).toEqual(1000)
+	// 	})
+	// 	socketTask.onError((err) => {
+	// 		expect(err.errMsg.length).toBeGreaterThan(0)
+	// 	})
+
 	// 	return new Promise((resolve) => {
 	// 		setTimeout(() => {
 	// 			resolve()
-	// 		},2000)
+	// 		}, 9000)
 	// 	})
-	// 	// page.callMethodWithCallback('getStorageInfo222')
 	// })
+
+
+	it('uni.getSystemInfo', async () => {
+		await uni.getSystemInfo({
+			complete(res) {
+				expect(res.appId.length).toBeGreaterThan(0)
+			}
+		})
+	})
+	it('uni.getSystemInfoSync', async () => {
+		const result = await uni.getSystemInfoSync()
+		expect(result.appId.length).toBeGreaterThan(0)
+	})
+	it('uni.getAppBaseInfo', async () => {
+		const result = await uni.getAppBaseInfo()
+		expect(result.appId.length).toBeGreaterThan(0)
+	})
+	it('uni.getDeviceInfo', async () => {
+		const result = await uni.getDeviceInfo()
+		expect(result.deviceModel.length).toBeGreaterThan(0)
+	})
+	it('uni.getSystemSetting', async () => {
+		const result = await uni.getSystemSetting()
+		expect(typeof result.locationEnabled).toEqual('boolean')
+	})
+	it('uni.getAppAuthorizeSetting', async () => {
+		const result = await uni.getAppAuthorizeSetting()
+		expect(result.cameraAuthorized.length).toBeGreaterThan(0)
+	})
+	it('uni.openAppAuthorizeSetting', async () => {
+		await uni.openAppAuthorizeSetting({
+			complete(res) {
+				expect(typeof res.errMsg).toEqual('string')
+			}
+		})
+	})
 })

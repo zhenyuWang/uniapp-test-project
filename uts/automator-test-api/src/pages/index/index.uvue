@@ -107,18 +107,20 @@ export default {
       println(e)
     },
     getElement() {
-      uni.loadFontFace({
-        // global: true,
-        family: 'AlimamaDaoLiTi',
-        source: 'http://192.168.12.106:8080/downloadfile?filename=AlimamaDaoLiTi.ttf',
-        success() {
-          println('loadFontFace success')
-        },
-        fail(err: any) {
-          println('loadFontFace fail')
-          println(err)
-        }
-      })
+      const page = getCurrentPages()[0]
+      println(page)
+      // uni.loadFontFace({
+      //   // global: true,
+      //   family: 'AlimamaDaoLiTi',
+      //   source: 'http://192.168.12.106:8080/downloadfile?filename=AlimamaDaoLiTi.ttf',
+      //   success() {
+      //     println('loadFontFace success')
+      //   },
+      //   fail(err: any) {
+      //     println('loadFontFace fail')
+      //     println(err)
+      //   }
+      // })
       // const launchOptions = uni.getLaunchOptionsSync()
       // println(launchOptions)
       // println(launchOptions.path)

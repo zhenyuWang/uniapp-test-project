@@ -150,50 +150,50 @@
 	}
 
 	.border-24 {
-		border: 20% dotted red;
+		border: 20px dotted red;
 	}
 
 	.border-25 {
-		border: 20% dotted #66ccff;
+		border: 20px dotted #66ccff;
 	}
 
 	.border-26 {
-		border: 20% dotted rgb(255, 0, 0);
+		border: 20px dotted rgb(255, 0, 0);
 	}
 
 	.border-27 {
-		border: 20% dotted rgba(255, 0, 0, 0.8);
+		border: 20px dotted rgba(255, 0, 0, 0.8);
 	}
 
 	.border-28 {
-		border: 20% dashed red;
+		border: 20px dashed red;
 	}
 
 	.border-29 {
-		border: 20% dashed #66ccff;
+		border: 20px dashed #66ccff;
 	}
 
 	.border-30 {
-		border: 20% dashed rgb(255, 0, 0);
+		border: 20px dashed rgb(255, 0, 0);
 	}
 
 	.border-31 {
-		border: 20% dashed rgba(255, 0, 0, 0.8);
+		border: 20px dashed rgba(255, 0, 0, 0.8);
 	}
 
 	.border-32 {
-		border: 20% solid red;
+		border: 20px solid red;
 	}
 
 	.border-33 {
-		border: 20% solid #66ccff;
+		border: 20px solid #66ccff;
 	}
 
 	.border-34 {
-		border: 20% solid rgb(255, 0, 0);
+		border: 20px solid rgb(255, 0, 0);
 	}
 
 	.border-35 {
-		border: 20% solid rgba(255, 0, 0, 0.8);
+		border: 20px solid rgba(255, 0, 0, 0.8);
 	}
 </style>
