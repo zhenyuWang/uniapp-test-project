@@ -52,6 +52,7 @@ export function createApp() {
 		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".test-checkbox1","pageId":0}}')
 		// onMessage('{"id":"123","method":"Element.getProperties","params":{"names":["checked"],"elementId":"1688098757020","pageId":0,"nodeId":6}}')
 		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".progress","pageId":0}}')
+		// onMessage('{id: "123","method":"Page.getWindowProperties","params":{"names":["document.documentElement.scrollTop"],"pageId":0}}')
 	}, 3000)
 	console.warn('createApp start')
 	console.log('abc')

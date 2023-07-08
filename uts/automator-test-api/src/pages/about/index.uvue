@@ -5,6 +5,7 @@
       <text class="button-text">back</text>
     </view>
     <button @click="goDetail">goDetail</button>
+    <text class="testFont">自定义字体文字</text>
   </view>
 </template>
 
@@ -52,3 +53,9 @@ export default {
   },
 }
 </script>
+
+<style>
+.testFont {
+  font-family: AlimamaDaoLiTi;
+}
+</style>

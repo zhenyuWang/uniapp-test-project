@@ -74,6 +74,34 @@
 			}
 		},
 		onReady() {
+			const socketTask = uni.connectSocket({
+				url: 'ws://192.168.0.110:8080',
+				// url: 'ws://192.168.12.106:8080/ws',
+				success(res) {
+					console.warn('connectSocket success', res)
+				},
+				fail(err) {
+					console.warn('connectSocket fail', err)
+				}
+			})
+
+			socketTask.onOpen((res : OnSocketOpenCallbackResult) => {
+				console.warn('socketTask.onOpen', res)
+				socketTask.send({
+					data: 'data from index.uvue'
+				} as SendSocketMessageOptions)
+				socketTask.close({
+					code: 1000,
+					reason: 'close reason from client',
+					success(res : any) {
+						console.log('uni.closeSocket success', res)
+					},
+					fail(err : any) {
+						console.log('uni.closeSocket fail', err)
+					}
+				} as CloseSocketOptions)
+			})
+
 			// const res = uni.clearStorageSync()
 			// console.warn('res',res)
 			// const pages = getCurrentPages();
@@ -155,16 +183,16 @@
 			automatorTouchMove() {
 				console.warn('automatorTouchMove')
 			},
-			automatorTouchEnd(e: TouchEvent) {
+			automatorTouchEnd(e : TouchEvent) {
 				console.warn('automatorTouchEnd', e)
 			},
 			test() {
 				uni.showActionSheet({
 					itemList: ['A', 'B', 'C'],
-					success: function(res) {
+					success: function (res) {
 						console.log('showActionSheet success', res);
 					},
-					fail: function(res) {
+					fail: function (res) {
 						console.log(res.errMsg);
 					}
 				});
@@ -180,7 +208,7 @@
 			getStorageInfo() {
 				console.warn('method getStorageInfo')
 			},
-			myTest(): number {
+			myTest() : number {
 				const sum = 2
 				console.warn('my test--------------------------', sum);
 				return sum;
