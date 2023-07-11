@@ -17,11 +17,11 @@ describe('pages/index/index', () => {
 	// 	const scrollTop = await page.scrollTop()
 	// 	expect(scrollTop).toEqual(200)
 	// })
-	it('page.size', async () => {
-		const {width, height} = await page.size()
-		console.log('width', width, 'height', height)
-		// expect(scrollTop).toEqual(200)
-	})
+	// it('page.size', async () => {
+	// 	const {width, height} = await page.size()
+	// 	console.log('width', width, 'height', height)
+	// 	// expect(scrollTop).toEqual(200)
+	// })
 	// it('uni.switchTab', async () => {
 	// 	await uni.switchTab({
 	// 		url: '/pages/test/test',
@@ -275,14 +275,17 @@ describe('pages/index/index', () => {
 	// 	console.log('data', data)
 	// 	expect(data.title).toEqual('automatorTap')
 	// })
-	// it('Page.setData', async () => {
-	// 	await page.setData({
-	// 		title: '222'
-	// 	})
-	// 	const data = await page.data()
-	// 	console.log('data', data)
-	// 	expect(data.title).toEqual('222')
-	// })
+	it('Page.setData', async () => {
+		await page.setData({
+			title: '222'
+		})
+		const data = await page.data()
+		console.log('data', data)
+		expect(data.title).toEqual('222')
+		const textNode = await page.$('.test-child')
+		const text = await textNode.text()
+		expect(text).toEqual('222')
+	})
 	// it('screenshot', async () => {
 	// 	// const image = await program.screenshot({fullPage: true})
 	// 	const image = await program.screenshot()

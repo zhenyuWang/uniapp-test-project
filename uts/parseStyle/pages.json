@@ -5,6 +5,11 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		}, {
+			"path": "pages/about/about",
+			"style": {
+				"navigationBarTitleText": "about"
+			}
 		}
 	],
 	"globalStyle": {

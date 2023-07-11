@@ -1,0 +1,29 @@
+<template>
+	<view>
+		<view>this is detail page</view>
+		<button @click="back">back</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				
+			}
+		},
+		onBackPress(options: OnBackPressOptions): boolean | null {
+			console.warn('onBackPress', options)
+			return null
+		},
+		methods: {
+			back(){
+				uni.navigateBack({})
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

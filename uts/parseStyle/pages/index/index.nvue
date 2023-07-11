@@ -7,6 +7,7 @@
     </view>
 		<view>height: {{keyboardHeight}}</view>
 		<input type="text">
+		<button @click="relaunchAbout">relaunch about</button>
   </view>
 </template>
 <script lang="ts">
@@ -50,13 +51,18 @@ export default {
 		// 	console.log('onKeyboardHeightChange', e)
 		// 	this.keyboardHeight = e.height
 		// })
-		uni.showToast({
-			title: 'title in 1.0',
-			image: '',
-			duration: 3000
-		})
+		// uni.showToast({
+		// 	title: 'title in 1.0',
+		// 	image: '',
+		// 	duration: 3000
+		// })
 	},
   methods: {
+		relaunchAbout(){
+			uni.reLaunch({
+				url:'/pages/about/about'
+			})
+		},
     _onClick() {
       this.isChecked1 = !this.isChecked1
 			uni.getBatteryInfo({
@@ -70,8 +76,6 @@ export default {
 </script>
 <style>
 .uni-switch {
-  flex-direction: row;
-  align-items: center;
 	font-family: 'my test';
 }
 

@@ -1,41 +1,27 @@
 <template>
   <view>
-    <text>{{ title }}</text>
+    <input type="text" v-model="obj.title2" placeholder="please input" />
+    <textarea v-model="obj.title2" placeholder="please input" />
+    <text>{{ obj.title2 }}</text>
+    <Foo v-model:title1="obj.title2 as string" v-model:width="num" />
   </view>
-  <view>
-    <text>{{ title }}</text>
-  </view>
-  <button @click="goAbout">go about</button>
 </template>
 
 <script lang="ts">
+import Foo from '../../components/Foo.uvue'
+type ObjType = {
+  title2: String,
+}
 export default {
+  components: { Foo },
   data() {
     return {
-      title: 'Hello',
+      title: 'Hello123',
+      obj: {
+        title2: 'Hello---',
+      } as ObjType,
+      num: 10
     }
   },
-  onLoad(){
-    println('index onLoad-------------------------------------')
-  },
-  onShow(){
-    println('index onShow-------------------------------------')
-  },
-  onReady(){
-    println('index onReady-------------------------------------')
-  },
-  onHide(){
-    println('index onHide-------------------------------------')
-  },
-  onUnload(){
-    println('index onUnload-------------------------------------')
-  },
-  methods: {
-    goAbout(){
-      uni.navigateTo({
-        url: '/pages/about/index'
-      })
-    }
-  }
 }
 </script>

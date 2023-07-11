@@ -4,23 +4,55 @@
         <Foo />
         <Bar msg="test msg">
           <template v-slot="defaultProps">
-            text in Bar slot default {{title}} {{ defaultProps.get("age") }}
+            text in Bar slot default {{title}} {{ defaultProps.age }}
           </template>
           <template v-slot:header>
             text in Bar slot header
           </template>
         </Bar>
+        <view @click="($event: MouseEvent) => {foo($event)}">my button1</view>
+        <view @click="bar('aaa', $event as MouseEvent)">my button2</view>
+        <view @click="test(title, obj.num)">my button3</view>
+        <view @click="function($event: MouseEvent){foo($event)}">my button4</view>
+        <view @click="foo($event as MouseEvent)">my button5</view>
+        <view @click="fn1();fn2();">my button6</view>
     </view>
 </template>
 
 <script>
 import Foo from '../../components/Foo.uvue'
 import Bar from '../../components/Bar.uvue'
+type Obj = {
+  num: number
+}
 export default {
   components: { Foo, Bar },
   data(){
     return {
-      title: "title in index"
+      title: "title in index",
+      obj: {
+        num: 10
+      } as Obj
+    }
+  },
+  methods: {
+    foo(e: MouseEvent) {
+      println('method foo')
+      println(e)
+    },
+    bar(msg: string, e: MouseEvent) {
+      println('method bar')
+      println(msg)
+    },
+    test(title: String, num: number) {
+      println(title)
+      println(num)
+    },
+    fn1() {
+      println('fn1')
+    },
+    fn2() {
+      println('fn2')
     }
   }
 }

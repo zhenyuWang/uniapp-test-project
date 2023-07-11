@@ -1,5 +1,7 @@
 <template>
 	<view class="content">
+		<text class="testFont">自定义字体内容</text>
+		<button @click="goDetail">goDetail</button>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
 			<checkbox value="cb" class="checkbox test-checkbox2">未选中</checkbox>
@@ -74,33 +76,33 @@
 			}
 		},
 		onReady() {
-			const socketTask = uni.connectSocket({
-				url: 'ws://192.168.0.110:8080',
-				// url: 'ws://192.168.12.106:8080/ws',
-				success(res) {
-					console.warn('connectSocket success', res)
-				},
-				fail(err) {
-					console.warn('connectSocket fail', err)
-				}
-			})
+			// const socketTask = uni.connectSocket({
+			// 	url: 'ws://192.168.0.110:8080',
+			// 	// url: 'ws://192.168.12.106:8080/ws',
+			// 	success(res) {
+			// 		console.warn('connectSocket success', res)
+			// 	},
+			// 	fail(err) {
+			// 		console.warn('connectSocket fail', err)
+			// 	}
+			// })
 
-			socketTask.onOpen((res : OnSocketOpenCallbackResult) => {
-				console.warn('socketTask.onOpen', res)
-				socketTask.send({
-					data: 'data from index.uvue'
-				} as SendSocketMessageOptions)
-				socketTask.close({
-					code: 1000,
-					reason: 'close reason from client',
-					success(res : any) {
-						console.log('uni.closeSocket success', res)
-					},
-					fail(err : any) {
-						console.log('uni.closeSocket fail', err)
-					}
-				} as CloseSocketOptions)
-			})
+			// socketTask.onOpen((res : OnSocketOpenCallbackResult) => {
+			// 	console.warn('socketTask.onOpen', res)
+			// 	socketTask.send({
+			// 		data: 'data from index.uvue'
+			// 	} as SendSocketMessageOptions)
+			// 	socketTask.close({
+			// 		code: 1000,
+			// 		reason: 'close reason from client',
+			// 		success(res : any) {
+			// 			console.log('uni.closeSocket success', res)
+			// 		},
+			// 		fail(err : any) {
+			// 			console.log('uni.closeSocket fail', err)
+			// 		}
+			// 	} as CloseSocketOptions)
+			// })
 
 			// const res = uni.clearStorageSync()
 			// console.warn('res',res)
@@ -212,11 +214,23 @@
 				const sum = 2
 				console.warn('my test--------------------------', sum);
 				return sum;
+			},
+			goDetail(){
+				uni.navigateTo({
+					url: '/pages/detail/detail'
+				})
 			}
 		}
 	}
 </script>
 <style>
+	@font-face {
+	  font-family: AlimamaDaoLiTi;
+	  src: url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf");
+	}
+	.testFont {
+	  font-family: AlimamaDaoLiTi;
+	}
 	.component-foo {
 		color: red;
 	}

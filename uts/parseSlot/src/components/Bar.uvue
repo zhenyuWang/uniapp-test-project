@@ -2,7 +2,7 @@
     <view>
         <text>this is component Bar</text>
         <text>{{title}}</text>
-        <slot age="default age"></slot>
+        <slot age="default age123"></slot>
         <text>msg: {{msg}}</text>
         <text>desc: {{desc}}</text>
         <slot name="header" msg="msg from component Bar"></slot>
@@ -13,7 +13,7 @@
 import { SlotsType } from 'vue'
 export default {
   slots: Object as SlotsType<{
-    default: { foo: string; bar: number }
+    default: { age: string }
     item: { data: number }
   }>,
   props: {

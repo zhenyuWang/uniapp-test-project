@@ -11,6 +11,19 @@
 			"style": {
 				"navigationBarTitleText": "test"
 			}
+		},
+		{
+			"path": "pages/picker-view/picker-view",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}, {
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"globalStyle": {

@@ -15,7 +15,7 @@
 			return {
 				title: 'Hello-3',
 			}
-		}
+		},
 	}
 </script>
 

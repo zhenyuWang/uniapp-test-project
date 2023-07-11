@@ -5,6 +5,7 @@
       <text class="button-text">back</text>
     </view>
     <button @click="goDetail">goDetail</button>
+    <button @click="reLaunchIndex">reLaunchIndex</button>
     <text class="testFont">自定义字体文字</text>
   </view>
 </template>
@@ -29,6 +30,11 @@ export default {
     println('Page about onHide')
   },
   methods: {
+    reLaunchIndex() {
+      uni.reLaunch({
+        url: '/pages/index/index',
+      })
+    },
     back(e: MouseEvent){
       uni.navigateBack({
         success(e: NavigateBackSuccess){

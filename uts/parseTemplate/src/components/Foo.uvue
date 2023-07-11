@@ -1,38 +1,44 @@
 <template>
   <view>
-    <view class="progress" ref="progress" :style="{ width: width + 'px'}">
+    <view class="progress" ref="progress" :style="{ width: width + 'px' }">
       <text>{{ width }}</text>
     </view>
     <button @click="updateWidth">updateWidth</button>
+    <text>title: {{title1}}</text>
+    <text>width: {{width}}</text>
   </view>
 </template>
 <script lang="ts">
-  export default {
-    props: {
-      width: {
-        type: Number,
-        default: 0
-      }
+export default {
+  props: {
+    title1: {
+      type: String,
+      default: '',
     },
-    mounted() {
-      setTimeout(() => {
-        const progress = this.$refs.get('progress')
-        const width = (progress as INode)?.offsetWidth as number
-        println('width' + width)
-      },400)
+    width: {
+      type: Number,
+      default: 0,
     },
-    methods: {
-      updateWidth() {
-        println('updateWidth')
-        this.$emit('update:width', 300)
-      }
-    }
-  }
+  },
+  mounted() {
+    setTimeout(() => {
+      const progress = this.$refs.get('progress')
+      const width = (progress as INode)?.offsetWidth as number
+      println('width' + width)
+    }, 400)
+  },
+  methods: {
+    updateWidth() {
+      println('updateWidth')
+      this.$emit('update:width', 300)
+    },
+  },
+}
 </script>
 <style>
-  .progress {
-    height: 20px;
-    background-color: red;
-    margin-bottom: 30px;
-  }
+.progress {
+  height: 20px;
+  background-color: red;
+  margin-bottom: 30px;
+}
 </style>

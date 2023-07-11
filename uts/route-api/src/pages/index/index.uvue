@@ -8,6 +8,7 @@
     <text @click="redirectToSetting">redirectTo setting</text>
     <text @click="switchTabAbout">switchTabAbout</text>
     <text @click="navigateBack">navigateBack</text>
+    <text @click="reLaunchAbout">reLaunchAbout</text>
     <!-- <view class="box" @touchstart="onTouchstart" @longpress="onLongpress">box in index</view> -->
     <!-- <Foo></Foo>
     <view @tap="onTap">test tap</view> -->
@@ -47,6 +48,15 @@ export default {
     println('--------------------------index onUnload')
   },
   methods: {
+    reLaunchAbout() {
+      uni.reLaunch({
+        url: '/pages/about/index',
+        complete(e) {
+          println('-------------------------reLaunch complete')
+          println(e.errMsg)
+        }
+      })
+    },
     navigateBack() {
       // uni.navigateBack({delta: 12})
       uni.navigateBack({

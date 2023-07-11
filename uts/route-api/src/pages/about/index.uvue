@@ -6,6 +6,7 @@
     <text @click="reLaunchSetting">reLaunch setting</text>
     <text @click="navigateToSetting">navigateTo setting</text>
     <text @click="switchTabBar">switchTabBar index</text>
+    <button @click="reLaunchIndex">reLaunchIndex</button>
     <Foo></Foo>
   </view>
 </template>
@@ -37,6 +38,11 @@ export default {
     println('--------------------------about onUnload')
   },
   methods: {
+    reLaunchIndex() {
+      uni.reLaunch({
+        url: '/pages/index/index',
+      })
+    },
     navigateBack(e: MouseEvent) {
       uni.navigateBack({
         animationDuration: 300,

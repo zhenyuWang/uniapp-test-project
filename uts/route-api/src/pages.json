@@ -5,7 +5,6 @@
       "style": {
         "navigationBarTitleText": "index",
         "navigationBarTextStyle": "black",
-        "navigationBarBackgroundColor": "#09c",
         "backgroundColor": "#ffff00"
       }
     },
