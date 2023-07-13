@@ -1,0 +1,18 @@
+import App from './App'
+import { createSSRApp } from 'vue'
+// import { onMessage } from '/Applications/HBuilderX-Alpha-3.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts'
+// import { initAutomator } from '/Applications/HBuilderX-Alpha-3.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts'
+export function createApp() {
+	// initAutomator()
+	setTimeout(() => {
+		// onMessage('{"id":"1fd12796-0d7c-4b53-b689-5a13f8ec7901","method":"Page.getData","params":{"pageId":0}}')
+	}, 3000)
+	console.warn('createApp start---update')
+	console.log('abc')
+	
+	console.log(123)
+	const app = createSSRApp(App)
+	return {
+		app
+	}
+}

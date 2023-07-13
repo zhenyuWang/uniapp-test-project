@@ -1,0 +1,14 @@
+<template>
+	<view class="content">
+		index page
+	</view>
+</template>
+<script>
+	export default {
+		data() {
+			return {
+				title: '111',
+			}
+		}
+	}
+</script>
