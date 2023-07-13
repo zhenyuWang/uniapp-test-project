@@ -113,25 +113,29 @@ export default {
     getElement() {
       // const page = getCurrentPages()[0]
       // println(page)
-      // uni.loadFontFace({
-      //   global: true,
-      //   family: 'AlimamaDaoLiTi',
-      //   // source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
-      //   // source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
-      //   // source: '/static/font/AlimamaDaoLiTi.ttf',
-      //   source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
-      //   // source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
-      //   success() {
-      //     println('loadFontFace success')
-      //   },
-      //   fail(err: LoadFontFaceFail) {
-      //     println('loadFontFace fail')
-      //     println(err.errMsg)
-      //   },
-      //   complete() {
-      //     println('loadFontFace complete')
-      //   }
-      // })
+      uni.loadFontFace({
+        global: true,
+        family: 'AlimamaDaoLiTi',
+        // source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+        // source: 'https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+        // source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
+        // source: 'url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)',
+        // source: '/static/font/AlimamaDaoLiTi123.ttf',
+        // source: '/static/font/AlimamaDaoLiTi.ttf',
+        // source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
+        // source: 'url(/static/font/AlimamaDaoLiTi.ttf)',
+        source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
+        success(res) {
+          println('loadFontFace success')
+        },
+        fail(err) {
+          println('loadFontFace fail')
+          println(err.errMsg)
+        },
+        complete(res) {
+          println('loadFontFace complete')
+        }
+      })
       // uni.pageScrollTo({
       //   scrollTop: 100,
       //   duration: 300,
@@ -163,7 +167,7 @@ export default {
       // const currentPages = getCurrentPages()
       // println(currentPages)
       uni.navigateTo({
-        url: '/pages/detail/index'
+        url: '/pages/detail/index123123'
       })
       // const myView = this.$querySelector('.my-view')
       // println(myView)
@@ -222,12 +226,17 @@ export default {
     },
   },
 }
+// 'AlimamaDaoLiTi',
+// https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf
+// url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")
+// url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)
+// /static/font/AlimamaDaoLiTi123.ttf
 </script>
 
 <style>
 @font-face {
   font-family: AlimamaDaoLiTi;
-  src: url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf");
+  src: url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf');
 }
 .my-input {
   color: #fff;

@@ -3,6 +3,7 @@ describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
+		console.log('page-------------', page)
 		await page.waitFor(1000)
 	})
 
@@ -275,22 +276,22 @@ describe('pages/index/index', () => {
 	// 	console.log('data', data)
 	// 	expect(data.title).toEqual('automatorTap')
 	// })
-	it('Page.setData', async () => {
-		await page.setData({
-			title: '222'
-		})
-		const data = await page.data()
-		console.log('data', data)
-		expect(data.title).toEqual('222')
-		const textNode = await page.$('.test-child')
-		const text = await textNode.text()
-		expect(text).toEqual('222')
-	})
-	// it('screenshot', async () => {
-	// 	// const image = await program.screenshot({fullPage: true})
-	// 	const image = await program.screenshot()
-	// 	expect(image).toMatchImageSnapshot();
+	// it('Page.setData', async () => {
+	// 	await page.setData({
+	// 		title: '222'
+	// 	})
+	// 	const data = await page.data()
+	// 	console.log('data', data)
+	// 	expect(data.title).toEqual('222')
+	// 	const textNode = await page.$('.test-child')
+	// 	const text = await textNode.text()
+	// 	expect(text).toEqual('222')
 	// })
+	it('screenshot', async () => {
+		// const image = await program.screenshot({fullPage: true})
+		const image = await program.screenshot()
+		expect(image).toMatchImageSnapshot();
+	})
 	// it('uni.xxx not exists', async () => {
 	// 	const res2 = await uni.aaaa({
 	// 		fail(err) {

@@ -1,18 +1,10 @@
 <template>
   <view class="page">
     <text class="cred">this is about title: {{ title }}</text>
-    <text @click="navigateBack">navigateBack</text>
-    <text @click="redirectToSetting">redirectTo setting</text>
-    <text @click="reLaunchSetting">reLaunch setting</text>
-    <text @click="navigateToSetting">navigateTo setting</text>
-    <text @click="switchTabBar">switchTabBar index</text>
-    <button @click="reLaunchIndex">reLaunchIndex</button>
-    <Foo></Foo>
   </view>
 </template>
 
 <script lang="ts">
-import Foo from '../../components/Foo.uvue'
 export default {
   components: {
     Foo
@@ -20,101 +12,6 @@ export default {
   data() {
     return {
       title: 'about title',
-    }
-  },
-  onLoad(options: OnLoadOptions) {
-    println('--------------------------about onLoad')
-  },
-  onShow() {
-    println('--------------------------about onShow')
-  },
-  onReady() {
-    println('--------------------------about onReady')
-  },
-  onHide() {
-    println('--------------------------about onHide')
-  },
-  onUnload() {
-    println('--------------------------about onUnload')
-  },
-  methods: {
-    reLaunchIndex() {
-      uni.reLaunch({
-        url: '/pages/index/index',
-      })
-    },
-    navigateBack(e: MouseEvent) {
-      uni.navigateBack({
-        animationDuration: 300,
-        success(e: NavigateBackSuccess) {
-          println('---------navigateBack success in about')
-          println(e.errMsg)
-        },
-        fail(e: NavigateBackFail) {
-          println('---------navigateBack fail in about')
-          println(e.errMsg)
-        },
-        complete(e: NavigateBackComplete) {
-          println('---------navigateBack complete in about')
-          println(e.errMsg)
-        }
-      })
-    },
-    reLaunchSetting(e: MouseEvent) {
-      uni.reLaunch({
-        url: '/pages/setting/index',
-        success(e: ReLaunchSuccess) {
-          println('---------reLaunch success in about')
-          println(e.errMsg)
-        },
-        fail(e: ReLaunchFail) {
-          println('---------reLaunch fail in about')
-          println(e.errMsg)
-        },
-        complete(e: ReLaunchComplete) {
-          println('---------reLaunch complete in about')
-          println(e.errMsg)
-        }
-      })
-    },
-    redirectToSetting(e: MouseEvent) {
-      uni.redirectTo({
-        url: "/pages/setting/index",
-        success(e: RedirectToSuccess) {
-          println('---------redirectTo success in about')
-          println(e.errMsg)
-        },
-        fail(e: RedirectToFail) {
-          println('---------redirectTo fail in about')
-          println(e.errMsg)
-        },
-        complete(e: RedirectToComplete) {
-          println('---------redirectTo complete in about')
-          println(e.errMsg)
-        }
-      })
-    },
-    navigateToSetting(e: MouseEvent) {
-      uni.navigateTo({
-        url: '/pages/setting/index',
-        success(e: NavigateToSuccess) {
-          println('---------navigateTo success in about')
-          println(e.errMsg)
-        },
-        fail(e: NavigateToFail) {
-          println('---------navigateTo fail in about')
-          println(e.errMsg)
-        },
-        complete(e: NavigateToComplete) {
-          println('---------navigateTo complete in about')
-          println(e.errMsg)
-        }
-      })
-    },
-    switchTabBar() {
-      uni.switchTab({
-        url: '/pages/index/index'
-      })
     }
   }
 }

@@ -1,10 +1,6 @@
 <template>
   <view class="page">
     <text class="cblue">this is setting title: {{ title }}</text>
-    <text @click="navigateBack">navigateBack</text>
-    <text @click="reLaunchIndex">reLaunchIndex</text>
-    <text @click="reLaunchAbout">reLaunchAbout</text>
-    <text @click="reLaunchNotFound">reLaunchNotFound</text>
   </view>
 </template>
 
@@ -15,99 +11,6 @@ export default {
       title: 'setting title',
     }
   },
-  onLoad(options: OnLoadOptions) {
-    println('--------------------------setting onLoad')
-  },
-  onShow() {
-    println('--------------------------setting onShow')
-  },
-  onReady() {
-    println('--------------------------setting onReady')
-  },
-  onHide() {
-    println('--------------------------setting onHide')
-  },
-  onUnload() {
-    println('--------------------------setting onUnload')
-  },
-  onBackPress(options): boolean | null {
-    println('--------------------------setting onBackPress')
-    println(options.from)
-    println(options.equals)
-    println(options.toString)
-    return null
-  },
-  methods: {
-    navigateBack(e: MouseEvent) {
-      // uni.navigateBack({delta: 12})
-      uni.navigateBack({
-        animationDuration: 300,
-        success(e: NavigateBackSuccess) {
-          println('---------navigateBack success in setting')
-          println(e.errMsg)
-        },
-        fail(e: NavigateBackFail) {
-          println('---------navigateBack fail in setting')
-          println(e.errMsg)
-        },
-        complete(e: NavigateBackComplete) {
-          println('---------navigateBack complete in setting')
-          println(e.errMsg)
-        }
-      })
-    },
-    reLaunchIndex() {
-      uni.reLaunch({
-        url: '/pages/index/index',
-        success(e: ReLaunchSuccess) {
-          println('---------reLaunch index success in setting')
-          println(e.errMsg)
-        },
-        fail(e: ReLaunchFail) {
-          println('---------reLaunch index fail in setting')
-          println(e.errMsg)
-        },
-        complete(e: ReLaunchComplete) {
-          println('---------reLaunch index complete in setting')
-          println(e.errMsg)
-        }
-      })
-    },
-    reLaunchAbout() {
-      uni.reLaunch({
-        url: '/pages/about/index',
-        success(e: ReLaunchSuccess) {
-          println('---------reLaunch success in setting')
-          println(e.errMsg)
-        },
-        fail(e: ReLaunchFail) {
-          println('---------reLaunch fail in setting')
-          println(e.errMsg)
-        },
-        complete(e: ReLaunchComplete) {
-          println('---------reLaunch about complete in setting')
-          println(e.errMsg)
-        }
-      })
-    },
-    reLaunchNotFound() {
-      uni.reLaunch({
-        url: '/aaaa',
-        success(e: ReLaunchSuccess) {
-          println('---------reLaunch success in setting')
-          println(e.errMsg)
-        },
-        fail(e: ReLaunchFail) {
-          println('---------reLaunch fail in setting')
-          println(e.errMsg)
-        },
-        complete(e: ReLaunchComplete) {
-          println('---------reLaunch notFound complete in setting')
-          println(e.errMsg)
-        }
-      })
-    }
-  }
 }
 </script>
 

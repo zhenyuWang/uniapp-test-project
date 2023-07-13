@@ -5,19 +5,22 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('uni.api', async () => {
-		// const inputs = [{
-		//   "filter": ["abc"]
-		// }];
-		// const res = await uni.getAppBaseInfo(...inputs)
-		// const res = await uni.getAppBaseInfo()
-		// console.warn('getAppBaseInfo res', res)
-		uni.getBatteryInfo({
-			complete(res){
-				console.warn('uni.getBatteryInfo res', res)
-			}
-		})
+	it('test', () => {
+		expect(1+1).toEqual(2)
 	})
+	// it('uni.api', async () => {
+	// 	// const inputs = [{
+	// 	//   "filter": ["abc"]
+	// 	// }];
+	// 	// const res = await uni.getAppBaseInfo(...inputs)
+	// 	// const res = await uni.getAppBaseInfo()
+	// 	// console.warn('getAppBaseInfo res', res)
+	// 	uni.getBatteryInfo({
+	// 		complete(res){
+	// 			console.warn('uni.getBatteryInfo res', res)
+	// 		}
+	// 	})
+	// })
 	// it('page.$', async () => {
 	// 	const myTest1 = await page.$('.mytest')
 	// 	console.log('myTest1', myTest1)
