@@ -1,0 +1,21 @@
+<template>
+  <view>
+    <view>this is index page {{title}}</view>
+    <!-- <view>this is index page {{title}}</view> -->
+    <view>
+      <!-- 这是注释 -->
+      index message wrap comment
+      <!-- <view>this is index page {{title}}</view> -->
+    </view>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      title: 'index title',
+    }
+  },
+}
+</script>

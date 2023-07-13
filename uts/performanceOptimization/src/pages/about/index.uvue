@@ -1,0 +1,30 @@
+<template>
+  <view>
+    <text :style='{color: true ? "blue" : "red"}'>test style</text>
+  </view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      testClass: "cred"
+    }
+  },
+  onLoad(){
+    println('about onLoad-------------------------------------')
+  },
+  onShow(){
+    println('about onShow-------------------------------------')
+  },
+  onReady(){
+    println('about onReady-------------------------------------')
+  },
+  onHide(){
+    println('about onHide-------------------------------------')
+  },
+  onUnload(){
+    println('about onUnload-------------------------------------')
+  }
+}
+</script>
