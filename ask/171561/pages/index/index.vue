@@ -1,7 +1,7 @@
 <template>
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
-		<view class="text-area">
+		<view class="text-area" style="margin-bottom: 1000px;">
 			<text class="title">{{title}}</text>
 		</view>
 	</view>
@@ -14,8 +14,8 @@
 				title: 'Hello'
 			}
 		},
-		onLoad() {
-
+		onPageScroll(options) {
+			console.log('onPageScroll',options);
 		},
 		methods: {
 

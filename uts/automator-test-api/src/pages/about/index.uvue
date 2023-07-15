@@ -37,15 +37,15 @@ export default {
     },
     back(e: MouseEvent){
       uni.navigateBack({
-        success(e: NavigateBackSuccess){
+        success(e){
           println('---------navigateBack success in about')
           println(e.errMsg)
         },
-        fail(e: NavigateBackFail){
+        fail(e){
           println('---------navigateBack fail in about')
           println(e.errMsg)
         },
-        complete(e: NavigateBackComplete){
+        complete(e){
           println('---------navigateBack complete in about')
           println(e.errMsg)
         }

@@ -102,6 +102,13 @@ export default {
   onReady() {
     println('Page index onReady')
   },
+  onPageScroll(options) {
+    println('Page index onPageScroll')
+    println(options.scrollTop)
+  },
+  onReachBottom() {
+    println('Page index onReachBottom')
+  },
   onHide() {
     println('Page index onHide')
   },
@@ -111,31 +118,57 @@ export default {
       println(e)
     },
     getElement() {
-      // const page = getCurrentPages()[0]
-      // println(page)
-      uni.loadFontFace({
-        global: true,
-        family: 'AlimamaDaoLiTi',
-        // source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
-        // source: 'https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
-        // source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
-        // source: 'url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)',
-        // source: '/static/font/AlimamaDaoLiTi123.ttf',
-        // source: '/static/font/AlimamaDaoLiTi.ttf',
-        // source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
-        // source: 'url(/static/font/AlimamaDaoLiTi.ttf)',
-        source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
-        success(res) {
-          println('loadFontFace success')
-        },
-        fail(err) {
-          println('loadFontFace fail')
-          println(err.errMsg)
-        },
+      uni.navigateTo({
+        url: '/pages/detail/index',
         complete(res) {
-          println('loadFontFace complete')
+          println('navigateTo complete')
+          println(res.errMsg)
         }
       })
+      uni.navigateTo({
+        url: '/pages/detail/index',
+        complete(res) {
+          println('navigateTo complete')
+          println(res.errMsg)
+        }
+      })
+      uni.navigateTo({
+        url: '/pages/detail/index',
+        complete(res) {
+          println('navigateTo complete')
+          println(res.errMsg)
+        }
+      })
+      // uni.startPullDownRefresh({
+      //   success() {
+      //     println('startPullDownRefresh start')
+      //   },
+      // })
+      // const page = getCurrentPages()[0]
+      // println(page)
+      // uni.loadFontFace({
+      //   global: true,
+      //   family: 'AlimamaDaoLiTi',
+      //   // source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+      //   // source: 'https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+      //   // source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
+      //   // source: 'url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)',
+      //   // source: '/static/font/AlimamaDaoLiTi123.ttf',
+      //   // source: '/static/font/AlimamaDaoLiTi.ttf',
+      //   // source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
+      //   // source: 'url(/static/font/AlimamaDaoLiTi.ttf)',
+      //   source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
+      //   success(res) {
+      //     println('loadFontFace success')
+      //   },
+      //   fail(err) {
+      //     println('loadFontFace fail')
+      //     println(err.errMsg)
+      //   },
+      //   complete(res) {
+      //     println('loadFontFace complete')
+      //   }
+      // })
       // uni.pageScrollTo({
       //   scrollTop: 100,
       //   duration: 300,
@@ -166,9 +199,9 @@ export default {
       // app.quit()
       // const currentPages = getCurrentPages()
       // println(currentPages)
-      uni.navigateTo({
-        url: '/pages/detail/index123123'
-      })
+      // uni.navigateTo({
+      //   url: '/pages/detail/index123123'
+      // })
       // const myView = this.$querySelector('.my-view')
       // println(myView)
       // const myButton = this.$querySelector('.my-button')
@@ -214,11 +247,11 @@ export default {
         success() {
           println('---------navigateBack success in detail')
         },
-        fail(e: NavigateBackFail) {
+        fail(e) {
           println('---------navigateBack fail in detail')
           println(e.errMsg)
         },
-        complete(e: NavigateBackComplete) {
+        complete(e) {
           println('---------navigateBack complete in detail')
           println(e.errMsg)
         }
