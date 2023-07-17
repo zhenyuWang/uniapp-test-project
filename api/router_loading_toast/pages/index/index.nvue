@@ -1,0 +1,35 @@
+<template>
+	<view class="content">
+		<view>this is index</view>
+		<button @click="switchTabAbout">switchTabAbout</button>
+		<button @click="navigateToDetail">navigateToDetail</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		methods: {
+			switchTabAbout(){
+				uni.showLoading({
+					title: 'index loading'
+				})
+				uni.switchTab({
+					url: '/pages/about/index'
+				})
+			},
+			navigateToDetail(){
+				uni.showLoading({
+					title: 'index loading'
+				})
+				uni.navigateTo({
+					url: '/pages/detail/index'
+				})
+			}
+		}
+	}
+</script>
