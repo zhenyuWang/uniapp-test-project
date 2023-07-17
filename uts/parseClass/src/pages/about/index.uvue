@@ -1,0 +1,21 @@
+<template>
+  <view>
+    <view>this is about</view>
+    <button @click="back">back</button>
+  </view>
+</template>
+
+<script>
+export default {
+  data() {
+    return {
+      msg: 'hello world',
+    }
+  },
+  methods: {
+    back() {
+      uni.navigateBack({})
+    },
+  },
+}
+</script>

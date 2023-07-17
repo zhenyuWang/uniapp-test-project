@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<view>this is detail page</view>
+		<text class="testFont">自定义字体内容</text>
 		<button @click="back">back</button>
 	</view>
 </template>
@@ -25,5 +26,7 @@
 </script>
 
 <style>
-
+.testFont {
+	  font-family: AlimamaDaoLiTi;
+	}
 </style>

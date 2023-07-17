@@ -35,21 +35,8 @@ export default {
     println('Page detail onHide')
   },
   methods: {
-    back(e: MouseEvent){
-      uni.navigateBack({
-        success(e){
-          println('---------navigateBack success in detail')
-          println(e.errMsg)
-        },
-        fail(e){
-          println('---------navigateBack fail in detail')
-          println(e.errMsg)
-        },
-        complete(e){
-          println('---------navigateBack complete in detail')
-          println(e.errMsg)
-        }
-      })
+    back(){
+      uni.navigateBack({})
     },
     close() {
       const pages = getCurrentPages()
