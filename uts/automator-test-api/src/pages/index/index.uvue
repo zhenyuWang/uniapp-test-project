@@ -119,26 +119,27 @@ export default {
     },
     getElement() {
       uni.navigateTo({
-        url: '/pages/detail/index',
+        url: '../detail/index',
+        // url: '/pages/detail/index',
         complete(res) {
           println('navigateTo complete')
           println(res.errMsg)
         }
       })
-      uni.navigateTo({
-        url: '/pages/detail/index',
-        complete(res) {
-          println('navigateTo complete')
-          println(res.errMsg)
-        }
-      })
-      uni.navigateTo({
-        url: '/pages/detail/index',
-        complete(res) {
-          println('navigateTo complete')
-          println(res.errMsg)
-        }
-      })
+      // uni.navigateTo({
+      //   url: '/pages/detail/index',
+      //   complete(res) {
+      //     println('navigateTo complete')
+      //     println(res.errMsg)
+      //   }
+      // })
+      // uni.navigateTo({
+      //   url: '/pages/detail/index',
+      //   complete(res) {
+      //     println('navigateTo complete')
+      //     println(res.errMsg)
+      //   }
+      // })
       // uni.startPullDownRefresh({
       //   success() {
       //     println('startPullDownRefresh start')

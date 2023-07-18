@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<text class="testFont">自定义字体内容123</text>
+		<text class="testFont">自定义字体内容</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
 			<checkbox value="cb" class="checkbox test-checkbox2">未选中</checkbox>
@@ -76,29 +76,29 @@
 			}
 		},
 		onReady() {
-			uni.loadFontFace({
-				// global: true,
-				family: 'AlimamaDaoLiTi',
-				source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
-				// source: 'https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
-				// source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
-				// source: 'url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)',
-				// source: '/static/font/AlimamaDaoLiTi123.ttf',
-				// source: '/static/font/AlimamaDaoLiTi.ttf',
-				// source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
-				// source: 'url(/static/font/AlimamaDaoLiTi.ttf)',
-				// source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
-				success() {
-					println('loadFontFace success')
-				},
-				fail(err) {
-					println('loadFontFace fail')
-					println(err.errMsg)
-				},
-				complete() {
-					println('loadFontFace complete')
-				}
-			})
+			// uni.loadFontFace({
+			// 	// global: true,
+			// 	family: 'AlimamaDaoLiTi',
+			// 	source: 'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+			// 	// source: 'https://native-res123.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+			// 	// source: 'url("https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf")',
+			// 	// source: 'url(https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf)',
+			// 	// source: '/static/font/AlimamaDaoLiTi123.ttf',
+			// 	// source: '/static/font/AlimamaDaoLiTi.ttf',
+			// 	// source: 'url("/static/font/AlimamaDaoLiTi.ttf")',
+			// 	// source: 'url(/static/font/AlimamaDaoLiTi.ttf)',
+			// 	// source: ' url("/static/font/AlimamaDaoLiTi.ttf") ',
+			// 	success() {
+			// 		println('loadFontFace success')
+			// 	},
+			// 	fail(err) {
+			// 		println('loadFontFace fail')
+			// 		println(err.errMsg)
+			// 	},
+			// 	complete() {
+			// 		println('loadFontFace complete')
+			// 	}
+			// })
 
 			// const socketTask = uni.connectSocket({
 			// 	url: 'ws://192.168.31.70:8080',
@@ -234,7 +234,7 @@
 			goDetail(msg : string) {
 				console.log('msg', msg)
 				uni.navigateTo({
-					url: '/pages/detail/detail'
+					url: '/pages/detail/detail?name=test'
 				})
 			}
 		}

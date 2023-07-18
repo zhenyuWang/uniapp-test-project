@@ -1,14 +1,14 @@
 <template>
   <view class="page">
     <text class="cred">this is about title: {{ title }}</text>
+    <Foo />
   </view>
 </template>
 
 <script lang="ts">
+import Foo from '../../components/Foo.uvue'
 export default {
-  components: {
-    Foo
-  },
+  components: { Foo },
   data() {
     return {
       title: 'about title',
