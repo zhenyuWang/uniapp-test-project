@@ -47,6 +47,9 @@ export default {
 		console.log('pages.length---------', pages.length)
 	},
 	onReady(){
+		// uni.showLoading({
+		// 	title: 'index uvue loading'
+		// })
 		// uni.onKeyboardHeightChange((e) => {
 		// 	console.log('onKeyboardHeightChange', e)
 		// 	this.keyboardHeight = e.height

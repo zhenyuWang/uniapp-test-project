@@ -1,5 +1,6 @@
 <template>
     <view class="content box" style="width:200px;height:260px;backgroundColor:red;">
+        <text id="test-id">hello 123</text>
         <text class="child">child</text>
         <input class="my-input" value="Please input" style="width:200px;height:40px;color:#fff;fontSize:20px;" />
         <view style="width:120px;height:120px;background-color:#ffff00;">
@@ -22,7 +23,9 @@ export default {
 </script>
 <style lang="scss">
 $red: red;
-
+#test-id{
+  color: red;
+}
 .content {
     display: flex;
     flex-direction: column;

@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view>this is detail page</view>
+		<view>this is detail page1</view>
 		<text class="testFont">自定义字体内容</text>
 		<button @click="back">back</button>
 		<button @click="getCurrentPages">getCurrentPages</button>
@@ -19,7 +19,7 @@
 		},
 		onBackPress(options: OnBackPressOptions): boolean | null {
 			console.warn('onBackPress', options)
-			return null
+			return false
 		},
 		methods: {
 			back(){

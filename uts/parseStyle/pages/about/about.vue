@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<view>this is page about1234</view>
+		<view>this is page about</view>
 		<button @click="reLaunchIndex">reLaunchIndex</button>
 		<button @click="navigateToDetail">navigateToDetail</button>
 	</view>
@@ -12,6 +12,9 @@
 			return {
 				
 			}
+		},
+		onReady(){
+			// uni.showLoading()
 		},
 		methods: {
 			reLaunchIndex(){

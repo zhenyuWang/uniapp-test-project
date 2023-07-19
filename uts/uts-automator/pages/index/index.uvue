@@ -76,6 +76,18 @@
 			}
 		},
 		onReady() {
+			// const fileManager = uni.getFileSystemManager()
+			// console.warn('fileManager', fileManager)
+			// fileManager.readFile({
+			// 	encoding: 'base64',
+			// 	filePath: '/static/logo.png',
+			// 	success(readFileRes) {
+			// 		console.warn(readFileRes)
+			// 	},
+			// 	fail(error){
+			// 		console.warn(error)
+			// 	}
+			// } as ReadFileOptions)
 			// uni.loadFontFace({
 			// 	// global: true,
 			// 	family: 'AlimamaDaoLiTi',
@@ -232,6 +244,7 @@
 				return sum;
 			},
 			goDetail(msg : string) {
+				uni.showLoading({title: 'loading title in index'})
 				console.log('msg', msg)
 				uni.navigateTo({
 					url: '/pages/detail/detail?name=test'
@@ -242,8 +255,9 @@
 </script>
 <style>
 	.testFont {
-	  font-family: AlimamaDaoLiTi;
+		font-family: AlimamaDaoLiTi;
 	}
+
 	.component-foo {
 		color: red;
 	}

@@ -57,6 +57,9 @@ export default {
 		// 	image: '',
 		// 	duration: 3000
 		// })
+		uni.showLoading({
+			title: 'index vue loading'
+		})
 	},
   methods: {
 		relaunchAbout(){
