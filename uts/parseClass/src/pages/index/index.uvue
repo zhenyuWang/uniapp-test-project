@@ -8,6 +8,7 @@
             <text class="child">child</text>
         </view>
         <text class="bg-blue">this is class bg-blue</text>
+        <!-- <text :style="{}">test style empty {}</text> -->
     </view>
 </template>
 

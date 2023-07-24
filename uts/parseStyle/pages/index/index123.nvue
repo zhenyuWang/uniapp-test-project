@@ -47,6 +47,9 @@ export default {
 		console.log('pages.length---------', pages.length)
 	},
 	onReady(){
+		const app = getApp()
+		app.test()
+		console.warn('app in index', app.globalData.text)
 		// uni.showLoading({
 		// 	title: 'index uvue loading'
 		// })

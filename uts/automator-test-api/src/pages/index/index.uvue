@@ -132,7 +132,10 @@ export default {
     },
     getElement() {
       uni.navigateTo({
-        url: '../detail/index',
+        url: '/pages/detail/index?name=testname',
+        // url: './../detail/index',
+        // url: '../detail/index',
+        // url: '../detail/index',
         // url: '/pages/detail/index',
         complete(res) {
           println('navigateTo complete')

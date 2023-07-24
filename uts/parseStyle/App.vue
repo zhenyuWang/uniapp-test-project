@@ -1,5 +1,8 @@
 <script>
 	export default {
+		globalData: {
+			text: 'text'
+		},
 		onLaunch: function() {
 			console.log('App Launch')
 		},
@@ -8,6 +11,11 @@
 		},
 		onHide: function() {
 			console.log('App Hide')
+		},
+		methods: {
+			test() {
+				console.warn('app test')
+			}
 		}
 	}
 </script>

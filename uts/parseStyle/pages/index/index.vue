@@ -9,6 +9,7 @@
 		<input type="text">
 		<button @click="relaunchAbout">relaunch about</button>
 		<button @click="navigateToAbout">navigateTo about</button>
+		<button @click="navigateToDetail">navigateTo detail</button>
   </view>
 </template>
 <script lang="ts">
@@ -48,6 +49,8 @@ export default {
 		console.log('pages.length---------', pages.length, pages[0].route)
 	},
 	onReady(){
+		const app = getApp()
+		app.test()
 		// uni.onKeyboardHeightChange((e) => {
 		// 	console.log('onKeyboardHeightChange', e)
 		// 	this.keyboardHeight = e.height
@@ -57,9 +60,9 @@ export default {
 		// 	image: '',
 		// 	duration: 3000
 		// })
-		uni.showLoading({
-			title: 'index vue loading'
-		})
+		// uni.showLoading({
+		// 	title: 'index vue loading'
+		// })
 	},
   methods: {
 		relaunchAbout(){
@@ -70,6 +73,11 @@ export default {
 		navigateToAbout(){
 			uni.navigateTo({
 				url: '/pages/about/about'
+			})
+		},
+		navigateToDetail(){
+			uni.navigateTo({
+				url: '/pages/detail/detail'
 			})
 		},
     _onClick() {
