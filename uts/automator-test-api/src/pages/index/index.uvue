@@ -18,20 +18,20 @@
     </button>
     <button type="primary" @click="back">back</button>
     <rich-text
-      nodes="[{'name':'div','attrs':{'class':'div-class','style':'line-height: 60px; color: red; text-align:center;'},'children':[{'type':'text','text':'Hello&nbsp;uni-app 1111111'}]}]"
+      :nodes="[{'name':'div','attrs':{'class':'div-class','style':'line-height: 60px; color: red; text-align:center;'},'children':[{'type':'text','text':'Hello&nbsp;uni-app 1111111'}]}]"
     />
     <rich-text
       :nodes="[
         {
-          name: 'div',
-          attrs: {
-            class: 'div-class',
-            style: 'line-height: 60px; color: red; text-align:center;',
+          'name': 'div',
+          'attrs': {
+            'class': 'div-class',
+            'style': 'line-height: 60px; color: red; text-align:center;'
           },
-          children: [
-            { type: 'text', text: 'Hello&nbsp;this is v-bind nodes array!' },
-          ],
-        },
+          'children': [
+            { 'type': 'text', 'text': 'Hello&nbsp;this is v-bind nodes array!' }
+          ]
+        }
       ]"
     />
     <rich-text :nodes="nodesStr" />
@@ -39,9 +39,15 @@
     <text @click="(e: any) => myClick(e)">test click params with type</text>
     <text class="testFont">自定义字体文字</text>
     <text>默认字体文字</text>
-    <view class="block" style="height: 1000px; background: red"></view>
+    <!-- <view class="block" style="height: 1000px; background: red"></view> -->
     <button @click="showLoading">showLoading</button>
     <button @click="showToast">showToast</button>
+    <text :style="{
+      color: red,
+      fontSize: '20px',
+    }">style with not empty {}</text>
+    <text :style="{
+    }">style with empty {}</text>
   </view>
 </template>
 
@@ -63,6 +69,7 @@ export default {
   data() {
     return {
       title: 'index title',
+      red: 'red',
       nodesStr: "[{'name':'div','attrs':{'class':'div-class','style':'line-height: 60px; color: red; text-align:center;'},'children':[{'type':'text','text':'Hello&nbsp;uni-app 22222'}]}]",
       nodes: [{
         name: 'div',
