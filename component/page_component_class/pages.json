@@ -3,7 +3,14 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"app-plus": {
+					"pullToRefresh": {
+						"style": "circle",
+						"support": true,
+						"color": "#ff0000"
+					}
+				}
 			}
 		}
 	],

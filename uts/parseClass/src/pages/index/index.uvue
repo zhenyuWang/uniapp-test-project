@@ -35,38 +35,22 @@ export default {
   },
   onReady() {
     println('wzf----------------- index onReady')
-    const pages = getCurrentPages()
-    const currentPage = pages[pages.length - 1]
-    const currentAppPage = currentPage.$getAppPage()
-    currentAppPage!.updateStyle(
-      new Map<string, any | null>([
-        [
-          'navigationBar',
-          new Map<string, any | null>([
-            ['navigationBarTextStyle', 'white'],
-            ['navigationBarBackgroundColor', '#09c'],
-          ]),
-        ],
-      ])
-    )
+    uni.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#09c',
+      success(res) {
+        println('wzf----------------- setNavigationBarColor success' + res.errMsg)
+      },
+      fail(res) {
+        println('wzf----------------- setNavigationBarColor fail' + res.errMsg)
+      },
+      complete(res) {
+        println('wzf----------------- setNavigationBarColor complete' + res.errMsg)
+      }
+    })
   },
   methods: {
     test() {
-      println('wzf----------------- index test')
-    const pages = getCurrentPages()
-    const currentPage = pages[pages.length - 1]
-    const currentAppPage = currentPage.$getAppPage()
-    currentAppPage!.updateStyle(
-      new Map<string, any | null>([
-        [
-          'navigationBar',
-          new Map<string, any | null>([
-            ['navigationBarTextStyle', 'white'],
-            ['navigationBarBackgroundColor', '#09c'],
-          ]),
-        ]
-      ])
-    )
     }
   }
 }

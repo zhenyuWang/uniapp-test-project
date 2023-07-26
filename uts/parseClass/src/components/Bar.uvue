@@ -3,3 +3,14 @@
 		<text>this is class cred in Bar</text>
 	</view>
 </template>
+
+<script>
+export default {
+	props: {
+		count: {
+			type: Number,
+			default: 0
+		}
+	}
+}
+</script>
