@@ -1,0 +1,73 @@
+<template>
+    <view class="content box" style="width:200px;height:260px;backgroundColor:red;">
+        <text id="test-id">hello 123</text>
+        <text class="child">child</text>
+        <input class="my-input" value="Please input" style="width:200px;height:40px;color:#fff;fontSize:20px;" />
+        <view style="width:120px;height:120px;background-color:#ffff00;">
+            <text class="title" style="fontSize:24px;color:blue;">hello 123</text>
+            <text class="child">child</text>
+        </view>
+        <text class="bg-blue">this is class bg-blue</text>
+    </view>
+</template>
+
+<script>
+export default {
+    data() {
+        return {
+            msg: 'hello world',
+            count: 0
+        }
+    }
+}
+</script>
+<style lang="scss">
+$red: red;
+#test-id{
+  color: red;
+}
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 300px;
+    height: 300px;
+    border: 3px solid #09c;
+
+    &.box {
+      width: 400px!important;
+      height: 400px;
+      background: pink;
+    }
+
+    .my-input{
+      background: blue;
+    }
+}
+
+.title {
+    font-size: 36rpx;
+    color: red;
+}
+.content .child {
+  background-color: green;
+  font-size: 30px;
+  color: #fff;
+}
+.content>.child{
+  color: $red;
+}
+
+.bg-blue {
+  width: 200px;
+  height:40px;
+  background-color: blue;
+  font-size:20px;
+  color:#fff;
+}
+
+.title, .bg-blue {
+  font-weight: bold;
+}
+</style>
