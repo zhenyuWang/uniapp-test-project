@@ -29,7 +29,7 @@
 				const pages = getCurrentPages()
 				pages.forEach(page => {
 					console.warn('page.route', page.route)
-					page.$close()
+					console.warn('page.options', page.options)
 				})
 			}
 		}

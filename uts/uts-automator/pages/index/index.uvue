@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<text class="testFont">自定义字体内容</text>
+		<text class="testFont">自定义字体内容1</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
 			<checkbox value="cb" class="checkbox test-checkbox2">未选中</checkbox>
@@ -76,6 +76,29 @@
 			}
 		},
 		onReady() {
+			const res = new Map<string, any | null>([['id', 'abc']])
+			const result = {
+				"elements": [
+					{
+						"tagName": "view",
+						"elementId": "6"
+					},
+					{
+						"tagName": "view",
+						"elementId": "11"
+					},
+					{
+						"tagName": "view",
+						"elementId": "16"
+					},
+					{
+						"tagName": "view",
+						"elementId": "21"
+					}
+				] as UTSJSONObject[]
+			}
+			res.set('result', result)
+			console.warn('res',res)
 			// const fileManager = uni.getFileSystemManager()
 			// console.warn('fileManager', fileManager)
 			// fileManager.readFile({
@@ -244,7 +267,7 @@
 				return sum;
 			},
 			goDetail(msg : string) {
-				uni.showLoading({title: 'loading title in index'})
+				uni.showLoading({ title: 'loading title in index' })
 				console.log('msg', msg)
 				uni.navigateTo({
 					url: '/pages/detail/detail?name=test'
