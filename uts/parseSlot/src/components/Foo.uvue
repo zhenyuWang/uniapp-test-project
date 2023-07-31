@@ -1,9 +1,22 @@
 <template>
-    <view>
-        <text class="cred">this is component Foo</text>
-    </view>
+  <view>
+    <text class="cred">this is component Foo</text>
+    <button @click="test">test</button>
+  </view>
 </template>
 
+<script lang="ts">
+export default {
+  methods: {
+    test() {
+      println('wzf-------------test')
+    },
+  },
+}
+</script>
+
 <style>
-.cred{color: red;}
+.cred {
+  color: red;
+}
 </style>

@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<button @click="test1">test1</button>
 		<text class="testFont">自定义字体内容1</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
@@ -272,6 +273,22 @@
 				uni.navigateTo({
 					url: '/pages/detail/detail?name=test'
 				})
+			},
+			test1(): any[] {
+				const num1: number = -1.1 / 1
+				const num2: number = -1.1 / 0.1
+				const num3: number = -1.1 / -0.1
+				console.warn(num1)
+				console.warn(num2)
+				console.warn(num3)
+				const obj = {"id":"3be2c600-894c-4231-aa56-82fd989cc961","result":{"result":[num1, num2, num3]}}
+				JSON.stringify(obj)
+				return [num1, num2, num3]
+			},
+			test2(): any[] {
+				const num1: number = -1.1 / -0.1
+				console.warn(num1)
+				return [num1]
 			}
 		}
 	}

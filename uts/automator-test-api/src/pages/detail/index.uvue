@@ -7,6 +7,8 @@
     <button @click="close">close current page</button>
     <button @click="switchTabIndex">switchTabIndex</button>
     <button @click="getPages">getPages</button>
+    <button>{{text}}</button>
+    <button @click="changeText">changeText</button>
   </view>
 </template>
 
@@ -15,6 +17,7 @@ export default {
   data() {
     return {
       title: 'detail title',
+      text: 'button text'
     }
   },
   onLoad() {
@@ -35,6 +38,9 @@ export default {
     println('Page detail onHide')
   },
   methods: {
+    changeText() {
+      this.text = 'new text'
+    },
     back(){
       uni.navigateBack({})
     },

@@ -1,5 +1,6 @@
 <template>
 	<view>
-		<text>this is class cred in Bar</text>
+		<text class="cblue">this is class cblue in Bar</text>
+		<text class="cred" style="color: yellow;">this is class cred in Bar</text>
 	</view>
 </template>

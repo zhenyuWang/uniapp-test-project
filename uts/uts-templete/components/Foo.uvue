@@ -5,5 +5,6 @@
 </template>
 
 <style>
-	.cred{color: red;}
+	.cblue{color: blue;}
+	.cred{color: red!important;}
 </style>

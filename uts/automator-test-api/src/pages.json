@@ -1,6 +1,12 @@
 {
   "pages": [
     {
+      "path": "pages/detail/index",
+      "style": {
+        "navigationBarTitleText": "detail"
+      }
+    },
+    {
       "path": "pages/index/index",
       "style": {
         "navigationBarTitleText": "index"
@@ -10,12 +16,6 @@
       "path": "pages/about/index",
       "style": {
         "navigationBarTitleText": "about"
-      }
-    },
-    {
-      "path": "pages/detail/index",
-      "style": {
-        "navigationBarTitleText": "detail"
       }
     }
   ],

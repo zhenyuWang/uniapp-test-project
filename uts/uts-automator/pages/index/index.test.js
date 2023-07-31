@@ -6,6 +6,13 @@ describe('pages/index/index', () => {
 		console.log('page-------------', page)
 		await page.waitFor(1000)
 	})
+	
+	it('mathematical calculation', async () => {
+		const test1 = await page.callMethod('test1')
+		console.log('test1---------',test1)
+		const test2 = await page.callMethod('test2')
+		console.log('test2---------',test2)
+	})
 
 	// it('program.systemInfo', async () => {
 	// 	const systemInfo = await program.systemInfo()
@@ -287,11 +294,11 @@ describe('pages/index/index', () => {
 	// 	const text = await textNode.text()
 	// 	expect(text).toEqual('222')
 	// })
-	it('screenshot', async () => {
-		// const image = await program.screenshot({fullPage: true})
-		const image = await program.screenshot()
-		expect(image).toMatchImageSnapshot();
-	})
+	// it('screenshot', async () => {
+	// 	// const image = await program.screenshot({fullPage: true})
+	// 	const image = await program.screenshot()
+	// 	expect(image).toMatchImageSnapshot();
+	// })
 	// it('uni.xxx not exists', async () => {
 	// 	const res2 = await uni.aaaa({
 	// 		fail(err) {

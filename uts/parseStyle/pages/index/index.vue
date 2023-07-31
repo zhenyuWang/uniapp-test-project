@@ -10,6 +10,7 @@
 		<button @click="relaunchAbout">relaunch about</button>
 		<button @click="navigateToAbout">navigateTo about</button>
 		<button @click="navigateToDetail">navigateTo detail</button>
+		<button style="margin-bottom: 1000px;" @click="pageScrollTo">pageScrollTo</button>
 		<rich-text :nodes="[
 			{
 				name: 'div',
@@ -100,6 +101,14 @@
 					}
 				})
 			},
+			pageScrollTo(){
+				uni.pageScrollTo({
+					scrollTop:2000,
+					complete(res){
+						console.warn('pageScrollTo complete', res)
+					}
+				})
+			}
 		}
 	}
 </script>

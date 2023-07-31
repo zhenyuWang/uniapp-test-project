@@ -36,7 +36,7 @@ export default {
   onReady() {
     println('wzf----------------- index onReady')
     uni.setNavigationBarColor({
-      frontColor: '#ffffff',
+      frontColor: '#000000',
       backgroundColor: '#09c',
       success(res) {
         println('wzf----------------- setNavigationBarColor success' + res.errMsg)
@@ -51,6 +51,19 @@ export default {
   },
   methods: {
     test() {
+      uni.setNavigationBarColor({
+      frontColor: '#ffffff',
+      backgroundColor: '#ff0000',
+      success(res) {
+        println('wzf----------------- setNavigationBarColor success' + res.errMsg)
+      },
+      fail(res) {
+        println('wzf----------------- setNavigationBarColor fail' + res.errMsg)
+      },
+      complete(res) {
+        println('wzf----------------- setNavigationBarColor complete' + res.errMsg)
+      }
+    })
     }
   }
 }
