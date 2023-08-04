@@ -2,9 +2,9 @@
   <view
     class="content box"
     style="width: 200px; height: 460px; backgroundcolor: red"
+    @click="test"
   >
-    <text id="test-id">hello 123</text>
-    <text class="child">child</text>
+    <!-- <text class="child">child</text>
     <input
       class="my-input"
       value="Please input"
@@ -15,10 +15,12 @@
       <text class="child">child</text>
     </view>
     <text class="bg-blue">this is class bg-blue</text>
-    <text :style="{}">test style empty {}</text>
-    <Foo />
+    <text :style="{}">test style empty {}</text> -->
+    <Foo>{{msg}}</Foo>
     <Bar />
-    <button @click="test">test</button>
+    <image class="logo" src="/static/logo.png" :style="{'opacity': count>0.3 ? 1: count*3}" />
+    <image class="logo" src="/static/logo.png" :style="{'opacity': 0.2>0.3 ? 1: 0.2*3}" />
+    <!-- <button @click="test">test</button> -->
   </view>
 </template>
 
@@ -30,24 +32,11 @@ export default {
   data() {
     return {
       msg: 'hello world',
-      count: 0,
+      count: 0.2,
     }
   },
   onReady() {
     println('wzf----------------- index onReady')
-    uni.setNavigationBarColor({
-      frontColor: '#000000',
-      backgroundColor: '#09c',
-      success(res) {
-        println('wzf----------------- setNavigationBarColor success' + res.errMsg)
-      },
-      fail(res) {
-        println('wzf----------------- setNavigationBarColor fail' + res.errMsg)
-      },
-      complete(res) {
-        println('wzf----------------- setNavigationBarColor complete' + res.errMsg)
-      }
-    })
   },
   methods: {
     test() {
@@ -69,10 +58,9 @@ export default {
 }
 </script>
 
-<style lang="scss">
-$red: red;
-#test-id {
-  color: red;
+<style>
+.logo{
+  width:100px;height: 100px;
 }
 .content {
   display: flex;
@@ -82,16 +70,6 @@ $red: red;
   width: 300px;
   height: 300px;
   border: 3px solid #09c;
-
-  &.box {
-    width: 400px !important;
-    height: 400px;
-    background: pink;
-  }
-
-  .my-input {
-    background: blue;
-  }
 }
 
 .title {
@@ -104,7 +82,7 @@ $red: red;
   color: #fff;
 }
 .content > .child {
-  color: $red;
+  color: red;
 }
 
 .bg-blue {

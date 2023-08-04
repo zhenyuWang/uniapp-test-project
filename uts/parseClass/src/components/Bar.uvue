@@ -1,16 +1,6 @@
 <template>
 	<view>
-		<text>this is class cred in Bar</text>
+		<text class="c-red">this is class c-red in Bar</text>
+		<text class="c-blue">this is class c-blue in Bar</text>
 	</view>
 </template>
-
-<script>
-export default {
-	props: {
-		count: {
-			type: Number,
-			default: 0
-		}
-	}
-}
-</script>

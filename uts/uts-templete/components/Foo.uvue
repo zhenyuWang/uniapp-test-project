@@ -1,6 +1,7 @@
 <template>
 	<view>
 		<text class="cred">this is class cred in Foo</text>
+		<text class="cblue">this is class cblue in Foo</text>
 	</view>
 </template>
 

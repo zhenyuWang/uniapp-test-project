@@ -1,9 +1,12 @@
 <template>
 	<view>
-		<text class="cred">this is class cred in Foo</text>
+		<text class="c-red">this is class c-red in Foo</text>
+		<text class="c-blue">this is class c-blue in Foo</text>
+		<slot></slot>
 	</view>
 </template>
 
 <style>
-	.cred{color: red;}
+	.c-red{color: red!important;}
+	.c-blue{color: blue;}
 </style>
