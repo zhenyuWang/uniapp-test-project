@@ -18,20 +18,20 @@
 			}
 		}
 	],
-	"tabBar": {
-		"list": [
-			{
-				"iconPath": "static/logo.png",
-				"pagePath": "pages/index/index",
-				"text": "index"
-			},
-			{
-				"iconPath": "static/logo.png",
-				"pagePath": "pages/about/about",
-				"text": "about"
-			}
-		]
-	},
+	// "tabBar": {
+	// 	"list": [
+	// 		{
+	// 			"iconPath": "static/logo.png",
+	// 			"pagePath": "pages/index/index",
+	// 			"text": "index"
+	// 		},
+	// 		{
+	// 			"iconPath": "static/logo.png",
+	// 			"pagePath": "pages/about/about",
+	// 			"text": "about"
+	// 		}
+	// 	]
+	// },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

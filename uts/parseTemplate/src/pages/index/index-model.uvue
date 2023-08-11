@@ -2,19 +2,19 @@
   <view>
     <input type="text" v-model="title" placeholder="please input" />
     <textarea v-model="title" placeholder="please input" />
-    <text>{{title}}</text>
-    <Foo v-model:title="title" />,
+    <text>{{ title }}</text>
+    <Foo v-model:title="title" />
   </view>
 </template>
 
 <script lang="ts">
 import Foo from '../../components/Foo.uvue'
 export default {
-  components: {Foo},
+  components: { Foo },
   data() {
     return {
-      title: 'Hello123'
+      title: 'Hello123',
     }
-  }
+  },
 }
 </script>

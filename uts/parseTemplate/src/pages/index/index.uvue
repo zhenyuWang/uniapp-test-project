@@ -3,14 +3,14 @@
     <input type="text" v-model="obj.title2" placeholder="please input" />
     <textarea v-model="obj.title2" placeholder="please input" />
     <text>{{ obj.title2 }}</text>
-    <Foo v-model:title1="obj.title2 as string" v-model:width="num" />
+    <Foo v-model:title="obj.title2 as string" v-model:width="num" />
   </view>
 </template>
 
 <script lang="ts">
 import Foo from '../../components/Foo.uvue'
 type ObjType = {
-  title2: String,
+  title2: String
 }
 export default {
   components: { Foo },
@@ -20,7 +20,7 @@ export default {
       obj: {
         title2: 'Hello---',
       } as ObjType,
-      num: 10
+      num: 10,
     }
   },
 }

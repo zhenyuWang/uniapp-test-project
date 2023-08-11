@@ -4,14 +4,14 @@
       <text>{{ width }}</text>
     </view>
     <button @click="updateWidth">updateWidth</button>
-    <text>title: {{title1}}</text>
-    <text>width: {{width}}</text>
+    <text>title: {{ title }}</text>
+    <text>width: {{ width }}</text>
   </view>
 </template>
 <script lang="ts">
 export default {
   props: {
-    title1: {
+    title: {
       type: String,
       default: '',
     },

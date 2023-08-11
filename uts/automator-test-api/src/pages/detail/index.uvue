@@ -1,13 +1,13 @@
 <template>
   <view>
-    <text class="bg-blue">this is detail title: {{title}}</text>
+    <text class="bg-blue">this is detail title: {{ title }}</text>
     <view class="button" @click="back">
       <text class="button-text">back</text>
     </view>
     <button @click="close">close current page</button>
     <button @click="switchTabIndex">switchTabIndex</button>
     <button @click="getPages">getPages</button>
-    <button>{{text}}</button>
+    <button>{{ text }}</button>
     <button @click="changeText">changeText</button>
   </view>
 </template>
@@ -16,7 +16,7 @@
 export default {
   data() {
     return {
-      title: 'detail title',
+      title: 'detail title1',
       text: 'button text'
     }
   },

@@ -1,35 +1,35 @@
 <template>
-    <view>
-        <text>this is component Bar</text>
-        <text>{{title}}</text>
-        <slot age="default age123"></slot>
-        <text>msg: {{msg}}</text>
-        <text>desc: {{desc}}</text>
-        <slot name="header" msg="msg from component Bar"></slot>
-    </view>
+  <view>
+    <text>this is component Bar</text>
+    <text>{{ title }}</text>
+    <slot :age="18"></slot>
+    <text>msg: {{ msg }}</text>
+    <text>desc: {{ desc }}</text>
+    <slot name="header" msg="msg from component Bar"></slot>
+  </view>
 </template>
 
 <script lang="ts">
 import { SlotsType } from 'vue'
 export default {
   slots: Object as SlotsType<{
-    default: { age: string }
-    item: { data: number }
+    default: { age: number }
+    header: { msg: string }
   }>,
   props: {
     msg: {
       type: String,
-      default: "default msg"
+      default: 'default msg',
     },
     desc: {
       type: String,
-      default: "default desc"
+      default: 'default desc',
+    },
+  },
+  data() {
+    return {
+      title: 'Bar title',
     }
   },
-  data(){
-    return {
-      title: "Bar title"
-    }
-  }
 }
 </script>

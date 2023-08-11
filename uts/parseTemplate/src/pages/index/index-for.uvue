@@ -1,36 +1,39 @@
 <template>
   <view>
     <view v-for="item in 3" :key="item">
-      <text style="fontSize:20px;">text</text>
+      <text style="fontsize: 20px">{{ item }}</text>
     </view>
     <view v-for="item in 'abc'" :key="item">
-      <text style="fontSize:25px;">text</text>
+      <text style="fontsize: 25px">{{ item }}</text>
     </view>
-    <view v-for="item in [1,2,3]" :key="item">
-      <text style="fontSize:30px;">text</text>
+    <view v-for="item in [1, 2, 3]" :key="item">
+      <text style="fontsize: 30px">{{ item }}</text>
     </view>
-    <view v-for="(item,index) in [1,2,3]" :key="index">
-      <text style="fontSize:30px;">text</text>
+    <view v-for="(item, index) in [1, 2, 3]" :key="index">
+      <text style="fontsize: 30px">{{ item }}: {{ index }}</text>
     </view>
-    <view v-for="(item,index) in [{item:'1'},{item:'2'},{item:'3'}]">
-      <text style="fontSize:25px;color:red;">text</text>
+    <view
+      v-for="(item, index) in [{ item: '1' }, { item: '2' }, { item: '3' }]"
+    >
+      <text style="fontsize: 25px; color: red">{{ item }}: {{ index }}</text>
     </view>
     <text v-for="(i, j) in list">{{ i + j }}{{ l }}</text>
     <view v-for="i in list">
-      <text v-for="i in list">{{ i + j }}</text>{{ i }}
+      <text v-for="i in list">{{ i + j }}</text
+      >{{ i }}
     </view>
   </view>
 </template>
 
 <script>
 export default {
-  data(){
+  data() {
     return {
-      list:[1,2,3,4],
+      list: [1, 2, 3, 4],
       i: 0,
       j: 1,
-      l: 2
+      l: 2,
     }
-  }
+  },
 }
 </script>

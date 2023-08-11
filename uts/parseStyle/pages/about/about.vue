@@ -16,6 +16,12 @@
 		onReady(){
 			// uni.showLoading()
 		},
+		onBackPress(){
+			console.warn('about onBackPress')
+		},
+		onUnload(){
+			console.warn('about onUnload')
+		},
 		methods: {
 			reLaunchIndex(){
 				uni.reLaunch({

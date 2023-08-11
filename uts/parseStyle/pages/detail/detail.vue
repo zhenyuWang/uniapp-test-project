@@ -18,7 +18,7 @@
 			}
 		},
 		onBackPress(){
-			console.warn('onBackPress')
+			console.warn('detail onBackPress')
 			// return true
 		},
 		onReady(){
@@ -45,7 +45,9 @@
 			back(){
 				// this.showModal()
 				this.showActionSheet()
-				uni.navigateBack()
+				uni.navigateBack({
+					delta: 2
+				})
 			},
 			getCurrentPages(){
 				uni.showLoading({
