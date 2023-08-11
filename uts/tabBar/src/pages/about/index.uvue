@@ -1,0 +1,18 @@
+<template>
+  <view style="padding-top: 30px">
+    <text>this is tabBar about</text>
+    <button @click="goDetail">goDetail</button>
+  </view>
+</template>
+
+<script>
+export default {
+  methods: {
+    goDetail() {
+      uni.navigateTo({
+        url: '/pages/detail/index',
+      })
+    },
+  },
+}
+</script>

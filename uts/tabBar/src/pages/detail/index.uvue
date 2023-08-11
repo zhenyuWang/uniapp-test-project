@@ -1,0 +1,24 @@
+<template>
+  <view style="padding-top: 30px">
+    <text>this is page detail </text>
+    <button @click="reLaunchIndex">reLaunchIndex</button>
+    <button @click="reLaunchAbout">reLaunchAbout</button>
+  </view>
+</template>
+
+<script>
+export default {
+  methods: {
+    reLaunchIndex() {
+      uni.reLaunch({
+        url: '/pages/index/index',
+      })
+    },
+    reLaunchAbout() {
+      uni.reLaunch({
+        url: '/pages/about/index',
+      })
+    },
+  },
+}
+</script>
