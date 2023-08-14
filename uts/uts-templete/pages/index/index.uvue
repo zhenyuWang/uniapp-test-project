@@ -1,71 +1,43 @@
 <template>
 	<view class="content" @click="boxOnClick">
-		<image class="logo" src="/static/logo.png" :style="{'opacity': num > 0.3 ? 1 : num * 3}"></image>
-		<image class="logo" src="/static/logo.png" :style="{'opacity': 0.4}"></image>
-		<image class="logo" src="/static/logo.png" :style="{'opacity': 0.2 + 0.2}"></image>
-		<view class="text-area">
-			<text class="title">{{title}}</text>
-		</view>
-		<text :style="{
-		}">style with empty {}</text>
-		<Foo />
-		<Bar />
-		<button>{{title}}</button>
-		<button @click="changeTitle">changeTitle</button>
-		<input v-model="rangeNum" type="range" min='10' max='100' />
+		<text>{{title}}</text>
 	</view>
 </template>
 
 <script lang="ts">
-	import Foo from '../../components/Foo.uvue'
-	import Bar from '../../components/Bar.uvue'
+	type Msg = {
+		id : string,
+		method : string,
+		params : any
+	}
+	type CallUniMethodParams = {
+		method : string,
+		args : any[]
+	}
+
 	export default {
-		components: { Foo, Bar },
 		data() {
 			return {
 				title: 'Hello1234',
-				num: 0.2,
-				rangeNum: '30'
 			}
 		},
 		methods: {
-			boxOnClick(){
+			boxOnClick() {
+				
 				console.warn('boxOnClick')
+				const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
+				const json1 = JSON.parse<Msg>(msg)
+				console.log(json1)
+				const json = json1!
+				const paramsStr = JSON.stringify(json.params)
+				const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+				console.warn('params', params)
+				const args = params.args
+				const argStr = JSON.stringify(args[0])
+				console.warn('argStr', argStr)
+				const arg = JSON.parse<Map<string, number>>(argStr)!
+				console.warn('arg', arg)
 			},
-			changeTitle(){
-				const num = 0
-				console.log(num == 0)
-				this.title = 'new title'
-				this.rangeNum = '200'
-			}
 		}
 	}
 </script>
-
-<style>
-	.content {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		justify-content: center;
-	}
-
-	.logo {
-		height: 200rpx;
-		width: 200rpx;
-		margin-top: 200rpx;
-		margin-left: auto;
-		margin-right: auto;
-		margin-bottom: 50rpx;
-	}
-
-	.text-area {
-		display: flex;
-		justify-content: center;
-	}
-
-	.title {
-		font-size: 36rpx;
-		color: #8f8f94;
-	}
-</style>

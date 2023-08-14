@@ -1,7 +1,8 @@
 <template>
 	<view>
-		<view>this is detail page1</view>
+		<view>this is detail page 1234</view>
 		<text class="testFont">自定义字体内容</text>
+		<button @click="reLaunchIndex">reLaunchIndex</button>
 		<button @click="back">back</button>
 		<button @click="getCurrentPages">getCurrentPages</button>
 	</view>
@@ -22,6 +23,11 @@
 			return false
 		},
 		methods: {
+			reLaunchIndex(){
+				uni.reLaunch({
+					url: '/pages/index/index'
+				})
+			},
 			back(){
 				uni.navigateBack({})
 			},

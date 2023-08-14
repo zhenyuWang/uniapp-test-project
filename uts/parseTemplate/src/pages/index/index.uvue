@@ -1,27 +1,37 @@
 <template>
   <view>
-    <input type="text" v-model="obj.title2" placeholder="please input" />
-    <textarea v-model="obj.title2" placeholder="please input" />
-    <text>{{ obj.title2 }}</text>
-    <Foo v-model:title="obj.title2 as string" v-model:width="num" />
+    <text :class="getClass()">\\n 换行</text>
+    <scroll-view ref="sv"></scroll-view>
+    <button @click="test">get ref tagName</button>
   </view>
 </template>
 
 <script lang="ts">
-import Foo from '../../components/Foo.uvue'
-type ObjType = {
-  title2: String
-}
 export default {
-  components: { Foo },
   data() {
     return {
-      title: 'Hello123',
-      obj: {
-        title2: 'Hello---',
-      } as ObjType,
-      num: 10,
+      testClass: 'cred',
+    }
+  },
+  methods: {
+    getRef(): String {
+      return 'testRef2'
+    },
+    getClass(): String {
+      return 'cred'
+    },
+    test() {
+      println((this.$refs.get('sv') as INode).tagName)
     }
   },
 }
 </script>
+
+<style>
+.cred {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
+</style>

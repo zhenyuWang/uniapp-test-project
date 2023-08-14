@@ -1,7 +1,15 @@
 <template>
   <view>
-    <text :class="getClass()" ref="testRef">this is testRef</text>
-    <text :class="testClass" @click="logRef">get ref</text>
+    <text :class="getClass()" ref="testRef1">this is testRef1</text>
+    <text :class="getClass()" :ref="getRef()">this is testRef2</text>
+    <text :class="testClass" @click="changeRefText">change ref text</text>
+    <text ref="test">test1</text>
+    <text ref="test">test2</text>
+    <text ref="test">test3</text>
+    <text ref="test">test4</text>
+    <template v-for="item in 10">
+      <text ref="myRefs">{{ item }}</text>
+    </template>
   </view>
 </template>
 
@@ -9,24 +17,34 @@
 export default {
   data() {
     return {
-      testClass: "cred"
+      testClass: 'cred',
     }
   },
   methods: {
-      getRef(): String{
-				return 'testRef'
-			},
-			logRef(e: MouseEvent){
-        (this.$refs.get("testRef") as INode).setAttribute('value','aaa')
-			},
-    getClass(): String{
+    getRef(): String {
+      return 'testRef2'
+    },
+    changeRefText() {
+      ;(this.$refs.get('testRef1') as INode).setAttribute('value', 'testRef1')
+      ;(this.$refs.get('testRef2') as INode).setAttribute('value', 'testRef2')
+      ;(this.$refs.get('test') as INode).setAttribute('value', 'test')
+      const myRefs = this.$refs.get('myRefs') as INode[]
+      myRefs.forEach((ref, i) => {
+        ref.setAttribute('value', `${(i+1)*10}`)
+      })
+    },
+    getClass(): String {
       return 'cred'
-    }
-  }
+    },
+  },
 }
 </script>
 
 <style>
-  .cred{color: red;}
-  .bold{font-weight: bold;}
+.cred {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
 </style>

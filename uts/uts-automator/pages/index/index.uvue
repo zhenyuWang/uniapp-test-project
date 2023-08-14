@@ -1,6 +1,8 @@
 <template>
-	<view class="content">
+	<scroll-view class="content">
 		<button @click="test1">test1</button>
+<!-- 		<button @click="test2">test2</button>
+		<button @click="reLaunchDetail">relaunch detail</button>
 		<text class="testFont">自定义字体内容1</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
@@ -15,65 +17,35 @@
 			<view class="test-view">{{title}}</view>
 			<button type="primary" class="test-button">{{title}}</button>
 			<input class="my-input" style="background-color: yellow;margin-left:10px;" type="text" v-model="title" />
-		</view>
-		<Foo test="foo-test-attribute" class="component-foo" @click="automatorTap"
+		</view> -->
+		<my-foo v-if="showFoo" test="foo-test-attribute" class="component-foo" @click="automatorTap"
 			@longpress="automatorComponentLongpress" />
-		<button @click="goDetail('aaa')">goDetail</button>
+<!-- 		<button @click="goDetail('aaa')">goDetail</button>
 		<image class="logo" src="/static/logo.png"></image>
-		<view class="border-0">index-index-index2222</view>
-		<view class="border-0" @click="test">index-index-index {{ title }}</view>
-		<view class="border-0">测试节点</view>
-		<view class="border-1">测试节点</view>
-		<view class="border-2">测试节点</view>
-		<view class="border-3">测试节点</view>
-		<view class="border-4">测试节点</view>
-		<view class="border-5">测试节点</view>
-		<view class="border-6">测试节点</view>
-		<view class="border-7">测试节点</view>
-		<view class="border-8">测试节点</view>
-		<view class="border-9">测试节点</view>
-		<view class="border-10">测试节点</view>
-		<view class="border-11">测试节点</view>
-		<view class="border-12">测试节点</view>
-		<view class="border-13">测试节点</view>
-		<view class="border-14">测试节点</view>
-		<view class="border-15">测试节点</view>
-		<view class="border-16">测试节点</view>
-		<view class="border-17">测试节点</view>
-		<view class="border-18">测试节点</view>
-		<view class="border-19">测试节点</view>
-		<view class="border-20">测试节点</view>
-		<view class="border-21">测试节点</view>
-		<view class="border-22">测试节点</view>
-		<view class="border-23">测试节点</view>
-		<view class="border-24">测试节点</view>
-		<view class="border-25">测试节点</view>
-		<view class="border-26">测试节点</view>
-		<view class="border-27">测试节点</view>
-		<view class="border-28">测试节点</view>
-		<view class="border-29">测试节点</view>
-		<view class="border-30">测试节点</view>
-		<view class="border-31">测试节点</view>
-		<view class="border-32">测试节点</view>
-		<view class="border-33">测试节点</view>
-		<view class="border-34">测试节点</view>
-		<view class="border-35">测试节点</view>
-		<list>
-			<cell>111</cell>
-			<cell>222</cell>
-		</list>
-	</view>
+		<list-view>
+			<list-item>111</list-item>
+			<list-item>222</list-item>
+		</list-view>
+		<uni-test>uni-test</uni-test> -->
+	</scroll-view>
 </template>
-<script>
-	import Foo from '../../components/Foo.uvue'
+<script lang="ts">
+	import { JSONArray } from 'com.alibaba.fastjson'
+	type Msg = {
+		id: string,
+		method: string,
+		params: any
+	}
+	type CallUniMethodParams = {
+		method: string
+		args: JSONArray
+	}
 	export default {
-		components: {
-			Foo
-		},
 		data() {
 			return {
 				title: '111',
-				fnName: 'getStorageInfo'
+				fnName: 'getStorageInfo',
+				showFoo: true
 			}
 		},
 		onReady() {
@@ -221,6 +193,11 @@
 			// })
 		},
 		methods: {
+			reLaunchDetail(){
+				uni.reLaunch({
+					url: '/pages/detail/detail'
+				})
+			},
 			automatorTap() {
 				console.warn('automatorTap')
 				this.title = 'automatorTap'
@@ -268,27 +245,36 @@
 				return sum;
 			},
 			goDetail(msg : string) {
-				uni.showLoading({ title: 'loading title in index' })
+				// uni.showLoading({ title: 'loading title in index' })
 				console.log('msg', msg)
 				uni.navigateTo({
 					url: '/pages/detail/detail?name=test'
 				})
 			},
-			test1(): any[] {
-				const num1: number = -1.1 / 1
-				const num2: number = -1.1 / 0.1
-				const num3: number = -1.1 / -0.1
-				console.warn(num1)
-				console.warn(num2)
-				console.warn(num3)
-				const obj = {"id":"3be2c600-894c-4231-aa56-82fd989cc961","result":{"result":[num1, num2, num3]}}
-				JSON.stringify(obj)
-				return [num1, num2, num3]
+			test1() {
+				// this.showFoo = false
+				// const num1: number = -1.1 / 1
+				// const num2: number = -1.1 / 0.1
+				// const num3: number = -1.1 / -0.1
+				// console.warn(num1)
+				// console.warn(num2)
+				// console.warn(num3)
+				const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
+				const json = JSON.parse<Msg>(msg)!
+				const paramsStr = JSON.stringify(json.params)
+				const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+				console.warn('params',params)
+				const args = params.args
+				const argStr = JSON.stringify(args[0])
+				console.warn('argStr',argStr)
+				const arg = JSON.parse<Map<string, number>>(argStr)!
+				console.warn('arg',arg)
+				// console.log('test1')
 			},
-			test2(): any[] {
-				const num1: number = -1.1 / -0.1
-				console.warn(num1)
-				return [num1]
+			test2() {
+				// const num1: number = -1.1 / -0.1
+				// console.warn(num1)
+				console.log('test2')
 			}
 		}
 	}
