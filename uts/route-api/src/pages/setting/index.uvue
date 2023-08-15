@@ -1,6 +1,8 @@
 <template>
   <view class="page">
     <text class="cblue">this is setting title: {{ title }}</text>
+    <button @click="redirectToUser">redirectToUser</button>
+    <button @click="switchTabAbout">switchTabAbout</button>
   </view>
 </template>
 
@@ -11,11 +13,29 @@ export default {
       title: 'setting title',
     }
   },
+  methods: {
+    redirectToUser() {
+      uni.redirectTo({
+        url: '/pages/user/index',
+      })
+    },
+    switchTabAbout() {
+      uni.switchTab({
+        url: '/pages/about/index'
+      })
+    }
+  },
 }
 </script>
 
 <style>
 .cblue {
   color: blue;
+}
+.btn {
+  padding: 12px 5px;
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
 }
 </style>

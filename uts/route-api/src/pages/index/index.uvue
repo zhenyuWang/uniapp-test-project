@@ -1,6 +1,9 @@
 <template>
   <view class="page">
     <text class="cgreen">this is index title: {{ title }}</text>
+    <button @click="goAbout">goAbout</button>
+    <button @click="goSetting">goSetting</button>
+    <button @click="redirectToSetting">redirectToSetting</button>
   </view>
 </template>
 
@@ -11,11 +14,34 @@ export default {
       title: 'index title',
     }
   },
+  methods: {
+    goAbout() {
+      uni.switchTab({
+        url: '/pages/about/index',
+      })
+    },
+    goSetting() {
+      uni.navigateTo({
+        url: '/pages/setting/index',
+      })
+    },
+    redirectToSetting() {
+      uni.redirectTo({
+        url: '/pages/setting/index',
+      })
+    }
+  },
 }
 </script>
 
 <style>
 .cgreen {
   color: green;
+}
+.btn {
+  padding: 12px 5px;
+  text-align: center;
+  border: 1px solid #dbdbdb;
+  border-radius: 5px;
 }
 </style>

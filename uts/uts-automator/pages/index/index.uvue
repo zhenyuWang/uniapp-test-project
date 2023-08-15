@@ -259,17 +259,20 @@
 				// console.warn(num1)
 				// console.warn(num2)
 				// console.warn(num3)
-				const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
-				const json = JSON.parse<Msg>(msg)!
-				const paramsStr = JSON.stringify(json.params)
-				const params = JSON.parse<CallUniMethodParams>(paramsStr)!
-				console.warn('params',params)
-				const args = params.args
-				const argStr = JSON.stringify(args[0])
-				console.warn('argStr',argStr)
-				const arg = JSON.parse<Map<string, number>>(argStr)!
-				console.warn('arg',arg)
+				// const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
+				// const json = JSON.parse<Msg>(msg)!
+				// const paramsStr = JSON.stringify(json.params)
+				// const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+				// console.warn('params',params)
+				// const args = params.args
+				// const argStr = JSON.stringify(args[0])
+				// console.warn('argStr',argStr)
+				// const arg = JSON.parse<Map<string, number>>(argStr)!
+				// console.warn('arg',arg)
 				// console.log('test1')
+				const arr = ['aaa', 'bbb', 'ccc']
+				const arr2 = JSON.parse<string[]>(JSON.stringify(arr))
+				console.warn('arr2', arr2)
 			},
 			test2() {
 				// const num1: number = -1.1 / -0.1

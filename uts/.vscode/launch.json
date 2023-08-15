@@ -5,11 +5,9 @@
       "name": "Run Test",
       "type": "node",
       "request": "launch",
-      "cwd": "${workspaceFolder}/parseClass",
+      "cwd": "${workspaceFolder}/parseTemplate",
       "runtimeExecutable": "yarn",
-      "runtimeArgs": [
-        "dev:app-android"
-      ],
+      "runtimeArgs": ["dev:app-android"],
       "console": "integratedTerminal"
     }
   ]

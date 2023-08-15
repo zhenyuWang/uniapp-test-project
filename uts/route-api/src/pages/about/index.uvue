@@ -2,6 +2,7 @@
   <view class="page">
     <text class="cred">this is about title: {{ title }}</text>
     <Foo />
+    <button @click="reLaunchSetting">reLaunchSetting</button>
   </view>
 </template>
 
@@ -12,6 +13,13 @@ export default {
   data() {
     return {
       title: 'about title',
+    }
+  },
+  methods: {
+    reLaunchSetting() {
+      uni.reLaunch({
+        url: '/pages/setting/index',
+      })
     }
   }
 }

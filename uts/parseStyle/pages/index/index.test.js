@@ -32,11 +32,11 @@ describe('pages/index/index', () => {
 	// 		},3000)
 	// 	})
 	// })
-	// it('css', async () => {
-	// 	// const image = await program.screenshot({fullPage: true})
-	// 	const image = await program.screenshot()
-	// 	expect(image).toMatchImageSnapshot();
-	// })
+	it('css', async () => {
+		// const image = await program.screenshot({fullPage: true})
+		const image = await program.screenshot()
+		expect(image).toMatchImageSnapshot();
+	})
 	// it('methodWithCallback', () => {
 	// 	// page.callMethodWithCallback('getStorageInfo')
 	// 	page.callMethodWithCallback('getStorageInfo222')
