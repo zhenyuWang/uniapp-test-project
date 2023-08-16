@@ -1,5 +1,6 @@
 <template>
 	<view class="uni-switch">
+		<button @click="test1();test2()">test1 & test2</button>
 		<view class="mytest"> class my-test12</view>
 		<view id="mytest">id my-test</view>
 		<view class="uni-switch-input" :style="trackStyle" @click="_onClick">
@@ -80,6 +81,12 @@
 			// })
 		},
 		methods: {
+			test1(){
+				console.log('test1')
+			},
+			test2(){
+				console.log('test2')
+			},
 			relaunchAbout() {
 				uni.reLaunch({
 					url: '../about/about'

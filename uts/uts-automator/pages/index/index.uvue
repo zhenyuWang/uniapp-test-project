@@ -1,7 +1,11 @@
 <template>
 	<scroll-view class="content">
-		<button @click="test1">test1</button>
-<!-- 		<button @click="test2">test2</button>
+		<button @click="test1();test2()">test1 & test2</button>
+		<rich-text :nodes="nodes"></rich-text>
+		<view :style="[style1, style2]">{{ fnName.split('').join('') }}</view>
+		<view>{{ showFoo ? title : fnName }}</view>
+		<view style="width: 100px;height: 100px;border: 1px solid red;" @touchmove="onTouchMove"></view>
+		<!-- 		<button @click="test2">test2</button>
 		<button @click="reLaunchDetail">relaunch detail</button>
 		<text class="testFont">自定义字体内容1</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
@@ -20,7 +24,7 @@
 		</view> -->
 		<my-foo v-if="showFoo" test="foo-test-attribute" class="component-foo" @click="automatorTap"
 			@longpress="automatorComponentLongpress" />
-<!-- 		<button @click="goDetail('aaa')">goDetail</button>
+		<!-- 		<button @click="goDetail('aaa')">goDetail</button>
 		<image class="logo" src="/static/logo.png"></image>
 		<list-view>
 			<list-item>111</list-item>
@@ -31,47 +35,74 @@
 </template>
 <script lang="ts">
 	import { JSONArray } from 'com.alibaba.fastjson'
+	import Style from 'androidx.core.app.NotificationCompat.Style';
 	type Msg = {
-		id: string,
-		method: string,
-		params: any
+		id : string,
+		method : string,
+		params : any
 	}
 	type CallUniMethodParams = {
-		method: string
-		args: JSONArray
+		method : string
+		args : JSONArray
 	}
 	export default {
 		data() {
 			return {
 				title: '111',
 				fnName: 'getStorageInfo',
-				showFoo: true
+				showFoo: true,
+				style1: {
+					background: 'green'
+				},
+				style2: {
+					border: '1px solid red'
+				},
+				nodes: [{
+					name: 'div',
+					attrs: {
+						class: 'div-class',
+						style: 'line-height: 60px; color: red; text-align:center;'
+					},
+					children: [{
+						type: 'text',
+						text: 'Hello&nbsp;uni-app111!'
+					},{
+						type: 'text',
+						text: 'Hello&nbsp;uni-app222!'
+					}]
+				}],
 			}
 		},
 		onReady() {
-			const res = new Map<string, any | null>([['id', 'abc']])
-			const result = {
-				"elements": [
-					{
-						"tagName": "view",
-						"elementId": "6"
-					},
-					{
-						"tagName": "view",
-						"elementId": "11"
-					},
-					{
-						"tagName": "view",
-						"elementId": "16"
-					},
-					{
-						"tagName": "view",
-						"elementId": "21"
-					}
-				] as UTSJSONObject[]
-			}
-			res.set('result', result)
-			console.warn('res',res)
+			const arr1 = this.fnName.split('')
+			console.warn('arr1', arr1)
+			console.warn('isArray arr1', Array.isArray(arr1))
+			const arr2 = arr1.reverse()
+			console.warn('arr2', arr2)
+			console.warn('isArray arr2', Array.isArray(arr2))
+			// const res = new Map<string, any | null>([['id', 'abc']])
+			// const result = {
+			// 	"elements": [
+			// 		{
+			// 			"tagName": "view",
+			// 			"elementId": "6"
+			// 		},
+			// 		{
+			// 			"tagName": "view",
+			// 			"elementId": "11"
+			// 		},
+			// 		{
+			// 			"tagName": "view",
+			// 			"elementId": "16"
+			// 		},
+			// 		{
+			// 			"tagName": "view",
+			// 			"elementId": "21"
+			// 		}
+			// 	] as UTSJSONObject[]
+			// }
+			// res.set('result', result)
+			// console.warn('res', res)
 			// const fileManager = uni.getFileSystemManager()
 			// console.warn('fileManager', fileManager)
 			// fileManager.readFile({
@@ -193,7 +224,10 @@
 			// })
 		},
 		methods: {
-			reLaunchDetail(){
+			onTouchMove(e : TouchEvent) {
+				console.warn('onTouchMove', e)
+			},
+			reLaunchDetail() {
 				uni.reLaunch({
 					url: '/pages/detail/detail'
 				})
@@ -273,6 +307,7 @@
 				const arr = ['aaa', 'bbb', 'ccc']
 				const arr2 = JSON.parse<string[]>(JSON.stringify(arr))
 				console.warn('arr2', arr2)
+				console.log('test1')
 			},
 			test2() {
 				// const num1: number = -1.1 / -0.1

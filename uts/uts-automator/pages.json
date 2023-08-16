@@ -5,13 +5,13 @@
 			"style": {
 				"navigationBarTitleText": "index"
 			}
-		}
-		// {
-		// 	"path": "pages/test/test",
-		// 	"style": {
-		// 		"navigationBarTitleText": "test"
-		// 	}
-		// },
+		},
+		{
+			"path": "pages/test/test",
+			"style": {
+				"navigationBarTitleText": "test"
+			}
+		},
 		// {
 		// 	"path": "pages/picker-view/picker-view",
 		// 	"style": {
@@ -19,13 +19,13 @@
 		// 		"enablePullDownRefresh": false
 		// 	}
 		// },
-		// {
-		// 	"path": "pages/detail/detail",
-		// 	"style": {
-		// 		"navigationBarTitleText": "",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		// }
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
