@@ -1,0 +1,20 @@
+<template>
+	<view>
+		<view v-for="(item, index) in items" :key="index">
+		   <slot :item="item"></slot>
+		</view>
+	</view>
+</template>
+<script lang="uts">
+	import { SlotsType } from 'vue'
+	export default {
+		slots: Object as SlotsType<{
+			default: { item: string }
+		}>,
+		data() {
+			return {
+				items: ['Feed a cat', 'Buy milk']
+			}
+		}
+	}
+</script>

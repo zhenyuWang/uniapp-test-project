@@ -2,8 +2,8 @@
   <view>
     <uni-test>123</uni-test>
     <text class="cblue">this is index12312312</text>
-    <!-- <Foo />
-    <Bar msg="test msg">
+    <Foo />
+    <Bar style="border: 1px solid red;" msg="test msg">
       <template v-slot="defaultProps">
         <text>text in Bar slot default</text>
         <text>title: {{ title }}</text>
@@ -13,7 +13,7 @@
         <text>text in Bar slot header</text>
         <text>headerProps.msg: {{ headerProps.msg }}</text>
       </template>
-    </Bar> -->
+    </Bar>
     <view @click="($event: MouseEvent) => {foo($event)}">my button1</view>
     <view @click="bar('aaa', $event as MouseEvent)">my button2</view>
     <view @click="test(title, obj.num)">my button3</view>
@@ -65,12 +65,13 @@
 
 <script>
 // import Foo from '../../components/Foo.uvue'
-// import Bar from '../../components/Bar.uvue'
+import Bar from '../../components/Bar.uvue'
 type Obj = {
   num: number
 }
 export default {
   // components: { Foo, Bar },
+  components: { Bar },
   data(){
     return {
       title: "title in index",

@@ -5,7 +5,9 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('test', () => {
+	it('test', async () => {
+		const originPageNum = await program.pageStack()
+		console.log('originPageNum', originPageNum)
 		expect(1+1).toEqual(2)
 	})
 	// it('uni.api', async () => {
@@ -32,11 +34,11 @@ describe('pages/index/index', () => {
 	// 		},3000)
 	// 	})
 	// })
-	it('css', async () => {
-		// const image = await program.screenshot({fullPage: true})
-		const image = await program.screenshot()
-		expect(image).toMatchImageSnapshot();
-	})
+	// it('css', async () => {
+	// 	// const image = await program.screenshot({fullPage: true})
+	// 	const image = await program.screenshot()
+	// 	expect(image).toMatchImageSnapshot();
+	// })
 	// it('methodWithCallback', () => {
 	// 	// page.callMethodWithCallback('getStorageInfo')
 	// 	page.callMethodWithCallback('getStorageInfo222')

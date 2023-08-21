@@ -1,10 +1,16 @@
 <template>
 	<scroll-view class="content">
+		<todo-list>
+			<template v-slot:default="slotProps">
+				<i class="fas fa-check"></i>
+				<view class="green">{{ slotProps.item }}</view>
+			</template>
+		</todo-list>
 		<button @click="test1();test2()">test1 & test2</button>
 		<rich-text :nodes="nodes"></rich-text>
 		<view :style="[style1, style2]">{{ fnName.split('').join('') }}</view>
 		<view>{{ showFoo ? title : fnName }}</view>
-		<view style="width: 100px;height: 100px;border: 1px solid red;" @touchmove="onTouchMove"></view>
+		<view class="testTouch" style="width: 100px;height: 100px;border: 1px solid red;" @touchmove="onTouchMove"></view>
 		<!-- 		<button @click="test2">test2</button>
 		<button @click="reLaunchDetail">relaunch detail</button>
 		<text class="testFont">自定义字体内容1</text>
@@ -35,7 +41,7 @@
 </template>
 <script lang="ts">
 	import { JSONArray } from 'com.alibaba.fastjson'
-	import Style from 'androidx.core.app.NotificationCompat.Style';
+	import TodoList from '../../components/TodoList.uvue'
 	type Msg = {
 		id : string,
 		method : string,
@@ -45,7 +51,12 @@
 		method : string
 		args : JSONArray
 	}
+	type GetDataParams = {
+	  pageId: string
+	  path?: string | null
+	}
 	export default {
+		components: {TodoList},
 		data() {
 			return {
 				title: '111',
@@ -225,7 +236,7 @@
 		},
 		methods: {
 			onTouchMove(e : TouchEvent) {
-				console.warn('onTouchMove', e)
+				console.warn('e.touches[0]',e.touches[0])
 			},
 			reLaunchDetail() {
 				uni.reLaunch({
@@ -294,20 +305,21 @@
 				// console.warn(num2)
 				// console.warn(num3)
 				// const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
-				// const json = JSON.parse<Msg>(msg)!
-				// const paramsStr = JSON.stringify(json.params)
+				const msg = `{"id":"4aad03c3-ace8-4ad5-ba6f-f99ef3e59a69","method":"Page.getData","params":{"pageId":"3"}}`
+				const json = JSON.parse<Msg>(msg)!
+				const paramsStr = JSON.stringify(json.params)
 				// const params = JSON.parse<CallUniMethodParams>(paramsStr)!
-				// console.warn('params',params)
+				const params = JSON.parse<GetDataParams>(paramsStr)!
+				console.warn('params',params)
 				// const args = params.args
 				// const argStr = JSON.stringify(args[0])
 				// console.warn('argStr',argStr)
 				// const arg = JSON.parse<Map<string, number>>(argStr)!
 				// console.warn('arg',arg)
 				// console.log('test1')
-				const arr = ['aaa', 'bbb', 'ccc']
-				const arr2 = JSON.parse<string[]>(JSON.stringify(arr))
-				console.warn('arr2', arr2)
-				console.log('test1')
+				// const arr = ['aaa', 'bbb', 'ccc']
+				// const arr2 = JSON.parse<string[]>(JSON.stringify(arr))
+				// console.warn('arr2', arr2)
 			},
 			test2() {
 				// const num1: number = -1.1 / -0.1

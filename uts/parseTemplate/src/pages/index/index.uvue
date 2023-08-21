@@ -1,35 +1,25 @@
 <template>
-  <view><text>\\\\\n 换行</text></view>
-  <view><text>\\\\n 换行</text></view>
-  <view><text>\\\n 换行</text></view>
-  <view><text>\\n 换行</text></view>
-  <view><text>\n 换行</text></view>
-  <view><text>\n 换行 \n 换行 \\n 换行 \\\n 换行 \\\\n 换行 \\\\\n 换行</text></view>
+  <view>123</view>
+  <view>
+    <text class="test">111</text>
+    <view @click="test" class="test">222</view>
+  </view>
 </template>
 
 <script lang="ts">
 export default {
   data() {
     return {
-      testClass: 'cred',
+      pgList: [10, 20, 30, 40],
     }
   },
   methods: {
-    getRef(): String {
-      return 'testRef2'
-    },
-    getClass(): String {
-      return 'cred'
+    test() {
+      const pages = getCurrentPages()
+      const page = pages[pages.length - 1]
+      const tests = page.$querySelectorAll('.test')
+      println(tests)
     },
   },
 }
 </script>
-
-<style>
-.cred {
-  color: red;
-}
-.bold {
-  font-weight: bold;
-}
-</style>

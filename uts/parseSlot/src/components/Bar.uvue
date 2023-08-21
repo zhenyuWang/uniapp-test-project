@@ -1,12 +1,10 @@
 <template>
-  <view>
     <text>this is component Bar</text>
     <text>{{ title }}</text>
     <slot :age="18"></slot>
     <text>msg: {{ msg }}</text>
     <text>desc: {{ desc }}</text>
     <slot name="header" msg="msg from component Bar"></slot>
-  </view>
 </template>
 
 <script lang="ts">

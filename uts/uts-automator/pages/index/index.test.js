@@ -5,12 +5,28 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	
-	it('mathematical calculation', async () => {
-		const test1 = await page.callMethod('test1')
-		console.log('test1---------',test1)
-		const test2 = await page.callMethod('test2')
-		console.log('test2---------',test2)
+
+	// it('mathematical calculation', async () => {
+	// 	const test1 = await page.callMethod('test1')
+	// 	console.log('test1---------', test1)
+	// 	const test2 = await page.callMethod('test2')
+	// 	console.log('test2---------', test2)            
+	// })
+
+	it('touch', async () => {
+		const testTouch = await page.$('.testTouch')
+		await testTouch.touchmove({
+			touches: [{
+				identifier: 1,
+				pageX: 500,
+				pageY: 500
+			}],
+			changedTouches: [{
+				identifier: 2,
+				pageX: 500,
+				pageY: 510
+			}]
+		})
 	})
 
 	// it('program.systemInfo', async () => {

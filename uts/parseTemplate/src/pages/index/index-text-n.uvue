@@ -1,0 +1,38 @@
+<template>
+  <view><text>\\\\\n 换行</text></view>
+  <view><text>\\\\n 换行</text></view>
+  <view><text>\\\n 换行</text></view>
+  <view><text>\\n 换行</text></view>
+  <view><text>\n 换行</text></view>
+  <view><text>\n 换行 \n 换行 \\n 换行 \\\n 换行 \\\\n 换行 \\\\\n 换行</text></view>
+</template>
+
+<script lang="ts">
+export default {
+  data() {
+    return {
+      testClass: 'cred',
+    }
+  },
+  onShow() {
+    println('index page onShow ---------------------------------')
+  },
+  methods: {
+    getRef(): String {
+      return 'testRef2'
+    },
+    getClass(): String {
+      return 'cred'
+    },
+  },
+}
+</script>
+
+<style>
+.cred {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
+</style>

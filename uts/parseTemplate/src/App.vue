@@ -1,13 +1,13 @@
 <script lang="uts">
 export default {
   onLaunch: function () {
-    println("App Launch");
+    println("App Launch ---------------------------------");
   },
   onShow: function () {
-    println("App Show");
+    println("App Show ---------------------------------");
   },
   onHide: function () {
-    println("App Hide");
+    println("App Hide ---------------------------------");
   },
 };
 </script>
