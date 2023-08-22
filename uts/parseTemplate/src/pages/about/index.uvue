@@ -2,6 +2,7 @@
   <view>
     <text :style='{color: true ? "blue" : "red"}'>test style</text>
   </view>
+  <text>123123</text>
 </template>
 
 <script lang="ts">

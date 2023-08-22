@@ -1,11 +1,11 @@
 <template>
 	<view class="content" @click="boxOnClick">
 		<text>{{title}}</text>
-		<Foo>
+		<Foo data='my data'>
 			<template v-slot="defaultProps">
 				<text>defaultProps: {{defaultProps.msg}}</text>
 			</template>
-			<template v-slot:header="headerProps">
+			<template #header="headerProps">
 				<text>defaultProps: {{headerProps.msg}}</text>
 			</template>
 		</Foo>

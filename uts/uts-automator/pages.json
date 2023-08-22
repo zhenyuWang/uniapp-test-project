@@ -6,12 +6,12 @@
 				"navigationBarTitleText": "index"
 			}
 		},
-		{
-			"path": "pages/test/test",
-			"style": {
-				"navigationBarTitleText": "test"
-			}
-		},
+		// {
+		// 	"path": "pages/test/test",
+		// 	"style": {
+		// 		"navigationBarTitleText": "test"
+		// 	}
+		// },
 		// {
 		// 	"path": "pages/picker-view/picker-view",
 		// 	"style": {
@@ -33,15 +33,15 @@
 		"navigationBarBackgroundColor": "#F8F8F8",
 		"backgroundColor": "#F8F8F8"
 	},
-	"tabBar": {
-		"list": [{
-			"pagePath": "pages/index/index",
-			"text": "index"
-		}, {
-			"pagePath": "pages/test/test",
-			"text": "test"
-		}]
-	},
+	// "tabBar": {
+	// 	"list": [{
+	// 		"pagePath": "pages/index/index",
+	// 		"text": "index"
+	// 	}, {
+	// 		"pagePath": "pages/test/test",
+	// 		"text": "test"
+	// 	}]
+	// },
 	"uniIdRouter": {},
 	"condition" : { //模式配置，仅开发期间生效
 		"current": 0, //当前激活的模式(list 的索引项)

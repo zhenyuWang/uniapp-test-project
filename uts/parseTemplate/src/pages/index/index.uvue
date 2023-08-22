@@ -1,8 +1,7 @@
 <template>
-  <view>123</view>
   <view>
-    <text class="test">111</text>
-    <view @click="test" class="test">222</view>
+    <button @click="goAbout">goAbout</button>
+    <button @click="goErrorPage">goErrorPage</button>
   </view>
 </template>
 
@@ -10,16 +9,29 @@
 export default {
   data() {
     return {
-      pgList: [10, 20, 30, 40],
+      testClass: 'cred',
     }
   },
   methods: {
-    test() {
-      const pages = getCurrentPages()
-      const page = pages[pages.length - 1]
-      const tests = page.$querySelectorAll('.test')
-      println(tests)
+    goAbout() {
+      uni.navigateTo({
+        url: '/pages/about/index'
+      })
     },
+    goErrorPage() {
+      uni.navigateTo({
+        url: '/pages/error/index'
+      })
+    }
   },
 }
 </script>
+
+<style>
+.cred {
+  color: red;
+}
+.bold {
+  font-weight: bold;
+}
+</style>

@@ -6,6 +6,7 @@
 		<button @click="back">back</button>
 		<button @click="getCurrentPages">getCurrentPages</button>
 	</view>
+	<text>123123</text>
 </template>
 
 <script>

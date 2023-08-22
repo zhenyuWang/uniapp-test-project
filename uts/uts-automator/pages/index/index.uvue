@@ -30,8 +30,8 @@
 		</view> -->
 		<my-foo v-if="showFoo" test="foo-test-attribute" class="component-foo" @click="automatorTap"
 			@longpress="automatorComponentLongpress" />
-		<!-- 		<button @click="goDetail('aaa')">goDetail</button>
-		<image class="logo" src="/static/logo.png"></image>
+		<button @click="goDetail('aaa')">goDetail</button>
+		<!-- 		<image class="logo" src="/static/logo.png"></image>
 		<list-view>
 			<list-item>111</list-item>
 			<list-item>222</list-item>
@@ -297,6 +297,9 @@
 				})
 			},
 			test1() {
+				uni.reLaunch({
+					url: '/pages/index/index'
+				})
 				// this.showFoo = false
 				// const num1: number = -1.1 / 1
 				// const num2: number = -1.1 / 0.1
@@ -305,12 +308,12 @@
 				// console.warn(num2)
 				// console.warn(num3)
 				// const msg = `{"id":"3be2c600-894c-4231-aa56-82fd989cc961", "method": "test", "params": {"method": "pageScrollTo", "args": [{"scrollTop":2000,"duration":0}]}}`
-				const msg = `{"id":"4aad03c3-ace8-4ad5-ba6f-f99ef3e59a69","method":"Page.getData","params":{"pageId":"3"}}`
-				const json = JSON.parse<Msg>(msg)!
-				const paramsStr = JSON.stringify(json.params)
-				// const params = JSON.parse<CallUniMethodParams>(paramsStr)!
-				const params = JSON.parse<GetDataParams>(paramsStr)!
-				console.warn('params',params)
+				// const msg = `{"id":"4aad03c3-ace8-4ad5-ba6f-f99ef3e59a69","method":"Page.getData","params":{"pageId":"3"}}`
+				// const json = JSON.parse<Msg>(msg)!
+				// const paramsStr = JSON.stringify(json.params)
+				// // const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+				// const params = JSON.parse<GetDataParams>(paramsStr)!
+				// console.warn('params',params)
 				// const args = params.args
 				// const argStr = JSON.stringify(args[0])
 				// console.warn('argStr',argStr)
