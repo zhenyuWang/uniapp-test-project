@@ -59,6 +59,7 @@ export function createApp() {
 	
 	console.log(123)
 	const app = createSSRApp(App)
+	app.directive
 	return {
 		app
 	}

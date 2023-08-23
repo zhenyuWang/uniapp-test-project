@@ -1,37 +1,23 @@
 <template>
   <view>
-    <button @click="goAbout">goAbout</button>
-    <button @click="goErrorPage">goErrorPage</button>
+    <template v-for="item in 3">
+      <Foo ref="myRefs" />
+    </template>
+    <view @click="test">test</view>
   </view>
 </template>
 
-<script lang="ts">
+<script lang="uts">
 export default {
   data() {
     return {
-      testClass: 'cred',
     }
   },
   methods: {
-    goAbout() {
-      uni.navigateTo({
-        url: '/pages/about/index'
-      })
+    test() {
+      const myRefs = this.$refs.get('myRefs')
+      println(myRefs)
     },
-    goErrorPage() {
-      uni.navigateTo({
-        url: '/pages/error/index'
-      })
-    }
   },
 }
 </script>
-
-<style>
-.cred {
-  color: red;
-}
-.bold {
-  font-weight: bold;
-}
-</style>

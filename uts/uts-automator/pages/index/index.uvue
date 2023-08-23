@@ -297,9 +297,11 @@
 				})
 			},
 			test1() {
-				uni.reLaunch({
-					url: '/pages/index/index'
-				})
+				uni.exitApp()
+				
+				// uni.reLaunch({
+					// url: '/pages/index/index'
+				// })
 				// this.showFoo = false
 				// const num1: number = -1.1 / 1
 				// const num2: number = -1.1 / 0.1
