@@ -13,21 +13,21 @@ describe('pages/index/index', () => {
 	// 	console.log('test2---------', test2)            
 	// })
 
-	it('touch', async () => {
-		const testTouch = await page.$('.testTouch')
-		await testTouch.touchmove({
-			touches: [{
-				identifier: 1,
-				pageX: 500,
-				pageY: 500
-			}],
-			changedTouches: [{
-				identifier: 2,
-				pageX: 500,
-				pageY: 510
-			}]
-		})
-	})
+	// it('touch', async () => {
+	// 	const testTouch = await page.$('.testTouch')
+	// 	await testTouch.touchmove({
+	// 		touches: [{
+	// 			identifier: 1,
+	// 			pageX: 500,
+	// 			pageY: 500
+	// 		}],
+	// 		changedTouches: [{
+	// 			identifier: 2,
+	// 			pageX: 500,
+	// 			pageY: 510
+	// 		}]
+	// 	})
+	// })
 
 	// it('program.systemInfo', async () => {
 	// 	const systemInfo = await program.systemInfo()
@@ -45,6 +45,21 @@ describe('pages/index/index', () => {
 	// 	console.log('width', width, 'height', height)
 	// 	// expect(scrollTop).toEqual(200)
 	// })
+	// it('element.scrollTo', async () => {
+	// 	const content = await page.$('.content')
+	// 	content.scrollTo({x: 0, y: 100})
+	// })
+	// it('element.swipeTo', async () => {
+	// 	const swiper = await page.$('.swiper')
+	// 	swiper.swipeTo(1)
+	// })
+	it('slider.slideTo', async () => {
+		const slider = await page.$('.slider')
+		console.log('slider', slider)
+		slider.setData({sliderValue: 90})
+		slider.callMethod('_onRender')
+	})
+	
 	// it('uni.switchTab', async () => {
 	// 	await uni.switchTab({
 	// 		url: '/pages/test/test',

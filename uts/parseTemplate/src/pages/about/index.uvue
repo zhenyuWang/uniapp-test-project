@@ -1,6 +1,6 @@
 <template>
   <view>
-    <text :style='{color: true ? "blue" : "red"}'>test style</text>
+    <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
   </view>
   <text>123123</text>
 </template>
@@ -9,23 +9,23 @@
 export default {
   data() {
     return {
-      testClass: "cred"
+      testClass: 'cred',
     }
   },
-  onLoad(){
+  onLoad() {
     println('about onLoad-------------------------------------')
   },
-  onShow(){
+  onShow() {
     println('about onShow-------------------------------------')
   },
-  onReady(){
+  onReady() {
     println('about onReady-------------------------------------')
   },
-  onHide(){
+  onHide() {
     println('about onHide-------------------------------------')
   },
-  onUnload(){
+  onUnload() {
     println('about onUnload-------------------------------------')
-  }
+  },
 }
 </script>

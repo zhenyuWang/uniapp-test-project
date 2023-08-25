@@ -1,5 +1,5 @@
 import App from './App'
-import { createSSRApp } from 'vue'
+import { createApp, createSSRApp } from 'vue'
 // import { onMessage } from '/Users/wangzhenyu/work/DCloud/git/uni-app-next/packages/uni-app-uts/lib/automator/index.uts'
 // import { initAutomator } from '/Users/wangzhenyu/work/DCloud/git/uni-app-next/packages/uni-app-uts/lib/automator/index.uts'
 export function createApp() {
@@ -54,12 +54,7 @@ export function createApp() {
 		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".progress","pageId":0}}')
 		// onMessage('{id: "123","method":"Page.getWindowProperties","params":{"names":["document.documentElement.scrollTop"],"pageId":0}}')
 	}, 3000)
-	console.warn('createApp start---update')
-	console.log('abc')
-	
-	console.log(123)
 	const app = createSSRApp(App)
-	app.directive
 	return {
 		app
 	}

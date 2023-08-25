@@ -11,11 +11,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				
-			}
-		},
 		onLoad(options){
 			console.warn('detail page onLoad', options)
 		},

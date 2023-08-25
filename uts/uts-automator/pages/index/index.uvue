@@ -2,7 +2,6 @@
 	<scroll-view class="content">
 		<todo-list>
 			<template v-slot:default="slotProps">
-				<i class="fas fa-check"></i>
 				<view class="green">{{ slotProps.item }}</view>
 			</template>
 		</todo-list>
@@ -10,7 +9,19 @@
 		<rich-text :nodes="nodes"></rich-text>
 		<view :style="[style1, style2]">{{ fnName.split('').join('') }}</view>
 		<view>{{ showFoo ? title : fnName }}</view>
-		<view class="testTouch" style="width: 100px;height: 100px;border: 1px solid red;" @touchmove="onTouchMove"></view>
+		<swiper class="swiper" style="width:100%;height:100px;background-color: aquamarine;" circular>
+			<swiper-item>
+				<view class="swiper-item uni-bg-red">A</view>
+			</swiper-item>
+			<swiper-item>
+				<view class="swiper-item uni-bg-green">B</view>
+			</swiper-item>
+			<swiper-item>
+				<view class="swiper-item uni-bg-blue">C</view>
+			</swiper-item>
+		</swiper>
+		<slider class="slider" :value="60" :step="5" />
+		<view class="testTouch" style="width: 100px;height: 2000px;border: 1px solid red;"></view>
 		<!-- 		<button @click="test2">test2</button>
 		<button @click="reLaunchDetail">relaunch detail</button>
 		<text class="testFont">自定义字体内容1</text>
@@ -37,6 +48,9 @@
 			<list-item>222</list-item>
 		</list-view>
 		<uni-test>uni-test</uni-test> -->
+		<!-- <movable-area style='width:300px;height:400px;background: red;'>
+			<movable-view style="width:30px;height: 30px;background-color: aqua"></movable-view>
+		</movable-area> -->
 	</scroll-view>
 </template>
 <script lang="ts">
@@ -52,11 +66,11 @@
 		args : JSONArray
 	}
 	type GetDataParams = {
-	  pageId: string
-	  path?: string | null
+		pageId : string
+		path ?: string | null
 	}
 	export default {
-		components: {TodoList},
+		components: { TodoList },
 		data() {
 			return {
 				title: '111',
@@ -77,7 +91,7 @@
 					children: [{
 						type: 'text',
 						text: 'Hello&nbsp;uni-app111!'
-					},{
+					}, {
 						type: 'text',
 						text: 'Hello&nbsp;uni-app222!'
 					}]
@@ -236,7 +250,7 @@
 		},
 		methods: {
 			onTouchMove(e : TouchEvent) {
-				console.warn('e.touches[0]',e.touches[0])
+				console.warn('e.touches[0]', e.touches[0])
 			},
 			reLaunchDetail() {
 				uni.reLaunch({
@@ -297,11 +311,9 @@
 				})
 			},
 			test1() {
-				uni.exitApp()
-				
-				// uni.reLaunch({
-					// url: '/pages/index/index'
-				// })
+				uni.reLaunch({
+					url: '/pages/index/index'
+				})
 				// this.showFoo = false
 				// const num1: number = -1.1 / 1
 				// const num2: number = -1.1 / 0.1
