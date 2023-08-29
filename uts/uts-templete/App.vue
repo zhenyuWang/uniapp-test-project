@@ -9,7 +9,7 @@ export default {
   onHide: function () {
     console.log('App Hide');
   },
-  onLastPageBackPress: function (): boolean | null {
+  onLastPageBackPress: function () {
     uni.showToast({
       title: '再按一次退出应用',
       position: 'bottom',

@@ -9,6 +9,7 @@
 				<text>defaultProps: {{headerProps.msg}}</text>
 			</template>
 		</Foo>
+		<view v-show="test" style="display: flex;">test v-show with style</view>
 	</view>
 </template>
 
@@ -19,24 +20,26 @@
 		data() {
 			return {
 				title: 'Hello1234',
+				test: true
 			}
 		},
 		methods: {
 			boxOnClick() {
-				const list = [
-					"uni-progress",
-					"progress",
-					"p"
-				]
-				console.warn('1', Date.now())
-				const listStr = JSON.stringify(list)
-				console.warn('2', Date.now())
-				const list1 = JSON.parse(listStr)
-				console.warn('3', Date.now())
-				const list2 = JSON.parse<string[]>(listStr)
-				console.warn('4', Date.now())
-				console.warn('list1', list1)
-				console.warn('list2', list2)
+				// const list = [
+				// 	"uni-progress",
+				// 	"progress",
+				// 	"p"
+				// ]
+				// console.warn('1', Date.now())
+				// const listStr = JSON.stringify(list)
+				// console.warn('2', Date.now())
+				// const list1 = JSON.parse(listStr)
+				// console.warn('3', Date.now())
+				// const list2 = JSON.parse<string[]>(listStr)
+				// console.warn('4', Date.now())
+				// console.warn('list1', list1)
+				// console.warn('list2', list2)
+				this.test = !this.test 
 			},
 		}
 	}
