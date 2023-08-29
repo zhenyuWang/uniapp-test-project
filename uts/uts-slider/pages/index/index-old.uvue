@@ -1,0 +1,5 @@
+<template>
+	<view class="content">
+		<slider class="slider" :value="60" :step="5" />
+	</view>
+</template>
