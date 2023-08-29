@@ -5,9 +5,15 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	it('test', async () => {
-		const originPageNum = await program.pageStack()
-		console.log('originPageNum', originPageNum)
+	// it('test', async () => {
+	// 	const originPageNum = await program.pageStack()
+	// 	console.log('originPageNum', originPageNum)
+	// 	expect(1+1).toEqual(2)
+	// })
+	it('element.html', async () => {
+		const mytest = await page.$('view')
+		const myHtml = await mytest.html()
+		console.log('element.html', myHtml)
 		expect(1+1).toEqual(2)
 	})
 	// it('uni.api', async () => {

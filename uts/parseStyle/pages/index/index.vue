@@ -80,6 +80,9 @@
 			// 	title: 'index vue loading'
 			// })
 		},
+		onHide(){
+			console.log('index Page hide')
+		},
 		methods: {
 			test1(){
 				console.log('test1')

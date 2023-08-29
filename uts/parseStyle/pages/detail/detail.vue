@@ -12,11 +12,6 @@
 
 <script>
 	export default {
-		data() {
-			return {
-				
-			}
-		},
 		onBackPress(){
 			console.warn('detail onBackPress')
 			// return true
