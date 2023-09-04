@@ -1,8 +1,8 @@
 <template>
 	<view>
-		<text>data: {{data}}</text>
+		<text>data: {{ data }}</text>
 		<slot name="header" :msg="msg"></slot>
-		<slot msg="default slot msg">123123</slot>
+		<slot msg="default slot msg">插槽后备内容</slot>
 	</view>
 </template>
 
@@ -16,12 +16,7 @@
 		}>,
 		props: {
 			data: {
-				type: String,
-				required: true
-				// validator(value): boolean {
-				// 	console.warn('validator', value)
-				// 	return ['success', 'warning', 'danger'].includes(value)
-				// }
+				type: String
 			}
 		},
 		data() {
@@ -31,7 +26,3 @@
 		}
 	}
 </script>
-
-<style>
-
-</style>
