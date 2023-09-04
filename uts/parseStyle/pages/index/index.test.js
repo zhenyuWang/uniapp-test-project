@@ -11,9 +11,9 @@ describe('pages/index/index', () => {
 	// 	expect(1+1).toEqual(2)
 	// })
 	it('element.html', async () => {
-		const mytest = await page.$('view')
-		const myHtml = await mytest.html()
-		console.log('element.html', myHtml)
+		const mytest = await page.data()
+		// const myHtml = await mytest.html()
+		// console.log('element.html', myHtml)
 		expect(1+1).toEqual(2)
 	})
 	// it('uni.api', async () => {
@@ -25,7 +25,7 @@ describe('pages/index/index', () => {
 	// 	// console.warn('getAppBaseInfo res', res)
 	// 	uni.getBatteryInfo({
 	// 		complete(res){
-	// 			console.warn('uni.getBatteryInfo res', res)
+	// 			console.warn('uni.getBatteryInfo res', res)Í
 	// 		}
 	// 	})
 	// })

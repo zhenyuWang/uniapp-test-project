@@ -1,6 +1,10 @@
 <template>
-  <scroll-view>
-    <view> index page </view>
+  <scroll-view ref="scrollView">
+    <Foo>
+      <view class="test">
+        <text class="c-red">default slot text</text>
+      </view>
+    </Foo>
   </scroll-view>
 </template>
 
@@ -10,11 +14,20 @@ export default {
     return {
     }
   },
-  onShow(){
-    println('index page onShow')
-  },
-  onHide(){
-    println('index page onHide')
+  methods: {
+    onClick(){
+    }
   }
 }
 </script>
+<style>
+.test {
+  width: 200px;
+  height: 100px;
+  background-color: blue;
+}
+
+.c-red {
+  color: red;
+}
+</style>

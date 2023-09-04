@@ -1,9 +1,11 @@
 <template>
 	<view class="content" @click="boxOnClick">
 		<text>{{title}}</text>
-		<Foo data='my data'>
+		<Foo>
 			<template v-slot="defaultProps">
-				<text>defaultProps: {{defaultProps.msg}}</text>
+				<view class="test">
+					<text class="c-red">defaultProps: {{defaultProps.msg}}</text>
+				</view>
 			</template>
 			<template #header="headerProps">
 				<text>defaultProps: {{headerProps.msg}}</text>
@@ -44,3 +46,11 @@
 		}
 	}
 </script>
+<style lang="scss">
+	.test{
+		width: 200px;
+		height: 100px;
+		background-color: green;
+	}
+	.c-red{color: red;}
+</style>

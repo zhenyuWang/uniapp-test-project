@@ -1,7 +1,9 @@
 <template>
 	<view class="uni-switch">
 		<button @click="test1();test2()">test1 & test2</button>
-		<view class="mytest"> class my-test12</view>
+		<view style="width:100px;height:100px;background-color: aqua;"></view>
+		<view @touchstart="onTouchStart" @touchcancel="onTouchCancel" @touchend="onTouchEnd" @tap="onTap" @click="onClick"
+			class="mytest"> class my-test12</view>
 		<view id="mytest">id my-test</view>
 		<view class="uni-switch-input" :style="trackStyle" @click="_onClick">
 			<view class="uni-switch-thumb" :style="thumbStyle"></view>
@@ -36,7 +38,7 @@
 				isChecked1: false,
 				trackStyle: '',
 				thumbStyle: '',
-				keyboardHeight: 0
+				keyboardHeight: 0,
 			}
 		},
 		props: {
@@ -60,10 +62,6 @@
 				this.thumbStyle = val ? `transform: translateX(20px);` : ''
 			},
 		},
-		onLoad() {
-			const pages = getCurrentPages()
-			console.log('pages.length---------', pages.length, pages[0].route)
-		},
 		onReady() {
 			const app = getApp()
 			app.test()
@@ -80,14 +78,34 @@
 			// 	title: 'index vue loading'
 			// })
 		},
-		onHide(){
+		onHide() {
 			console.log('index Page hide')
 		},
 		methods: {
-			test1(){
+			onTouchStart() {
+				console.warn('onTouchStart')
+				uni.showModal({
+					title: '123',
+					content: '456'
+				})
+			},
+			onTouchCancel() {
+				console.warn('onTouchCancel')
+			},
+			onTouchEnd() {
+				console.warn('onTouchEnd')
+			},
+			onTap() {
+				console.warn('onTap')
+			},
+			onClick() {
+				console.warn('onClick')
+				console.log('--------------------------')
+			},
+			test1() {
 				console.log('test1')
 			},
-			test2(){
+			test2() {
 				console.log('test2')
 			},
 			relaunchAbout() {
@@ -113,10 +131,10 @@
 					}
 				})
 			},
-			pageScrollTo(){
+			pageScrollTo() {
 				uni.pageScrollTo({
-					scrollTop:2000,
-					complete(res){
+					scrollTop: 2000,
+					complete(res) {
 						console.warn('pageScrollTo complete', res)
 					}
 				})
@@ -125,9 +143,10 @@
 	}
 </script>
 <style>
-	.div-class{
+	.div-class {
 		border: 1px solid blue;
 	}
+
 	.uni-switch {
 		font-family: 'my test';
 	}

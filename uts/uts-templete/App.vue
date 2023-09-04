@@ -14,7 +14,6 @@ export default {
       title: '再按一次退出应用',
       position: 'bottom',
     });
-    return null;
   },
 };
 </script>
