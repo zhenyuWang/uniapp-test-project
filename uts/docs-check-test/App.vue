@@ -1,0 +1,26 @@
+<script lang="ts">
+export default {
+  onLaunch: function () {
+    console.log('App Launch');
+  },
+  onShow: function () {
+    console.log('App Show');
+		uni.onTabBarMidButtonTap(() => {
+			console.warn('onTabBarMidButtonTap')
+			uni.navigateTo({
+				url: '/pages/test/test'
+			})
+		})
+  },
+  onHide: function () {
+    console.log('App Hide');
+  },
+  onLastPageBackPress: function () {
+    console.log('App LastPageBackPress');
+  },
+};
+</script>
+
+<style>
+/*每个页面公共css */
+</style>

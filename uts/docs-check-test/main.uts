@@ -1,0 +1,11 @@
+import App from './App'
+import PageHead from './components/PageHead.vue'
+
+import { createSSRApp } from 'vue'
+export function createApp() {
+  const app = createSSRApp(App)
+	app.component('page-head', PageHead)
+  return {
+    app
+  }
+}

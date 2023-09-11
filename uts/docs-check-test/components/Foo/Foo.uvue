@@ -1,0 +1,52 @@
+<template>
+	<view>
+		<text>title: {{title}}</text>
+		<text>myTitle: {{myTitle}}</text>
+		<text>postTitle: {{postTitle}}</text>
+		<text>normalizedTitle: {{normalizedTitle}}</text>
+		<input type="text" v-model="title" />
+		<button @click='test'>test</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		props: {
+			title: {
+				type: String,
+				default: 'default title'
+			},
+			postTitle: {
+				type: String,
+				default: 'default title'
+			}
+		},
+		emits: {
+			'update:title': null,
+			submit: ({ email, password } : { email : string, password : number }) : boolean => {
+				console.warn('Invalid submit event payload!')
+				return false
+			}
+		},
+		data() {
+			return {
+				myTitle: this.title as string
+			}
+		},
+		computed: {
+			normalizedTitle() : string {
+				return this.title.toUpperCase()
+			}
+		},
+		methods: {
+			test() {
+				this.$emit('submit', { email: 'email111', password: 123 })
+				this.$emit('update:title', this.title + '1')
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>

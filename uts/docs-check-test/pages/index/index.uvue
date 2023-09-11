@@ -1,0 +1,32 @@
+<template>
+		<text>{{test}}</text>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'index',
+				list: ['a', 'b', 'c'],
+				test: 'init test'
+			}
+		},
+		watch: {
+			test: {
+				handler(newVal, oldVal) {
+					console.log("a------: ", newVal, oldVal);
+				},
+				immediate: true//初始化绑定时就会执行handler方法
+			},
+		},
+		onReachBottom() {
+			console.warn('onReachBottom')
+		},
+		methods: {
+			fooSubmit() {
+				console.warn('fooSubmit')
+				this.test += '1'
+			}
+		}
+	}
+</script>
