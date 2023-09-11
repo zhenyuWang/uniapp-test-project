@@ -15,6 +15,9 @@ export default {
       title: 'about title',
     }
   },
+  onLoad(options: Map<string, string>) {
+    println('page about onLoad-------' + options.get('interval') + '-----' + options.get('autoplay'))
+  },
   methods: {
     reLaunchSetting() {
       uni.reLaunch({

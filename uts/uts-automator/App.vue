@@ -9,9 +9,8 @@
 		onHide: function () {
 		  console.log('App Hide')
 		},
-		onLastPageBackPress: function (): boolean | null {
+		onLastPageBackPress: function (){
 		  console.log('App LastPageBackPress')
-		  return null
 		},
 	}
 </script>

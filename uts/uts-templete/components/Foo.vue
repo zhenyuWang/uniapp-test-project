@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<text>data: {{ data }}</text>
+		<text class="bg">data: {{ data }}</text>
 		<slot name="header" :msg="msg"></slot>
 		<slot msg="default slot msg">插槽后备内容</slot>
 	</view>
@@ -26,3 +26,8 @@
 		}
 	}
 </script>
+<style>
+	.bg{
+		background-color: blue;
+	}
+</style>

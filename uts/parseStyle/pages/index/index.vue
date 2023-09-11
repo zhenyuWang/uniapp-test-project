@@ -1,5 +1,6 @@
 <template>
 	<view class="uni-switch">
+		<page-head title='index page title' />
 		<button @click="test1();test2()">test1 & test2</button>
 		<view style="width:100px;height:100px;background-color: aqua;"></view>
 		<view @touchstart="onTouchStart" @touchcancel="onTouchCancel" @touchend="onTouchEnd" @tap="onTap" @click="onClick"
@@ -41,16 +42,6 @@
 				keyboardHeight: 0,
 			}
 		},
-		props: {
-			checked: {
-				type: Boolean,
-				default: false
-			},
-			color: {
-				type: String,
-				default: 'red'
-			},
-		},
 		watch: {
 			checked(val) {
 				this.isChecked1 = val
@@ -77,6 +68,9 @@
 			// uni.showLoading({
 			// 	title: 'index vue loading'
 			// })
+		},
+		onShow(){
+			console.log('index Page show')
 		},
 		onHide() {
 			console.log('index Page hide')
@@ -115,7 +109,10 @@
 			},
 			navigateToAbout() {
 				uni.navigateTo({
-					url: '/pages/about/about'
+					url: '/pages/about/about',
+					success(){
+						uni.navigateBack()
+					}
 				})
 			},
 			navigateToDetail() {

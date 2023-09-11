@@ -9,9 +9,8 @@ export default {
   onHide: function () {
     println("App Hide");
   },
-  onLastPageBackPress(): boolean | null {
+  onLastPageBackPress(){
     println('-------------------------onLastPageBackPress')
-    return null
   }
 };
 </script>

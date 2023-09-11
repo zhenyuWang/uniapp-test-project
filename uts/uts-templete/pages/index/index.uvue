@@ -10,6 +10,7 @@
 				<text>defaultProps: {{ headerProps.msg }}</text>
 			</template>
 		</Foo>
+		<text class="bg">bg in index</text>
 	</view>
 </template>
 
@@ -33,4 +34,5 @@ export default {
 .c-red {
 	color: red;
 }
+.bg{background-color: red;}
 </style>

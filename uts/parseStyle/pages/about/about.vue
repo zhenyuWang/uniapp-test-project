@@ -15,6 +15,10 @@
 		},
 		onReady(){
 			// uni.showLoading()
+			console.warn('about onReady')
+		},
+		onShow(){
+			console.warn('about onShow')
 		},
 		onBackPress(){
 			console.warn('about onBackPress')

@@ -13,6 +13,10 @@ export default {
       title: 'setting title',
     }
   },
+  onLoad(options: Map<string, string>) {
+    println(options)
+    println('page setting onLoad-------' + options.get('interval') + '-----' + options.get('autoplay'))
+  },
   methods: {
     redirectToUser() {
       uni.redirectTo({

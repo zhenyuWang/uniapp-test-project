@@ -1,5 +1,6 @@
 <template>
-	<view class="content">
+	<scroll-view class="content">
+		<Foo />
 		<!-- <input type="text" /> -->
 		<view class="border-0">测试节点1</view>
 		<view class="border-1">测试节点2</view>
@@ -40,14 +41,20 @@
 		<button type="primary" @click="shot">shot</button>
 		<image style="width: 300px;height:300px;" :src="imgSrc" alt="" />
 		<image style="width: 300px;height:300px;" src="https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg" alt="" />
-	</view>
+	</scroll-view>
 </template>
 <script>
+	import Foo from '../../components/Foo/Foo.vue'
 	export default {
+		components: {Foo},
 		data() {
 			return {
 				title: '111',
-				imgSrc: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg'
+				imgSrc: 'https://web-assets.dcloud.net.cn/unidoc/zh/shuijiao.jpg',
+				obj: {
+					name: 'name',
+					hobby: ['篮球']
+				}
 			}
 		},
 		onReady() {

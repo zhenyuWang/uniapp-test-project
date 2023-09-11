@@ -39,7 +39,7 @@
 			<button type="primary" class="test-button">{{title}}</button>
 			<input class="my-input" style="background-color: yellow;margin-left:10px;" type="text" v-model="title" />
 		</view> -->
-		<my-foo v-if="showFoo" test="foo-test-attribute" class="component-foo" @click="automatorTap"
+		<Foo v-if="showFoo" test="foo-test-attribute" class="component-foo" @click="automatorTap"
 			@longpress="automatorComponentLongpress" />
 		<button @click="goDetail('aaa')">goDetail</button>
 		<!-- 		<image class="logo" src="/static/logo.png"></image>

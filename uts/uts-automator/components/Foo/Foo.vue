@@ -19,6 +19,9 @@
 				title: "foo title"
 			};
 		},
+		mounted(){
+		  console.log('component foo mounted')
+		},
 		unmounted() {
 		  console.log('component foo unmounted',this.$el)
 			console.warn('this.$el.parentNode', this.$el?.parentNode)

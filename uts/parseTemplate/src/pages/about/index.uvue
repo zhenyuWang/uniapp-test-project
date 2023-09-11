@@ -1,6 +1,7 @@
 <template>
   <view>
     <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
+    <button @click="goSetting">go setting</button>
   </view>
   <text>123123</text>
 </template>
@@ -27,5 +28,15 @@ export default {
   onUnload() {
     println('about onUnload-------------------------------------')
   },
+  methods: {
+    goSetting() {
+      uni.navigateTo({
+        url: '/pages/setting/index',
+        success() {
+          uni.navigateBack()
+        }
+      })
+    }
+  }
 }
 </script>

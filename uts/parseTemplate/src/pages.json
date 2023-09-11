@@ -9,7 +9,13 @@
     {
       "path": "pages/about/index",
       "style": {
-        "navigationBarTitleText": "index"
+        "navigationBarTitleText": "about"
+      }
+    },
+    {
+      "path": "pages/setting/index",
+      "style": {
+        "navigationBarTitleText": "setting"
       }
     }
   ],

@@ -1,9 +1,9 @@
-// jest.setTimeout(20000)
+jest.setTimeout(20000)
 describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
-		await page.waitFor(1000)
+		await page.waitFor(7000)
 	})
 
 	// it('mathematical calculation', async () => {
@@ -43,7 +43,13 @@ describe('pages/index/index', () => {
 	// it('page.size', async () => {
 	// 	const {width, height} = await page.size()
 	// 	console.log('width', width, 'height', height)
-	// 	// expect(scrollTop).toEqual(200)
+	// })
+	// it('element.scrollWidth and scrollHeight', async () => {
+	// 	const element = await page.$('.content')
+	// 	const scrollWidth = await element.scrollWidth()
+	// 	console.log(scrollWidth)
+	// 	const scrollHeight = await element.scrollHeight()
+	// 	console.log(scrollHeight)
 	// })
 	// it('element.scrollTo', async () => {
 	// 	const content = await page.$('.content')
@@ -53,12 +59,12 @@ describe('pages/index/index', () => {
 	// 	const swiper = await page.$('.swiper')
 	// 	swiper.swipeTo(1)
 	// })
-	it('slider.slideTo', async () => {
-		const slider = await page.$('.slider')
-		console.log('slider', slider)
-		slider.setData({sliderValue: 90})
-		slider.callMethod('_onRender')
-	})
+	// it('slider.slideTo', async () => {
+	// 	const slider = await page.$('.slider')
+	// 	console.log('slider', slider)
+	// 	slider.setData({sliderValue: 90})
+	// 	slider.callMethod('_onRender')
+	// })
 	
 	// it('uni.switchTab', async () => {
 	// 	await uni.switchTab({
@@ -170,11 +176,12 @@ describe('pages/index/index', () => {
 	// 	console.warn('componentFoo', componentFoo)
 	// 	await componentFoo.callMethod('fooTest')
 	// })
-	// it('element.data', async () => {
-	// 	const componentFoo = await page.$('Foo')
-	// 	const data = await componentFoo.data()
-	// 	expect(data.title).toEqual('foo title')
-	// })
+	it('element.data', async () => {
+		const componentFoo = await page.$('Foo')
+		const data = await componentFoo.data('title')
+		console.log('element.data', data)
+		expect(data).toEqual('foo title')
+	})
 
 	// it('element.setData', async () => {
 	// 	const componentFoo = await page.$('Foo')
@@ -308,11 +315,19 @@ describe('pages/index/index', () => {
 	// })
 
 
-	// it('Page.getData', async () => {
-	// 	const data = await page.data()
-	// 	console.log('data', data)
-	// 	expect(data.title).toEqual('automatorTap')
-	// })
+	it('Page.getData', async () => {
+		// 2.0
+		const data = await page.data('nodes[0].attrs.style')
+		console.log('data', data)
+		expect(data).toEqual('line-height: 60px; color: red; text-align:center;')
+		// 1.0
+		// const title = await page.data('title')
+		// console.log('title', title)
+		// expect(title).toEqual('111')
+		// const hobby = await page.data('obj.hobby[0]')
+		// console.log('hobby', hobby)
+		// expect(hobby).toEqual('篮球')
+	})
 	// it('Page.setData', async () => {
 	// 	await page.setData({
 	// 		title: '222'
