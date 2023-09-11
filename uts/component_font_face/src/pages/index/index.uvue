@@ -1,0 +1,20 @@
+<template>
+  <view class="content">
+    <text>{{title}}</text>
+    <Bar />
+  </view>
+</template>
+
+<script>
+import Bar from '../../components/Bar.uvue'
+export default {
+  components: {
+    Bar
+  },
+  data() {
+    return {
+      title: 'page index'
+    }
+  },
+}
+</script>

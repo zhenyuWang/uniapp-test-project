@@ -1,0 +1,25 @@
+<template>
+	<view>
+		<text class="testFont">测试字体</text>
+  </view>
+</template>
+
+<script>
+export default {
+	data() {
+    return {
+      title: 'component Bar'
+    }
+  },
+}
+</script>
+
+<style>
+@font-face {
+  font-family: AlimamaDaoLiTi;
+  src: url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf');
+}
+.testFont {
+  font-family: AlimamaDaoLiTi;
+}
+</style>
