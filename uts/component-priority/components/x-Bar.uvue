@@ -1,0 +1,5 @@
+<template>
+	<view>
+		<text>this is uvue component x-Bar</text>
+	</view>
+</template>

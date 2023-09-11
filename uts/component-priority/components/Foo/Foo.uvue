@@ -1,0 +1,5 @@
+<template>
+	<view>
+		this is uvue component Foo
+	</view>
+</template>
