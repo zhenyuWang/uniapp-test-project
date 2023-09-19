@@ -1,26 +1,42 @@
 <template>
-	<!-- #ifdef APP -->
-	<scroll-view style="flex:1">
-	<!-- #endif -->
-		<text>this is setting 1</text>
-	<!-- #ifdef APP -->
-	</scroll-view>
-	<!-- #endif -->
+  <scroll-view>
+    <TestSlot msg="123">
+      <template #default="{}">
+        <text>default slot msg: {{test}}</text>
+      </template>
+      <template #header="{msg, age}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+      </template>
+    </TestSlot>
+    <TestSlot msg="123">
+      <template #default="{ msg }">
+        <text>default slot msg: {{msg}}</text>
+      </template>
+      <template #header="{msg, age}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+      </template>
+    </TestSlot>
+    <TestSlot id="test-TestSlot" msg="123">
+      <template #default="{ msg: newMsg }">
+        <text>default slot newMsg: {{newMsg}}</text>
+      </template>
+      <template #header="{msg, age, num = 10}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+        <text>header slot num with default value 10: {{num}}</text>
+      </template>
+    </TestSlot>
+  </scroll-view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				
-			}
-		},
-		methods: {
-			
-		}
-	}
+<script lang="uts">
+export default {
+  data(){
+    return {
+      test: 'test msg'
+    }
+  }
+}
 </script>
-
-<style>
-
-</style>

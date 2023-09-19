@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<Foo post-title='post-title' v-model:title='title' @submit="fooSubmit" />
+		<Foo v-model:title='title' @submit="fooSubmit" />
 		<Bar>123</Bar>
 		<template v-for="(item, index) in list" :key="index">
 			<text>{{item}}</text>
@@ -9,9 +9,7 @@
 </template>
 
 <script>
-	import Foo from '../../components/Foo/Foo.uvue'
 	export default {
-		components: { Foo },
 		data() {
 			return {
 				title: 'test',

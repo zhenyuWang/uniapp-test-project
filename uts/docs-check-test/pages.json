@@ -25,7 +25,10 @@
 		{
 			"path": "pages/about/about",
 			"style": {
-				"navigationBarTitleText": "about"
+				"navigationBarTitleText": "about",
+				"app-plus": {
+					"softinputmode": "adjustPan"
+				}
 			}
 		},
 		{
@@ -93,6 +96,9 @@
 		// "backgroundColor": "#00ff00",
 		// "borderStyle": "white",
 		"blurEffect": "light", // 不支持
+		"backgroundImage": "static/logo.png",
+		"backgroundRepeat": "repeat-y",
+		"redDotColor": "#0000ff",
 		"list": [{
 			"iconPath": "static/logo.png",
 			"selectedIconPath": "static/logo.png",
@@ -137,5 +143,10 @@
 		},
 		"iconfontSrc": "static/uni.ttf"
 	},
-	"uniIdRouter": {}
+	"uniIdRouter": {},
+	"topWindow": {
+		"matchMedia": {
+			
+		}
+	}
 }

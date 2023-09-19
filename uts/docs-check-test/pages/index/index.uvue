@@ -1,5 +1,22 @@
 <template>
-		<text>{{test}}</text>
+	<view class="a" @click="outerClick">
+		<text @click.stop="innerClick">{{test}}12312321312312321323123</text>
+		<text @click.once.stop="onceClick">onceClick</text>
+		<text class="b">this is child b</text>
+	</view>
+	<view class="b">this is 紧邻 brother b</view>
+	<button @click="goSetting">goSetting</button>
+	<Foo title='123' />
+	<Bar>
+		<template v-slot:default="{msg}">
+			<text>component Bar default slot msg: {{msg}}</text>
+		</template>
+		<template v-slot:header="{msg, age}">
+			<text>component Bar header slot msg: {{msg}}</text>
+			<text>component Bar header slot age: {{age}}</text>
+		</template>
+	</Bar>
+	<view class="b">this is brother b</view>
 </template>
 
 <script>
@@ -19,14 +36,50 @@
 				immediate: true//初始化绑定时就会执行handler方法
 			},
 		},
+		// created() {
+		// 	uni.loadFontFace({
+		// 		family: 'AlimamaDaoLiTiTTF',
+		// 		source:
+		// 			'https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf',
+		// 		success(res) {
+		// 			console.warn('loadFontFace success', res)
+		// 		},
+		// 		fail(err) {
+		// 			console.warn('loadFontFace fail', err)
+		// 		}
+		// 	})
+		// },
 		onReachBottom() {
 			console.warn('onReachBottom')
 		},
 		methods: {
+			goSetting(){
+				uni.navigateTo({
+					url: '/pages/setting/setting'
+				})
+			},
 			fooSubmit() {
+				uni.setNavigationBarColor({
+					frontColor: '#ffffff',
+					backgroundColor: '#09c'
+				})
 				console.warn('fooSubmit')
 				this.test += '1'
+			},
+			innerClick() {
+				console.log('innerClick')
+			},
+			outerClick() {
+				console.log('outerClick')
+			},
+			onceClick() {
+				console.log('onceClick')
 			}
 		}
 	}
 </script>
+
+<style>
+	.a ~ .b{background-color: red;}
+	.a + .b{height: 100px;}
+</style>

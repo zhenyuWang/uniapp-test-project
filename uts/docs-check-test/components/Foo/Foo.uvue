@@ -1,48 +1,92 @@
 <template>
 	<view>
 		<text>title: {{title}}</text>
-		<text>myTitle: {{myTitle}}</text>
-		<text>postTitle: {{postTitle}}</text>
-		<text>normalizedTitle: {{normalizedTitle}}</text>
-		<input type="text" v-model="title" />
+		<!-- <text>myTitle: {{myTitle}}</text> -->
+		<text>obj: {{obj}}</text>
+		<!-- <text>normalizedTitle: {{normalizedTitle}}</text> -->
+		<!-- <input type="text" v-model="title" /> -->
 		<button @click='test'>test</button>
+		<button @click='setNavigationBarColor1'>setNavigationBarColor1</button>
+		<button @click='setNavigationBarColor2'>setNavigationBarColor2</button>
 	</view>
 </template>
 
-<script>
+<script lang="uts">
+	import {type PropType} from 'vue'
+	type MyObj = {
+		message: string
+	}
 	export default {
+		data(){},
 		props: {
 			title: {
 				type: String,
-				default: 'default title'
+				required: true,
+				validator: (value: string): boolean => {
+					console.warn('validator----------', value)
+					return ['111','222','123'].indexOf(value) != -1
+				}
 			},
-			postTitle: {
-				type: String,
-				default: 'default title'
+			obj: {
+				type: Object as PropType<MyObj>,
+				required: false,
+				default: function(): MyObj {
+					return { message: 'hello' } as MyObj
+				}
 			}
 		},
-		emits: {
-			'update:title': null,
-			submit: ({ email, password } : { email : string, password : number }) : boolean => {
-				console.warn('Invalid submit event payload!')
-				return false
-			}
-		},
-		data() {
-			return {
-				myTitle: this.title as string
-			}
-		},
-		computed: {
-			normalizedTitle() : string {
-				return this.title.toUpperCase()
-			}
-		},
+		// emits: {
+		// 	'update:title': null,
+		// 	submit: ({ email, password } : { email : string, password : number }) : boolean => {
+		// 		console.warn('Invalid submit event payload!')
+		// 		return false
+		// 	}
+		// },
+		// data() {
+		// 	return {
+		// 		myTitle: this.title as string
+		// 	}
+		// },
+		// computed: {
+		// 	normalizedTitle() : string {
+		// 		return this.title.toUpperCase()
+		// 	}
+		// },
 		methods: {
 			test() {
 				this.$emit('submit', { email: 'email111', password: 123 })
 				this.$emit('update:title', this.title + '1')
-			}
+			},
+			setNavigationBarColor1() {
+			  uni.setNavigationBarColor({
+			    frontColor: '#ffffff',
+			    backgroundColor: '#00ff00',
+			    success() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    fail() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    complete() {
+			      console.log('setNavigationBarColor success')
+			    }
+			  })
+			},
+			setNavigationBarColor2() {
+			  uni.setNavigationBarColor({
+			    frontColor: '#000000',
+			    backgroundColor: '#ff0000',
+			    success() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    fail() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    complete() {
+			      console.log('setNavigationBarColor success')
+			    }
+			  })
+			},
 		}
 	}
 </script>

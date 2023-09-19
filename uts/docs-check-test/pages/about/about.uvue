@@ -1,21 +1,25 @@
 <template>
-	<view class="content">
-		<Foo post-title='post-title' v-model:title='title' @submit="fooSubmit" />
+	<scroll-view class="content">
+		<Foo v-model:title='title' @submit="fooSubmit" />
 		<Bar>123</Bar>
 		<template v-for="(item, index) in list" :key="index">
 			<text>{{item}}</text>
 		</template>
-	</view>
+		<button @click="getElement">getElement</button>
+		<view id="test-view">test-view</view>
+		<text id="test-text">test-text</text>
+		<button id="test-button">test button</button>
+		<Foo id="test-foo" msg="123" title='111'></Foo>
+		<Bar id="test-bar"></Bar>
+	</scroll-view>
 </template>
 
-<script>
-	import Foo from '../../components/Foo/Foo.uvue'
+<script lang="uts">
 	export default {
-		components: { Foo },
 		data() {
 			return {
-				title: 'about',
-				list: ['a', 'b', 'c']
+				title: '111',
+				list: ['a', 'b', 'c'],
 			}
 		},
 		onLoad(options: Map<string, string>){
@@ -24,6 +28,36 @@
 		methods: {
 			fooSubmit(){
 				console.warn('fooSubmit')
+			},
+			getElement(){
+				const testView = uni.getElementById('test-view')
+				if(testView !== null){
+					testView.style.setProperty('width', '100px')
+					testView.style.setProperty('height', '100px')
+					testView.style.setProperty('backgroundColor', 'red')
+				}
+				const testText = uni.getElementById('test-text')
+				if(testText !== null){
+					testText!.setAttribute('value', 'new text')
+					testText!.style.setProperty('color', 'red')
+				}
+				const testButton = uni.getElementById('test-button')
+				if(testButton !== null){
+					testButton!.setAttribute('value', 'new button')
+					testButton!.style.setProperty('color', 'red')
+				}
+				const testFoo = uni.getElementById('test-foo')
+				if(testFoo !== null){
+					testFoo.style.setProperty('width', '100px')
+					testFoo.style.setProperty('height', '100px')
+					testFoo.style.setProperty('backgroundColor', '#09c')
+				}
+				const testBar = uni.getElementById('test-bar')
+				if(testBar !== null){
+					testBar.style.setProperty('width', '100px')
+					testBar.style.setProperty('height', '100px')
+					testBar.style.setProperty('backgroundColor', 'pink')
+				}
 			}
 		}
 	}
