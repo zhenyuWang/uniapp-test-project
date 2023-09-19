@@ -15,7 +15,7 @@
 		<button @click="navigateToAbout">navigateTo about</button>
 		<button @click="navigateToDetail">navigateTo detail</button>
 		<button style="margin-bottom: 1000px;" @click="pageScrollTo">pageScrollTo</button>
-		<text>1123</text>
+		<text ref='text'>1123</text>
 		<text>\\n换行</text>
 		<rich-text :nodes="[
 			{
@@ -56,6 +56,8 @@
 		onReady() {
 			const app = getApp()
 			app.test()
+			const text = this.$refs.text
+			console.log('text', text,Object.keys(text))
 			// uni.onKeyboardHeightChange((e) => {
 			// 	console.log('onKeyboardHeightChange', e)
 			// 	this.keyboardHeight = e.height

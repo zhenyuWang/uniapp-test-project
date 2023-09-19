@@ -3,7 +3,18 @@
 		{
 			"path": "pages/index/index",
 			"style": {
-				"navigationBarTitleText": "uni-app"
+				"navigationBarTitleText": "uni-app",
+				"app-plus": {
+					"titleNView": {
+						"type": "transparent",
+						"buttons": [{
+							"text": "test",
+							// "type": "favorite",
+							"background": "#00ff00",
+							"colorPressed": "#ff0000"
+						}]
+					}
+				}
 			}
 		}, {
 			"path": "pages/about/about",
@@ -14,24 +25,44 @@
 			"path": "pages/detail/detail",
 			"style": {
 				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationStyle": "custom"
 			}
 		}
 	],
-	// "tabBar": {
-	// 	"list": [
-	// 		{
-	// 			"iconPath": "static/logo.png",
-	// 			"pagePath": "pages/index/index",
-	// 			"text": "index"
-	// 		},
-	// 		{
-	// 			"iconPath": "static/logo.png",
-	// 			"pagePath": "pages/about/about",
-	// 			"text": "about"
-	// 		}
-	// 	]
-	// },
+	"tabBar": {
+		"borderStyle": "#ff0000",
+		"list": [{
+				"iconPath": "static/logo.png",
+				"pagePath": "pages/index/index",
+				"text": "index"
+			},
+			{
+				"iconPath": "static/logo.png",
+				"pagePath": "pages/about/about",
+				"text": "about"
+			}
+		],
+			"iconfontSrc":"static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
+		"midButton": {
+			"width": "60px",
+			"height": "100px",
+			"text": "mid",
+			"iconPath": "static/logo.png",
+			"iconWidth": "40px",
+			"backgroundImage": "static/logo.png",
+			"iconfontSrc":"static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
+			"iconfont": {
+				"text": "\ue100",
+				"selectedText": "\ue101",
+				"fontSize": "40px",
+				"color": "#00ff00",
+				"selectedColor": "#ff0000"
+			}
+		},
+		"backgroundImage": "static/logo.png",
+		"backgroundRepeat": "repeat",
+		"redDotColor": "#0000ff"
+	},
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app",

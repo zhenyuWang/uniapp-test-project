@@ -7,6 +7,8 @@
 		<button @click="showModal">showModal</button>
 		<button @click="showActionSheet">showActionSheet</button>
 		<button @click="back">back</button>
+		<button @click="setNavigationBarColor1">setNavigationBarColor1</button>
+		<button @click="setNavigationBarColor2">setNavigationBarColor2</button>
 	</view>
 </template>
 
@@ -26,6 +28,36 @@
 			}, 2000)
 		},
 		methods: {
+			setNavigationBarColor1() {
+			  uni.setNavigationBarColor({
+			    frontColor: '#ffffff',
+			    backgroundColor: '#00ff00',
+			    success() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    fail() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    complete() {
+			      console.log('setNavigationBarColor success')
+			    }
+			  })
+			},
+			setNavigationBarColor2() {
+			  uni.setNavigationBarColor({
+			    frontColor: '#000000',
+			    backgroundColor: '#ff0000',
+			    success() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    fail() {
+			      console.log('setNavigationBarColor success')
+			    },
+			    complete() {
+			      console.log('setNavigationBarColor success')
+			    }
+			  })
+			},
 			showModal(){
 				uni.showModal({
 					title: '提示',
