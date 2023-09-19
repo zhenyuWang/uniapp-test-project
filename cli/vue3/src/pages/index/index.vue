@@ -4,16 +4,23 @@
     <view class="text-area">
       <text class="title">{{ title }}</text>
     </view>
+    <text class="font-size-20" style="font-family: UniFontFamily">{{ uniIcon }}</text>
+    <text class="font-size-20" style="font-family: UniFontFamily">\ue101</text>
   </view>
 </template>
 
 <script setup>
-import {ref} from 'vue'
+import { ref } from 'vue'
 const title = ref('hello world')
-console.log('title',title)
+console.log('title', title)
+const uniIcon = '\ue101'
 </script>
 
 <style>
+@font-face {
+  font-family: UniFontFamily;
+  src: url('/static/uni.ttf');
+}
 .content {
   display: flex;
   flex-direction: column;

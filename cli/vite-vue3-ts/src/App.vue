@@ -3,9 +3,16 @@
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
 import { getCurrentInstance } from 'vue'
-console.log('App log vue',getCurrentInstance());
+console.log('App log vue', getCurrentInstance())
 const myClick = (e: any) => {
-  console.log('e',e)
+  console.log('e', e)
+}
+const uniIcon = '\ue101'
+function outerClick() {
+  console.log('outerClick')
+}
+function innerClick() {
+  console.log('innerClick')
 }
 </script>
 
@@ -20,9 +27,18 @@ const myClick = (e: any) => {
   </div> -->
   <HelloWorld class="bgR" msg="Vite + Vue" />
   <div @click="(e: any) => myClick(e)">this is vite-vue3-ts</div>
+  <div @click="outerClick">
+    <div @click.stop.once="innerClick">innerClick</div>
+  </div>
+  <text class="font-size-20" style="font-family: UniFontFamily">{{ uniIcon }}</text>
+  <text class="font-size-20" style="font-family: UniFontFamily">\ue101</text>
 </template>
 
 <style>
+@font-face {
+  font-family: UniFontFamily;
+  src: url('assets/uni.ttf');
+}
 .logo {
   height: 6em;
   padding: 1.5em;
@@ -34,7 +50,7 @@ const myClick = (e: any) => {
 .logo.vue:hover {
   filter: drop-shadow(0 0 2em #42b883aa);
 }
-.bgR{
+.bgR {
   height: 300px;
   background-color: red;
 }
