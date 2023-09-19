@@ -1,0 +1,61 @@
+import App from './App'
+import { createApp, createSSRApp } from 'vue'
+// import { onMessage } from '/Users/wangzhenyu/work/DCloud/git/uni-app-next/packages/uni-app-uts/lib/automator/index.uts'
+// import { initAutomator } from '/Users/wangzhenyu/work/DCloud/git/uni-app-next/packages/uni-app-uts/lib/automator/index.uts'
+export function createApp() {
+	// initAutomator()
+	// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.getElement","params":{"selector":".my-test","pageId":0}}')
+	setTimeout(() => {
+	// 	// onMessage('{"id":"navigateTo","method":"App.callUniMethod","params":{"method":"navigateTo","args":[{"url":"/pages/test/test"}]}}')
+	// 	// onMessage('{"id":"setStorageSync","method":"App.callUniMethod","params":{"method":"setStorageSync","args":["storage_key", "hello"]}}')
+	// 	onMessage('{"id":"showToast","method":"App.callUniMethod","params":{"method":"showToast","args":[{title: "my test title"}]}}')
+		// onMessage('{"id":"9b128564-d485-405e-9f22-73e3d4a53c2f","method":"App.callUniMethod","params":{"method":"showToast","args":[{"title":"this is my showToast title"}]}}')
+		// onMessage('{"id":"a0183ebb-31e9-4aef-9005-d03fd7942ee6","method":"Page.getData","params":{"pageId":1}}')
+		// onMessage('{"id":"a0183ebb-31e9-4aef-9005-d03fd7942ee6","method":"Page.getData","params":{"pageId":1, path: "title"}}')
+		// onMessage('{"id":"page.getData","method":"Page.getData","params":{"pageId":0}}')
+		// onMessage('{"id":"83706344-7412-4255-bccd-7f64228419c3","method":"App.callUniMethod","params":{"method":"showToast","args":[{"title":"title in main.uts","icon": "error", "duration": 3000, "mask": true, "image": "/static/logo.png"}]}}')
+		// setTimeout(() => {
+		// 	onMessage('{"id":"83706344-7412-4255-bccd-7f64228419c4","method":"App.callUniMethod","params":{"method":"hideToast","args":[]}}')
+		// },1000)
+		// onMessage('{"id":"1fd12796-0d7c-4b53-b689-5a13f8ec7901","method":"Page.getData","params":{"pageId":0}}')
+		// onMessage('{"id":"1fd12796-0d7c-4b53-b689-5a13f8ec7901","method":"Page.setData","params":{"data":{"title":"1234"},"pageId":0}}')
+		// onMessage('{"id":"1fd12796-0d7c-4b53-b689-5a13f8ec7901","method":"Page.getData","params":{"pageId":0}}')
+		// onMessage('{"id":"2ec0a847-3123-4504-9e73-87c34c78fe52","method":"App.getCurrentPage","params":{}}')
+		// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.callMethodWithCallback","params":{"method":"getStorageInfo","args":[],"pageId":1}}')
+		// onMessage('{"id":"83706344-7412-4255-bccd-7f64228419c3","method":"App.callUniMethod","params":{"method":"showActionSheet","args":[{"title":"title in main.uts","itemList": ["a", "b", "c"], itemColor: "#09c"}]}}')
+		// onMessage('{"id":"997f857c-7a43-440c-b4f7-5836d64b407e","method":"App.callUniMethod","params":{"method":"connectSocket","args":[{"url":"ws://192.168.31.119:8080"}]}}')
+		// onMessage('{"id":"95669dc5-8469-47d0-a223-464975298647","method":"App.socketEmitter","params":{"id":"ws://192.168.31.119:8080","method":"onOpen"}}')
+		// setTimeout(() => {
+			// onMessage('{"id":"95669dc5-8469-47d0-a223-464975298647","method":"App.socketEmitter","params":{"id":"ws://192.168.31.119:8080","method":"onMessage"}}')
+			// onMessage('{"id":"95669dc5-8469-47d0-a223-464975298647","method":"App.socketEmitter","params":{"id":"ws://192.168.31.119:8080","method":"send","data": "1234567"}}')
+		// 	onMessage('{"id":"95669dc5-8469-47d0-a223-464975298647","method":"App.socketEmitter","params":{"id":"ws://192.168.31.119:8080","method":"close"}}')
+		// },1000)
+		// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.callMethod","params":{"method":"getStorageInfo","args":[],"pageId":0}}')
+		// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.callMethod","params":{"method":"getStorageInfo","pageId":0}}')
+		// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.getElement","params":{"selector":".my-test","pageId":0}}')
+		// onMessage('{"id":"71c3fe45-f8a7-4cff-af38-f52c93c5882b","method":"Page.getElements","params":{"selector":".my-test","pageId":0}}')
+		// onMessage('{"id":"bd589b2f-615d-4a7b-a733-5f8775532012","method":"Element.getElement","params":{"selector":".test-child","elementId":"1","pageId":0}}')
+		// onMessage(`{"id":"bd589b2f-615d-4a7b-a733-5f8775532012","method":"Element.getDOMProperties","params":{"names":["innerText"],"elementId":"1","pageId":0}}`)
+		
+		// {"id":"ce5aec9b-5b7d-4054-b517-b5e2865770b4","method":"Element.callFunction","params":{"functionName":"input.input","args":["test"],"elementId":"5","pageId":2}}
+		// onMessage('{"id":"732305af-c03e-41c3-87a6-d2a0b6a62b4f","method":"Element.tap","params":{"elementId":"1","pageId":2}}')
+		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":"Button","pageId":0}}')
+		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".test-button","pageId":0}}')
+		// onMessage('{"id":"acd70caf-cca3-4b84-92ae-502e457c2a55","method":"Element.getDOMProperties","params":{"names":["innerText"],"elementId":"3","pageId":0}}')
+		// onMessage('{"id":"acd70caf-cca3-4b84-92ae-502e457c2a55","method":"Element.callMethod","params":{"method": "fooTest", "args":[],"nodeId":1,"pageId":0}}')
+		// onMessage('{"id":"123","method":"App.callUniMethod","params":{"method":"showActionSheet","args":[{"title":"showActionSheet title","itemList":["A","B","C"],"itemColor":"#007aff"}]}}')
+		// onMessage('{"id":"3d185887-318d-40b5-bdb7-9ed8203665fa","method":"Element.getData","params":{"elementId":null,"pageId":0,"nodeId":1}}')
+		// onMessage('{"id":"e0a309f5-f44b-43d2-8623-d4cae7e171b7","method":"Element.longpress","params":{"elementId":"1","pageId":0}}')
+		// onMessage('{"id":"123","method":"Element.touchstart","params":{"touches":[{"identifier":1,"pageX":500,"pageY":500}],"changedTouches":[{"identifier":1,"pageX":500,"pageY":500}],"elementId":"1","pageId":0}}')
+		// onMessage('{"id":"c891dec9-6247-44c0-88c5-0953b7f6b8e1","method":"Element.getAttributes","params":{"names":["class"],"elementId":null,"pageId":0,"nodeId":1}}')
+		// onMessage('{"id":"c891dec9-6247-44c0-88c5-0953b7f6b8e1","method":"Element.getProperties","params":{"names":["type"],"elementId":null,"pageId":0,"nodeId":1}}')
+		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".test-checkbox1","pageId":0}}')
+		// onMessage('{"id":"123","method":"Element.getProperties","params":{"names":["checked"],"elementId":"1688098757020","pageId":0,"nodeId":6}}')
+		// onMessage('{"id":"7d6d58a5-eed1-4a6a-bf5b-46860e6eb413","method":"Page.getElement","params":{"selector":".progress","pageId":0}}')
+		// onMessage('{id: "123","method":"Page.getWindowProperties","params":{"names":["document.documentElement.scrollTop"],"pageId":0}}')
+	}, 3000)
+	const app = createSSRApp(App)
+	return {
+		app
+	}
+}
