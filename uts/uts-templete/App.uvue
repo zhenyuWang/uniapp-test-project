@@ -1,8 +1,8 @@
 <script lang="ts">
 export default {
-  onLaunch: function () {
-    console.log('App Launch');
-  },
+	globalData:{
+		a: 1
+	},
   onShow: function () {
     console.log('App Show');
   },
@@ -15,6 +15,11 @@ export default {
       position: 'bottom',
     });
   },
+	methods: {
+		test(){
+			console.warn('app.uvue test')
+		}
+	},
 };
 </script>
 

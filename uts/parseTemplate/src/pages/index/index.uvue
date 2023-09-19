@@ -1,7 +1,14 @@
 <template>
-  <view @click="outerClick">
-    <text @click.stop="innerClick">12312313132131231231</text>
-    <Foo />
+  <view>
+    <swiper>
+      <!-- test comment -->
+      <swiper-item>1</swiper-item>
+      <!-- test comment -->
+      <swiper-item>2</swiper-item>
+      <!-- test comment -->
+      <swiper-item>3</swiper-item>
+      <!-- test comment -->
+    </swiper>
   </view>
 </template>
 
@@ -9,27 +16,8 @@
 export default {
   data() {
     return {
+      test: 'test msg'
     }
   },
-  onShow() {
-    println('index onShow-------------------------------------')
-  },
-  onReady() {
-    println('index onReady-------------------------------------')
-  },
-  onHide() {
-    println('index onHide-------------------------------------')
-  },
-  methods: {
-    outerClick(){
-      println('outerClick------------------') 
-    },
-    innerClick(){
-      println('innerClick------------------')
-      uni.navigateTo({
-        url: '/pages/about/index',
-      })
-    }
-  }
 }
 </script>

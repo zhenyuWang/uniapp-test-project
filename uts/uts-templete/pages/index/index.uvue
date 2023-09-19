@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<Foo>
+		<Foo data='123' :num='10' str='str' :obj='{a: 2}' :arr='[1,1,1]'>
 			<template v-slot="defaultProps">
 				<view class="test">
 					<text class="c-red">defaultProps: {{ defaultProps.msg }}</text>
@@ -21,6 +21,11 @@ export default {
 	data() {
 		return {
 		}
+	},
+	onReady(){
+		const app = getApp()
+		app.test()
+		const pages = getCurrentPages()
 	}
 }
 </script>

@@ -315,11 +315,11 @@ describe('pages/index/index', () => {
 	// })
 
 
-	it('Page.getData', async () => {
+	// it('Page.getData', async () => {
 		// 2.0
-		const data = await page.data('nodes[0].attrs.style')
-		console.log('data', data)
-		expect(data).toEqual('line-height: 60px; color: red; text-align:center;')
+		// const data = await page.data('nodes[0].attrs.style')
+		// console.log('data', data)
+		// expect(data).toEqual('line-height: 60px; color: red; text-align:center;')
 		// 1.0
 		// const title = await page.data('title')
 		// console.log('title', title)
@@ -327,7 +327,7 @@ describe('pages/index/index', () => {
 		// const hobby = await page.data('obj.hobby[0]')
 		// console.log('hobby', hobby)
 		// expect(hobby).toEqual('篮球')
-	})
+	// })
 	// it('Page.setData', async () => {
 	// 	await page.setData({
 	// 		title: '222'
@@ -339,11 +339,11 @@ describe('pages/index/index', () => {
 	// 	const text = await textNode.text()
 	// 	expect(text).toEqual('222')
 	// })
-	// it('screenshot', async () => {
-	// 	// const image = await program.screenshot({fullPage: true})
-	// 	const image = await program.screenshot()
-	// 	expect(image).toMatchImageSnapshot();
-	// })
+	it('screenshot', async () => {
+		// const image = await program.screenshot({fullPage: true})
+		const image = await program.screenshot()
+		expect(image).toMatchImageSnapshot();
+	})
 	// it('uni.xxx not exists', async () => {
 	// 	const res2 = await uni.aaaa({
 	// 		fail(err) {

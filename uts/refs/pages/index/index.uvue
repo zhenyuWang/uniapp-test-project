@@ -1,0 +1,15 @@
+<template>
+	<view>
+		<text ref='text'>text node</text>
+		<Foo ref='foo' />
+	</view>
+</template>
+
+<script>
+	export default {
+		onReady() {
+			const text = this.$refs.get('text') as INode
+			const foo = this.$refs.get('foo') as ComponentPublicInstance
+		}
+	}
+</script>

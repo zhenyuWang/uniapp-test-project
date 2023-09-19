@@ -1,0 +1,42 @@
+<template>
+  <view>
+    <Foo msg="123">
+      <template #default="{}">
+        <text>default slot msg: {{test}}</text>
+      </template>
+      <template #header="{msg, age}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+      </template>
+    </Foo>
+    <Foo msg="123">
+      <template #default="{ msg }">
+        <text>default slot msg: {{msg}}</text>
+      </template>
+      <template #header="{msg, age}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+      </template>
+    </Foo>
+    <Foo id="test-foo" msg="123">
+      <template #default="{ msg: newMsg }">
+        <text>default slot newMsg: {{newMsg}}</text>
+      </template>
+      <template #header="{msg, age, num = 10}">
+        <text>header slot msg: {{msg}}</text>
+        <text>header slot age: {{age}}</text>
+        <text>header slot num with default value 10: {{num}}</text>
+      </template>
+    </Foo>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data(){
+    return {
+      test: 'test msg'
+    }
+  }
+}
+</script>

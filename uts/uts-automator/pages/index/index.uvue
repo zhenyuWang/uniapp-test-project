@@ -11,13 +11,13 @@
 		<view>{{ showFoo ? title : fnName }}</view>
 		<swiper class="swiper" style="width:100%;height:100px;background-color: aquamarine;" circular>
 			<swiper-item>
-				<view class="swiper-item uni-bg-red">A</view>
+				<view ref='test' class="swiper-item uni-bg-red">A</view>
 			</swiper-item>
 			<swiper-item>
-				<view class="swiper-item uni-bg-green">B</view>
+				<view ref='test' class="swiper-item uni-bg-green">B</view>
 			</swiper-item>
 			<swiper-item>
-				<view class="swiper-item uni-bg-blue">C</view>
+				<view ref='test' class="swiper-item uni-bg-blue">C</view>
 			</swiper-item>
 		</swiper>
 		<slider class="slider" :value="60" :step="5" />
@@ -57,9 +57,9 @@
 	import { JSONArray } from 'com.alibaba.fastjson'
 	import TodoList from '../../components/TodoList.uvue'
 	type Msg = {
-		id : string,
-		method : string,
-		params : any
+		id: string,
+		method: string,
+		params: any
 	}
 	type CallUniMethodParams = {
 		method : string
@@ -99,12 +99,33 @@
 			}
 		},
 		onReady() {
-			const arr1 = this.fnName.split('')
-			console.warn('arr1', arr1)
-			console.warn('isArray arr1', Array.isArray(arr1))
-			const arr2 = arr1.reverse()
-			console.warn('arr2', arr2)
-			console.warn('isArray arr2', Array.isArray(arr2))
+			// console.warn('onReady start')
+			const msg = `{"id":"6fd6ca73-c313-48ac-ad30-87ff4eba2be8","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url":"/pages/index/index"}]}}`
+			const json = JSON.parse<Msg>(msg)!
+			console.warn('json', json)
+			const paramsStr = JSON.stringify(json.params)
+			console.warn('paramsStr', paramsStr)
+			const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+			
+			// const testList = this.$refs.get('test') as INode
+			// console.log('testList', testList)
+			// const pages = getCurrentPages()
+			// const page = pages[pages.length-1]
+			// page.$viewToTempFilePath({
+			// 	id: null,
+			// 	wholeContent: false,
+			// 	path: null,
+			// 	complete(res){
+			// 		console.log('res',res)
+			// 	}
+			// })
+			
+			// const arr1 = this.fnName.split('')
+			// console.warn('arr1', arr1)
+			// console.warn('isArray arr1', Array.isArray(arr1))
+			// const arr2 = arr1.reverse()
+			// console.warn('arr2', arr2)
+			// console.warn('isArray arr2', Array.isArray(arr2))
 			// const res = new Map<string, any | null>([['id', 'abc']])
 			// const result = {
 			// 	"elements": [

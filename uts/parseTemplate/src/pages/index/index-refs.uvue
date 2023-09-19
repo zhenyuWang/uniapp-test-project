@@ -1,0 +1,52 @@
+<template>
+  <view>
+    <view ref="test-view">test-view</view>
+    <text ref="test-text">test-text</text>
+    <button ref="test-button">test button</button>
+    <Foo ref="test-foo" />
+    <button @click="testRefs">testRefs</button>
+    <swiper ref="test-swiper">
+
+    </swiper>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      test: 'test msg'
+    }
+  },
+  methods: {
+    testRefs(){
+      const testView = this.$refs.get('test-view') as Element
+      if(testView !== null){
+        testView.style.setProperty('width', '100px')
+        testView.style.setProperty('height', '100px')
+        testView.style.setProperty('backgroundColor', 'red')
+      }
+      const testText = this.$refs.get('test-text') as Element
+      if(testText !== null){
+        testText.setAttribute('value', 'new text')
+        testText.style.setProperty('color', 'red')
+      }
+      const testButton = this.$refs.get('test-button') as Element
+      if(testButton !== null){
+        testButton.setAttribute('value', 'new button')
+        testButton.style.setProperty('color', 'red')
+      }
+      const testSwiper = this.$refs.get('test-swiper') as Element
+      if(testSwiper !== null){
+        testSwiper.style.setProperty('width', '100px')
+        testSwiper.style.setProperty('height', '100px')
+        testSwiper.style.setProperty('backgroundColor', 'red')
+      }
+      const testFoo = this.$refs.get('test-foo') as ComponentPublicInstance
+      if(testFoo !== null){
+        testFoo.$props.set('msg', 'new msg---------')
+      }
+    }
+  }
+}
+</script>
