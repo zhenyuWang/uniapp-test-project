@@ -73,6 +73,7 @@
 		components: { TodoList },
 		data() {
 			return {
+				num: 10,
 				title: '111',
 				fnName: 'getStorageInfo',
 				showFoo: true,
@@ -107,7 +108,7 @@
 			console.warn('paramsStr', paramsStr)
 			const params = JSON.parse<CallUniMethodParams>(paramsStr)!
 			
-			// const testList = this.$refs.get('test') as INode
+			// const testList = this.$refs.get('test') as Element
 			// console.log('testList', testList)
 			// const pages = getCurrentPages()
 			// const page = pages[pages.length-1]

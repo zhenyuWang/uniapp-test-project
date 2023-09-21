@@ -20,7 +20,7 @@ export default {
 			},
 			logRef(e: MouseEvent){
 				for(let i = 1;i<=10;i++){
-					(this.$refs[`item-${i}`]as INode).setAttribute('value','aaa')
+					(this.$refs[`item-${i}`]as Element).setAttribute('value','aaa')
 				}
 			},
     getClass(): String{

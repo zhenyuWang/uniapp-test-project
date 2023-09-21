@@ -14,8 +14,13 @@
 		<button @click="relaunchAbout">relaunch about</button>
 		<button @click="navigateToAbout">navigateTo about</button>
 		<button @click="navigateToDetail">navigateTo detail</button>
+		<button @click="navigateToSetting">navigateTo setting</button>
 		<button style="margin-bottom: 1000px;" @click="pageScrollTo">pageScrollTo</button>
 		<text ref='text'>1123</text>
+		<swiper>
+			<view><swiper-item>1</swiper-item></view>
+			<view><swiper-item>2</swiper-item></view>
+		</swiper>
 		<text>\\n换行</text>
 		<rich-text :nodes="[
 			{
@@ -57,7 +62,7 @@
 			const app = getApp()
 			app.test()
 			const text = this.$refs.text
-			console.log('text', text,Object.keys(text))
+			console.log('text', text, Object.keys(text))
 			// uni.onKeyboardHeightChange((e) => {
 			// 	console.log('onKeyboardHeightChange', e)
 			// 	this.keyboardHeight = e.height
@@ -71,7 +76,7 @@
 			// 	title: 'index vue loading'
 			// })
 		},
-		onShow(){
+		onShow() {
 			console.log('index Page show')
 		},
 		onHide() {
@@ -112,7 +117,7 @@
 			navigateToAbout() {
 				uni.navigateTo({
 					url: '/pages/about/about',
-					success(){
+					success() {
 						uni.navigateBack()
 					}
 				})
@@ -120,6 +125,11 @@
 			navigateToDetail() {
 				uni.navigateTo({
 					url: '/pages/detail/detail'
+				})
+			},
+			navigateToSetting() {
+				uni.navigateTo({
+					url: '/pages/setting/setting'
 				})
 			},
 			_onClick() {

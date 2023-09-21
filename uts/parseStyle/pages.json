@@ -27,6 +27,12 @@
 				"navigationBarTitleText": "",
 				"navigationStyle": "custom"
 			}
+		}, {
+			"path": "pages/setting/setting",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
 		}
 	],
 	"tabBar": {
@@ -42,7 +48,7 @@
 				"text": "about"
 			}
 		],
-			"iconfontSrc":"static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
+		"iconfontSrc": "static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
 		"midButton": {
 			"width": "60px",
 			"height": "100px",
@@ -50,7 +56,7 @@
 			"iconPath": "static/logo.png",
 			"iconWidth": "40px",
 			"backgroundImage": "static/logo.png",
-			"iconfontSrc":"static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
+			"iconfontSrc": "static/uni.ttf", // app tabbar 字体.ttf文件路径 app 3.4.4+
 			"iconfont": {
 				"text": "\ue100",
 				"selectedText": "\ue101",

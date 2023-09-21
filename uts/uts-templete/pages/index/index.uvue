@@ -10,7 +10,7 @@
 				<text>defaultProps: {{ headerProps.msg }}</text>
 			</template>
 		</Foo>
-		<text class="bg">bg in index</text>
+		<text class="bg" @click="test">bg in index</text>
 	</view>
 </template>
 
@@ -20,12 +20,20 @@ export default {
 	components: { Foo },
 	data() {
 		return {
+			title: 'title'
 		}
 	},
 	onReady(){
 		const app = getApp()
 		app.test()
-		const pages = getCurrentPages()
+	},
+	methods:{
+		test(){
+			console.log(this.$data.get('title'))
+			const pages = getCurrentPages()
+			const page = pages[pages.length-1]
+			console.log(page.$children[0].$callMethod('handler'))
+		}
 	}
 }
 </script>

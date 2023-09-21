@@ -8,7 +8,7 @@
 <script>
 	export default {
 		onReady() {
-			const text = this.$refs.get('text') as INode
+			const text = this.$refs.get('text') as Element
 			const foo = this.$refs.get('foo') as ComponentPublicInstance
 		}
 	}

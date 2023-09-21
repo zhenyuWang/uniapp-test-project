@@ -1,23 +1,23 @@
 <template>
-  <view>
-    <swiper>
-      <!-- test comment -->
-      <swiper-item>1</swiper-item>
-      <!-- test comment -->
-      <swiper-item>2</swiper-item>
-      <!-- test comment -->
-      <swiper-item>3</swiper-item>
-      <!-- test comment -->
-    </swiper>
-  </view>
+  <list-view>
+    <list-item v-for="item in dataList" :key="item">
+      {{item}}
+    </list-item>
+    <list-item>this is end</list-item>
+  </list-view>
 </template>
 
 <script lang="uts">
-export default {
-  data() {
-    return {
-      test: 'test msg'
-    }
-  },
-}
+  export default {
+    data() {
+      return {
+        dataList: 0,
+      }
+    },
+    created() {
+      setTimeout(() => {
+        this.dataList = 2
+      }, 100);
+    },
+  }
 </script>

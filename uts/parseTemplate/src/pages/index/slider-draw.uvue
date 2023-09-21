@@ -17,7 +17,7 @@ export default {
     return {
       sliderValue: 0,
       thumb_value: '',
-      $sliderNode: null as null | INode,
+      $sliderNode: null as null | Element,
       $sliderWidth: 0,
       $sliderTrackWidth: 0,
       $sliderOffsetX: 0,
@@ -94,7 +94,7 @@ export default {
   },
   mounted() {
     this.$.$waitNativeRender(() => {
-      this.$sliderNode = this.$refs.get('slider') as INode
+      this.$sliderNode = this.$refs.get('slider') as Element
       this.$drawContext = this.$sliderNode!.getDrawableContext()
       this.sliderValue = this.value
       this._onLayout()

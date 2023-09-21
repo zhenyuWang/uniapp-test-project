@@ -1,0 +1,33 @@
+<template>
+  <view>
+    <swiper>
+      <MySwiperItem v-if="flag" msg="true"></MySwiperItem>
+      <MySwiperItem v-if="!flag" msg="false"></MySwiperItem>
+    </swiper>
+    <swiper>
+      <MySwiperItem v-for="item in num" :key="item" :msg="`${item}`"></MySwiperItem>
+    </swiper>
+    <button @click="handleClick">handleClick</button>
+  </view>
+</template>
+
+<script lang="uts">
+import MySwiperItem from '@/components/MySwiperItem'
+export default {
+  components: {
+    MySwiperItem
+  },
+  data() {
+    return {
+      flag: true,
+      num: 3
+    }
+  },
+  methods: {
+    handleClick() {
+      this.flag = !this.flag
+      this.num = 2
+    }
+  }
+}
+</script>

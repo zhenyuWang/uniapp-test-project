@@ -50,3 +50,42 @@ export default {
   }
 }
 </script>
+
+<!-- <template>
+  <view>
+    <view id="test-view">
+      <view></view>
+      <view>
+        <view>
+          <view>
+            <view>
+              <view>
+                <view>
+                  <view><text id="test-text">test-text-1</text></view>
+                </view>
+              </view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+    <text id="test-text">test-text-2</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      test: 'test msg'
+    }
+  },
+  onReady() {
+    const testText = uni.getElementById('test-text')
+    if(testText !== null){
+      testText!.setAttribute('value', 'new text')
+      testText!.style.setProperty('color', 'red')
+    }
+  }
+}
+</script> -->

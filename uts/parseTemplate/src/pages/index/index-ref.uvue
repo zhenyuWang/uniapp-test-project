@@ -25,10 +25,10 @@ export default {
       return 'testRef2'
     },
     changeRefText() {
-      ;(this.$refs.get('testRef1') as INode).setAttribute('value', 'testRef1')
-      ;(this.$refs.get('testRef2') as INode).setAttribute('value', 'testRef2')
-      ;(this.$refs.get('test') as INode).setAttribute('value', 'test')
-      const myRefs = this.$refs.get('myRefs') as INode[]
+      ;(this.$refs.get('testRef1') as Element).setAttribute('value', 'testRef1')
+      ;(this.$refs.get('testRef2') as Element).setAttribute('value', 'testRef2')
+      ;(this.$refs.get('test') as Element).setAttribute('value', 'test')
+      const myRefs = this.$refs.get('myRefs') as Element[]
       myRefs.forEach((ref, i) => {
         ref.setAttribute('value', `${(i+1)*10}`)
       })

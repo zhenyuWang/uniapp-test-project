@@ -22,10 +22,6 @@
 		mounted(){
 		  console.log('component foo mounted')
 		},
-		unmounted() {
-		  console.log('component foo unmounted',this.$el)
-			console.warn('this.$el.parentNode', this.$el?.parentNode)
-		},
 		methods: {
 			fooTest(){
 				console.warn('foo test in component Foo')

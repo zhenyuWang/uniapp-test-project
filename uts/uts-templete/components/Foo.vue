@@ -10,15 +10,15 @@
 </template>
 
 <script lang="uts">
-	import Bar from './Bar.vue'
+	import Bar from './Bar'
 	import type { PropType, SlotsType } from 'vue'
 	type Obj = { a: number }
 	export default {
 		name: "Foo",
 		components: { Bar },
 		slots: Object as SlotsType<{
-			default : { msg : string },
-			header : { msg : string }
+			default: {msg: string},
+			header: {msg: string}
 		}>,
 		props: {
 			data: {
@@ -52,6 +52,11 @@
 			return {
 				msg: 'header slot msg'
 			};
+		},
+		methods: {
+				handler(){
+					console.warn('foo method handler')
+				}
 		}
 	}
 </script>

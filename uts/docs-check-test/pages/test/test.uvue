@@ -1,25 +1,60 @@
 <template>
-	<view class="content">
-		<Foo v-model:title='title' @submit="fooSubmit" />
-		<Bar>123</Bar>
-		<template v-for="(item, index) in list" :key="index">
-			<text>{{item}}</text>
+  <scroll-view>
+    <view ref="test-view">test-view</view>
+    <text ref="test-text">test-text</text>
+    <text ref="test-text">test-text</text>
+    <text ref="test-text">test-text</text>
+    <button ref="test-button">test button</button>
+    <Foo title="default title" ref="test-foo" />
+    <button @click="testRefs">testRefs</button>
+    <swiper ref="test-swiper"></swiper>
+		<template v-for="item in 3" :key="item">
+			<text ref="test-for">{{item}}</text>
 		</template>
-	</view>
+  </scroll-view>
 </template>
 
-<script>
-	export default {
-		data() {
-			return {
-				title: 'test',
-				list: ['a', 'b', 'c']
-			}
-		},
-		methods: {
-			fooSubmit(){
-				console.warn('fooSubmit')
-			}
-		}
-	}
+<script lang="uts">
+import type {ComponentPublicInstance} from 'vue'
+export default {
+  data() {
+    return {
+      test: 'test msg'
+    }
+  },
+  methods: {
+    testRefs(){
+      const testView = this.$refs.get('test-view') as Element
+      if(testView !== null){
+        testView.style.setProperty('width', '100px')
+        testView.style.setProperty('height', '100px')
+        testView.style.setProperty('backgroundColor', 'red')
+      }
+      const testText = this.$refs.get('test-text') as Element
+      if(testText !== null){
+        testText.setAttribute('value', 'new text')
+        testText.style.setProperty('color', 'red')
+      }
+      const testButton = this.$refs.get('test-button') as Element
+      if(testButton !== null){
+        testButton.setAttribute('value', 'new button')
+        testButton.style.setProperty('color', 'red')
+      }
+      const testSwiper = this.$refs.get('test-swiper') as Element
+      if(testSwiper !== null){
+        testSwiper.style.setProperty('width', '100px')
+        testSwiper.style.setProperty('height', '100px')
+        testSwiper.style.setProperty('backgroundColor', 'red')
+      }
+      const testFoo = this.$refs.get('test-foo') as ComponentPublicInstance
+			testFoo.$props.set('title', 'new title ---------')
+			
+			const testFor = this.$refs.get('test-for') as Element[]
+			testFor.forEach((item: Element) => {
+				item.setAttribute('value', 'new text')
+				item.style.setProperty('color', 'red')
+			})
+    }
+  }
+}
 </script>

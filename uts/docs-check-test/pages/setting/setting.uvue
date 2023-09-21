@@ -28,6 +28,7 @@
         <text>header slot num with default value 10: {{num}}</text>
       </template>
     </TestSlot>
+		<button @click="goTest">goTest</button>
   </scroll-view>
 </template>
 
@@ -37,6 +38,13 @@ export default {
     return {
       test: 'test msg'
     }
-  }
+  },
+	methods: {
+		goTest(){
+			uni.navigateTo({
+				url: '/pages/test/test'
+			})
+		}
+	}
 }
 </script>

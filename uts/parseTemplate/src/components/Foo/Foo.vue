@@ -8,8 +8,8 @@
   </view>
 </template>
 
-<script>
-import type {PropType} from 'vue'
+<script lang="ts">
+import type {PropType, SlotsType} from 'vue'
 export type ItemType = { value: number; name: string }
 	type MyObj = {
 		message: string
