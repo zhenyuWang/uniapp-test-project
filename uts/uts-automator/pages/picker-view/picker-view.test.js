@@ -11,5 +11,6 @@ describe('pages/picker-view/picker-view', () => {
 		// await page.setData({
 		// 	t: 'testtest'
 		// })
+		expect(1+1).toBe(2)
 	})
 })

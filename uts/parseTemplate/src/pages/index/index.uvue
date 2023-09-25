@@ -1,23 +1,21 @@
 <template>
-  <list-view>
-    <list-item v-for="item in dataList" :key="item">
-      {{item}}
-    </list-item>
-    <list-item>this is end</list-item>
-  </list-view>
+  <view>
+    <list-view>
+      <list-item v-for="item in num" :key="item">{{ item }}</list-item>
+      <list-item>this is end</list-item>
+    </list-view>
+  </view>
 </template>
 
 <script lang="uts">
-  export default {
-    data() {
-      return {
-        dataList: 0,
-      }
-    },
-    created() {
-      setTimeout(() => {
-        this.dataList = 2
-      }, 100);
-    },
+export default {
+  data() {
+    return {
+      num: 0
+    }
+  },
+  mounted(){
+    this.num = 2
   }
+}
 </script>

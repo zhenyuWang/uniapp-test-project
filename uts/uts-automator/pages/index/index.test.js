@@ -28,11 +28,11 @@ describe('pages/index/index', () => {
 	// 		}]
 	// 	})
 	// })
-	it('page.data', async () => {
-		const {num} = await page.data()
-		console.log('num', num)
-		expect(1+1).toEqual(2)
-	})
+	// it('page.data', async () => {
+	// 	const {num} = await page.data()
+	// 	console.log('num', num)
+	// 	expect(1+1).toEqual(2)
+	// })
 
 	// it('program.systemInfo', async () => {
 	// 	const systemInfo = await program.systemInfo()
@@ -344,15 +344,20 @@ describe('pages/index/index', () => {
 	// 	const text = await textNode.text()
 	// 	expect(text).toEqual('222')
 	// })
-	// it('screenshot', async () => {
-	// 	// const image = await program.screenshot({fullPage: true})
-	// 	const image = await program.screenshot()
-	// 	expect(image).toMatchImageSnapshot();
-	// })
+	it('screenshot', async () => {
+		const image = await program.screenshot({fullPage: true})
+		// const image = await program.screenshot()
+		expect(image).toMatchImageSnapshot();
+	})
 	// it('screenshotWithADB', async () => {
-	// 	const image = await program.screenshotWithADB()
+	// 	const image = await program.screenshot({adb: true})
 	// 	expect(image).toMatchImageSnapshot();
 	// })
+	// it('screenshotWithADB with crop', async () => {
+	// 	const image = await program.screenshot({adb: true, area:{x:100,y:100,width:1000,height:1000}})
+	// 	expect(image).toMatchImageSnapshot();
+	// })
+
 	// it('uni.xxx not exists', async () => {
 	// 	const res2 = await uni.aaaa({
 	// 		fail(err) {

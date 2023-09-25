@@ -12,15 +12,22 @@
 		// 		"navigationBarTitleText": "test"
 		// 	}
 		// },
-		// {
-		// 	"path": "pages/picker-view/picker-view",
-		// 	"style": {
-		// 		"navigationBarTitleText": "",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		// },
+		{
+			"path": "pages/picker-view/picker-view",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
 		{
 			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		},
+		{
+			"path": "pages/web-view/web-view",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false

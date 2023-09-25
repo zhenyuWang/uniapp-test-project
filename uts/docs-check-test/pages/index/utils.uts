@@ -1,0 +1,9 @@
+export type Person = {
+	name: string,
+	age: number
+}
+
+export function logPersonInfo(person: Person){
+	console.log('name: ' + person.name)
+	console.log('age: ' + person.age)
+}

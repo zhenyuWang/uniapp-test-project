@@ -19,7 +19,10 @@
 	<view class="b">this is brother b</view>
 </template>
 
-<script>
+<script lang="uts">
+	import type {Person} from './utils'
+	import {logPersonInfo} from './utils'
+	
 	export default {
 		data() {
 			return {
@@ -71,6 +74,7 @@
 			},
 			outerClick() {
 				console.log('outerClick')
+				logPersonInfo({name: 'test name', age: 18} as Person)
 			},
 			onceClick() {
 				console.log('onceClick')
