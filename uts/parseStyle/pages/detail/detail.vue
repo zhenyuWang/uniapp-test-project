@@ -18,14 +18,17 @@
 			console.warn('detail onBackPress')
 			// return true
 		},
+		onLoad(){
+			uni.navigateBack()
+		},
 		onReady(){
 			// const pages = getCurrentPages()
 			// console.warn('pages',pages.length)
-			const launchOptions = uni.getLaunchOptionsSync()
-			console.warn('launchOptions.path', launchOptions.path)
-			setInterval(() => {
-				console.warn('setInterval')
-			}, 2000)
+			// const launchOptions = uni.getLaunchOptionsSync()
+			// console.warn('launchOptions.path', launchOptions.path)
+			// setInterval(() => {
+			// 	console.warn('setInterval')
+			// }, 2000)
 		},
 		methods: {
 			setNavigationBarColor1() {

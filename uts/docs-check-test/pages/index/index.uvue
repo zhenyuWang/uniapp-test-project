@@ -1,34 +1,41 @@
 <template>
-	<view class="a" @click="outerClick">
-		<text @click.stop="innerClick">{{test}}12312321312312321323123</text>
-		<text @click.once.stop="onceClick">onceClick</text>
-		<text class="b">this is child b</text>
-	</view>
-	<view class="b">this is 紧邻 brother b</view>
-	<button @click="goSetting">goSetting</button>
-	<Foo title='123' />
-	<Bar>
-		<template v-slot:default="{msg}">
-			<text>component Bar default slot msg: {{msg}}</text>
-		</template>
-		<template v-slot:header="{msg, age}">
-			<text>component Bar header slot msg: {{msg}}</text>
-			<text>component Bar header slot age: {{age}}</text>
-		</template>
-	</Bar>
-	<view class="b">this is brother b</view>
+	<scroll-view>
+		<view class="a" @click="outerClick">
+			<text @click.stop="innerClick">{{test}}12312321312312321323123</text>
+			<text @click.once.stop="onceClick">onceClick</text>
+			<text class="b">this is child b</text>
+		</view>
+		<view class="b">this is 紧邻 brother b</view>
+		<button @click="goSetting">goSetting</button>
+		<Foo title='123' />
+		<Bar>
+			<template v-slot:default="{msg}">
+				<text>component Bar default slot msg: {{msg}}</text>
+			</template>
+			<template v-slot:header="{msg, age}">
+				<text>component Bar header slot msg: {{msg}}</text>
+				<text>component Bar header slot age: {{age}}</text>
+			</template>
+		</Bar>
+		<view class="b" style="-webkit-justify-content: center;">this is brother b</view>
+		<view v-on:click.aaaa="goSetting" class="default-class" :class="{dynamicClass: str.length>0}">
+			<input class="input" type="text" v-model="str" />
+		</view>
+		<text>str: {{str}}</text>
+	</scroll-view>
 </template>
 
 <script lang="uts">
-	import type {Person} from './utils'
-	import {logPersonInfo} from './utils'
-	
+	import type { Person } from './utils'
+	import { logPersonInfo } from './utils'
+
 	export default {
 		data() {
 			return {
 				title: 'index',
 				list: ['a', 'b', 'c'],
-				test: 'init test'
+				test: 'init test',
+				str: '123'
 			}
 		},
 		watch: {
@@ -56,10 +63,18 @@
 			console.warn('onReachBottom')
 		},
 		methods: {
-			goSetting(){
-				uni.navigateTo({
-					url: '/pages/setting/setting'
+			goSetting() {
+				uni.showToast({
+					title: 'test title'
 				})
+				// uni.navigateTo({
+				// 	url: '/pages/setting/setting'
+				// })
+				setTimeout(() => {
+					uni.reLaunch({
+						url: '/pages/setting/setting'
+					})
+				}, 2000)
 			},
 			fooSubmit() {
 				uni.setNavigationBarColor({
@@ -74,7 +89,7 @@
 			},
 			outerClick() {
 				console.log('outerClick')
-				logPersonInfo({name: 'test name', age: 18} as Person)
+				logPersonInfo({ name: 'test name', age: 18 } as Person)
 			},
 			onceClick() {
 				console.log('onceClick')
@@ -84,6 +99,24 @@
 </script>
 
 <style>
-	.a ~ .b{background-color: red;}
-	.a + .b{height: 100px;}
+	.a~.b {
+		background-color: red;
+	}
+
+	.a+.b {
+		height: 100px;
+	}
+
+	.default-class {
+		width: 100px;
+		height: 100px;
+		border: 1px solid red;
+	}
+
+	.dynamicClass {
+		background-color: aqua;
+	}
+	.dynamicClass .input{
+		border: 2px solid blue;
+	}
 </style>

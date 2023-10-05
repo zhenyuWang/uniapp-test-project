@@ -39,6 +39,11 @@ export default {
       test: 'test msg'
     }
   },
+	onReady(){
+		uni.showToast({
+			title: 'test title2'
+		})
+	},
 	methods: {
 		goTest(){
 			uni.navigateTo({

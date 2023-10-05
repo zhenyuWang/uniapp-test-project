@@ -1,6 +1,6 @@
 <template>
   <view>
-    <text :style='{color: true ? "blue" : "red"}'>test style</text>
+    <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
   </view>
 </template>
 
@@ -8,23 +8,29 @@
 export default {
   data() {
     return {
-      testClass: "cred"
+      testClass: 'cred',
     }
   },
-  onLoad(){
+  onLoad() {
     println('setting onLoad-------------------------------------')
+    uni.navigateTo({
+      url: '/pages/about/index',
+      success() {
+        println('navigateTo success')
+      },
+    })
   },
-  onShow(){
+  onShow() {
     println('setting onShow-------------------------------------')
   },
-  onReady(){
+  onReady() {
     println('setting onReady-------------------------------------')
   },
-  onHide(){
+  onHide() {
     println('setting onHide-------------------------------------')
   },
-  onUnload(){
+  onUnload() {
     println('setting onUnload-------------------------------------')
-  }
+  },
 }
 </script>

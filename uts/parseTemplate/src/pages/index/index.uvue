@@ -4,6 +4,7 @@
       <list-item v-for="item in num" :key="item">{{ item }}</list-item>
       <list-item>this is end</list-item>
     </list-view>
+    <button @click="goSetting">goSetting</button>
   </view>
 </template>
 
@@ -16,6 +17,13 @@ export default {
   },
   mounted(){
     this.num = 2
+  },
+  methods: {
+    goSetting() {
+      uni.navigateTo({
+        url: '/pages/setting/index'
+      })
+    }
   }
 }
 </script>
