@@ -1,28 +1,89 @@
 <template>
   <view>
     <list-view>
-      <list-item v-for="item in num" :key="item">{{ item }}</list-item>
-      <list-item>this is end</list-item>
+      <list-item v-for="item in list" :key="item.id">{{ item.name }}</list-item>
+      <list-item>this is middle</list-item>
+      <ListItem v-for="item in num" :key="item" :string="item.toString()" />
     </list-view>
-    <button @click="goSetting">goSetting</button>
+    <!-- <swiper>
+      <swiper-item>this is start</swiper-item>
+      <swiper-item v-for="item in list" :key="item.id">{{ item.name }}</swiper-item>
+      <SwiperItem v-for="item in list" :key="item.id" :string="item.name" />
+      <swiper-item>this is end</swiper-item>
+    </swiper> -->
+    <button @click="test">test</button>
+    <!-- <button @click="goSetting">goSetting</button> -->
+    <!-- <Foo /> -->
+    <!-- <Input /> -->
   </view>
 </template>
 
 <script lang="uts">
+type Item = {
+  id: number
+  name: string
+  age: number
+}
 export default {
   data() {
     return {
-      num: 0
+      list:[] as Item[],
+      num: 0,
     }
   },
   mounted(){
-    this.num = 2
+    this.list = [
+      {
+        id: Date.now()+Math.random(),
+        name: 'name0',
+        age: 0,
+      },
+      {
+        id: Date.now()+Math.random(),
+        name: 'name1',
+        age: 1,
+      },
+    ] as Item[]
+    this.num = 1
+  },
+  onLoad(){
+    println('index onLoad-------------------------------------')
+  },
+  onShow(){
+    println('index onShow-------------------------------------')
+  },
+  onReady(){
+    println('index onReady-------------------------------------')
   },
   methods: {
     goSetting() {
       uni.navigateTo({
         url: '/pages/setting/index'
       })
+    },
+    test(){
+      this.num++
+      if(this.list.length === 0){
+        this.list.push({
+          id: Date.now()+Math.random(),
+          name: 'name0',
+          age: 0,
+        } as Item)
+      } else if(this.list.length<4){
+        this.list.push({
+          id: Date.now()+Math.random(),
+          name: 'name'+this.list.length,
+          age: this.list.length
+        } as Item)
+      }else if(this.list.length === 4){
+        this.list.splice(2,0,{
+          id: Date.now()+Math.random(),
+          name: 'name999',
+          age: 999} as Item
+        )
+      }else{
+        this.list = []
+      }
     }
   }
 }

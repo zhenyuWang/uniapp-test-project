@@ -1,0 +1,30 @@
+<template>
+  <view>
+    <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      testClass: 'cred',
+    }
+  },
+  onLoad() {
+    println('user onLoad-------------------------------------')
+  },
+  onShow() {
+    println('user onShow-------------------------------------')
+  },
+  onReady() {
+    println('user onReady-------------------------------------')
+  },
+  onHide() {
+    println('user onHide-------------------------------------')
+  },
+  onUnload() {
+    println('user onUnload-------------------------------------')
+  },
+}
+</script>

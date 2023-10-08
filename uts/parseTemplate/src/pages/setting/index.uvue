@@ -4,7 +4,7 @@
   </view>
 </template>
 
-<script lang="ts">
+<script lang="uts">
 export default {
   data() {
     return {
@@ -14,11 +14,15 @@ export default {
   onLoad() {
     println('setting onLoad-------------------------------------')
     uni.navigateTo({
-      url: '/pages/about/index',
+      url: '/pages/user/index',
       success() {
-        println('navigateTo success')
+        println('navigateTo success in setting')
       },
     })
+    // uni.navigateBack()
+    // uni.redirectTo({url: '/pages/user/index'})
+    // uni.reLaunch({url: '/pages/about/index'})
+    // uni.switchTab({url: '/pages/about/index'})
   },
   onShow() {
     println('setting onShow-------------------------------------')

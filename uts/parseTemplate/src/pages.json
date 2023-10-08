@@ -17,8 +17,30 @@
       "style": {
         "navigationBarTitleText": "setting"
       }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "user"
+      }
     }
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "iconPath": "static/logo.png",
+        "selectedIconPath": "static/logo.png",
+        "text": "index"
+      },
+      {
+        "pagePath": "pages/about/index",
+        "iconPath": "static/logo.png",
+        "selectedIconPath": "static/logo.png",
+        "text": "about"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationBarTitleText": "uni-app"
   }
