@@ -1,9 +1,11 @@
 <template>
   <view>
     <list-view>
-      <list-item v-for="item in list" :key="item.id">{{ item.name }}</list-item>
+      <!-- <list-item>this is start</list-item> -->
+      <list-item v-for="item in list" :key="item.id" :id="item.name">{{ item.name }}</list-item>
       <list-item>this is middle</list-item>
-      <ListItem v-for="item in num" :key="item" :string="item.toString()" />
+      <ListItem v-for="item in num" :key="item" :id="item" :string="item.toString()" />
+      <!-- <list-item>this is end</list-item> -->
     </list-view>
     <!-- <swiper>
       <swiper-item>this is start</swiper-item>
@@ -12,7 +14,7 @@
       <swiper-item>this is end</swiper-item>
     </swiper> -->
     <button @click="test">test</button>
-    <!-- <button @click="goSetting">goSetting</button> -->
+    <button @click="goSetting">goSetting1</button>
     <!-- <Foo /> -->
     <!-- <Input /> -->
   </view>
@@ -55,10 +57,28 @@ export default {
   onReady(){
     println('index onReady-------------------------------------')
   },
+  onHide(){
+    println('index onHide-------------------------------------')
+  },
   methods: {
     goSetting() {
-      uni.navigateTo({
-        url: '/pages/setting/index'
+      // uni.navigateTo({
+      //   url: '/pages/setting/index',
+      //   success(){
+      //     // uni.navigateBack()
+      //   }
+      // })
+      // uni.switchTab({
+      //   url: '/pages/about/index',
+      //   success(){
+      //     println('switchTab success')
+      //   }
+      // })
+      uni.reLaunch({
+        url: '/pages/index/index',
+        success(){
+          console.log('reLaunch success')
+        }
       })
     },
     test(){

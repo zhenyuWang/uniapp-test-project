@@ -102,6 +102,12 @@
 			onClick() {
 				console.warn('onClick')
 				console.log('--------------------------')
+				uni.reLaunch({
+					url:'/pages/index/index',
+					complete(){
+						console.log('reLaunch currentPage complete')
+					}
+				})
 			},
 			test1() {
 				console.log('test1')

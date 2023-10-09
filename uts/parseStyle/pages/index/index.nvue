@@ -8,6 +8,7 @@
 		<view>height: {{keyboardHeight}}</view>
 		<input type="text">
 		<button @click="relaunchAbout">relaunch about</button>
+		<button @click="_onClick">_onClick</button>
 		<rich-text :nodes="[
 			{
 				name: 'div',
@@ -82,10 +83,17 @@ export default {
 			})
 		},
     _onClick() {
-      this.isChecked1 = !this.isChecked1
-			uni.getBatteryInfo({
-				complete(res){
-					console.warn('uni.getBatteryInfo res', res)
+   //    this.isChecked1 = !this.isChecked1
+			// uni.getBatteryInfo({
+			// 	complete(res){
+			// 		console.warn('uni.getBatteryInfo res', res)
+			// 	}
+			// })
+			console.log('onClicck')
+			uni.reLaunch({
+				url:'/pages/index/index',
+				complete(){
+					console.log('index reLaunch currentPage compelte');
 				}
 			})
     },

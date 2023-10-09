@@ -1,7 +1,7 @@
 <template>
 	<scroll-view>
 		<view class="a" @click="outerClick">
-			<text @click.stop="innerClick">{{test}}12312321312312321323123</text>
+			<text @click.stop="innerClick">{{test}}1234</text>
 			<text @click.once.stop="onceClick">onceClick</text>
 			<text class="b">this is child b</text>
 		</view>
@@ -18,7 +18,7 @@
 			</template>
 		</Bar>
 		<view class="b" style="-webkit-justify-content: center;">this is brother b</view>
-		<view v-on:click.aaaa="goSetting" class="default-class" :class="{dynamicClass: str.length>0}">
+		<view v-on:click="goSetting" class="default-class" :class="{dynamicClass: str.length>0}">
 			<input class="input" type="text" v-model="str" />
 		</view>
 		<text>str: {{str}}</text>
@@ -45,6 +45,9 @@
 				},
 				immediate: true//初始化绑定时就会执行handler方法
 			},
+		},
+		onShow(){
+			console.warn('index onShow-----------------')
 		},
 		// created() {
 		// 	uni.loadFontFace({

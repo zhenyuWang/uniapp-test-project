@@ -1,0 +1,69 @@
+<template>
+  <view>
+    <list-view>
+			<list-item>this is start</list-item>
+      <list-item v-for="item in list" :key="item.id">{{ item.name }}</list-item>
+      <!-- <list-item>this is middle</list-item> -->
+      <ListItem v-for="item in num" :key="item" :string="item.toString()" />
+			<list-item>this is end</list-item>
+    </list-view>
+    <button @click="test">test</button>
+  </view>
+</template>
+
+<script lang="uts">
+type Item = {
+  id: number
+  name: string
+  age: number
+}
+export default {
+  data() {
+    return {
+      list:[] as Item[],
+      num: 0,
+    }
+  },
+  mounted(){
+    this.list = [
+      {
+        id: Date.now()+Math.random(),
+        name: 'name0',
+        age: 0,
+      },
+      {
+        id: Date.now()+Math.random(),
+        name: 'name1',
+        age: 1,
+      },
+    ] as Item[]
+    this.num = 1
+  },
+  methods: {
+    test(){
+      this.num++
+      if(this.list.length === 0){
+        this.list.push({
+          id: Date.now()+Math.random(),
+          name: 'name0',
+          age: 0,
+        } as Item)
+      } else if(this.list.length<4){
+        this.list.push({
+          id: Date.now()+Math.random(),
+          name: 'name'+this.list.length,
+          age: this.list.length
+        } as Item)
+      }else if(this.list.length === 4){
+        this.list.splice(2,0,{
+          id: Date.now()+Math.random(),
+          name: 'name999',
+          age: 999} as Item
+        )
+      }else{
+        this.list = []
+      }
+    }
+  }
+}
+</script>

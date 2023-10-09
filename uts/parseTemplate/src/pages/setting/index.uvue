@@ -1,6 +1,7 @@
 <template>
   <view>
     <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
+    <button @click="test">test</button>
   </view>
 </template>
 
@@ -13,12 +14,12 @@ export default {
   },
   onLoad() {
     println('setting onLoad-------------------------------------')
-    uni.navigateTo({
-      url: '/pages/user/index',
-      success() {
-        println('navigateTo success in setting')
-      },
-    })
+    // uni.navigateTo({
+    //   url: '/pages/user/index',
+    //   success() {
+    //     println('navigateTo success in setting')
+    //   },
+    // })
     // uni.navigateBack()
     // uni.redirectTo({url: '/pages/user/index'})
     // uni.reLaunch({url: '/pages/about/index'})
@@ -36,5 +37,15 @@ export default {
   onUnload() {
     println('setting onUnload-------------------------------------')
   },
+  methods: {
+    test(){
+      uni.switchTab({
+        url: '/pages/about/index',
+        success(){
+          println('switchTab success')
+        }
+      })
+    }
+  }
 }
 </script>

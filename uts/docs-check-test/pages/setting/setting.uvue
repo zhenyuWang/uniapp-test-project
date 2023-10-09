@@ -46,8 +46,11 @@ export default {
 	},
 	methods: {
 		goTest(){
-			uni.navigateTo({
-				url: '/pages/test/test'
+			// uni.navigateTo({
+			// 	url: '/pages/test/test'
+			// })
+			uni.switchTab({
+				url: '/pages/about/about'
 			})
 		}
 	}

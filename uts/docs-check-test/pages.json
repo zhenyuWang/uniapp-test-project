@@ -32,17 +32,17 @@
 			}
 		},
 		{
-			"path": "pages/test/test",
-			"style": {
-				"navigationBarTitleText": "test"
-			}
-		}, {
 			"path": "pages/setting/setting",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
 			}
-
+		},
+		{
+			"path": "pages/test/test",
+			"style": {
+				"navigationBarTitleText": "test"
+			}
 		}
 	],
 	// "condition": { //模式配置，仅开发期间生效
@@ -146,7 +146,7 @@
 	"uniIdRouter": {},
 	"topWindow": {
 		"matchMedia": {
-			
+
 		}
 	}
 }
