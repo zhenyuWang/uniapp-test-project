@@ -1,9 +1,9 @@
 <template>
 	<view class="content">
 		<view>
-				<!-- @tap="mapTap"
-			  @click="mapClick" -->
+				<!-- @tap="mapTap" -->
 			<map id="map" class='map' :key="mapKey" :latitude="latitude" :longitude="longitude"
+			  @click="mapClick"
 				@callouttap='callouttap'
 				@markertap="markerTap" :scale="scale" :controls='controls' :show-location='true'
 				:polyline='polyline' :circles='circles' :markers="markers" :min-scale='10' :max-scale="20"
