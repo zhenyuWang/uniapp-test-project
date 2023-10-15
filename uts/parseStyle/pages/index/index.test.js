@@ -11,7 +11,9 @@ describe('pages/index/index', () => {
 	// 	expect(1+1).toEqual(2)
 	// })
 	it('element.html', async () => {
-		const mytest = await page.data()
+		const myTest = await page.data()
+		console.log('myTest-----------', myTest)
+		await program.screenshot({path: 'static/test.png'})
 		// const myHtml = await mytest.html()
 		// console.log('element.html', myHtml)
 		expect(1+1).toEqual(2)

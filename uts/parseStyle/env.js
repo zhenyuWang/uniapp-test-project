@@ -14,7 +14,7 @@ module.exports = {
         "launch": true,
         "teardown": "disconnect",
         "remote": false,
-        "executablePath": ""
+        "executablePath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli"
     },
     "app-plus": {
         "android": {
