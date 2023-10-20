@@ -1,0 +1,78 @@
+<template>
+	<view>
+		<!-- <view><text>view/text:111{{ msg }}222</text>
+		</view>
+		<view>view:111{{ msg }}333</view>
+		<view>{{ msg }}</view>
+		<Text>{{ msg }}</Text>
+		<Text>Text:111{{ msg }}333</Text>
+		<button>button</button>
+		<button>111{{ msg }}333</button>
+		<button>{{ msg }}</button>
+		<text>1\n1\n1</text>
+		<view>2\n2\n2</view>
+		<text> 1 {{ msg }} 3 </text>
+		<view> 1 2 3 </view>
+		<view>aaa{{ msg }}
+			<view>ccc{{ msg }}</view>{{ msg }}fff<text>{{ msg }}</text>
+		</view> -->
+		<view @click="test">test button</view>
+			<view v-if="hasData">this is start</view>
+			<view v-if="loading">loading...</view>
+			<view v-if="error">error...</view>
+			<view v-if="hasData">this is end</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				num: 2,
+				title: 'Hello',
+				msg: 'my msg',
+				hasData: false,
+				loading: false,
+				error: false,
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+			test() {
+				// this.msg += '1'
+				// if (this.msg.length < 5) {
+				// 	this.test()
+				// }
+				this.loading = true
+				setTimeout(() => {
+					this.hasData = true
+					setTimeout(() => {
+						this.loading = false
+					},10)
+				},100)
+			},
+		}
+	}
+</script>
+
+<style>
+	.content {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+	}
+
+	.logo {
+		height: 200rpx;
+		width: 200rpx;
+		margin-top: 200rpx;
+		margin-bottom: 50rpx;
+	}
+
+	.title {
+		font-size: 36rpx;
+		color: #8f8f94;
+	}
+</style>

@@ -1,0 +1,22 @@
+<template>
+	<text class="my-text">
+		<slot></slot>
+	</text>
+</template>
+
+<script>
+	export default {
+		name: "Text",
+		data() {
+			return {
+
+			};
+		}
+	}
+</script>
+
+<style>
+	.my-text {
+		color: red;
+	}
+</style>

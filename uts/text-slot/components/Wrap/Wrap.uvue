@@ -1,0 +1,40 @@
+<template>
+	<view>
+		<view>this is wrap</view>
+		<slot :error="error" :loading="isLoading" :hasData="hasData"></slot>
+	</view>
+</template>
+
+<script>
+	export default {
+		slots: Object as SlotsType<{
+			default : {
+				hasData: boolean,
+				loading : boolean,
+				error : boolean,
+			}
+		}>,
+		data() {
+			return {
+				isLoading: false,
+				error: false,
+				hasData: false
+			}
+		},
+		methods: {
+			loadData() {
+				this.isLoading = true
+				setTimeout(() => {
+					this.hasData = true
+					setTimeout(() => {
+						this.isLoading = false
+					},10)
+				}, 1000)
+			}
+		}
+	}
+</script>
+
+<style>
+
+</style>
