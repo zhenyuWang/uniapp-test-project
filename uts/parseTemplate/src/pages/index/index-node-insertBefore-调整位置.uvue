@@ -1,0 +1,57 @@
+<template>
+  <view>
+    <view @click="test1">test button1</view>
+    <view @click="test2">test button2</view>
+    <view v-if="hasData">this is start</view>
+    <view v-if="loading">loading...</view>
+    <view v-if="error">error...</view>
+    <view>this is A-start<text v-if="hasData">text in view</text>this is A-end</view>
+    <view>this is B-start<text v-if="!hasData">text in view</text>this is B-end</view>
+    <view v-if="hasData">this is end</view>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      hasData: false,
+      loading: false,
+      error: false,
+    }
+  },
+  onLoad(){
+    println('index onLoad-------------------------------------')
+  },
+  onShow(){
+    println('index onShow-------------------------------------')
+  },
+  onReady(){
+    println('index onReady-------------------------------------')
+  },
+  onHide(){
+    println('index onHide-------------------------------------')
+  },
+  methods: {
+    test1(){
+      this.loading = true
+      setTimeout(() => {
+        this.hasData = true
+        setTimeout(() => {
+          this.loading = false
+        },10)
+      },100)
+    },
+    test2(){
+      this.loading = true
+      setTimeout(() => {
+        this.hasData = true
+        this.error = true
+        setTimeout(() => {
+          this.loading = false
+        },10)
+      },100)
+    }
+  }
+}
+</script>

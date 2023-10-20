@@ -1,5 +1,6 @@
 <template>
 	<view class="content">
+		<text><text>123123</text></text>
 		<Foo data='123' :num='10' str='str' :obj='{a: 2}' :arr='[1,1,1]'>
 			<template v-slot="defaultProps">
 				<view class="test">
@@ -11,6 +12,8 @@
 			</template>
 		</Foo>
 		<text class="bg" @click="test">bg in index</text>
+		<text>num: {{num}}</text>
+		<button @click="test2">test2</button>
 	</view>
 </template>
 
@@ -20,7 +23,8 @@ export default {
 	components: { Foo },
 	data() {
 		return {
-			title: 'title'
+			title: 'title',
+			num: 1
 		}
 	},
 	onReady(){
@@ -33,6 +37,12 @@ export default {
 			const pages = getCurrentPages()
 			const page = pages[pages.length-1]
 			console.log(page.$children[0].$callMethod('handler'))
+		},
+		test2(){
+			this.num++
+			if(this.num<5){
+				this.test2()
+			}
 		}
 	}
 }

@@ -1,0 +1,52 @@
+<template>
+  <scroll-view id="test">
+    <view
+      ><text>view/text:111{{ msg }}222</text>
+    </view>
+    <view @click="myTest">view:111{{ msg }}333</view>
+    <view>{{ msg }}</view>
+    <Text>{{ msg }}</Text>
+    <Text>Text:111{{ msg }}333</Text>
+    <button>button</button>
+    <button>111{{ msg }}333</button>
+    <button>{{ msg }}</button>
+    <text>1\n1\n1</text>
+    <!-- 之前 view 中的文本就不支持 \n -->
+    <view>2\n2\n2</view>
+    <text> 1 {{ msg }} 3 </text>
+    <view> 1 2 3 </view>
+    <view
+      >aaa{{ msg }}<view>ccc{{ msg }}</view
+      >{{ msg }}fff<text>{{ msg }}</text></view
+    >
+  </scroll-view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      msg: 'msg',
+    }
+  },
+  methods: {
+    test() {
+      this.msg += '1'
+      if (this.msg.length < 5) {
+        this.test()
+      }
+    },
+    myTest(){
+      const el1 = uni.getElementById('test')!
+      const tagName1 = el1.tagName
+      println('tagName1' + tagName1)
+      const el2 = uni.getElementById<UniScrollViewElement>('test')!
+      const tagName2 = el2.tagName
+      println('tagName2' + tagName2)
+      const el3 = uni.getElementById<Element>('test')!
+      const tagName3 = el3.tagName
+      println('tagName3' + tagName3)
+    }
+  },
+}
+</script>

@@ -28,8 +28,8 @@
 				uni.navigateBack({})
 			},
 			getCurrentPages(){
-				const pages = getCurrentPages()
-				pages.forEach(page => {
+				const pages = getCurrentPages() as BasePage[]
+				pages.forEach((page: BasePage) => {
 					console.warn('page.route', page.route)
 					console.warn('page.options', page.options)
 				})

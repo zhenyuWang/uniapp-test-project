@@ -40,7 +40,7 @@ export default {
   methods: {
     test(){
       uni.switchTab({
-        url: '/pages/about/index',
+        url: '/pages/index/index',
         success(){
           println('switchTab success')
         }
