@@ -1,0 +1,21 @@
+<template>
+	<view class="content">
+		<text>{{title}}</text>
+		<button @click="test">test</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'index'
+			}
+		},
+		methods: {
+			test(){
+				uni.navigateTo({url: '/pages/about/index'})
+			}
+		}
+	}
+</script>
