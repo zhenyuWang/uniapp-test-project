@@ -1,0 +1,22 @@
+<template>
+	<view>
+		<text>this is Foo component</text>
+		<slot str="str" :age="18"></slot>
+		<button @click="test">test</button>
+	</view>
+</template>
+
+<script lang="uts">
+	import { SlotsType } from 'vue'
+	export default {
+		slots: Object as SlotsType<{
+			default : { str : string, age : number }
+		}>,
+		methods: {
+			test() {
+				const defaultSlot = this.$slots["default"]
+				console.log(defaultSlot)
+			}
+		}
+	}
+</script>
