@@ -1,0 +1,28 @@
+<template>
+	<view class="box">
+		<my-input />
+		<text>this is index</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+
+		}
+	}
+</script>
+
+<style>
+	.my-input-box{
+		border: 2px solid blue;
+	}
+</style>

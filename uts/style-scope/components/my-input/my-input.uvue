@@ -1,0 +1,27 @@
+<template>
+	<view class="my-input-box">
+		<text>this is my-input</text>
+		<foo />
+	</view>
+</template>
+
+<script>
+	import foo from './foo.uvue'
+	export default {
+		components: {foo},
+		data() {
+			return {
+				
+			}
+		},
+		methods: {
+			
+		}
+	}
+</script>
+
+<style>
+.foo{
+	background-color: green;
+}
+</style>
