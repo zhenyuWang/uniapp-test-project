@@ -1,10 +1,8 @@
 <template>
-	<view>
-		<view id="canvas" style="width: 100%;height: 20px;background-color: lightgrey;">
-		</view>
-		<!-- 注掉上面这行，下面代码a就不为空。存在上面的view，下面的a就为空 -->
-		<slider ref="slider1" id="slider21"></slider>
+	<view id="canvas" style="width: 100%;height: 20px;background-color: lightgrey;">
 	</view>
+	<!-- 注掉上面这行，下面代码a就不为空。存在上面的view，下面的a就为空 -->
+	<slider ref="slider1" id="slider21"></slider>
 </template>
 
 <script>
@@ -17,13 +15,16 @@
 		onReady() {
 			// (this.$refs["slider1"] as UniSliderElement).value = 10;  //无论有没有canvas那个view，这行是始终正常的
 			// uni.getElementById<UniSliderElement>("slider21")!.value = 15
-			let a = uni.getElementById<UniSliderElement>("slider21")
-			if (a !==null) {
+			let sliderDom = uni.getElementById<UniSliderElement>("slider21")
+			console.log('sliderDom', sliderDom);
+			if (sliderDom !== null) {
 				console.log("here"); //一旦上面canvas那个view存在，这里就进不来
-				a.value=50
+				sliderDom.value = 50
 			}
-			
+
 			let canvasDom = uni.getElementById("canvas")!
+			console.log('canvasDom', canvasDom);
+			canvasDom.style.setProperty('backgroundColor', 'green')
 			let canvas = canvasDom.getDrawableContext()
 			console.log(canvas);
 			if (canvas != null) {
@@ -31,7 +32,7 @@
 				canvas.fillText("hello", 0, 1)
 				canvas.update()
 			}
-			
+
 		},
 		methods: {
 

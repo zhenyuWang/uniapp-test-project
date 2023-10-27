@@ -3,7 +3,7 @@ describe('pages/index/index', () => {
 	let page
 	beforeAll(async () => {
 		page = await program.reLaunch('/pages/index/index')
-		await page.waitFor(7000)
+		await page.waitFor('view')
 	})
 
 	// it('mathematical calculation', async () => {
@@ -345,8 +345,8 @@ describe('pages/index/index', () => {
 	// 	expect(text).toEqual('222')
 	// })
 	it('screenshot', async () => {
-		const image = await program.screenshot({fullPage: true})
-		// const image = await program.screenshot()
+		// const image = await program.screenshot({fullPage: true})
+		const image = await program.screenshot()
 		expect(image).toMatchImageSnapshot();
 	})
 	// it('screenshotWithADB', async () => {

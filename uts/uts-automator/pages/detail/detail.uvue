@@ -13,6 +13,7 @@
 	export default {
 		onLoad(options){
 			console.warn('detail page onLoad', options)
+			uni.showToast({title: 'toast title'})
 		},
 		onBackPress(options: OnBackPressOptions): boolean | null {
 			console.warn('onBackPress', options)

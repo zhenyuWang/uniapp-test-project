@@ -1,45 +1,8 @@
 <template>
-	<view class="content">
-		<view class="border-0">test-test-test</view>
-		<radio-group>
-			<radio value="r" style="margin-right: 30rpx;" class="radio r">{{text}}</radio>
-		</radio-group>
-		<view class="border-0">测试节点</view>
-		<view class="border-1">测试节点</view>
-		<view class="border-2">测试节点</view>
-		<view class="border-3">测试节点</view>
-		<view class="border-4">测试节点</view>
-		<view class="border-5">测试节点</view>
-		<view class="border-6">测试节点</view>
-		<view class="border-7">测试节点</view>
-		<view class="border-8">测试节点</view>
-		<view class="border-9">测试节点</view>
-		<view class="border-10">测试节点</view>
-		<view class="border-11">测试节点</view>
-		<view class="border-12">测试节点</view>
-		<view class="border-13">测试节点</view>
-		<view class="border-14">测试节点</view>
-		<view class="border-15">测试节点</view>
-		<view class="border-16">测试节点</view>
-		<view class="border-17">测试节点</view>
-		<view class="border-18">测试节点</view>
-		<view class="border-19">测试节点</view>
-		<view class="border-20">测试节点</view>
-		<view class="border-21">测试节点</view>
-		<view class="border-22">测试节点</view>
-		<view class="border-23">测试节点</view>
-		<view class="border-24">测试节点</view>
-		<view class="border-25">测试节点</view>
-		<view class="border-26">测试节点</view>
-		<view class="border-27">测试节点</view>
-		<view class="border-28">测试节点</view>
-		<view class="border-29">测试节点</view>
-		<view class="border-30">测试节点</view>
-		<view class="border-31">测试节点</view>
-		<view class="border-32">测试节点</view>
-		<view class="border-33">测试节点</view>
-		<view class="border-34">测试节点</view>
-		<view class="border-35">测试节点</view>
+	<view class="content" id='myView' v-if="showBorder">
+		<view>1</view>
+		<view>2</view>
+		<Foo />
 	</view>
 </template>
 <script>
@@ -47,9 +10,17 @@
 		data() {
 			return {
 				title: '111',
-				text: '选中'
+				text: '选中',
+				showBorder: true
 			}
 		},
+		onReady(){
+			setTimeout(() => {
+				this.showBorder = true
+			},5000)
+			// const myView = uni.getElementById('myView')
+			// console.warn('myView.tagName', myView?.tagName)
+		}
 	}
 </script>
 <style>

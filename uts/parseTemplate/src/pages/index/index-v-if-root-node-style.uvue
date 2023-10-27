@@ -1,0 +1,32 @@
+<template>
+  <view v-if="show" class="content">
+    <input class="input" placeholder='this is input' />
+    <text class="text">this is text</text>
+  </view>
+  <button @click="changeShow">change show</button>
+</template>
+
+<script lang="uts">
+export default {
+  data(){
+    return {
+      show: false
+    }
+  },
+  methods: {
+    changeShow(){
+      this.show = !this.show
+    }
+  }
+}
+</script>
+
+<style>
+.content{
+  background-color: aqua;
+}
+.input{
+  background-color: red;
+}
+.text{color: green;}
+</style>

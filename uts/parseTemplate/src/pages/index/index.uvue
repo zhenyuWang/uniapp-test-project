@@ -1,18 +1,31 @@
 <template>
   <view>
-    <input v-model="str" />
-    <input v-model="obj.name" />
+    <button @click="test">test</button>
   </view>
 </template>
 
 <script lang="uts">
+import {ComponentPublicInstance} from 'vue'
 export default {
-  data(){
+  data() {
     return {
-      str: 'default str',
-      obj: {
-        name: 'default name'
-      }
+    }
+  },
+  methods: {
+    test(){
+      uni.loadFontFace({
+        family: 'test',
+        source: 'test',
+        success(){
+          console.log('success')
+        },
+        fail(e){
+          console.log('fail',e)
+        },
+        complete(e){
+          console.log('complete',e)
+        }
+      })
     }
   }
 }

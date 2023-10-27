@@ -5,6 +5,7 @@
 				<view class="green">{{ slotProps.item }}</view>
 			</template>
 		</todo-list>
+		<input ref='myInput' value="123" :focus="true" />
 		<button @click="test1();test2()">test1 & test2</button>
 		<rich-text :nodes="nodes"></rich-text>
 		<view :style="[style1, style2]">{{ fnName.split('').join('') }}</view>
@@ -100,13 +101,20 @@
 			}
 		},
 		onReady() {
+			const myInput = this.$refs["myInput"] as Element
+			console.log('myInput',myInput)
+			console.log(myInput.getAttribute('focus'))
+			console.log(typeof myInput.getAttribute('focus'))
+			console.log(myInput.getAttribute('value'))
+			console.log(myInput.focus)
+			console.log(myInput.value)
 			// console.warn('onReady start')
-			const msg = `{"id":"6fd6ca73-c313-48ac-ad30-87ff4eba2be8","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url":"/pages/index/index"}]}}`
-			const json = JSON.parse<Msg>(msg)!
-			console.warn('json', json)
-			const paramsStr = JSON.stringify(json.params)
-			console.warn('paramsStr', paramsStr)
-			const params = JSON.parse<CallUniMethodParams>(paramsStr)!
+			// const msg = `{"id":"6fd6ca73-c313-48ac-ad30-87ff4eba2be8","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url":"/pages/index/index"}]}}`
+			// const json = JSON.parse<Msg>(msg)!
+			// console.warn('json', json)
+			// const paramsStr = JSON.stringify(json.params)
+			// console.warn('paramsStr', paramsStr)
+			// const params = JSON.parse<CallUniMethodParams>(paramsStr)!
 			
 			// const testList = this.$refs.get('test') as Element
 			// console.log('testList', testList)

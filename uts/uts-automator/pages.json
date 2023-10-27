@@ -6,28 +6,14 @@
 				"navigationBarTitleText": "index"
 			}
 		},
-		// {
-		// 	"path": "pages/test/test",
-		// 	"style": {
-		// 		"navigationBarTitleText": "test"
-		// 	}
-		// },
 		{
-			"path": "pages/picker-view/picker-view",
+			"path": "pages/test/test",
 			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
+				"navigationBarTitleText": "test"
 			}
 		},
 		{
 			"path": "pages/detail/detail",
-			"style": {
-				"navigationBarTitleText": "",
-				"enablePullDownRefresh": false
-			}
-		},
-		{
-			"path": "pages/web-view/web-view",
 			"style": {
 				"navigationBarTitleText": "",
 				"enablePullDownRefresh": false
