@@ -1,0 +1,24 @@
+<template>
+	<my-input v-model="obj.name" />
+	<!-- <my-input v-model="str" /> -->
+	<!-- <input v-model="obj.name" /> -->
+	<slider :value="obj.num" />
+</template>
+
+<script>
+	type Obj = {
+		name : string,
+		num: number
+	}
+	export default {
+		data() {
+			return {
+				obj: {
+					name: "name",
+					num: 90
+				} as Obj,
+				str: 'str'
+			}
+		},
+	}
+</script>

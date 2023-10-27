@@ -1,0 +1,14 @@
+<template>
+	<input :value="modelValue" />
+</template>
+
+<script>
+	export default {
+		props: {
+			modelValue: {
+				type: String,
+				default: ""
+			},
+		}
+	}
+</script>
