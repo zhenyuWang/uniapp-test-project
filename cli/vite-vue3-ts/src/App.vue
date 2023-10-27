@@ -31,7 +31,9 @@ function innerClick() {
     <div @click.stop.once="innerClick">innerClick</div>
   </div>
   <text class="font-size-20" style="font-family: UniFontFamily">{{ uniIcon }}</text>
-  <text class="font-size-20" style="font-family: UniFontFamily">\ue101</text>
+  <text class="font-size-20" style="font-family: UniFontFamily">&#xe100;</text>
+  <text class="font-size-20" style="font-family: UniFontFamily">&#xe101;</text>
+  <text class="font-size-20 contact" style="font-family: UniFontFamily" name='contact'>a&nbsp;b</text>
 </template>
 
 <style>
