@@ -1,0 +1,54 @@
+<template>
+	<view class="content">
+		<text class="title">{{title}}</text>
+		<button @click="test">test</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'this is index'
+			}
+		},
+		onLoad() {
+
+		},
+		methods: {
+			test(){
+				// 1. 页面存在 toast ,如果页面关闭前 toast 未关闭,应用崩溃
+				// uni.showToast({title: 'toast title', icon: 'success'})
+				// 2. 当前页面存在 loading modal actionSheet 其一,第一次页面关闭,应用不会崩溃
+				// 再次进入页面,显示上述弹框,页面关闭,应用崩溃
+				// uni.showLoading({title: 'loading title'})
+				// uni.showModal({
+				// 	title: 'index',
+				// 	content: '这是一个模态弹窗',
+				// 	success: function (res) {
+				// 		if (res.confirm) {
+				// 			console.log('用户点击确定');
+				// 		} else if (res.cancel) {
+				// 			console.log('用户点击取消');
+				// 		}
+				// 	}
+				// });
+				// uni.showActionSheet({
+				// 	itemList: ['A', 'B', 'C'],
+				// 	success: function () {
+				// 		console.log('showActionSheet success');
+				// 	},
+				// 	fail: function (res) {
+				// 		console.log(res.errMsg);
+				// 	}
+				// });
+				uni.redirectTo({url: '/pages/about/index'})
+				// uni.navigateTo({url: '/pages/about/index'})
+				
+				// 3. A 页面跳转 B 页面,B onLoad 调用弹框,弹框会出现在 A 页面，然后随着 B 页面打开, 弹框消失
+				// 4. A 页面存在 modal 或 actionSheet, 跳转 B 页面, B 页面也打开 modal actionSheet，返回 A, modal actionSheet 不再显示，微信小程序会显示
+				// uni.navigateTo({url: '/pages/about/index'})
+			}
+		}
+	}
+</script>
