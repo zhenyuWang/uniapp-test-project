@@ -1,0 +1,13 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "index"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTitleText": "uni-app"
+  }
+}
