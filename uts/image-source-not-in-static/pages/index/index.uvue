@@ -1,0 +1,33 @@
+<template>
+  <view>
+    <text class="default" :class="{'active': isActive}">this is text</text>
+    <button @click="test">test</button>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+	data() {
+		return {
+			isActive: true
+		}
+	},
+	methods:{
+		test(){
+			this.isActive = !this.isActive
+		}
+	}
+}
+</script>
+
+<style>
+.default {
+	height: 30px;
+  background-color: red;
+  color: #fff;
+}
+.default.active {
+  background-color: green;
+  color: #000;
+}
+</style>
