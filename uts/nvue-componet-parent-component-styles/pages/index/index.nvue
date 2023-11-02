@@ -1,0 +1,23 @@
+<template>
+  <div class="page">
+		<text>this is page</text>
+    <Button class="btn-page">button in page</Button>
+    <Child />
+  </div>
+</template>
+
+<script>
+import Child from '../../components/Child/Child.nvue'
+import Button from '../../components/Button/Button.nvue'
+export default {
+  components: {Child,Button},
+}
+</script>
+
+<style>
+.btn{text-align: center;}
+.btn-page{
+	width: 200px;
+	color: blue;
+  }
+</style>

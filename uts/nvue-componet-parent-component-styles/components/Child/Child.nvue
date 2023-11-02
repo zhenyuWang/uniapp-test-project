@@ -1,0 +1,18 @@
+<template>
+  <div>this is Comp</div>
+  <Button class="btn btn-component">button in Child</Button>
+</template>
+
+<script lang='ts'>
+import Button from '../Button/Button.nvue'
+export default {
+  components: {Button},
+}
+</script>
+
+<style>
+.btn-component{
+  width:200px;
+  color: red;
+}
+</style>
