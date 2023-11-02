@@ -1,11 +1,12 @@
 <template>
 	<view>
-	<my-input v-model="(obj.str as string)" />
-	<!-- <my-input v-model="str" /> -->
+  <!-- <my-input v-model="obj.str" /> -->
+	<!-- <my-input v-model="obj.str" /> -->
+	<my-input v-model="str" />
 	<!-- <input v-model="obj.name" /> -->
 	<!-- <slider :value="obj.num" /> -->
-	<!-- <text style="font-family: AlimamaDaoLiTiTTF;">123ABC阿斯蒂芬</text> -->
-	<!-- <button @click="test">test</button> -->
+	<text style="font-family: AlimamaDaoLiTiTTF;">123ABC阿斯蒂芬</text>
+	<button @click="test">test</button>
 	</view>
 </template>
 
@@ -22,9 +23,9 @@
 				str: 'simple str'
 			}
 		},
-		methods:{
+		methods: {
 			test(){
-				uni.navigateTo({url: '/pages/index/about'})
+				uni.navigateBack()
 			}
 		}
 	}
