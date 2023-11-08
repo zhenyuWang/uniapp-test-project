@@ -5,6 +5,23 @@
 			"style": {
 				"navigationBarTitleText": "uni-app"
 			}
+		},{
+			"path": "pages/about/index",
+			"style": {
+				"navigationBarTitleText": "about"
+			}
+		},
+		{
+			"path": "pages/setting/index",
+			"style": {
+				"navigationBarTitleText": "setting"
+			}
+		},
+		{
+			"path": "pages/user/index",
+			"style": {
+				"navigationBarTitleText": "user"
+			}
 		}
 	],
 	"globalStyle": {
