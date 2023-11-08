@@ -1,32 +1,16 @@
 <template>
   <view>
-    <button @click="test">test</button>
+    <text @click="test" ref='myText' class="myText uni-common-mt font-size-20">非全局加载字体：</text>
   </view>
 </template>
 
-<script lang="uts">
-import {ComponentPublicInstance} from 'vue'
+<script lang='uts'>
 export default {
-  data() {
-    return {
-    }
-  },
   methods: {
     test(){
-      uni.loadFontFace({
-        family: 'test',
-        source: 'test',
-        success(){
-          console.log('success')
-        },
-        fail(e){
-          console.log('fail',e)
-        },
-        complete(e){
-          console.log('complete',e)
-        }
-      })
+      const myText = this.$querySelectorAll('.myText')
+      console.log(myText)
     }
-  }
+  },
 }
 </script>

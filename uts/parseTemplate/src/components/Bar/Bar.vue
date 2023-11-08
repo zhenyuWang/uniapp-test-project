@@ -1,19 +1,14 @@
 <template>
   <view>
-    <text>this is Bar component</text>
-    <slot></slot>
-    <button @click="test">test</button>
+    <button class="btn-component">
+      组件里的button（样式不生效）
+    </button>
   </view>
 </template>
 
-<script lang='uts'>
-// type Slot = () => any[];
-export default {
-  methods: {
-    test() {
-      const slots = this.$slots["default"]
-      console.log(slots)
-    }
+<style>
+  .btn-component {
+    width: 200px;
+    color: blue;
   }
-}
-</script>
+</style>

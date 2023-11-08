@@ -16,10 +16,7 @@ export default {
   onLastPageBackPress: function () {
     println("App LastPageBackPress ---------------------------------");
     if (firstBackTime == 0) {
-      uni.showToast({
-        title: '再按一次退出应用12321',
-        position: 'bottom'
-      })
+      console.log('再按一次退出应用---------------')
       firstBackTime = Date.now()
       setTimeout(() => {
         firstBackTime = 0

@@ -18,10 +18,10 @@ module.exports = {
     },
     "app-plus": {
         "android": {
-            "id": "bc75caa3",
-            "executablePath": "/Applications/HBuilderX-Alpha.app/Contents/HBuilderX/plugins/launcher/base/android_base.apk"
+            "id": "emulator-5556",
+            "executablePath": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/launcher/base/android_base.apk"
         },
-        "version": "/Applications/HBuilderX-Alpha.app/Contents/HBuilderX/plugins/launcher/base/version.txt",
+        "version": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/launcher/base/version.txt",
         "ios": {
             "id": "",
             "executablePath": ""

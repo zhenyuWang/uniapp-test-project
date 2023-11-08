@@ -1,6 +1,7 @@
 <template>
   <view>
     <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
+    <text style="font-family: AlimamaDaoLiTiTTF;">123ABC阿斯蒂芬</text>
     <button @click="goSetting">go setting</button>
     <button @click="test">test</button>
   </view>
@@ -39,8 +40,16 @@ export default {
       })
     },
     test(){
-      uni.switchTab({url: '/pages/about/about'})
+      // uni.switchTab({url: '/pages/about/about'})
+      uni.navigateBack()
     }
   }
 }
 </script>
+
+<style>
+	@font-face {
+	  font-family: AlimamaDaoLiTiTTF;
+	  src: url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf');
+	}
+</style>
