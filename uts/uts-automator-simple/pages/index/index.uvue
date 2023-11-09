@@ -20,6 +20,12 @@
 			this.isTrue = false
 			this.isFalse = true
 			this.str = 'new string'
+			setTimeout(() => {
+				console.warn('setTimeout after 10000')
+			},10000)
+			setInterval(() => {
+				console.warn('setInterval 1000')
+			},1000)
 		}
 	}
 </script>

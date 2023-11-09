@@ -1,11 +1,13 @@
 <template>
 	<scroll-view class="content">
+		<text @click="myTest" class="myText">this is my text</text>
+		<Foo123 />
 		<todo-list>
 			<template v-slot:default="slotProps">
 				<view class="green">{{ slotProps.item }}</view>
 			</template>
 		</todo-list>
-		<input ref='myInput' value="123" :focus="true" />
+		<input ref='myInput' value="123" :focus="false" />
 		<button @click="test1();test2()">test1 & test2</button>
 		<rich-text :nodes="nodes"></rich-text>
 		<view :style="[style1, style2]">{{ fnName.split('').join('') }}</view>
@@ -23,8 +25,8 @@
 		</swiper>
 		<slider class="slider" :value="60" :step="5" />
 		<view class="testTouch" style="width: 100px;height: 2000px;border: 1px solid red;"></view>
-		<!-- 		<button @click="test2">test2</button>
-		<button @click="reLaunchDetail">relaunch detail</button>
+		<button @click="test2">test2</button>
+		<!-- 		<button @click="reLaunchDetail">relaunch detail</button>
 		<text class="testFont">自定义字体内容1</text>
 		<checkbox-group class="uni-flex uni-row checkbox-group">
 			<checkbox value="cb1" :checked="true" style="margin-right: 30rpx;" class="checkbox test-checkbox1">1111</checkbox>
@@ -58,9 +60,9 @@
 	import { JSONArray } from 'com.alibaba.fastjson'
 	import TodoList from '../../components/TodoList.uvue'
 	type Msg = {
-		id: string,
-		method: string,
-		params: any
+		id : string,
+		method : string,
+		params : any
 	}
 	type CallUniMethodParams = {
 		method : string
@@ -101,13 +103,19 @@
 			}
 		},
 		onReady() {
-			const myInput = this.$refs["myInput"] as Element
-			console.log('myInput',myInput)
-			console.log(myInput.getAttribute('focus'))
-			console.log(typeof myInput.getAttribute('focus'))
-			console.log(myInput.getAttribute('value'))
-			console.log(myInput.focus)
-			console.log(myInput.value)
+			// uni.showModal({
+			// 	title: 'model title'
+			// })
+			// setTimeout(() => {
+			// 	uni.navigateTo({url: '/pages/detail/detail'})
+			// },1000)
+			uni.setNavigationBarTitle({ title: 'new title' })
+			// setInterval(() => {
+			// 	console.log('setInterval')
+			// }, 1000)
+			// setTimeout(() => {
+			// 	console.log('setTimeout')
+			// }, 1000)
 			// console.warn('onReady start')
 			// const msg = `{"id":"6fd6ca73-c313-48ac-ad30-87ff4eba2be8","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url":"/pages/index/index"}]}}`
 			// const json = JSON.parse<Msg>(msg)!
@@ -115,7 +123,7 @@
 			// const paramsStr = JSON.stringify(json.params)
 			// console.warn('paramsStr', paramsStr)
 			// const params = JSON.parse<CallUniMethodParams>(paramsStr)!
-			
+
 			// const testList = this.$refs.get('test') as Element
 			// console.log('testList', testList)
 			// const pages = getCurrentPages()
@@ -128,7 +136,7 @@
 			// 		console.log('res',res)
 			// 	}
 			// })
-			
+
 			// const arr1 = this.fnName.split('')
 			// console.warn('arr1', arr1)
 			// console.warn('isArray arr1', Array.isArray(arr1))
@@ -307,19 +315,19 @@
 				console.warn('automatorTouchEnd', e)
 			},
 			test() {
-				uni.showActionSheet({
-					itemList: ['A', 'B', 'C'],
-					success: function (res) {
-						console.log('showActionSheet success', res);
-					},
-					fail: function (res) {
-						console.log(res.errMsg);
-					}
-				});
+				// uni.showActionSheet({
+				// 	itemList: ['A', 'B', 'C'],
+				// 	success: function (res) {
+				// 		console.log('showActionSheet success', res);
+				// 	},
+				// 	fail: function (res) {
+				// 		console.log(res.errMsg);
+				// 	}
+				// });
 				// console.log('test in index')
 				// this.$callMethod('myTest')
-				const node = this.$querySelector('.my-test')
-				console.warn('node', node)
+				// const node = this.$querySelector('.my-test')
+				// console.warn('node', node)
 				// const child = node.$querySelector('.test-child')
 				// console.warn('child',child)
 				// const fn = findVueMethod(this.$.type, this.fnName, this)
@@ -328,10 +336,20 @@
 			getStorageInfo() {
 				console.warn('method getStorageInfo')
 			},
-			myTest() : number {
-				const sum = 2
-				console.warn('my test--------------------------', sum);
-				return sum;
+			async myTest(): Promise<any> {
+				// const sum = 2
+				// console.warn('my test--------------------------', sum);
+				// return sum;
+				return await new Promise((resolve, reject) => {
+					setTimeout(() => {
+						console.warn('before resolve')
+						// resolve(100)
+						// reject('promise reject')
+						reject({name: 'promise reject', age: 18})
+					}, 1000)
+				})
+				// throw Error('this is an error')
+				// return {name: 'my name', age: 18}
 			},
 			goDetail(msg : string) {
 				// uni.showLoading({ title: 'loading title in index' })
@@ -368,10 +386,11 @@
 				// const arr2 = JSON.parse<string[]>(JSON.stringify(arr))
 				// console.warn('arr2', arr2)
 			},
-			test2() {
+			async test2(): Promise<void> {
 				// const num1: number = -1.1 / -0.1
 				// console.warn(num1)
-				console.log('test2')
+				const myTestRes = await this.myTest()
+				console.log('test2', myTestRes)
 			}
 		}
 	}

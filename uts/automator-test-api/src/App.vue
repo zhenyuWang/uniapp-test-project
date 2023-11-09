@@ -9,10 +9,10 @@ export default {
   onHide: function () {
     console.log("App Hide");
   },
-  onLastPageBackPress: function (): boolean {
-    println('onLastPageBackPress----------------')
-    return false
-  }
+  // onLastPageBackPress: function (): boolean {
+  //   println('onLastPageBackPress----------------')
+  //   return false
+  // }
 };
 </script>
 

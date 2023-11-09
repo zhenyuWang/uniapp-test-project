@@ -6,6 +6,11 @@
 </template>
 
 <script>
+	function myTest(): Promise<string>{
+		return new Promise((resolve) => {
+			setTimeout(function() {resolve('test')}, 1000);
+		})
+	}
 	export default {
 		data() {
 			return {
@@ -16,7 +21,7 @@
 
 		},
 		methods: {
-			test(){
+			async test(): Promise<void> {
 				// 1. 页面存在 toast ,如果页面关闭前 toast 未关闭,应用崩溃
 				// uni.showToast({title: 'toast title', icon: 'success'})
 				// 2. 当前页面存在 loading modal actionSheet 其一,第一次页面关闭,应用不会崩溃
@@ -42,6 +47,7 @@
 				// 		console.log(res.errMsg);
 				// 	}
 				// });
+				await myTest()
 				uni.redirectTo({url: '/pages/about/index'})
 				// uni.navigateTo({url: '/pages/about/index'})
 				

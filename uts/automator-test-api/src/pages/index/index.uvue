@@ -37,11 +37,11 @@
     <rich-text :nodes="nodesStr" />
     <rich-text :nodes="nodes" />
     <text @click="(e: any) => myClick(e)">test click params with type</text>
-    <text class="testFont">自定义字体文字</text>
+    <text class="testFont">自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字自定义字体文字EnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglishEnglish</text>
     <text>默认字体文字</text>
     <!-- <view class="block" style="height: 1000px; background: red"></view> -->
-    <button @click="showLoading">showLoading</button>
-    <button @click="showToast">showToast</button>
+    <!-- <button @click="showLoading">showLoading</button>
+    <button @click="showToast">showToast</button> -->
     <text :style="{
       color: red,
       fontSize: '20px',
@@ -126,17 +126,17 @@ export default {
       println('myClick-------------------------')
       println(e)
     },
-    showLoading() {
-      uni.showLoading({
-        title: 'loading in index'
-      })
-    },
-    showToast() {
-      uni.showToast({
-        title: 'toast in index',
-	      duration: 20000
-      })
-    },
+    // showLoading() {
+    //   uni.showLoading({
+    //     title: 'loading in index'
+    //   })
+    // },
+    // showToast() {
+    //   uni.showToast({
+    //     title: 'toast in index',
+	  //     duration: 20000
+    //   })
+    // },
     getElement() {
       uni.navigateTo({
         url: '/pages/detail/index?name=testname',

@@ -5,6 +5,28 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor('view')
 	})
+	
+	// am start -n io.dcloud.uniappx/io.dcloud.uniapp.UniAppActivity --es appid __UNI__AE9EF0B --ez needUpdateApp false --ez reload true --ez externalStorage true
+	it('call async fun', async () => {
+		const res = await page.callMethod('myTest')
+		console.log('res', res, typeof res)
+		// console.log(res.name, res.age)
+	})
+	
+	// it('$', async () => {
+	// 	const myText = await page.$('.myText')
+	// 	const text = await myText.text()
+	// 	console.log('text', text)
+	// })
+	
+	// it('adbCommand', async () => {
+		// const res = await program.adbCommand('dumpsys activity | grep "Run"')
+		// const res = await program.adbCommand('logcat')
+		// const res = await program.adbCommand('input swipe 100 500 100 200 500')
+		// console.log('adbCommand-----------', res)
+		// const res = await page.$('.content')
+		// console.log('res', res)
+	// })
 
 	// it('mathematical calculation', async () => {
 	// 	const test1 = await page.callMethod('test1')
@@ -344,11 +366,11 @@ describe('pages/index/index', () => {
 	// 	const text = await textNode.text()
 	// 	expect(text).toEqual('222')
 	// })
-	it('screenshot', async () => {
-		// const image = await program.screenshot({fullPage: true})
-		const image = await program.screenshot()
-		expect(image).toMatchImageSnapshot();
-	})
+	// it('screenshot', async () => {
+	// 	// const image = await program.screenshot({fullPage: true})
+	// 	const image = await program.screenshot()
+	// 	expect(image).toMatchImageSnapshot();
+	// })
 	// it('screenshotWithADB', async () => {
 	// 	const image = await program.screenshot({adb: true})
 	// 	expect(image).toMatchImageSnapshot();

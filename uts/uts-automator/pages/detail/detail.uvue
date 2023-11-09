@@ -19,6 +19,13 @@
 			console.warn('onBackPress', options)
 			return false
 		},
+		onReady() {
+			setTimeout(() => {
+				uni.showModal({
+					title: 'detail title'
+				})
+			},1000)
+		},
 		methods: {
 			reLaunchIndex(){
 				uni.reLaunch({

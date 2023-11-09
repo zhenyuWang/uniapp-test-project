@@ -11,6 +11,7 @@
 		},
 		onLastPageBackPress: function (){
 		  console.log('App LastPageBackPress')
+			uni.exit()
 		},
 	}
 </script>

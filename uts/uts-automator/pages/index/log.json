@@ -1,0 +1,365 @@
+20:31:45.965 [uts-automator:android-emulat..] 请注意运行模式下，因日志输出、sourcemap 以及未压缩源码等原因，性能和包体积，均不及发行模式。
+20:31:45.965 [uts-automator:android-emulat..] 编译器版本：3.96（uni-app x）
+20:31:45.965 [uts-automator:android-emulat..] 正在编译中...
+20:31:47.290 [uts-automator:android-emulat..] copy static/logo.png=>/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/uts-automator/unpackage/dist/dev/app/static/logo.png
+20:31:47.389 [uts-automator:android-emulat..] 检测到编译缓存部分失效，开始差量编译。详见：https://uniapp.dcloud.net.cn/uni-app-x/compiler/#cache
+20:32:17.274 [uts-automator:android-emulat..] DONE  Build complete. Watching for changes...
+20:32:17.274 [uts-automator:android-emulat..] 2023-10-31T12:32:17.272Z automator:runtime 2023-10-31 20:32:17:272 port=9520
+20:32:17.305 [uts-automator:android-emulat..] wifi server listening 8000
+20:32:17.340 [uts-automator:android-emulat..] http server listening 8001
+20:32:17.908 [uts-automator:android-emulat..] {"mobile":{},"contents":{"project":{"type":"UniApp","appID":"__UNI__AE9EF0B"},"fileInfo":[{"action":"writeFile","sourcePath":"http://127.0.0.1:8001/static/?path=/tmp/1698755537273.zip","name":"1698755537273.zip","fullPackage":true,"firstInstall":true}],"app":{"appID":"__UNI__AE9EF0B","customBase":false},"refreashType":"reload"}}
+20:32:17.966 [uts-automator:android-emulat..] {
+20:32:17.967 [uts-automator:android-emulat..]   contents: { fileinfo: [ null ] },
+20:32:17.967 [uts-automator:android-emulat..]   mobile: {
+20:32:17.967 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:17.967 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:17.967 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:17.967 [uts-automator:android-emulat..]     udid: '',
+20:32:17.967 [uts-automator:android-emulat..]     version: '10'
+20:32:17.967 [uts-automator:android-emulat..]   },
+20:32:17.967 [uts-automator:android-emulat..]   returnValue: { code: 106, str: 'HX_Device_Log_SyncResource_Completed' }
+20:32:17.967 [uts-automator:android-emulat..] }
+20:32:18.994 [uts-automator:android-emulat..] {
+20:32:18.994 [uts-automator:android-emulat..]   contents: { fileinfo: [ null ] },
+20:32:18.994 [uts-automator:android-emulat..]   mobile: {
+20:32:18.994 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:18.994 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:18.994 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:18.995 [uts-automator:android-emulat..]     udid: '',
+20:32:18.995 [uts-automator:android-emulat..]     version: '10'
+20:32:18.995 [uts-automator:android-emulat..]   },
+20:32:18.995 [uts-automator:android-emulat..]   returnValue: { code: 103, str: 'HX_Device_Log_StandarBase_Starting' }
+20:32:18.995 [uts-automator:android-emulat..] }
+20:32:19.082 [uts-automator:android-emulat..] {
+20:32:19.082 [uts-automator:android-emulat..]   contents: {
+20:32:19.082 [uts-automator:android-emulat..]     logStr: '[WARN] :initAutomator start-------------------- at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:209'
+20:32:19.082 [uts-automator:android-emulat..]   },
+20:32:19.083 [uts-automator:android-emulat..]   mobile: {
+20:32:19.083 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.083 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.083 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.083 [uts-automator:android-emulat..]     udid: '',
+20:32:19.083 [uts-automator:android-emulat..]     version: '10'
+20:32:19.083 [uts-automator:android-emulat..]   }
+20:32:19.083 [uts-automator:android-emulat..] }
+20:32:19.083 [uts-automator:android-emulat..] {
+20:32:19.083 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :App Launch at App.vue:4' },
+20:32:19.083 [uts-automator:android-emulat..]   mobile: {
+20:32:19.083 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.084 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.084 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.084 [uts-automator:android-emulat..]     udid: '',
+20:32:19.084 [uts-automator:android-emulat..]     version: '10'
+20:32:19.084 [uts-automator:android-emulat..]   }
+20:32:19.084 [uts-automator:android-emulat..] }
+20:32:19.084 [uts-automator:android-emulat..] {
+20:32:19.084 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :App Show at App.vue:7' },
+20:32:19.084 [uts-automator:android-emulat..]   mobile: {
+20:32:19.084 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.084 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.084 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.084 [uts-automator:android-emulat..]     udid: '',
+20:32:19.084 [uts-automator:android-emulat..]     version: '10'
+20:32:19.084 [uts-automator:android-emulat..]   }
+20:32:19.084 [uts-automator:android-emulat..] }
+20:32:19.084 [uts-automator:android-emulat..] {
+20:32:19.084 [uts-automator:android-emulat..]   contents: {
+20:32:19.084 [uts-automator:android-emulat..]     logStr: '[WARN] :style property `color` is only supported on `<text>
+20:32:19.084 [uts-automator:android-emulat..] <button>
+20:32:19.084 [uts-automator:android-emulat..] <input>
+20:32:19.084 [uts-automator:android-emulat..] <textarea>`. there is an error on `<view class="component-foo" test="foo-test-attribute">`.'
+20:32:19.084 [uts-automator:android-emulat..]   },
+20:32:19.084 [uts-automator:android-emulat..]   mobile: {
+20:32:19.084 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.084 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.085 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.085 [uts-automator:android-emulat..]     udid: '',
+20:32:19.085 [uts-automator:android-emulat..]     version: '10'
+20:32:19.085 [uts-automator:android-emulat..]   }
+20:32:19.085 [uts-automator:android-emulat..] }
+20:32:19.085 [uts-automator:android-emulat..] {
+20:32:19.085 [uts-automator:android-emulat..]   contents: {
+20:32:19.085 [uts-automator:android-emulat..]     logStr: '[LOG] :component foo mounted at components/Foo/Foo.vue:23'
+20:32:19.085 [uts-automator:android-emulat..]   },
+20:32:19.085 [uts-automator:android-emulat..]   mobile: {
+20:32:19.085 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.085 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.085 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.085 [uts-automator:android-emulat..]     udid: '',
+20:32:19.085 [uts-automator:android-emulat..]     version: '10'
+20:32:19.085 [uts-automator:android-emulat..]   }
+20:32:19.085 [uts-automator:android-emulat..] }
+20:32:19.264 [uts-automator:android-emulat..] {
+20:32:19.264 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :应用启动到触发onLaunch耗时: 1346ms' },
+20:32:19.264 [uts-automator:android-emulat..]   mobile: {
+20:32:19.264 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.264 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.264 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.264 [uts-automator:android-emulat..]     udid: '',
+20:32:19.264 [uts-automator:android-emulat..]     version: '10'
+20:32:19.264 [uts-automator:android-emulat..]   }
+20:32:19.264 [uts-automator:android-emulat..] }
+20:32:19.271 [uts-automator:android-emulat..] {
+20:32:19.271 [uts-automator:android-emulat..]   contents: {
+20:32:19.271 [uts-automator:android-emulat..]     logStr: '[LOG] :进入页面:​/pages/index/index​ 。[{"创建dom元素个数":"33个","耗时":"24ms"},{"排版":"1次","耗时":"3ms"},{"渲染":"2次","耗时":"137ms"},{"页面创建到onReady总耗时":"209ms"}]'
+20:32:19.271 [uts-automator:android-emulat..]   },
+20:32:19.271 [uts-automator:android-emulat..]   mobile: {
+20:32:19.271 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.271 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.271 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.271 [uts-automator:android-emulat..]     udid: '',
+20:32:19.271 [uts-automator:android-emulat..]     version: '10'
+20:32:19.271 [uts-automator:android-emulat..]   }
+20:32:19.271 [uts-automator:android-emulat..] }
+20:32:19.271 [uts-automator:android-emulat..] 2023-10-31T12:32:19.266Z automator:runtime 2023-10-31 20:32:19:266 connected
+20:32:19.280 [uts-automator:android-emulat..] {
+20:32:19.280 [uts-automator:android-emulat..]   contents: {
+20:32:19.280 [uts-automator:android-emulat..]     logStr: '[WARN] :automator.onOpen at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:219'
+20:32:19.280 [uts-automator:android-emulat..]   },
+20:32:19.280 [uts-automator:android-emulat..]   mobile: {
+20:32:19.280 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.280 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.280 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.280 [uts-automator:android-emulat..]     udid: '',
+20:32:19.280 [uts-automator:android-emulat..]     version: '10'
+20:32:19.280 [uts-automator:android-emulat..]   }
+20:32:19.280 [uts-automator:android-emulat..] }
+20:32:19.985 [uts-automator:android-emulat..] {
+20:32:19.985 [uts-automator:android-emulat..]   contents: { logStr: 'application_Started' },
+20:32:19.985 [uts-automator:android-emulat..]   mobile: {
+20:32:19.985 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:19.985 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:19.985 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:19.985 [uts-automator:android-emulat..]     udid: '',
+20:32:19.985 [uts-automator:android-emulat..]     version: '10'
+20:32:19.985 [uts-automator:android-emulat..]   }
+20:32:19.985 [uts-automator:android-emulat..] }
+20:32:21.279 [uts-automator:android-emulat..] 2023-10-31T12:32:21.277Z automator:adb 2023-10-31 20:32:21:277 SEND ► am force-stop io.dcloud.uniappx
+20:32:21.322 [uts-automator:android-emulat..] 2023-10-31T12:32:21.321Z automator:adb 2023-10-31 20:32:21:321 ◀ RECV
+20:32:21.322 [uts-automator:android-emulat..] 2023-10-31T12:32:21.321Z automator:adb 2023-10-31 20:32:21:321 SEND ► am start -n io.dcloud.uniappx/io.dcloud.uniapp.UniAppActivity --es appid __UNI__AE9EF0B --ez needUpdateApp false --ez reload true --ez externalStorage true
+20:32:21.335 [uts-automator:android-emulat..] client connection close: 1006
+20:32:21.354 [uts-automator:android-emulat..] 2023-10-31T12:32:21.352Z automator:adb 2023-10-31 20:32:21:352 ◀ RECV Starting: Intent { cmp=io.dcloud.uniappx/io.dcloud.uniapp.UniAppActivity (has extras) }
+20:32:21.354 [uts-automator:android-emulat..] 2023-10-31T12:32:21.352Z automator:program ready
+20:32:21.642 [uts-automator:android-emulat..] 2023-10-31T12:32:21.638Z automator:protocol:runtime 2023-10-31 20:32:21:638 SEND ► {"id":"dbb07a61-7a8a-4ce2-9c02-03dfeb5483e8","method":"App.callUniMethod","params":{"method":"reLaunch","args":[{"url":"/pages/index/index"}]}}
+20:32:21.649 [uts-automator:android-emulat..] {
+20:32:21.649 [uts-automator:android-emulat..]   mobile: {
+20:32:21.649 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.649 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.649 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.649 [uts-automator:android-emulat..]     udid: '',
+20:32:21.649 [uts-automator:android-emulat..]     version: '10'
+20:32:21.649 [uts-automator:android-emulat..]   }
+20:32:21.649 [uts-automator:android-emulat..] }
+20:32:21.693 [uts-automator:android-emulat..] {
+20:32:21.693 [uts-automator:android-emulat..]   contents: {
+20:32:21.693 [uts-automator:android-emulat..]     logStr: '[WARN] :initAutomator start-------------------- at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:209'
+20:32:21.693 [uts-automator:android-emulat..]   },
+20:32:21.693 [uts-automator:android-emulat..]   mobile: {
+20:32:21.693 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.693 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.693 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.693 [uts-automator:android-emulat..]     udid: '',
+20:32:21.693 [uts-automator:android-emulat..]     version: '10'
+20:32:21.693 [uts-automator:android-emulat..]   }
+20:32:21.693 [uts-automator:android-emulat..] }
+20:32:21.693 [uts-automator:android-emulat..] {
+20:32:21.693 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :App Launch at App.vue:4' },
+20:32:21.693 [uts-automator:android-emulat..]   mobile: {
+20:32:21.693 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.693 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.693 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.693 [uts-automator:android-emulat..]     udid: '',
+20:32:21.693 [uts-automator:android-emulat..]     version: '10'
+20:32:21.693 [uts-automator:android-emulat..]   }
+20:32:21.693 [uts-automator:android-emulat..] }
+20:32:21.693 [uts-automator:android-emulat..] {
+20:32:21.693 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :App Show at App.vue:7' },
+20:32:21.694 [uts-automator:android-emulat..]   mobile: {
+20:32:21.694 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.694 [uts-automator:android-emulat..]     udid: '',
+20:32:21.694 [uts-automator:android-emulat..]     version: '10'
+20:32:21.694 [uts-automator:android-emulat..]   }
+20:32:21.694 [uts-automator:android-emulat..] }
+20:32:21.694 [uts-automator:android-emulat..] {
+20:32:21.694 [uts-automator:android-emulat..]   contents: {
+20:32:21.694 [uts-automator:android-emulat..]     logStr: '[WARN] :style property `color` is only supported on `<text>
+20:32:21.694 [uts-automator:android-emulat..] <button>
+20:32:21.694 [uts-automator:android-emulat..] <input>
+20:32:21.694 [uts-automator:android-emulat..] <textarea>`. there is an error on `<view class="component-foo" test="foo-test-attribute">`.'
+20:32:21.694 [uts-automator:android-emulat..]   },
+20:32:21.694 [uts-automator:android-emulat..]   mobile: {
+20:32:21.694 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.694 [uts-automator:android-emulat..]     udid: '',
+20:32:21.694 [uts-automator:android-emulat..]     version: '10'
+20:32:21.694 [uts-automator:android-emulat..]   }
+20:32:21.694 [uts-automator:android-emulat..] }
+20:32:21.694 [uts-automator:android-emulat..] {
+20:32:21.694 [uts-automator:android-emulat..]   contents: {
+20:32:21.694 [uts-automator:android-emulat..]     logStr: '[LOG] :component foo mounted at components/Foo/Foo.vue:23'
+20:32:21.694 [uts-automator:android-emulat..]   },
+20:32:21.694 [uts-automator:android-emulat..]   mobile: {
+20:32:21.694 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.694 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.694 [uts-automator:android-emulat..]     udid: '',
+20:32:21.694 [uts-automator:android-emulat..]     version: '10'
+20:32:21.694 [uts-automator:android-emulat..]   }
+20:32:21.694 [uts-automator:android-emulat..] }
+20:32:21.775 [uts-automator:android-emulat..] {
+20:32:21.776 [uts-automator:android-emulat..]   contents: { logStr: '[LOG] :应用启动到触发onLaunch耗时: 110ms' },
+20:32:21.776 [uts-automator:android-emulat..]   mobile: {
+20:32:21.776 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.776 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.776 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.776 [uts-automator:android-emulat..]     udid: '',
+20:32:21.776 [uts-automator:android-emulat..]     version: '10'
+20:32:21.776 [uts-automator:android-emulat..]   }
+20:32:21.776 [uts-automator:android-emulat..] }
+20:32:21.776 [uts-automator:android-emulat..] 2023-10-31T12:32:21.773Z automator:runtime 2023-10-31 20:32:21:773 connected
+20:32:21.776 [uts-automator:android-emulat..] {
+20:32:21.776 [uts-automator:android-emulat..]   contents: {
+20:32:21.776 [uts-automator:android-emulat..]     logStr: '[LOG] :进入页面:​/pages/index/index​ 。[{"创建dom元素个数":"33个","耗时":"23ms"},{"排版":"1次","耗时":"3ms"},{"渲染":"2次","耗时":"128ms"},{"页面创建到onReady总耗时":"222ms"}]'
+20:32:21.776 [uts-automator:android-emulat..]   },
+20:32:21.776 [uts-automator:android-emulat..]   mobile: {
+20:32:21.776 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.776 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.776 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.776 [uts-automator:android-emulat..]     udid: '',
+20:32:21.776 [uts-automator:android-emulat..]     version: '10'
+20:32:21.776 [uts-automator:android-emulat..]   }
+20:32:21.776 [uts-automator:android-emulat..] }
+20:32:21.784 [uts-automator:android-emulat..] {
+20:32:21.784 [uts-automator:android-emulat..]   contents: {
+20:32:21.784 [uts-automator:android-emulat..]     logStr: '[WARN] :automator.onOpen at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:219'
+20:32:21.784 [uts-automator:android-emulat..]   },
+20:32:21.784 [uts-automator:android-emulat..]   mobile: {
+20:32:21.784 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:21.784 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:21.784 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:21.784 [uts-automator:android-emulat..]     udid: '',
+20:32:21.784 [uts-automator:android-emulat..]     version: '10'
+20:32:21.784 [uts-automator:android-emulat..]   }
+20:32:21.784 [uts-automator:android-emulat..] }
+20:32:26.782 [uts-automator:android-emulat..] {
+20:32:26.782 [uts-automator:android-emulat..]   contents: {
+20:32:26.782 [uts-automator:android-emulat..]     logStr: '[WARN] :send----------COMMA---pong at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:63'
+20:32:26.783 [uts-automator:android-emulat..]   },
+20:32:26.783 [uts-automator:android-emulat..]   mobile: {
+20:32:26.783 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:26.783 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:26.783 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:26.783 [uts-automator:android-emulat..]     udid: '',
+20:32:26.783 [uts-automator:android-emulat..]     version: '10'
+20:32:26.783 [uts-automator:android-emulat..]   }
+20:32:26.783 [uts-automator:android-emulat..] }
+20:32:26.791 [uts-automator:android-emulat..] {
+20:32:26.792 [uts-automator:android-emulat..]   contents: {
+20:32:26.792 [uts-automator:android-emulat..]     logStr: '[WARN] :onMessage---COMMA------BEGIN:JSON---{"data":"{\\"id\\":\\"e495d5fd-cd6c-41c1-b8c4-677ae41ebf47\\",\\"method\\":\\"ping\\",\\"params\\":{}}"}---END:JSON--- at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:216'
+20:32:26.792 [uts-automator:android-emulat..]   },
+20:32:26.792 [uts-automator:android-emulat..]   mobile: {
+20:32:26.792 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:26.792 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:26.792 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:26.792 [uts-automator:android-emulat..]     udid: '',
+20:32:26.792 [uts-automator:android-emulat..]     version: '10'
+20:32:26.792 [uts-automator:android-emulat..]   }
+20:32:26.792 [uts-automator:android-emulat..] }
+20:32:31.790 [uts-automator:android-emulat..] {
+20:32:31.790 [uts-automator:android-emulat..]   contents: {
+20:32:31.791 [uts-automator:android-emulat..]     logStr: '[WARN] :send----------COMMA---pong at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:63'
+20:32:31.791 [uts-automator:android-emulat..]   },
+20:32:31.791 [uts-automator:android-emulat..]   mobile: {
+20:32:31.791 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:31.791 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:31.791 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:31.792 [uts-automator:android-emulat..]     udid: '',
+20:32:31.792 [uts-automator:android-emulat..]     version: '10'
+20:32:31.792 [uts-automator:android-emulat..]   }
+20:32:31.792 [uts-automator:android-emulat..] }
+20:32:31.792 [uts-automator:android-emulat..] {
+20:32:31.792 [uts-automator:android-emulat..]   contents: {
+20:32:31.792 [uts-automator:android-emulat..]     logStr: '[WARN] :onMessage---COMMA------BEGIN:JSON---{"data":"{\\"id\\":\\"a96fb3f7-8c66-4ce0-92e8-d0c3b6e88a10\\",\\"method\\":\\"ping\\",\\"params\\":{}}"}---END:JSON--- at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:216'
+20:32:31.792 [uts-automator:android-emulat..]   },
+20:32:31.792 [uts-automator:android-emulat..]   mobile: {
+20:32:31.792 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:31.793 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:31.793 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:31.793 [uts-automator:android-emulat..]     udid: '',
+20:32:31.793 [uts-automator:android-emulat..]     version: '10'
+20:32:31.793 [uts-automator:android-emulat..]   }
+20:32:31.793 [uts-automator:android-emulat..] }
+20:32:36.794 [uts-automator:android-emulat..] {
+20:32:36.795 [uts-automator:android-emulat..]   contents: {
+20:32:36.795 [uts-automator:android-emulat..]     logStr: '[WARN] :send----------COMMA---pong at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:63'
+20:32:36.795 [uts-automator:android-emulat..]   },
+20:32:36.795 [uts-automator:android-emulat..]   mobile: {
+20:32:36.796 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:36.796 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:36.796 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:36.796 [uts-automator:android-emulat..]     udid: '',
+20:32:36.796 [uts-automator:android-emulat..]     version: '10'
+20:32:36.796 [uts-automator:android-emulat..]   }
+20:32:36.797 [uts-automator:android-emulat..] }
+20:32:36.797 [uts-automator:android-emulat..] {
+20:32:36.798 [uts-automator:android-emulat..]   contents: {
+20:32:36.798 [uts-automator:android-emulat..]     logStr: '[WARN] :onMessage---COMMA------BEGIN:JSON---{"data":"{\\"id\\":\\"324c23eb-ffdb-4237-8128-c8b84df783ef\\",\\"method\\":\\"ping\\",\\"params\\":{}}"}---END:JSON--- at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:216'
+20:32:36.798 [uts-automator:android-emulat..]   },
+20:32:36.798 [uts-automator:android-emulat..]   mobile: {
+20:32:36.798 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:36.799 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:36.799 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:36.799 [uts-automator:android-emulat..]     udid: '',
+20:32:36.799 [uts-automator:android-emulat..]     version: '10'
+20:32:36.799 [uts-automator:android-emulat..]   }
+20:32:36.800 [uts-automator:android-emulat..] }
+20:32:41.683 [uts-automator:android-emulat..] FAIL pages/index/index.test.js (56.607 s)
+20:32:41.683 [uts-automator:android-emulat..] 
+20:32:41.684 [uts-automator:android-emulat..] pages/index/index
+20:32:41.684 [uts-automator:android-emulat..]     ✕ adbCommand
+20:32:41.684 [uts-automator:android-emulat..] ● pages/index/index › adbCommand
+20:32:41.684 [uts-automator:android-emulat..] 
+20:32:41.684 [uts-automator:android-emulat..]     thrown: "Exceeded timeout of 20000 ms for a hook.
+20:32:41.684 [uts-automator:android-emulat..]     Use jest.setTimeout(newTimeout) to increase the timeout value, if this is a long-running test."
+20:32:41.684 [uts-automator:android-emulat..] 
+20:32:41.684 [uts-automator:android-emulat..]       2 
+20:32:41.684 [uts-automator:android-emulat..]  describe('pages/index/index', () => {
+20:32:41.684 [uts-automator:android-emulat..]       3 
+20:32:41.684 [uts-automator:android-emulat..]  	let page
+20:32:41.684 [uts-automator:android-emulat..]     > 4 
+20:32:41.684 [uts-automator:android-emulat..]  	beforeAll(async () => {
+20:32:41.684 [uts-automator:android-emulat..]         
+20:32:41.684 [uts-automator:android-emulat..]  	^
+20:32:41.684 [uts-automator:android-emulat..]       5 
+20:32:41.684 [uts-automator:android-emulat..]  		page = await program.reLaunch('/pages/index/index')
+20:32:41.684 [uts-automator:android-emulat..]       6 
+20:32:41.684 [uts-automator:android-emulat..]  		await page.waitFor('view')
+20:32:41.684 [uts-automator:android-emulat..]       7 
+20:32:41.684 [uts-automator:android-emulat..]  	})
+20:32:41.684 [uts-automator:android-emulat..] 
+20:32:41.684 [uts-automator:android-emulat..]       at pages/index/index.test.js:4:2
+20:32:41.684 [uts-automator:android-emulat..]       at Object.<anonymous> (pages/index/index.test.js:2:1)
+20:32:41.693 [uts-automator:android-emulat..] Test Suites: 1 failed, 1 total
+20:32:41.693 [uts-automator:android-emulat..] Tests:       1 failed, 1 total
+20:32:41.693 [uts-automator:android-emulat..] Snapshots:   0 total
+20:32:41.693 [uts-automator:android-emulat..] Time:        56.743 s
+20:32:41.693 [uts-automator:android-emulat..] Ran all test suites.
+20:32:41.693 [uts-automator:android-emulat..] {
+20:32:41.693 [uts-automator:android-emulat..]   contents: {
+20:32:41.693 [uts-automator:android-emulat..]     logStr: '[WARN] :automator.onClose at ../../../../../../../../../../../../Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniapp-cli-vite/node_modules/@dcloudio/uni-app-uts/lib/automator/index.uts:225'
+20:32:41.693 [uts-automator:android-emulat..]   },
+20:32:41.693 [uts-automator:android-emulat..]   mobile: {
+20:32:41.693 [uts-automator:android-emulat..]     clientID: 'Android SDK built for arm64',
+20:32:41.693 [uts-automator:android-emulat..]     name: 'Android SDK built for arm64',
+20:32:41.693 [uts-automator:android-emulat..]     platform: 'Android',
+20:32:41.693 [uts-automator:android-emulat..]     udid: '',
+20:32:41.693 [uts-automator:android-emulat..]     version: '10'
+20:32:41.693 [uts-automator:android-emulat..]   }
+20:32:41.693 [uts-automator:android-emulat..] }
+20:32:44.702 Test results written to: ../../../../../../Library/Application Support/HBuilder X/hbuilderx-for-uniapp-test/uts-automator/android/emulator-5554-2115.json
+
+20:32:44.720 [uts-automator:android-emulat..] Force exiting Jest: Have you considered using `--detectOpenHandles` to detect async operations that kept running after all tests finished?
+20:32:44.736 [uts-automator:android-emulat..] 测试运行结束。

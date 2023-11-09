@@ -39,17 +39,17 @@
 		onReady() {
 			// uni.showToast({title: 'toast title', icon: 'success'})
 			// uni.showLoading({title: 'loading title'})
-			// uni.showModal({
-			// 	title: 'about',
-			// 	content: '这是一个模态弹窗',
-			// 	success: function (res) {
-			// 		if (res.confirm) {
-			// 			console.log('用户点击确定');
-			// 		} else if (res.cancel) {
-			// 			console.log('用户点击取消');
-			// 		}
-			// 	}
-			// });
+			uni.showModal({
+				title: 'about',
+				content: '这是一个模态弹窗',
+				success: function (res) {
+					if (res.confirm) {
+						console.log('用户点击确定');
+					} else if (res.cancel) {
+						console.log('用户点击取消');
+					}
+				}
+			});
 			// uni.showActionSheet({
 			// 	itemList: ['A', 'B', 'C'],
 			// 	success: function () {
