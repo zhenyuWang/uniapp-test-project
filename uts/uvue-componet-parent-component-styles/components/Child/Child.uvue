@@ -1,0 +1,20 @@
+<template>
+  <text>this is Comp</text>
+  <Button class="btn btn-component"></Button>
+</template>
+
+<script lang='ts'>
+import Button from '../Button/Button.uvue'
+export default {
+  components: {Button},
+}
+</script>
+
+<style>
+.btn{background-color: yellow;}
+.btn-component{
+  width:200px;
+  color: red;
+}
+</style>
+·
