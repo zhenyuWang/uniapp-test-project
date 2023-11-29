@@ -1,0 +1,20 @@
+import App from './App.uvue'
+
+import { createSSRApp } from 'vue'
+export function createApp() {
+	const app = createSSRApp(App)
+	app.config.globalProperties.msg = 'hello'
+	app.config.globalProperties.bool = false
+	app.config.globalProperties.num = 123
+	app.config.globalProperties.obj = { a: 1 }
+	app.config.globalProperties.arr = [1, 2, 3]
+	app.config.globalProperties.fn = (): string => {
+		const msg = this.msg
+		const num = this.num
+		console.log('globalProperties fn', msg, num)
+		return `${msg}-${num}`
+	}
+	return {
+		app
+	}
+}

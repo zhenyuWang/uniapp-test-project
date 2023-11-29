@@ -1,0 +1,23 @@
+<template>
+	<view class="content">
+		this is about page
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'about page'
+			}
+		},
+		onReady() {
+			console.log('about this.msg', this.msg)
+			console.log('about this.bool', this.bool)	
+			console.log('about this.num', this.num)	
+			console.log('about this.obj', this.obj)	
+			console.log('about this.arr', this.arr)	
+			console.log('about this.fn', this.fn())
+		}
+	}
+	</script>

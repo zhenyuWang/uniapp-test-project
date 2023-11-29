@@ -1,0 +1,26 @@
+<template>
+	<view class="content">
+		<!-- <text>this is component foo</text> -->
+		<!-- <text class="title">my title is: {{title}}</text> -->
+		<div class="uni-switch-wrapper">
+			<div class="uni-switch-input uni-switch-input-checked">uni-switch-input uni-switch-input-checked</div>
+		</div>
+	</view>
+</template>
+
+<script>
+	export default {
+		name: 'Foo',
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+		methods: {
+			foo() : string {
+				console.log('foo')
+				return 'foo method res'
+			}
+		},
+	}
+</script>

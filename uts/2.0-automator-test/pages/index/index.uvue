@@ -1,0 +1,69 @@
+<template>
+	<view class="content">
+		<!-- <view><text id="test-id">this is index page</text></view> -->
+		<Foo class="foo" />
+		<!-- <switch class="switch" :checked="true" /> -->
+		<!-- <Foo class="foo" /> -->
+		<!-- <button :type='type' @click="test" class='btn'>button</button> -->
+		<!-- <input :value="inputValue" /> -->
+		<!-- <progress :show-info="false" /> -->
+		<!-- <text style="color:#00ff00;" class="test-text">test text</text> -->
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo'
+	export default {
+		components: {
+			Foo
+		},
+		data() {
+			return {
+				title: 'index page',
+				type: 'default',
+				inputValue: 'default value'
+			}
+		},
+		onReady() {
+			// const pages = getCurrentPages()
+			// console.log('pages', pages)
+			// const set = new Set<string>(['a', 'b', 'c'])
+			// console.log('set', JSON.parse(JSON.stringify(set)))
+			
+			// console.log('index this.msg', this.msg)
+			// console.log('index this.bool', this.bool)
+			// console.log('index this.num', this.num)
+			// console.log('index this.obj', this.obj)
+			// console.log('index this.arr', this.arr)
+			// console.log('index this.fn', this.fn())
+			// // change globalProperties
+			// this.msg = 'change msg'
+			// this.bool = true
+			// this.num = 456
+			// this.obj = {
+			// 	a: 1,
+			// 	b: 2
+			// }
+			// this.arr = [4, 5, 6]
+			// console.log('index this.fn 2', this.fn())
+			// this.fn = function(): string {
+			// 	return 'new fn'
+			// }
+		},
+		methods: {
+			test() {
+				// uni.navigateTo({
+				// 	url: '/pages/index/about'
+				// })
+				this.type = 'primary'
+				this.inputValue = 'change value'
+			}
+		}
+	}
+</script>
+
+<style>
+	.test-text {
+		background: #ff0000;
+	}
+</style>
