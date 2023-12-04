@@ -7,18 +7,22 @@ export default {
   },
   data() {
     return {
-      key: Date.now(),
-      globalPropertiesNum: 0
+      title: 'default page title',
     }
   },
-  mounted() {
-  this.globalPropertiesNum = this.num
+  watch: {
+    globalMsg(newVal) {
+      console.log('watch in page--------globalMsg changed newVal: ', newVal)
+      this.title = newVal
+    },
   },
   methods: {
-    test() {
-      this.str = 'new str'
-      this.num = 200
-      this.key = Date.now()
+    triggerGlobalMethod() {
+      this.globalMethod()
+    },
+    pageMethod() {
+      console.log('pageMethod')
+      this.globalMsg = 'page msg'
     },
   },
 }
@@ -26,31 +30,12 @@ export default {
 
 <template>
   <div>
-    <a href="https://vitejs.dev" target="_blank">
-      <img src="/vite.svg" class="logo" alt="Vite logo" />
-    </a>
-    <a href="https://vuejs.org/" target="_blank">
-      <img src="./assets/vue.svg" class="logo vue" alt="Vue logo" />
-    </a>
+    <text class="title">title in page: {{ title }}</text>
+    <button @click="triggerGlobalMethod">triggerGlobalMethod</button>
+    <button @click="pageMethod">pageMethod</button>
+    <HelloWorld />
+    <Foo />
+    <Bar />
+    <MyFoo />
   </div>
-    <div>globalPropertiesNum: {{ globalPropertiesNum }}</div>
-    <div>key: {{ key }}</div>
-    <div>str: {{ str }}</div>
-    <div @click="test">num: {{ num }}</div>
-  <HelloWorld msg="Vite + Vue" />
 </template>
-
-<style scoped>
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.vue:hover {
-  filter: drop-shadow(0 0 2em #42b883aa);
-}
-</style>

@@ -1,4 +1,4 @@
-<script setup lang="ts">
+<!-- <script setup lang="ts">
 // This starter template is using Vue 3 <script setup> SFCs
 // Check out https://vuejs.org/api/sfc-script-setup.html#script-setup
 import HelloWorld from './components/HelloWorld.vue'
@@ -10,9 +10,40 @@ const myClick = (e: any) => {
 const uniIcon = '\ue101'
 function outerClick() {
   console.log('outerClick')
+  this.str = 'new str'
+  this.num = 100
+  this.bool = true
 }
 function innerClick() {
   console.log('innerClick')
+}
+</script> -->
+
+<script>
+import HelloWorld from './components/HelloWorld.vue'
+export default {
+  components: {
+    HelloWorld,
+  },
+  data() {
+    return {
+      uniIcon: '\ue101'
+    }
+  },
+  methods: {
+    myClick(e) {
+      console.log('e', e)
+    },
+    outerClick() {
+      console.log('outerClick')
+      this.str = 'new str'
+      this.num = 100
+      this.bool = true
+    },
+    innerClick() {
+      console.log('innerClick')
+    },
+  }
 }
 </script>
 
@@ -26,14 +57,24 @@ function innerClick() {
     </a>
   </div> -->
   <HelloWorld class="bgR" msg="Vite + Vue" />
-  <div @click="(e: any) => myClick(e)">this is vite-vue3-ts</div>
+  <div @click="myClick">this is vite-vue3-ts</div>
   <div @click="outerClick">
     <div @click.stop.once="innerClick">innerClick</div>
   </div>
-  <text class="font-size-20" style="font-family: UniFontFamily">{{ uniIcon }}</text>
+  <div>str: {{ str }}</div>
+  <div>num: {{ num }}</div>
+  <div>bool: {{ bool }}</div>
+  <text class="font-size-20" style="font-family: UniFontFamily">{{
+    uniIcon
+  }}</text>
   <text class="font-size-20" style="font-family: UniFontFamily">&#xe100;</text>
   <text class="font-size-20" style="font-family: UniFontFamily">&#xe101;</text>
-  <text class="font-size-20 contact" style="font-family: UniFontFamily" name='contact'>a&nbsp;b</text>
+  <text
+    class="font-size-20 contact"
+    style="font-family: UniFontFamily"
+    name="contact"
+    >a&nbsp;b</text
+  >
 </template>
 
 <style>
