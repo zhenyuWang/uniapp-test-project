@@ -1,10 +1,11 @@
 <template>
 	<view class="content">
 		<!-- <text>this is component foo</text> -->
-		<!-- <text class="title">my title is: {{title}}</text> -->
-		<div class="uni-switch-wrapper">
-			<div class="uni-switch-input uni-switch-input-checked">uni-switch-input uni-switch-input-checked</div>
-		</div>
+		<text class="title" @click="foo">my title is: {{title}}</text>
+		<view class="uni-switch-wrapper">
+			<text class="uni-switch-input uni-switch-input-checked">uni-switch-input uni-switch-input-checked</text>
+		</view>
+		<text>newFoo: {{newFoo}}</text>
 	</view>
 </template>
 
@@ -16,9 +17,26 @@
 				title: 'Hello'
 			}
 		},
+		inject: {
+			newFoo: {
+				type: String,
+				from: 'provideFoo',
+				default: 'defaultFoo'
+			},
+		},
+		watch: {
+			globalDataMsg(newVal){
+				console.log('globalDataMsg', newVal)
+				this.title = newVal
+			},
+			title(newVal){
+				console.log('watch title', newVal)
+			}
+		},
 		methods: {
 			foo() : string {
 				console.log('foo')
+				this.title = 'new title'
 				return 'foo method res'
 			}
 		},

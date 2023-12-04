@@ -4,11 +4,19 @@ describe('/pages/index/index', () => {
 		const page = await program.reLaunch('/pages/index/index');
 		// const page = await program.currentPage();
 		await page.waitFor(500);
+		await page.setData({
+			data: "string",
+			header: {
+				"Content-Type": "application/x-www-form-urlencoded",
+			},
+		});
+		const pageData = await page.data()
+		console.log('pageData', pageData)
 		// const switchEl = await page.$('.switch');
 		// console.log('switchEl', switchEl);
 		// const switchInput = await switchEl.$('.uni-switch-input');
 		// console.log('switchInput', switchInput);
-		
+
 		// const input = await page.$('input');
 		// let inputValue = await input.property('value');
 		// console.log('inputValue', inputValue);
@@ -32,21 +40,21 @@ describe('/pages/index/index', () => {
 		// console.log('textElement', textElement);
 
 		const Foo = await page.$('.foo');
-		console.log('Foo', Foo);
-		const switchInput = await Foo.$('.uni-switch-input');
-		console.log('switchInput', switchInput);
-		const switchInputText = await switchInput.text();
-		console.log('switchInputText', switchInputText);
+		// console.log('Foo', Foo);
+		// const switchInput = await Foo.$('.uni-switch-input');
+		// console.log('switchInput', switchInput);
+		// const switchInputText = await switchInput.text();
+		// console.log('switchInputText', switchInputText);
 		// const FooTitle = await Foo.$('.title');
 		// console.log('FooTitle', FooTitle);
 		// const FooTitleText = await FooTitle.text();
 		// console.log('FooTitleText', FooTitleText);
-		
-		// let data = await Foo.data();
-		// console.log('data', data);
-		// await Foo.setData({title: 'new title'});
-		// data = await Foo.data();
-		// console.log('data', data);
+
+		let FooData = await Foo.data();
+		console.log('FooData', FooData);
+		await Foo.setData({title: 'new title'});
+		FooData = await Foo.data();
+		console.log('FooData', FooData);
 		// const text = await Foo.text();
 		// console.log('text', text);
 		// const fooRes = await Foo.callMethod('foo');

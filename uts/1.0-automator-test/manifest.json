@@ -43,10 +43,13 @@
             },
             /* ios打包配置 */
             "ios" : {
-                "urltypes" : "hbuilder,chuzong"
+                "urltypes" : "hbuilder,chuzong",
+                "dSYMs" : false
             },
             /* SDK配置 */
-            "sdkConfigs" : {}
+            "sdkConfigs" : {
+                "ad" : {}
+            }
         }
     },
     /* 快应用特有相关 */

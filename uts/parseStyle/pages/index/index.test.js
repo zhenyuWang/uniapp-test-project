@@ -5,11 +5,11 @@ describe('pages/index/index', () => {
 		page = await program.reLaunch('/pages/index/index')
 		await page.waitFor(1000)
 	})
-	// it('test', async () => {
-	// 	const originPageNum = await program.pageStack()
-	// 	console.log('originPageNum', originPageNum)
-	// 	expect(1+1).toEqual(2)
-	// })
+	it('test', async () => {
+		const originPageNum = await program.pageStack()
+		console.log('originPageNum', originPageNum)
+		expect(1+1).toEqual(2)
+	})
 	it('element.html', async () => {
 		const res = await program.adbCommand('input swipe 100 500 100 200 500')
 		console.log('adbCommand-----------', res)

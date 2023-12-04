@@ -4,6 +4,15 @@ describe('/pages/index/index', () => {
 		// const page = await program.navigateTo('/pages/index/index');
 		const page = await program.currentPage();
 		await page.waitFor(500);
+		await page.setData({
+			data: "string",
+			header: {
+				"Content-Type": "application/x-www-form-urlencoded",
+			}
+		})
+		const pageData = await page.data()
+		console.log('pageData', pageData)
+		await program.screenshot()
 		// const button = await page.$('button');
 		// console.log('button', button);
 		// const type = await button.property('type')
@@ -16,12 +25,12 @@ describe('/pages/index/index', () => {
 		console.log('Foo', Foo);
 		const fooTitle = await Foo.$('.title')
 		console.log('fooTitle', fooTitle);
-		// let data = await Foo.data();
-		// console.log('data', data);
-		// await Foo.setData({title: 'new title'});
-		// data = await Foo.data();
+		let FooData = await Foo.data();
+		console.log('FooData', FooData);
+		await Foo.setData({title: 'new title'});
+		FooData = await Foo.data();
 		// // await page.waitFor(6000);
-		// console.log('data', data);
+		console.log('FooData', FooData);
 		// const text = await Foo.text();
 		// console.log('text', text);
 		// const fooRes = await Foo.callMethod('foo');

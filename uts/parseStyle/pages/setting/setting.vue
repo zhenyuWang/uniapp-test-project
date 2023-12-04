@@ -10,8 +10,8 @@
     <Foo title="default title3" ref="test-foo" />
     <button @click="testRefs">testRefs</button>
     <swiper ref="test-swiper"></swiper>
-		<template v-for="item in 3" :key="item">
-			<text ref="test-for">{{item}}</text>
+		<template v-for="item in 3">
+			<text ref="test-for" :key="item">{{item}}</text>
 		</template>
   </view>
 </template>

@@ -1,0 +1,38 @@
+<template>
+  <view class="content">
+    <component :is="currentComponent1"></component>
+    <button @click="changeComponent1">changeComponent with string</button>
+    <component :is="currentComponent2"></component>
+    <button @click="changeComponent2">changeComponent with component instance</button>
+  </view>
+</template>
+
+<script lang="uts">
+import Foo from '../../components/Foo/Foo.vue'
+import Bar from '../../components/Bar/Bar.vue'
+	export default {
+    components: {Foo, Bar},
+		data() {
+			return {
+        currentComponent1: '',
+        currentComponent2: null
+			}
+		},
+    methods: {
+      changeComponent1(){
+        if(this.currentComponent1 == 'Foo'){
+          this.currentComponent1 = 'Bar'
+        }else{
+          this.currentComponent1 = 'Foo'
+        }
+      },
+      changeComponent2(){
+        if(this.currentComponent2 == Foo){
+          this.currentComponent2 = Bar
+        }else{
+          this.currentComponent2 = Foo
+        }
+      }
+    },
+	}
+</script>

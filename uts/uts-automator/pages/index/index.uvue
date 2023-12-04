@@ -1,7 +1,7 @@
 <template>
 	<scroll-view class="content">
 		<text @click="myTest" class="myText">this is my text</text>
-		<Foo123 />
+		<Foo badgeProp="testObj" />
 		<todo-list>
 			<template v-slot:default="slotProps">
 				<view class="green">{{ slotProps.item }}</view>
@@ -76,6 +76,7 @@
 		components: { TodoList },
 		data() {
 			return {
+				testObj: {name: 'test name'},
 				num: 10,
 				title: '111',
 				fnName: 'getStorageInfo',
@@ -103,6 +104,13 @@
 			}
 		},
 		onReady() {
+			const app = getApp()
+			const globalData = app.globalData
+			console.log('globalData', globalData)
+			console.log('globalData.text', globalData.text)
+			const obj = {"name": "my name", "age": 18}
+			const objStr = JSON.stringify(obj)
+			console.warn('objStr', objStr)
 			// uni.showModal({
 			// 	title: 'model title'
 			// })
@@ -340,16 +348,17 @@
 				// const sum = 2
 				// console.warn('my test--------------------------', sum);
 				// return sum;
-				return await new Promise((resolve, reject) => {
+				await new Promise((resolve, reject) => {
 					setTimeout(() => {
 						console.warn('before resolve')
-						// resolve(100)
+						resolve(100)
 						// reject('promise reject')
-						reject({name: 'promise reject', age: 18})
 					}, 1000)
 				})
 				// throw Error('this is an error')
-				// return {name: 'my name', age: 18}
+				return {name: "my name", age: 18}
+				// return {"name": "my name", "age": 18}
+				// return JSON.stringify({"name": "my name", "age": 18})
 			},
 			goDetail(msg : string) {
 				// uni.showLoading({ title: 'loading title in index' })

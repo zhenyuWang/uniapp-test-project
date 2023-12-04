@@ -7,11 +7,10 @@ describe('pages/index/index', () => {
 	})
 	
 	// am start -n io.dcloud.uniappx/io.dcloud.uniapp.UniAppActivity --es appid __UNI__AE9EF0B --ez needUpdateApp false --ez reload true --ez externalStorage true
-	it('call async fun', async () => {
-		const res = await page.callMethod('myTest')
-		console.log('res', res, typeof res)
-		// console.log(res.name, res.age)
-	})
+	// it('call async fun', async () => {
+	// 	const res = await page.callMethod('myTest')
+	// 	console.log('res', res, typeof res, res.name,res.age)
+	// })
 	
 	// it('$', async () => {
 	// 	const myText = await page.$('.myText')
@@ -366,11 +365,11 @@ describe('pages/index/index', () => {
 	// 	const text = await textNode.text()
 	// 	expect(text).toEqual('222')
 	// })
-	// it('screenshot', async () => {
-	// 	// const image = await program.screenshot({fullPage: true})
-	// 	const image = await program.screenshot()
-	// 	expect(image).toMatchImageSnapshot();
-	// })
+	it('screenshot', async () => {
+		// const image = await program.screenshot({fullPage: true})
+		const image = await program.screenshot()
+		expect(image).toMatchImageSnapshot();
+	})
 	// it('screenshotWithADB', async () => {
 	// 	const image = await program.screenshot({adb: true})
 	// 	expect(image).toMatchImageSnapshot();

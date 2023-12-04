@@ -2,16 +2,22 @@
 	<view>
 		<text>this is Foo</text>
 		<text id="foo-text">title is {{title}}</text>
+		<text>badgeProp.name: {{badgeProp}}</text>
 	</view>
 </template>
 
 <script>
+	import { type PropType } from 'vue';
 	export default {
 		name:"Foo",
 		props:{
 			type: {
 				type: String,
 				default: 'default type'
+			},
+			badgeProp: {
+				type: Object as PropType<UTSJSONObject>,
+				default: (): UTSJSONObject => ({} as UTSJSONObject)
 			}
 		},
 		data() {

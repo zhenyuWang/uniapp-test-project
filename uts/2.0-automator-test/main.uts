@@ -14,6 +14,16 @@ export function createApp() {
 		console.log('globalProperties fn', msg, num)
 		return `${msg}-${num}`
 	}
+	app.mixin({
+		data(){
+			return {
+				globalDataMsg: 'hello'
+			}
+		},
+		onLoad(){
+			this.globalDataMsg = 'hello onLoad'
+		}
+	})
 	return {
 		app
 	}

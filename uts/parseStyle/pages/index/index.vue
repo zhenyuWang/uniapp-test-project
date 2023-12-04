@@ -36,7 +36,7 @@
 		]" />
 	</view>
 </template>
-<script lang="ts">
+<script>
 	export default {
 		name: 'Switch',
 		data() {
@@ -116,8 +116,11 @@
 				console.log('test2')
 			},
 			relaunchAbout() {
-				uni.reLaunch({
-					url: '../about/about'
+				uni.navigateTo({
+					url: '../about/about',
+					success(res) {
+						console.log('reLaunch success', res)
+					}
 				})
 			},
 			navigateToAbout() {

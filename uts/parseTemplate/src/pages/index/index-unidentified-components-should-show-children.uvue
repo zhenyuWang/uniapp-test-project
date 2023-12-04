@@ -1,0 +1,16 @@
+<template>
+  <Abc><text>text in unknown component: {{ bool }}</text></Abc>
+</template>
+
+<script lang="uts">
+export default {
+	data() {
+		return {
+      bool: true
+		}
+	},
+  onReady(){
+    // setInterval(() => {this.bool = !this.bool},1000)
+  }
+}
+</script>

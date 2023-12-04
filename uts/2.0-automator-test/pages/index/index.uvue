@@ -1,9 +1,10 @@
 <template>
 	<view class="content">
+		<text>test</text>
 		<!-- <view><text id="test-id">this is index page</text></view> -->
-		<Foo class="foo" />
-		<!-- <switch class="switch" :checked="true" /> -->
 		<!-- <Foo class="foo" /> -->
+		<!-- <switch class="switch" :checked="true" /> -->
+		<Foo class="foo" />
 		<!-- <button :type='type' @click="test" class='btn'>button</button> -->
 		<!-- <input :value="inputValue" /> -->
 		<!-- <progress :show-info="false" /> -->
@@ -19,17 +20,25 @@
 		},
 		data() {
 			return {
-				title: 'index page',
-				type: 'default',
-				inputValue: 'default value'
+				// title: 'index page',
+				// type: 'default',
+				// inputValue: 'default value',
+				data: null as any | null,
+				testData: null as any | null,
+				header: {} as UTSJSONObject | null,
 			}
+		},
+		provide: {
+			provideFoo: 'provideFoo'
 		},
 		onReady() {
 			// const pages = getCurrentPages()
 			// console.log('pages', pages)
+			// const page$Data = pages[0].$vm.$data
+			// page$Data.data = 'new data string'
 			// const set = new Set<string>(['a', 'b', 'c'])
 			// console.log('set', JSON.parse(JSON.stringify(set)))
-			
+
 			// console.log('index this.msg', this.msg)
 			// console.log('index this.bool', this.bool)
 			// console.log('index this.num', this.num)
@@ -55,8 +64,8 @@
 				// uni.navigateTo({
 				// 	url: '/pages/index/about'
 				// })
-				this.type = 'primary'
-				this.inputValue = 'change value'
+				// this.type = 'primary'
+				// this.inputValue = 'change value'
 			}
 		}
 	}

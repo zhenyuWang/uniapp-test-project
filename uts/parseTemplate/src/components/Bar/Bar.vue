@@ -1,8 +1,9 @@
 <template>
   <view>
-    <button class="btn-component">
+  <slot></slot>
+    <!-- <button class="btn-component">
       组件里的button（样式不生效）
-    </button>
+    </button> -->
   </view>
 </template>
 

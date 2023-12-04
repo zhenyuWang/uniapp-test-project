@@ -14,8 +14,6 @@
     },
 		onReady() {
 			console.log('onReady')
-			uni.getAppBaseInfo()
-			uni.getElementById
 		}
 	}
 </script>

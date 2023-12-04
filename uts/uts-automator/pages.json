@@ -1,11 +1,17 @@
 {
 	"pages": [
+		// {
+		// 	"path": "pages/form/form",
+		// 	"style": {
+		// 		"navigationBarTitleText": "form"
+		// 	}
+		// }
 		{
 			"path": "pages/index/index",
 			"style": {
 				"navigationBarTitleText": "index"
 			}
-		}
+		},
 		// {
 		// 	"path" : "pages/index/register",
 		// 	"style" : 
@@ -20,13 +26,13 @@
 		// 		"navigationBarTitleText": "test"
 		// 	}
 		// },
-		// {
-		// 	"path": "pages/detail/detail",
-		// 	"style": {
-		// 		"navigationBarTitleText": "",
-		// 		"enablePullDownRefresh": false
-		// 	}
-		// },
+		{
+			"path": "pages/detail/detail",
+			"style": {
+				"navigationBarTitleText": "",
+				"enablePullDownRefresh": false
+			}
+		}
 	],
 	"globalStyle": {
 		"navigationBarTextStyle": "black",

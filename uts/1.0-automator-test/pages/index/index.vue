@@ -1,6 +1,6 @@
 <template>
 	<view class="content" :key='key'>
-		<!-- <view><text id="test-id">this is index page</text></view> -->
+		<view><text id="test-id">this is index page</text></view>
 		<Foo class="foo" />
 <!-- 		<text>msg: {{msg}}</text>
 		<text>bool: {{bool}}</text>
@@ -20,7 +20,9 @@
 			return {
 				title: 'index page',
 				key: Date.now(),
+				data: null,
 				type: 'default',
+				header: {}
 			}
 		},
 		onReady() {

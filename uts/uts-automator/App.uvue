@@ -1,5 +1,9 @@
 <script>
 	export default {
+		globalData: {
+			text: 'I am global data',
+			num: 123
+		},
 		onLaunch: function () {
 		  console.log('App Launch')
 		},
