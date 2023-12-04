@@ -1,0 +1,35 @@
+<template>
+	<view class="content">
+			<text class="title">title in page: {{title}}</text>
+			<button @click="triggerGlobalMethod">triggerGlobalMethod</button>
+			<button @click="pageMethod">pageMethod</button>
+			<Foo />
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo'
+	export default {
+		components: {Foo},
+		data() {
+			return {
+				title: 'default page title'
+			}
+		},
+		watch: {
+			globalMsg(newVal){
+				console.log('watch in page--------globalMsg changed newVal: ', newVal)
+				this.title = newVal
+			}
+		},
+		methods: {
+			triggerGlobalMethod(){
+				this.globalMethod()
+			},
+			pageMethod(){
+				console.log('pageMethod')
+				this.globalMsg = 'page msg'
+			}
+		}
+	}
+</script>
