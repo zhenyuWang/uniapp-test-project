@@ -28,10 +28,17 @@
 				header: {} as UTSJSONObject | null,
 			}
 		},
+		onLoad() {
+			const app = getApp()
+			console.log('app.globalData.globalNum in index.page onLoad', app.globalData.globalNum)
+			app.globalData.globalNum = 300
+		},
 		provide: {
 			provideFoo: 'provideFoo'
 		},
 		onReady() {
+			const app = getApp()
+			console.log('app.globalData.globalNum in index.page onReady', app.globalData.globalNum)
 			// const pages = getCurrentPages()
 			// console.log('pages', pages)
 			// const page$Data = pages[0].$vm.$data

@@ -2,6 +2,7 @@
 	<view class="content" :key='key'>
 		<view><text id="test-id">this is index page</text></view>
 		<Foo class="foo" />
+		<text v-pre>{{this will not be compile}}</text>
 <!-- 		<text>msg: {{msg}}</text>
 		<text>bool: {{bool}}</text>
 		<text>num: {{num}}</text>
