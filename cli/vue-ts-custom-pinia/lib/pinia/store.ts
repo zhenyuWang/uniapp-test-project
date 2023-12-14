@@ -14,9 +14,7 @@ import {
   ComputedRef,
   toRaw,
   toRefs,
-  set,
   nextTick,
-  isVue2,
 } from 'vue-demi'
 import {
   StateTree,
@@ -81,7 +79,6 @@ function mergeReactiveObjects(target: Record<string, any>, patchToApply: Record<
 }
 
 const skipHydrateSymbol = Symbol('pinia:skipHydration')
-const skipHydrateMap = /*#__PURE__*/ new WeakMap<any, any>()
 
 /**
  * Tells Pinia to skip the hydration process of a given object. This is useful in setup stores (only) when you return a
@@ -91,10 +88,7 @@ const skipHydrateMap = /*#__PURE__*/ new WeakMap<any, any>()
  * @returns obj
  */
 export function skipHydrate<T = any>(obj: T): T {
-  return isVue2
-    ? // in @vue/composition-api, the refs are sealed so defineProperty doesn't work...
-      /* istanbul ignore next */ skipHydrateMap.set(obj, 1) && obj
-    : Object.defineProperty(obj, skipHydrateSymbol, {})
+  return Object.defineProperty(obj, skipHydrateSymbol, {})
 }
 
 /**
@@ -104,9 +98,7 @@ export function skipHydrate<T = any>(obj: T): T {
  * @returns true if `obj` should be hydrated
  */
 function shouldHydrate(obj: any) {
-  return isVue2
-    ? /* istanbul ignore next */ !skipHydrateMap.has(obj)
-    : !isPlainObject(obj) || !obj.hasOwnProperty(skipHydrateSymbol)
+  return !isPlainObject(obj) || !obj.hasOwnProperty(skipHydrateSymbol)
 }
 
 const { assign } = Object
@@ -144,10 +136,6 @@ function createOptionsStore(
             setActivePinia(pinia)
             // it was created just before
             const store = pinia._s.get(id)!
-
-            // allow cross using stores
-            /* istanbul ignore if */
-            if (isVue2 && !store._r) return
 
             // return getters![name].call(context, context)
             // TODO: avoid reading the getter while assigning with a global variable
@@ -384,11 +372,7 @@ function createSetupStore(
         }
         // transfer the ref to the pinia state to keep everything in sync
         /* istanbul ignore if */
-        if (isVue2) {
-          set(pinia.state.value[$id], key, prop)
-        } else {
-          pinia.state.value[$id][key] = prop
-        }
+        pinia.state.value[$id][key] = prop
       }
       // action
     } else if (typeof prop === 'function') {
