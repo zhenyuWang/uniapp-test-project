@@ -1,0 +1,23 @@
+import { setActivePinia, activePinia } from './rootStore'
+
+type UseStore = (pinia?: VuePlugin | null) => UTSJSONObject
+
+export const defineStore = (id: string, options: UTSJSONObject): UseStore => {
+  console.log('activePinia', activePinia)
+  return function (pinia?: VuePlugin | null): UTSJSONObject {
+    const pinia = activePinia
+    return createOptionsStore(id, options, pinia)
+  }
+}
+
+function createOptionsStore(
+  id: string,
+  options: UTSJSONObject,
+  pinia: VuePlugin | null,
+): UTSJSONObject {
+  const state = (options['state'] as () => any)() as UTSJSONObject
+  const getters = options['getters']! as UTSJSONObject
+  const actions = options['actions']! as UTSJSONObject
+  return Object.assign(state, getters, actions)
+  // return store as any
+}

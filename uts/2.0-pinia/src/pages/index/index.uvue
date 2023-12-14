@@ -1,0 +1,32 @@
+<template>
+  <view>
+    <text>page index</text>
+    <text>{{ counter }}</text>
+    <button @click="test">test</button>
+    <button @click="goAbout">go about</button>
+  </view>
+</template>
+
+<script lang="uts">
+import { useCounterStore } from '@/stores/counter'
+const counterStore = useCounterStore(null)
+console.log('wzf----', counterStore)
+// console.log('wzf----', count, doubleCount)
+export default {
+  data() {
+    return {
+      counter: counterStore['count']
+    }
+  },
+  methods: {
+    test(){
+      const doubleCount = (counterStore['doubleCount'] as () => number)();
+      console.log('wzf----- doubleCount', doubleCount)
+      const increment = (counterStore['increment'] as () => void)();
+    },
+    goAbout(){
+      uni.navigateTo({url: '/pages/about/index'})
+    }
+  }
+}
+</script>

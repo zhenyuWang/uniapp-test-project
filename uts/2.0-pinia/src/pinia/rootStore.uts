@@ -1,0 +1,8 @@
+/**
+ * setActivePinia must be called to handle SSR at the top of functions like
+ * `fetch`, `setup`, `serverPrefetch` and others
+ */
+export let activePinia: VuePlugin | null = null
+
+export const setActivePinia = (pinia: VuePlugin) => { activePinia = pinia }
+

@@ -1,0 +1,15 @@
+import { setActivePinia } from './rootStore'
+
+export const createPinia = (): VuePlugin => {
+  let pinia: VuePlugin | null = null
+  pinia = definePlugin({
+    install(app: VueApp) {
+      console.log('wzf----pinia install', pinia)
+      app.provide('pinia', pinia)
+      // app.config.globalProperties._pinia = pinia
+    }
+  })
+  setActivePinia(pinia)
+
+  return pinia
+};

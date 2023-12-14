@@ -1,0 +1,14 @@
+<template>
+  <view>
+    <text>page about</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+    }
+  },
+}
+</script>
