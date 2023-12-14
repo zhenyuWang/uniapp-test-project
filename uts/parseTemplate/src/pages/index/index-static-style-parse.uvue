@@ -1,0 +1,13 @@
+<template>
+  <view>
+    <view style="width:100px;background: red;opacity:.5;" :style="{height: '60px'}"></view>
+    <view style="width:100px;height:60px;background-color: green;opacity:.5;"></view>
+    <view style="width:100px;height:60px;background-color: green;"></view>
+    <view :style="{width:'100px', height:'60px', background: 'blue', opacity: .5}"></view>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+}
+</script>

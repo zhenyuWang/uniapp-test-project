@@ -1,6 +1,6 @@
 <template>
 	<view class="content">
-		<text>test</text>
+		<text id="test-text">test</text>
 		<!-- <view><text id="test-id">this is index page</text></view> -->
 		<!-- <Foo class="foo" /> -->
 		<!-- <switch class="switch" :checked="true" /> -->

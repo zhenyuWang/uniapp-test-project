@@ -1,0 +1,15 @@
+<template>
+	<view class="view1">11</view>
+	<view class="view2">11</view>
+	<button @click="test">test</button>
+</template>
+<script lang='uts'>
+	export default {
+		methods: {
+			test() {
+				const node1 = this.$querySelector('.view1')
+				console.log('node1', node1)
+			}
+		}
+	}
+</script>

@@ -4,14 +4,19 @@ describe('/pages/index/index', () => {
 		const page = await program.reLaunch('/pages/index/index');
 		// const page = await program.currentPage();
 		await page.waitFor(500);
-		await page.setData({
-			data: "string",
-			header: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			},
-		});
-		const pageData = await page.data()
-		console.log('pageData', pageData)
+		
+		const testText =  await page.$('#test-text');
+		console.log('testText', testText);
+		const testTextText = await testText.text();
+		console.log('testTextText', testTextText);
+		// await page.setData({
+		// 	data: "string",
+		// 	header: {
+		// 		"Content-Type": "application/x-www-form-urlencoded",
+		// 	},
+		// });
+		// const pageData = await page.data()
+		// console.log('pageData', pageData)
 		// const switchEl = await page.$('.switch');
 		// console.log('switchEl', switchEl);
 		// const switchInput = await switchEl.$('.uni-switch-input');
@@ -39,7 +44,7 @@ describe('/pages/index/index', () => {
 		// const textElement = await page.$('text');
 		// console.log('textElement', textElement);
 
-		const Foo = await page.$('.foo');
+		// const Foo = await page.$('.foo');
 		// console.log('Foo', Foo);
 		// const switchInput = await Foo.$('.uni-switch-input');
 		// console.log('switchInput', switchInput);
@@ -50,11 +55,11 @@ describe('/pages/index/index', () => {
 		// const FooTitleText = await FooTitle.text();
 		// console.log('FooTitleText', FooTitleText);
 
-		let FooData = await Foo.data();
-		console.log('FooData', FooData);
-		await Foo.setData({title: 'new title'});
-		FooData = await Foo.data();
-		console.log('FooData', FooData);
+		// let FooData = await Foo.data();
+		// console.log('FooData', FooData);
+		// await Foo.setData({title: 'new title'});
+		// FooData = await Foo.data();
+		// console.log('FooData', FooData);
 		// const text = await Foo.text();
 		// console.log('text', text);
 		// const fooRes = await Foo.callMethod('foo');
