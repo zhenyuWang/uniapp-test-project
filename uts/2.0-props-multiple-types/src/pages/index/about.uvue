@@ -1,0 +1,18 @@
+<template>
+	<view class="content">
+		<text>this is about</text>
+		<Bar>
+			<text>slot text</text>
+		</Bar>
+	</view>
+</template>
+
+<script lang="uts">
+	import Bar from './Bar'
+	export default {
+		components:  {
+			Bar
+		},
+
+	}
+</script>

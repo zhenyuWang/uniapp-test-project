@@ -1,0 +1,67 @@
+<script lang="uts">
+export default {
+ onLaunch() {
+   console.log('wzf-------------- App Launch')
+    // uni.navigateTo({
+    //   url: '/pages/index/setting',
+    //   success(){
+    //     console.log('App.uvue navigateTo success')
+    //   },
+    //   fail(err){
+    //     console.log('App.uvue navigateTo fail', err.errMsg)
+    //   },
+    //   complete(res){
+    //     console.log('App.uvue navigateTo complete', res.errMsg)
+    //   }
+    // })
+    // uni.redirectTo({
+    //   url: '/pages/index/setting'
+    // })
+    // uni.reLaunch({
+    //   url: '/pages/index/setting',
+    //   success(){
+    //     console.log('App.uvue reLaunch success')
+    //   },
+    //   fail(err){
+    //     console.log('App.uvue reLaunch fail', err.errMsg)
+    //   },
+    //   complete(res){
+    //     console.log('App.uvue reLaunch complete', res.errMsg)
+    //   }
+    // })
+    // uni.switchTab({
+    //   url: '/pages/index/about',
+    //   success(){
+    //     console.log('App.uvue switchTab success')
+    //   },
+    //   fail(err){
+    //     console.log('App.uvue switchTab fail', err.errMsg)
+    //   },
+    //   complete(res){
+    //     console.log('App.uvue switchTab complete', res.errMsg)
+    //   }
+    // })
+    // uni.reLaunch({
+    //   url: '/pages/index/about',
+    //   success(){
+    //     console.log('App.uvue reLaunch success')
+    //   },
+    //   fail(err){
+    //     console.log('App.uvue reLaunch fail', err.errMsg)
+    //   },
+    //   complete(res){
+    //     console.log('App.uvue reLaunch complete', res.errMsg)
+    //   }
+    // })
+ },
+};
+</script>
+
+<style>
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+</style>

@@ -1,0 +1,22 @@
+<template>
+  <view>
+    <text>page index</text>
+    <Foo :msg="false" num="test num" :fn='test' />
+  </view>
+</template>
+
+<script lang="uts">
+import Foo from './Foo.uvue'
+export default {
+  components: {
+    Foo,
+  },
+  methods: {
+    test(): string{
+      const res = 'this is test fn from index page'
+      console.log(res)
+      return res
+    }
+  }
+}
+</script>

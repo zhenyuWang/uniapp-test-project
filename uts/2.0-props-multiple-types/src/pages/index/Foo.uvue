@@ -1,0 +1,27 @@
+<template>
+  <view>
+    <text>component Foo</text>
+    <text>msg: {{msg}}</text>
+    <text>num: {{num}}</text>
+    <text>fn: {{fn()}}</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  props: {
+    msg: {
+      type: [String, Number],
+      default: 'default msg',
+    },
+    num: {
+      type: [String, Number],
+      default: 0,
+    },
+    fn: {
+      type: Function as PropType<() => string>,
+      default: ():string => 'default fn',
+    }
+  },
+}
+</script>

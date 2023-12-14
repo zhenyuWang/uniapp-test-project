@@ -1,0 +1,10 @@
+<template>
+	<view class="content">
+		<text>this is setting</text>
+	</view>
+</template>
+
+<script lang="uts">
+	export default {
+	}
+</script>
