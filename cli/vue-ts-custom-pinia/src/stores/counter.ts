@@ -1,9 +1,9 @@
 import { defineStore } from '../../lib/pinia'
 
-export const useMainStore = defineStore('main', {
+export const useCounterStore = defineStore('counter', {
   state: () => ({
+    name: 'default name',
     counter: 0,
-    name: 'Eduardo',
   }),
   getters: {
     doubleCounter: (state) => state.counter * 2,
@@ -12,7 +12,14 @@ export const useMainStore = defineStore('main', {
     },
   },
   actions: {
+    increment() {
+      this.counter++
+    },
+    decrement() {
+      this.counter--
+    },
     reset() {
+      this.name = 'default name'
       this.counter = 0
     },
   },

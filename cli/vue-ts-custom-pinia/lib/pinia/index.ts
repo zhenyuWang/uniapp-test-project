@@ -1,3 +1,11 @@
-export { setActivePinia, getActivePinia } from './rootStore'
-export { createPinia, disposePinia } from './createPinia'
+export { createPinia } from './createPinia'
 export { defineStore } from './store'
+export { storeToRefs } from './storeToRefs'
+export {
+  mapActions,
+  mapStores,
+  mapState,
+  mapWritableState,
+  mapGetters,
+  setMapStoreSuffix,
+} from './mapHelpers'

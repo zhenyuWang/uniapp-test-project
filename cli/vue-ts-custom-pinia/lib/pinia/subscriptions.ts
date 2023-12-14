@@ -26,9 +26,9 @@ export function addSubscription<T extends _Method>(
   return removeSubscription
 }
 
-export function triggerSubscriptions<T extends _Method>(
-  subscriptions: T[],
-  ...args: Parameters<T>
+export function triggerSubscriptions(
+  subscriptions: _Method[],
+  ...args: Parameters<_Method>
 ) {
   subscriptions.slice().forEach((callback) => {
     callback(...args)

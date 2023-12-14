@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div>Foo mapState array</div>
+    <div>Bar mapState object</div>
     <div>counter: {{ counter }}</div>
     <div>doubleCounter: {{ doubleCounter }}</div>
     <div>doubleCounterPlusOne: {{ doubleCounterPlusOne }}</div>
@@ -16,11 +16,11 @@ import { useCounterStore } from '../stores/counter'
 export default {
   name: 'Foo',
   computed: {
-    ...mapState(useCounterStore, [
-      'counter',
-      'doubleCounter',
-      'doubleCounterPlusOne',
-    ]),
+    ...mapState(useCounterStore, {
+      counter: (state) => state.counter,
+      doubleCounter: (state) => state.counter * 2,
+      doubleCounterPlusOne: (state) => state.counter * 2 + 1,
+    }),
   },
   methods: {
     ...mapActions(useCounterStore, ['increment', 'decrement', 'reset']),

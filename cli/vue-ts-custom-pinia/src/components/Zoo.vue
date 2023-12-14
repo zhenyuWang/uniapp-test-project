@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div>Foo mapState array</div>
+    <div>Zoo mapWritableState</div>
+    <input type="text" v-model="name" />
+    <div>name: {{ name }}</div>
     <div>counter: {{ counter }}</div>
     <div>doubleCounter: {{ doubleCounter }}</div>
     <div>doubleCounterPlusOne: {{ doubleCounterPlusOne }}</div>
@@ -11,12 +13,13 @@
 </template>
 
 <script lang="ts">
-import { mapActions, mapState } from '../../lib/pinia'
+import { mapActions, mapWritableState } from '../../lib/pinia'
 import { useCounterStore } from '../stores/counter'
 export default {
   name: 'Foo',
   computed: {
-    ...mapState(useCounterStore, [
+    ...mapWritableState(useCounterStore, [
+      'name',
       'counter',
       'doubleCounter',
       'doubleCounterPlusOne',

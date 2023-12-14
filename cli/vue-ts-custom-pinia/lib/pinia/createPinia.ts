@@ -1,6 +1,6 @@
 import { Pinia, PiniaPlugin, setActivePinia, piniaSymbol } from './rootStore'
 import { ref, App, markRaw, effectScope, Ref } from 'vue-demi'
-import { StateTree, StoreGeneric } from './types'
+import { StateTree, _StoreWithState } from './types'
 
 /**
  * Creates a Pinia instance to be used by the application
@@ -42,24 +42,9 @@ export function createPinia(): Pinia {
     // @ts-expect-error: non valid state
     _a: null,
     _e: scope,
-    _s: new Map<string, StoreGeneric>(),
+    _s: new Map<string, _StoreWithState>(),
     state,
   })
 
   return pinia
-}
-
-/**
- * Dispose a Pinia instance by stopping its effectScope and removing the state, plugins and stores. This is mostly
- * useful in tests, with both a testing pinia or a regular pinia and in applications that use multiple pinia instances.
- *
- * @param pinia - pinia instance
- */
-export function disposePinia(pinia: Pinia) {
-  pinia._e.stop()
-  pinia._s.clear()
-  pinia._p.splice(0)
-  pinia.state.value = {}
-  // @ts-expect-error: non valid state
-  pinia._a = null
 }

@@ -3,47 +3,30 @@ import {
   EffectScope,
   inject,
   hasInjectionContext,
-  InjectionKey,
   Ref,
 } from 'vue-demi'
 import {
   StateTree,
-  PiniaCustomProperties,
   _Method,
   Store,
   _GettersTree,
   _ActionsTree,
   PiniaCustomStateProperties,
   DefineStoreOptionsInPlugin,
-  StoreGeneric,
+  _StoreWithState
 } from './types'
 
-/**
- * setActivePinia must be called to handle SSR at the top of functions like
- * `fetch`, `setup`, `serverPrefetch` and others
- */
-export let activePinia: Pinia | undefined
+// 当前 Pinia
+export let activePinia: Pinia | null = null
 
-/**
- * Sets or unsets the active pinia. Used in SSR and internally when calling
- * actions and getters
- *
- * @param pinia - Pinia instance
- */
-// @ts-expect-error: cannot constrain the type of the return
-export const setActivePinia: _SetActivePinia = (pinia) => (activePinia = pinia)
+export const setActivePinia = (pinia: Pinia | null) => { activePinia = pinia }
 
-interface _SetActivePinia {
-  (pinia: Pinia): Pinia
-  (pinia: undefined): undefined
-  (pinia: Pinia | undefined): Pinia | undefined
+export const getActivePinia = () => {
+  if (hasInjectionContext() && inject(piniaSymbol)) {
+    return inject(piniaSymbol)
+  }
+  return activePinia
 }
-
-/**
- * Get the currently active pinia if there is any.
- */
-export const getActivePinia = () =>
-  (hasInjectionContext() && inject(piniaSymbol)) || activePinia
 
 /**
  * Every application must own its own pinia to be able to create stores
@@ -89,27 +72,15 @@ export interface Pinia {
    *
    * @internal
    */
-  _s: Map<string, StoreGeneric>
-
-  /**
-   * Added by `createTestingPinia()` to bypass `useStore(pinia)`.
-   *
-   * @internal
-   */
-  _testing?: boolean
+  _s: Map<string, _StoreWithState>
 }
 
-export const piniaSymbol = Symbol('pinia') as InjectionKey<Pinia>
+export const piniaSymbol = 'pinia'
 
 /**
  * Context argument passed to Pinia plugins.
  */
-export interface PiniaPluginContext<
-  Id extends string = string,
-  S extends StateTree = StateTree,
-  G /* extends _GettersTree<S> */ = _GettersTree<S>,
-  A /* extends _ActionsTree */ = _ActionsTree
-> {
+export interface PiniaPluginContext {
   /**
    * pinia instance.
    */
@@ -123,12 +94,12 @@ export interface PiniaPluginContext<
   /**
    * Current store being extended.
    */
-  store: Store<Id, S, G, A>
+  store: Store
 
   /**
    * Initial options defining the store when calling `defineStore()`.
    */
-  options: DefineStoreOptionsInPlugin<Id, S, G, A>
+  options: DefineStoreOptionsInPlugin
 }
 
 /**
@@ -141,9 +112,7 @@ export interface PiniaPlugin {
    *
    * @param context - Context
    */
-  (context: PiniaPluginContext): Partial<
-    PiniaCustomProperties & PiniaCustomStateProperties
-  > | void
+  (context: PiniaPluginContext): PiniaCustomStateProperties | void
 }
 
 /**

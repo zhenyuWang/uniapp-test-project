@@ -10,15 +10,11 @@ import { Pinia } from './rootStore'
 /**
  * Generic state of a Store
  */
-export type StateTree = Record<string | number | symbol, any>
+export type StateTree = Record<string, any>
 
-export function isPlainObject<S extends StateTree>(
-  value: S | unknown
-): value is S
 export function isPlainObject(
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   o: any
-): o is StateTree {
+): boolean {
   return (
     o &&
     typeof o === 'object' &&
@@ -32,8 +28,6 @@ export function isPlainObject(
  *
  * For internal use **only**
  */
-export type _DeepPartial<T> = { [K in keyof T]?: _DeepPartial<T[K]> }
-// type DeepReadonly<T> = { readonly [P in keyof T]: DeepReadonly<T[P]> }
 
 // TODO: can we change these to numbers?
 /**
@@ -104,7 +98,7 @@ export interface SubscriptionCallbackMutationDirect
  * Context passed to a subscription callback when `store.$patch()` is called
  * with an object.
  */
-export interface SubscriptionCallbackMutationPatchObject<S>
+export interface SubscriptionCallbackMutationPatchObject
   extends _SubscriptionCallbackMutationBase {
   type: MutationType.patchObject
 
@@ -113,7 +107,7 @@ export interface SubscriptionCallbackMutationPatchObject<S>
   /**
    * Object passed to `store.$patch()`.
    */
-  payload: _DeepPartial<S>
+  payload: Record<string, any>
 }
 
 /**
@@ -135,26 +129,26 @@ export interface SubscriptionCallbackMutationPatchFunction
 /**
  * Context object passed to a subscription callback.
  */
-export type SubscriptionCallbackMutation<S> =
+export type SubscriptionCallbackMutation =
   | SubscriptionCallbackMutationDirect
-  | SubscriptionCallbackMutationPatchObject<S>
+  | SubscriptionCallbackMutationPatchObject
   | SubscriptionCallbackMutationPatchFunction
 
 /**
  * Callback of a subscription
  */
-export type SubscriptionCallback<S> = (
+export type SubscriptionCallback = (
   /**
    * Object with information relative to the store mutation that triggered the
    * subscription.
    */
-  mutation: SubscriptionCallbackMutation<S>,
+  mutation: SubscriptionCallbackMutation,
 
   /**
    * State of the store when the subscription is triggered. Same as
    * `store.$state`.
    */
-  state: UnwrapRef<S>
+  state: StateTree
 ) => void
 
 // to support TS 4.4
@@ -215,45 +209,23 @@ export interface _StoreOnActionListenerContext<
  * Context object passed to callbacks of `store.$onAction(context => {})`
  * TODO: should have only the Id, the Store and Actions to generate the proper object
  */
-export type StoreOnActionListenerContext<
-  Id extends string,
-  S extends StateTree,
-  G /* extends GettersTree<S> */,
-  A /* extends ActionsTree */
-> = _ActionsTree extends A
-  ? _StoreOnActionListenerContext<StoreGeneric, string, _ActionsTree>
-  : {
-    [Name in keyof A]: Name extends string
-    ? _StoreOnActionListenerContext<Store<Id, S, G, A>, Name, A>
-    : never
-  }[keyof A]
+export type StoreOnActionListenerContext = _ActionsTree
 
 /**
  * Argument of `store.$onAction()`
  */
-export type StoreOnActionListener<
-  Id extends string,
-  S extends StateTree,
-  G /* extends GettersTree<S> */,
-  A /* extends ActionsTree */
-> = (
-  context: StoreOnActionListenerContext<
-    Id,
-    S,
-    G,
-    // {} creates a type of never due to how StoreOnActionListenerContext is defined
-    {} extends A ? _ActionsTree : A
-  >
+export type StoreOnActionListener = (
+  context: StoreOnActionListenerContext
 ) => void
 
 /**
  * Properties of a store.
  */
-export interface StoreProperties<Id extends string> {
+export interface StoreProperties {
   /**
    * Unique identifier of the store
    */
-  $id: Id
+  $id: string
 
   /**
    * Private property defining the pinia the store is attached to.
@@ -288,7 +260,7 @@ export interface StoreProperties<Id extends string> {
    *
    * @internal
    */
-  _hotUpdate(useStore: StoreGeneric): void
+  _hotUpdate(useStore: Store): void
 
   /**
    * Allows pausing some of the watching mechanisms while the store is being
@@ -314,23 +286,18 @@ export interface StoreProperties<Id extends string> {
 /**
  * Base store with state and functions. Should not be used directly.
  */
-export interface _StoreWithState<
-  Id extends string,
-  S extends StateTree,
-  G /* extends GettersTree<StateTree> */,
-  A /* extends ActionsTree */
-> extends StoreProperties<Id> {
+export interface _StoreWithState extends StoreProperties {
   /**
    * State of the Store. Setting it will internally call `$patch()` to update the state.
    */
-  $state: UnwrapRef<S> & PiniaCustomStateProperties<S>
+  $state: StateTree
 
   /**
    * Applies a state patch to current state. Allows passing nested values
    *
    * @param partialState - patch to apply to the state
    */
-  $patch(partialState: _DeepPartial<UnwrapRef<S>>): void
+  $patch(partialState: Record<string, any>): void
 
   /**
    * Group multiple changes into one function. Useful when mutating objects like
@@ -339,7 +306,7 @@ export interface _StoreWithState<
    *
    * @param stateMutator - function that mutates `state`, cannot be asynchronous
    */
-  $patch<F extends (state: UnwrapRef<S>) => any>(
+  $patch<F extends (state: StateTree) => any>(
     // this prevents the user from using `async` which isn't allowed
     stateMutator: ReturnType<F> extends Promise<any> ? never : F
   ): void
@@ -360,7 +327,7 @@ export interface _StoreWithState<
    * @returns function that removes the watcher
    */
   $subscribe(
-    callback: SubscriptionCallback<S>,
+    callback: SubscriptionCallback,
     options?: { detached?: boolean } & WatchOptions
   ): () => void
 
@@ -401,7 +368,7 @@ export interface _StoreWithState<
    * @returns function that removes the watcher
    */
   $onAction(
-    callback: StoreOnActionListener<Id, S, G, A>,
+    callback: StoreOnActionListener,
     detached?: boolean
   ): () => void
 
@@ -460,53 +427,26 @@ export type _StoreWithGetters<G> = {
 /**
  * Store type to build a store.
  */
-export type Store<
-  Id extends string = string,
-  S extends StateTree = {},
-  G /* extends GettersTree<S>*/ = {},
-  // has the actions without the context (this) for typings
-  A /* extends ActionsTree */ = {}
-> = _StoreWithState<Id, S, G, A> &
-  UnwrapRef<S> &
-  _StoreWithGetters<G> &
-  // StoreWithActions<A> &
-  (_ActionsTree extends A ? {} : A) &
-  PiniaCustomProperties<Id, S, G, A> &
-  PiniaCustomStateProperties<S>
-
-/**
- * Generic and type-unsafe version of Store. Doesn't fail on access with
- * strings, making it much easier to write generic functions that do not care
- * about the kind of store that is passed.
- */
-export type StoreGeneric = Store<
-  string,
-  StateTree,
-  _GettersTree<StateTree>,
-  _ActionsTree
->
+export type Store = {
+  Id: string
+  S: StateTree
+  G: _GettersTree,
+  A: _ActionsTree
+}
 
 /**
  * Return type of `defineStore()`. Function that allows instantiating a store.
  */
-export interface StoreDefinition<
-  Id extends string = string,
-  S extends StateTree = StateTree,
-  G /* extends GettersTree<S>*/ = _GettersTree<S>,
-  A /* extends ActionsTree */ = _ActionsTree
-> {
+export type StoreDefinition = {
   /**
    * Returns a store, creates it if necessary.
    *
    * @param pinia - Pinia instance to retrieve the store
    * @param hot - dev only hot module replacement
    */
-  (pinia?: Pinia | null | undefined, hot?: StoreGeneric): Store<Id, S, G, A>
+  (pinia?: Pinia | null): Store
 
-  /**
-   * Id of the store. Used by map helpers.
-   */
-  $id: Id
+  $id: string
 
   /**
    * Dev only pinia for HMR.
@@ -516,30 +456,17 @@ export interface StoreDefinition<
   _pinia?: Pinia
 }
 
-/**
- * Interface to be extended by the user when they add properties through plugins.
- */
-export interface PiniaCustomProperties<
-  Id extends string = string,
-  S extends StateTree = StateTree,
-  G /* extends GettersTree<S> */ = _GettersTree<S>,
-  A /* extends ActionsTree */ = _ActionsTree
-> {}
 
 /**
  * Properties that are added to every `store.$state` by `pinia.use()`.
  */
-export interface PiniaCustomStateProperties<S extends StateTree = StateTree> {}
+export interface PiniaCustomStateProperties extends StateTree {}
 
 /**
  * Type of an object of Getters that infers the argument. For internal usage only.
  * For internal use **only**
  */
-export type _GettersTree<S extends StateTree> = Record<
-  string,
-  | ((state: UnwrapRef<S> & UnwrapRef<PiniaCustomStateProperties<S>>) => any)
-  | (() => any)
->
+export type _GettersTree = Record<string, ((state: StateTree) => any)>
 
 /**
  * Type of an object of Actions. For internal usage only.
@@ -616,41 +543,27 @@ export interface DefineStoreOptionsBase<S extends StateTree, Store> {}
  * Options parameter of `defineStore()` for option stores. Can be extended to
  * augment stores with the plugin API. @see {@link DefineStoreOptionsBase}.
  */
-export interface DefineStoreOptions<
-  Id extends string,
-  S extends StateTree,
-  G /* extends GettersTree<S> */,
-  A /* extends Record<string, StoreAction> */
-> extends DefineStoreOptionsBase<S, Store<Id, S, G, A>> {
+export type DefineStoreOptions = {
   /**
    * Unique string key to identify the store across the application.
    */
-  id: Id
+  id: string
 
   /**
    * Function to create a fresh state. **Must be an arrow function** to ensure
    * correct typings!
    */
-  state?: () => S
+  state?: () => StateTree
 
   /**
    * Optional object of getters.
    */
-  getters?: G &
-  ThisType<UnwrapRef<S> & _StoreWithGetters<G> & PiniaCustomProperties> &
-  _GettersTree<S>
+  getters?: _GettersTree
 
   /**
    * Optional object of actions.
    */
-  actions?: A &
-  ThisType<
-    A &
-    UnwrapRef<S> &
-    _StoreWithState<Id, S, G, A> &
-    _StoreWithGetters<G> &
-    PiniaCustomProperties
-  >
+  actions?: _ActionsTree
 
   /**
    * Allows hydrating the store during SSR when complex state (like client side only refs) are used in the store
@@ -676,41 +589,30 @@ export interface DefineStoreOptions<
    * @param storeState - the current state in the store
    * @param initialState - initialState
    */
-  hydrate?(storeState: UnwrapRef<S>, initialState: UnwrapRef<S>): void
+  hydrate?(storeState: Record<string, any>, initialState: Record<string, any>): void
 }
 
 /**
  * Options parameter of `defineStore()` for setup stores. Can be extended to
  * augment stores with the plugin API. @see {@link DefineStoreOptionsBase}.
  */
-export interface DefineSetupStoreOptions<
-  Id extends string,
-  // NOTE: Passing SS seems to make TS crash
-  S extends StateTree,
-  G,
-  A /* extends ActionsTree */
-> extends DefineStoreOptionsBase<S, Store<Id, S, G, A>> {
+export interface DefineSetupStoreOptions extends DefineStoreOptionsBase<StateTree, Store> {
   /**
    * Extracted actions. Added by useStore(). SHOULD NOT be added by the user when
    * creating the store. Can be used in plugins to get the list of actions in a
    * store defined with a setup function. Note this is always defined
    */
-  actions?: A
+  actions?: _ActionsTree
 }
 
 /**
  * Available `options` when creating a pinia plugin.
  */
-export interface DefineStoreOptionsInPlugin<
-  Id extends string,
-  S extends StateTree,
-  G,
-  A
-> extends Omit<DefineStoreOptions<Id, S, G, A>, 'id' | 'actions'> {
+export interface DefineStoreOptionsInPlugin extends DefineStoreOptions {
   /**
    * Extracted object of actions. Added by useStore() when the store is built
    * using the setup API, otherwise uses the one passed to `defineStore()`.
    * Defaults to an empty object if no actions are defined.
    */
-  actions: A
+  actions: _ActionsTree
 }
