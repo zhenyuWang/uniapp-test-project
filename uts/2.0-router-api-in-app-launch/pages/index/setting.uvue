@@ -1,0 +1,6 @@
+<template>
+	<view class="content">
+		this is setting
+	</view>
+</template>
+

@@ -1,0 +1,26 @@
+<template>
+	<view class="content">
+		<text>this is component Bar</text>
+		<button @click="test">click me</button>
+		<text>msg: {{msg}}</text>
+		<slot></slot>
+	</view>
+</template>
+
+<script lang="uts">
+	export default {
+		props: {
+			msg: {
+				type: [String, Number],
+				default: 'default msg',
+			},
+		},
+		methods: {
+			test() {
+				const defaultSlot = this.$slots['default'] as ContextualRenderFn
+				const nodes = (defaultSlot.invoke!)(null)
+				console.log('nodes', nodes)
+			}
+		}
+	}
+</script>

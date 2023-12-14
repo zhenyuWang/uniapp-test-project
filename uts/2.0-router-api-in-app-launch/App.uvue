@@ -1,0 +1,29 @@
+<script lang="uts">
+	export default {
+		onLaunch() {
+			// setTimeout(() => {uni.reLaunch({url: '/pages/index/about'})},0)
+			uni.reLaunch({url: '/pages/index/about'})
+			// uni.reLaunch({url: '/pages/index/setting'})
+			// uni.navigateTo({url: '/pages/index/setting'})
+			// uni.redirectTo({url: '/pages/index/setting'})
+			// uni.switchTab({url: '/pages/index/about'})
+			// setTimeout(() => {uni.switchTab({url: '/pages/index/about'})},0)
+			// uni.navigateBack({
+			// 	fail(err) {
+			// 		console.log('err', err)
+			// 	}
+			// })
+		}
+	}
+</script>
+
+<style>
+/*每个页面公共css */
+.uni-row {
+	flex-direction: row;
+}
+
+.uni-column {
+	flex-direction: column;
+}
+</style>

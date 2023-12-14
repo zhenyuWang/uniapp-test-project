@@ -1,0 +1,18 @@
+<template>
+	<view class="content">
+		<text>this is index</text>
+		<Foo :msg='100'>
+			<text>slot text</text>
+		</Foo>
+	</view>
+</template>
+
+<script lang="uts">
+	import Foo from './Foo'
+	export default {
+		components:  {
+			Foo
+		},
+
+	}
+</script>
