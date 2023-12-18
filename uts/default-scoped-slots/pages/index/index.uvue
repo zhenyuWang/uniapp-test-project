@@ -1,0 +1,23 @@
+<template>
+	<view class="content">
+		<text>this is index</text>
+		<Foo>
+			<template #default={msg}>
+				<text>this is component Foo default text 1</text>
+				<text>msg: {{msg}}</text>
+			</template>
+			<text>this is component Foo default text 1</text>
+		</Foo>
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo.uvue'
+	export default {
+		components: { Foo },
+		data() {
+			return {
+			}
+		},
+	}
+</script>
