@@ -1,0 +1,16 @@
+<template>
+  <view>
+    <text>obj.name: {{ obj['name'] }}</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  props: {
+    obj: {
+      type: Object as PropType<UTSJSONObject>,
+      default: (): UTSJSONObject => ({name: 'default'})
+    }
+  }
+}
+</script>

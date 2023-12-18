@@ -1,0 +1,29 @@
+<template>
+  <view>
+    <Foo :obj="{name:'name from index page'}" :age='10' />
+    <text>手动分割线</text>
+    <Foo v-bind="{obj: {name: 'name from index v-bind'}, age: 20}" />
+    <text>手动分割线</text>
+    <Foo v-bind="vBindObj" />
+    <text>手动分割线</text>
+    <Bar
+      :obj="{ name: 'name from index page' }"
+      :style="{ 'background-color': 'red' }" />
+  </view>
+</template>
+
+<script lang="ts">
+import Foo from '../../components/Foo.uvue'
+import Bar from '../../components/Bar.uvue'
+export default {
+  components: { Foo, Bar },
+data () {
+  return {
+    vBindObj: {
+      obj: { name: 'name from index v-bind variable' },
+      age: 30
+    }
+  }
+}
+}
+</script>
