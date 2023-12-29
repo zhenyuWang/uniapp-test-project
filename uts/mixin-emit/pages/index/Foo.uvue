@@ -1,0 +1,20 @@
+<template>
+	<view class="content">
+		<!-- <text>name: {{name}}</text> -->
+		<button @click="triggerEimit">triggerEimit</button>
+	</view>
+</template>
+
+<script>
+	// import {myMixin} from './myMixin'
+	export default {
+		// mixins: [myMixin],
+		emits: ['click'],
+		methods: {
+			triggerEimit(){
+				console.log('trigger emit')
+				this.$emit('click')
+			}
+		}
+	}
+</script>

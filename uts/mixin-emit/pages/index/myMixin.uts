@@ -1,0 +1,7 @@
+export const myMixin = defineMixin({
+	data(){
+		return {
+			name: 'my mixin'
+		}
+	}
+})

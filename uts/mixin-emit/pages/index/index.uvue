@@ -1,0 +1,17 @@
+<template>
+	<view class="content">
+		<Foo @click='handleTest' />
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo'
+	export default {
+		components: {Foo},
+		methods: {
+			handleTest() {
+				console.log('handle test')
+			}
+		}
+	}
+</script>
