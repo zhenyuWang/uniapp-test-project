@@ -1,16 +1,38 @@
 <template>
-    <view id="test-id"></view>
-    <QuerySelector></QuerySelector>
-    <button @click="test">test</button>
+  <view class="content">
+    <button @click="test" class="btn">button</button>
+    <KeepAlive>
+      <component :is="currentComp" />
+    </KeepAlive>
+    <Text>this is text</Text>
+  </view>
 </template>
 
-<script lang="uts">
-  export default {
-    methods: {
-      test() {
-        const node1 = uni.getElementById('test-id')
-        console.log('node1', node1)
-      }
+<script>
+import Foo from '@/components/Foo/Foo.vue'
+import Bar from '@/components/Bar/Bar.vue'
+import Text from '@/components/Text/Text.vue'
+export default {
+  components: {
+    Foo,
+    Bar,
+    Text,
+  },
+  data() {
+    return {
+      currentComp: 'Foo',
     }
-  }
+  },
+  methods: {
+    test() {
+      this.currentComp = this.currentComp === 'Foo' ? 'Bar' : 'Foo'
+    },
+  },
+}
 </script>
+
+<style>
+.test-text {
+  background: #ff0000;
+}
+</style>

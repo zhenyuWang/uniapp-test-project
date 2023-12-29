@@ -1,48 +1,24 @@
 <template>
-    <view style="width:100px;height:100px;backgroundColor: #ffff00;">
-        <text>hello world</text>
-    </view>
+  <view>
+    <input type="text" v-model="title" placeholder="please input" />
+    <input type="text" v-model.lazy.trim="title" placeholder="lazy" />
+    <textarea v-model="title" placeholder="please input" />
+    <text>{{ title }}</text>
+    <Foo :title="title" />
+    <input v-model.number="num" />
+    <text>num: {{ num }}</text>
+  </view>
 </template>
 
 <script>
+import Foo from '../../components/Foo/Foo.vue'
 export default {
-    data() {
-        return {
-            msg: 'hello world',
-            count: 0
-        }
-    },
-    methods: {
-      test(){
-        this.msg = 'hello world'
-      }
+  components: { Foo },
+  data() {
+    return {
+      title: 'Hello123',
+      num: 0,
     }
+  },
 }
 </script>
-<style>
-.content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-}
-
-.content .logo {
-    height: 200rpx;
-    width: 200rpx;
-    margin-top: 200rpx;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 50rpx;
-}
-
-.content .text-area {
-    display: flex;
-    justify-content: center;
-}
-
-.title {
-    font-size: 36rpx;
-    color: #8f8f94;
-}
-</style>
