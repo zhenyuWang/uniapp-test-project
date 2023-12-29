@@ -1,0 +1,22 @@
+<template>
+	<view class="content">
+		<view id="test"></view>
+		<text>this is home page</text>
+		<Foo />
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo.uvue'
+	export default {
+		components: {
+			Foo
+		}
+	}
+</script>
+
+<style>
+	.content {
+		background-color: red;
+	}
+</style>
