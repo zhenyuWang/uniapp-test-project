@@ -1,0 +1,19 @@
+<template>
+	<view class="content">
+		<Foo @submit='handleSubmit' />
+	</view>
+</template>
+
+<script>
+	import Foo from './Foo.uvue'
+	export default {
+		components: {
+			Foo
+		},
+		methods: {
+			handleSubmit(name: string) {
+				console.log('submit----name: ', name)
+			}
+		}
+	}
+</script>

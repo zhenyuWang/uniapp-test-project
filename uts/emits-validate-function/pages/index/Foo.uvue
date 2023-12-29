@@ -1,0 +1,26 @@
+<template>
+	<view class="content">
+		<button @click="submitForm">submitForm</button>
+	</view>
+</template>
+
+<script>
+		export default {
+			emits: {
+				submit: (name: string): boolean => {
+					if (name.length>109) {
+						return true
+					} else {
+						console.warn('Invalid submit event payload!')
+						return false
+					}
+				}
+			},
+			// emits: ['submit'],
+			methods: {
+				submitForm() {
+					this.$emit('submit', 'test name')
+				}
+			}
+		}
+</script>
