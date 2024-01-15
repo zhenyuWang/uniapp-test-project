@@ -1,0 +1,45 @@
+<template>
+  <view class="content">
+    <Foo :list='list' />
+  </view>
+</template>
+
+<script>
+  import Foo from './Foo.uvue'
+  import {type Item} from './Foo.uvue'
+  export default {
+    components: {
+      Foo
+    },
+    data() {
+      return {
+        list: [
+          {
+            id: 1,
+            name: 'foo',
+            children: [
+              {
+                id: 3,
+                name: 'foo-1',
+                children: [
+                  {
+                    id: 5,
+                    name: 'foo-1-1'
+                  }
+                ]
+              },
+              {
+                id: 4,
+                name: 'foo-2'
+              }
+            ]
+          },
+          {
+            id: 2,
+            name: 'bar'
+          }
+        ] as Item[]
+			}
+		}
+	}
+</script>

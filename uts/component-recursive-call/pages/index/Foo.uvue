@@ -1,0 +1,26 @@
+<template>
+  <view class="content">
+    <view v-for="item in list">
+      {{item.name}}
+      <template v-if="item.children !== null">
+        <Foo :list="item.children" />
+      </template>
+    </view>
+  </view>
+</template>
+
+<script>
+  export type Item = {
+    id : number;
+    name : string;
+    children ?: Item[];
+  };
+  export default {
+    name: 'Foo',
+    props: {
+      list: {
+        type: Array as PropType<Item[]>,
+      }
+    }
+  }
+</script>
