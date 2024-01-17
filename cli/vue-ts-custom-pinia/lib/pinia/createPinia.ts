@@ -7,8 +7,6 @@ import { StateTree, _StoreWithState } from './types'
  */
 export function createPinia(): Pinia {
   const scope = effectScope(true)
-  // NOTE: here we could check the window object for a state and directly set it
-  // if there is anything like it with Vue 3 SSR
   const state = scope.run<Ref<Record<string, StateTree>>>(() =>
     ref<Record<string, StateTree>>({})
   )!
@@ -19,8 +17,7 @@ export function createPinia(): Pinia {
 
   const pinia: Pinia = markRaw({
     install(app: App) {
-      // this allows calling useStore() outside of a component setup after
-      // installing pinia's plugin
+      // 设置 activePinia
       setActivePinia(pinia)
       pinia._a = app
       app.provide(piniaSymbol, pinia)
@@ -38,11 +35,15 @@ export function createPinia(): Pinia {
       return this
     },
 
+    // pinia 插件集合
     _p,
-    // @ts-expect-error: non valid state
+    // app 实例
     _a: null,
+    // 当前 effect scope
     _e: scope,
+    // 所有 store 实例
     _s: new Map<string, _StoreWithState>(),
+    // 所有 store 的 state
     state,
   })
 

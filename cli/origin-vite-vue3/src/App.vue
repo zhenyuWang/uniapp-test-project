@@ -1,28 +1,16 @@
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 export default {
   name: 'App',
-  components: {
-    HelloWorld,
-  },
   data() {
     return {
       title: 'default page title',
     }
   },
-  watch: {
-    globalMsg(newVal) {
-      console.log('watch in page--------globalMsg changed newVal: ', newVal)
-      this.title = newVal
-    },
-  },
   methods: {
     triggerGlobalMethod() {
-      this.globalMethod()
-    },
-    pageMethod() {
-      console.log('pageMethod')
-      this.globalMsg = 'page msg'
+      this.title = 'new title'
+      this.globalPropertiesStr = 'new globalPropertiesStr'
+      this.globalPropertiesNum = 1234
     },
   },
 }
@@ -30,12 +18,9 @@ export default {
 
 <template>
   <div>
-    <text class="title">title in page: {{ title }}</text>
+    <div>title: {{title}}</div>
+    <div class="uni-common-mt">globalProperties string: {{ globalPropertiesStr }}</div>
+    <div class="uni-common-mt">globalProperties number: {{ globalPropertiesNum }}</div>
     <button @click="triggerGlobalMethod">triggerGlobalMethod</button>
-    <button @click="pageMethod">pageMethod</button>
-    <HelloWorld />
-    <Foo />
-    <Bar />
-    <MyFoo />
   </div>
 </template>

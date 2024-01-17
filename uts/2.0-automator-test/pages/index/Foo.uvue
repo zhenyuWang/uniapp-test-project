@@ -33,6 +33,12 @@
 				console.log('watch title', newVal)
 			}
 		},
+		activated() {
+			console.log('Foo activated')
+		},
+		deactivated() {
+			console.log('Foo deactivated')
+		},
 		methods: {
 			foo() : string {
 				console.log('foo')

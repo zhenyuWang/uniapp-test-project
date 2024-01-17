@@ -1,0 +1,51 @@
+<template>
+  <web-view id="webview-screenshot" class="webview-screenshot" :webview-styles='webviewStyles' :src="src"
+    @loaded="loaded">
+  </web-view>
+  <!-- <view style="width:410px;height:100px;background-color: aqua;"></view> -->
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        src: 'http://192.168.31.94:5173/#/pages/index/index',
+        webviewContext: null as WebviewContext | null,
+        headHeight: 96,
+        isLoaded: false,
+        webviewStyles: {
+          progress: false
+        }
+      }
+    },
+    onReady() {
+      // const app = getApp()
+      // this.headHeight = app.globalData.headHeight
+      // console.log('this.headHeight', this.headHeight)
+      this.webviewContext = uni.createWebviewContext('webview-screenshot', this)
+      // setTimeout(() => {
+      //   this.$viewToTempFilePath({
+      //     id: null,
+      //     offsetX: '100',
+      //     offsetY: '100',
+      //     wholeContent: true,
+      //     path: null
+      //   })
+      // },2000)
+    },
+    methods: {
+      loaded() {
+        this.isLoaded = true
+        this.setHeadHeight()
+      },
+      setHeadHeight() {
+        this.webviewContext?.evalJS(`document.querySelector('body').style.paddingTop='${this.headHeight-44}px'`);
+      },
+    }
+  }
+</script>
+<style>
+  .webview-screenshot {
+    flex: 1;
+  }
+</style>

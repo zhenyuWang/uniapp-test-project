@@ -23,7 +23,9 @@
 				key: Date.now(),
 				data: null,
 				type: 'default',
-				header: {}
+				header: {},
+				myMap: new Map([['a', 'a'],['b', 'b']]),
+				mySet: new Set([1, 2, 3]),
 			}
 		},
 		onReady() {

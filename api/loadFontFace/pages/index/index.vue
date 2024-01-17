@@ -36,7 +36,7 @@
       uni.loadFontFace({
         global: true,
         family: 'UniFontFamily',
-        source: "url('/static/font/uni.ttf')",
+        source: "url(/static/font/uni.ttf)",
         success() {
           console.log('global loadFontFace uni.ttf success')
         },
@@ -67,7 +67,7 @@
       })
       uni.loadFontFace({
         family: 'AlimamaDaoLiTiWOFF',
-        source: "url('/static/font/AlimamaDaoLiTi.woff')",
+        source: 'url("/static/font/AlimamaDaoLiTi.woff")',
         success() {
           console.log('loadFontFace AlimamaDaoLiTi.woff success')
         },

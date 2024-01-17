@@ -2,8 +2,9 @@
 	<view class="content">
 		<image class="logo" src="/static/logo.png"></image>
 		<view class="text-area" style="margin-bottom: 1000px;">
-			<text class="title">{{title}}</text>
+			<text class="title" id="test">{{title}}</text>
 		</view>
+		<button id="test123">test</button>
 	</view>
 </template>
 

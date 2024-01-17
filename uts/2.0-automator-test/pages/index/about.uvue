@@ -1,7 +1,22 @@
 <template>
-	<view class="content">
-		this is about page
-	</view>
+<!-- 	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view>
+	<web-view></web-view> -->
+  <text>123123123123</text>
 </template>
 
 <script>

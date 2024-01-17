@@ -58,7 +58,7 @@ export interface Pinia {
    *
    * @internal
    */
-  _a: App
+  _a: App | null
 
   /**
    * Effect scope the pinia is attached to

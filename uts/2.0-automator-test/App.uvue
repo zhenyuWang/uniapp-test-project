@@ -2,7 +2,8 @@
 	let firstBackTime = 0
 	export default {
 		globalData: {
-			globalNum: 100
+			globalNum: 100,
+      headHeight: 0,
 		},
 		onLaunch: function () {
 			const app = getApp()
@@ -15,22 +16,6 @@
 		},
 		onHide: function () {
 			console.log('App Hide')
-		},
-		onLastPageBackPress: function () {
-			console.log('App LastPageBackPress')
-			if (firstBackTime == 0) {
-				uni.showToast({
-					title: '再按一次退出应用',
-					position: 'bottom',
-				})
-				firstBackTime = Date.now()
-				setTimeout(() => {
-					firstBackTime = 0
-				}, 2000)
-			} else if (Date.now() - firstBackTime < 2000) {
-				firstBackTime = Date.now()
-				uni.exit()
-			}
 		},
 		onExit: function () {
 			console.log('App Exit')
