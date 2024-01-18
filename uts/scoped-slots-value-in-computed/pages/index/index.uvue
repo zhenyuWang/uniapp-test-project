@@ -1,0 +1,35 @@
+<template>
+	<view class="content">
+    <Foo>
+      <template #default='{formattedValue}'>
+        <view>
+          <text>formattedValue.num: {{formattedValue.num}}</text>
+          <text>formattedValue.str: {{formattedValue.str}}</text>
+        </view>
+      </template>
+    </Foo>
+    <text>
+      <text>str in text/text: {{str}}</text>
+    </text>
+      <text>str in text: {{str}}</text>
+    <navigator url="/pages/index/about">go about</navigator>
+	</view>
+</template>
+
+<script>
+  import Foo from './Foo.uvue'
+	export default {
+    components: {
+      Foo
+    },
+    data(){
+     return {
+        str: 'default str'
+     }
+    },
+    onReady() {
+      this.str = 'new str'
+    },
+	}
+</script>
+

@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <text>num: {{num}}</text>
+    <button @click="plus">plus</button>
+    <slot :formattedValue='formattedValue'></slot>
+  </view>
+</template>
+
+<script>
+  type FormattedValueType = {
+    num : number,
+    str : string,
+  }
+  export default {
+    slots: Object as SlotsType<{
+      default : { formattedValue : FormattedValueType }
+    }>,
+    data() {
+      return {
+        num: 0,
+        // formattedValue: {
+        //   num: 0,
+        //   str: ''
+        // } as FormattedValueType
+      }
+    },
+    computed: {
+      formattedValue() : FormattedValueType {
+        return {
+          num: this.num,
+          str: `computed formattedValue str: ${this.num}`
+        } as FormattedValueType
+      }
+    },
+    methods: {
+      plus() {
+        this.num++
+      }
+    }
+  }
+</script>

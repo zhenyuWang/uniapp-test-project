@@ -1,0 +1,19 @@
+<template>
+	<view class="content">
+   this is about
+	</view>
+</template>
+
+<script>
+	export default {
+    onBackPress(options): boolean {
+      console.log('onBackPress', options.from)
+      return true
+    },
+    onReady() {
+      console.log('about onReady')
+      uni.navigateBack()
+    },
+	}
+</script>
+
