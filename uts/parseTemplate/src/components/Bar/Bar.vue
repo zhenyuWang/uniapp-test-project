@@ -1,15 +1,22 @@
 <template>
   <view>
-  <slot></slot>
-    <!-- <button class="btn-component">
-      组件里的button（样式不生效）
-    </button> -->
+    <text>this is bar</text>
   </view>
 </template>
-
-<style>
-  .btn-component {
-    width: 200px;
-    color: blue;
-  }
-</style>
+<script>
+export default {
+  name: 'Bar',
+  beforeMount() {
+    console.log('wzf-------- Bar beforeMount')
+  },
+  mounted() {
+    console.log('wzf-------- Bar mounted')
+  },
+  activated() {
+    console.log('wzf-------- Bar activated')
+  },
+  deactivated() {
+    console.log('wzf-------- Bar deactivated')
+  },
+}
+</script>

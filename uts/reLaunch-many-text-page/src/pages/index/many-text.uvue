@@ -1003,6 +1003,20 @@
 </scroll-view>
 </template>
 
+<script>
+export default {
+  onLoad() {
+    const pages = getCurrentPages()
+    console.log('wzf', pages.length)
+  },
+  onReady() {
+    const pages = getCurrentPages()
+    console.log('wzf', pages.length)
+  }
+}
+</script>
+
+
 <style>
 .view-0-0 {
   text-decoration-line: none;

@@ -1,0 +1,15 @@
+<template>
+  <view>
+    <text @click="test">test</text>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  methods: {
+    test() {
+      uni.reLaunch({url: '/pages/index/many-text'})
+    }
+  }
+}
+</script>

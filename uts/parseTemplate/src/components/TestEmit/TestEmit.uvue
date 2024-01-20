@@ -1,0 +1,24 @@
+<template>
+  <view class="content">
+    <text>name: {{ name }}</text>
+    <button @click="triggerEimit">triggerEimit</button>
+  </view>
+</template>
+
+<script lang='uts'>
+import { myMixin } from './myMixin'
+export default {
+  mounted() {
+    const _this = this
+    console.log('wzf---- TestEmit onReady', _this)
+  },
+  mixins: [myMixin],
+  emits: ['click'],
+  methods: {
+    triggerEimit() {
+      console.log('wzf---- trigger emit')
+      this.$emit('click')
+    },
+  },
+}
+</script>

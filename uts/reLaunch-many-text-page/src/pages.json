@@ -10,10 +10,28 @@
     {
       "path": "pages/index/many-text",
       "style": {
+        "navigationBarTitleText": "many-text"
+      }
+    },
+    {
+      "path": "pages/index/about",
+      "style": {
         "navigationBarTitleText": "about"
       }
     }
   ],
+  "tabBar": {
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "home"
+      },
+      {
+        "pagePath": "pages/index/many-text",
+        "text": "many-text"
+      }
+    ]
+  },
   "globalStyle": {
     "navigationBarTextStyle": "black",
     "navigationBarTitleText": "uni-app",

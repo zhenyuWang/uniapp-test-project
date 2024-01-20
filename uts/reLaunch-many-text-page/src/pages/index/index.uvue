@@ -1,14 +1,18 @@
 <template>
   <view>
-    <text @click="test">test</text>
+    <button @click="goManyText">goManyText</button>
+    <button @click="goAbout">goAbout</button>
   </view>
 </template>
 
 <script lang="uts">
 export default {
   methods: {
-    test() {
+    goManyText() {
       uni.reLaunch({url: '/pages/index/many-text'})
+    },
+    goAbout(){
+      uni.navigateTo({url: '/pages/index/about'})
     }
   }
 }

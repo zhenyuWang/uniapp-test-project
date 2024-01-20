@@ -3,15 +3,16 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "index"
+        "navigationBarTitleText": "index",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "about"
       }
     }
-    // {
-    //   "path": "pages/about/index",
-    //   "style": {
-    //     "navigationBarTitleText": "about"
-    //   }
-    // },
     // {
     //   "path": "pages/setting/index",
     //   "style": {
@@ -42,6 +43,8 @@
   //   ]
   // },
   "globalStyle": {
-    "navigationBarTitleText": "uni-app"
+    "navigationBarTitleText": "uni-app",
+    "backgroundColor": "#ff0000",
+    "backgroundColorContent": "#09c"
   }
 }

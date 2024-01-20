@@ -38,7 +38,7 @@ export default {
       if(testFoo !== null){
         testFoo.style.setProperty('width', '100px')
         testFoo.style.setProperty('height', '100px')
-        testFoo.style.setProperty('backgroundColor', '#09c')
+        testFoo.style.setProperty('backgroundColor', 'green')
       }
       const testBar = uni.getElementById('test-bar')
       if(testBar !== null){

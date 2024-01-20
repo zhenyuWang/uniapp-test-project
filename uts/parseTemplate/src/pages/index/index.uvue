@@ -1,38 +1,15 @@
 <template>
-  <view class="content">
-    <button @click="test" class="btn">button</button>
-    <KeepAlive>
-      <component :is="currentComp" />
-    </KeepAlive>
-    <Text>this is text</Text>
+  <view>
+    <Foo ref="test-foo" />
   </view>
 </template>
 
-<script>
-import Foo from '@/components/Foo/Foo.vue'
-import Bar from '@/components/Bar/Bar.vue'
-import Text from '@/components/Text/Text.vue'
+<script lang="uts">
 export default {
-  components: {
-    Foo,
-    Bar,
-    Text,
-  },
   data() {
     return {
-      currentComp: 'Foo',
+      test: 'test msg'
     }
-  },
-  methods: {
-    test() {
-      this.currentComp = this.currentComp === 'Foo' ? 'Bar' : 'Foo'
-    },
   },
 }
 </script>
-
-<style>
-.test-text {
-  background: #ff0000;
-}
-</style>
