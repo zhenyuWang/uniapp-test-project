@@ -1,0 +1,29 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "index",
+        "enablePullDownRefresh": true
+      }
+    }
+  ],
+  // "tabBar": {
+  //   "list": [
+  //     {
+  //       "pagePath": "pages/index/index",
+  //       "text": "home"
+  //     },
+  //     {
+  //       "pagePath": "pages/index/many-text",
+  //       "text": "many-text"
+  //     }
+  //   ]
+  // },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  }
+}

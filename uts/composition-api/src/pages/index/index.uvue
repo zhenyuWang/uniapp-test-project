@@ -1,0 +1,47 @@
+<template>
+  <view>
+    <text>obj: {{ obj }}</text>
+    <text>readonlyObj: {{ readonlyObj }}</text>
+    <button @click="testMethod">testMethod</button>
+    <button @click="testCallMethod">testCallMethod</button>
+  </view>
+</template>
+
+<script setup>
+const num = ref(0);
+const obj = reactive({ a: 1 });
+const readonlyObj = readonly(obj);
+const testMethod = () => {
+  console.log('wzf------ test Method');
+  obj['a'] = 2;
+  readonlyObj['a'] = 3;
+};
+const testCallMethod = () => {
+  const pages = getCurrentPages();
+  const page = pages[pages.length - 1];
+  const method = findVueMethod(page.$.type.type, 'testMethod', page);
+  console.log('wzf------ method', method);
+  page.$callMethod('testMethod');
+  console.log('wzf---- page.$data', page.$data);
+};
+defineExpose({
+  testMethod,
+});
+</script>
+
+<!-- <script>
+export default {
+  methods: {
+    testMethod() {
+      console.log('wzf------ test Method in options api');
+    },
+    testCallMethod() {
+      const pages = getCurrentPages();
+      const page = pages[pages.length - 1];
+      const method = findVueMethod(page.$.type.type, 'testMethod', page);
+      console.log('wzf------ method', method);
+      page.$callMethod('testMethod');
+    },
+  },
+};
+</script> -->
