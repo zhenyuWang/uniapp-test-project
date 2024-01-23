@@ -1,17 +1,29 @@
 <template>
-	<view class="content">
-		<text>this is Bar</text>
-	</view>
+  <view class="content">
+    <text>this is Bar</text>
+    <button @click="test">test</button>
+  </view>
 </template>
 
 <script>
-	export default {
-		name: 'Bar',
-		activated() {
-			console.log('Bar activated')
-		},
-		deactivated() {
-			console.log('Bar deactivated')
-		},
-	}
+  export default {
+    name: 'Bar',
+    emits: {
+      submit: (count : number):boolean => {
+        console.log('submit count', count)
+        return count > 1
+      }
+    },
+    methods: {
+      test(){
+        this.$emit('submit', 10)
+      }
+    },
+    activated() {
+      console.log('Bar activated')
+    },
+    deactivated() {
+      console.log('Bar deactivated')
+    },
+  }
 </script>

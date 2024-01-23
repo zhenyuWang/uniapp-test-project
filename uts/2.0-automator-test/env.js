@@ -5,7 +5,7 @@ module.exports = {
         "options": {
             "headless": false
         },
-        "executablePath": "123"
+        "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
     },
     "mp-weixin": {
         "port": 9420,
