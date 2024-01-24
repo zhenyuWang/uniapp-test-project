@@ -3,18 +3,19 @@ describe('/pages/index/index', () => {
 	it('test', async () => {
 		const page = await program.navigateTo('/pages/index/index');
 		await page.waitFor(500);
-		// const testId =  await page.$('#test-id');
-		// console.log('testId', testId);
-		// const testIdText = await testId.text();
-		// console.log('testIdText', testIdText);
-		await page.setData({
-			data: "string",
-			header: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			}
-		})
-		const pageData = await page.data()
-		console.log('pageData', pageData)
+		const testId =  await page.$('#test-id');
+		console.log('testId', testId);
+		const testIdText = await testId.text();
+		console.log('testIdText', testIdText);
+    expect(testIdText).toBe('this is index page ')
+		// await page.setData({
+		// 	data: "string",
+		// 	header: {
+		// 		"Content-Type": "application/x-www-form-urlencoded",
+		// 	}
+		// })
+		// const pageData = await page.data()
+		// console.log('pageData', pageData)
 		// await program.screenshot()
 		// const button = await page.$('button');
 		// console.log('button', button);

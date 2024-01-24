@@ -4,11 +4,21 @@ describe('/pages/index/index', () => {
     let page = await program.reLaunch('/pages/index/index');
     // const page = await program.currentPage();
     await page.waitFor(500);
-    const view = await page.$('view');
-    console.log('view----------', view)
     
-    const img = await program.screenshot();
-    expect(img).toMatchImageSnapshot()
+    const myInput = await page.$('.my-input')
+    console.log('myInput', myInput)
+    await myInput.input('new input value')
+    await page.waitFor(10000)
+    
+    // const view = await page.$('view');
+    // console.log('view----------', view)
+    
+    // const text = await page.$('.text')
+    // const textContent = await text.text()
+    // expect(textContent).toBe('this is my text ')
+    
+    // const img = await program.screenshot();
+    // expect(img).toMatchImageSnapshot()
 
     // const testText =  await page.$('#test-text');
     // console.log('testText', testText);

@@ -1,6 +1,8 @@
 <template>
   <view class="content">
     <text>this is Bar</text>
+    <text>num: {{num}}</text>
+    <text>str: {{str}}</text>
     <button @click="test">test</button>
   </view>
 </template>
@@ -8,6 +10,14 @@
 <script>
   export default {
     name: 'Bar',
+    props: {
+      num: {
+        type: Number
+      },
+      str: {
+        type: String
+      }
+    },
     emits: {
       submit: (count : number):boolean => {
         console.log('submit count', count)

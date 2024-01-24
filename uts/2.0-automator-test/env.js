@@ -15,7 +15,7 @@ module.exports = {
         "launch": true,
         "teardown": "disconnect",
         "remote": false,
-        "executablePath": ""
+        "executablePath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli"
     },
     "app-plus": {
         "android": {
@@ -28,10 +28,10 @@ module.exports = {
             "executablePath": ""
         },
         "uni-app-x": {
-            "version": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
+            "version": "/Applications/HBuilderX-Dev-2.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
             "android": {
                 "id": "emulator-5554",
-                "executablePath": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
+                "executablePath": "/Applications/HBuilderX-Dev-2.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
             }
         }
     }

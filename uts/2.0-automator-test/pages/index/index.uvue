@@ -1,7 +1,9 @@
 <template>
 	<view class="content">
     <view class="box"></view>
-    <Bar @submit="handleSubmit" />
+    <text class="text">this is my text </text>
+    <input class="my-input" type="text" />
+    <Bar @submit="handleSubmit" v-bind='obj' />
 	</view>
 </template>
 
@@ -9,6 +11,11 @@
   import Bar from './Bar.uvue'
 	export default {
     components: {Bar},
+    data(){
+      return {
+        obj: new Map<string, any | null>([['num', 1], ['str', 'my str']]),
+      }
+    },
     methods: {
       handleSubmit(count: number){
         console.log('handleSubmit',count)
