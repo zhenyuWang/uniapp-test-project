@@ -1,0 +1,18 @@
+<template>
+  <view class="content">
+    <Foo />
+    <text>obj: {{obj}}</text>
+    <text>readonlyObj: {{readonlyObj}}</text>
+    <button @click="testMethod">testMethod</button>
+  </view>
+</template>
+
+<script setup>
+  import Foo from './Foo.uvue'
+  const obj = reactive({ a: 1 });
+  const readonlyObj = readonly(obj);
+  const testMethod = () => {
+    obj['a'] = 2;
+    readonlyObj['a'] = 3;
+  }
+</script>

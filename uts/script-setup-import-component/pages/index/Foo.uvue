@@ -1,0 +1,9 @@
+<template>
+  <view class="content">
+    this is Foo
+  </view>
+</template>
+
+<script setup>
+  
+</script>
