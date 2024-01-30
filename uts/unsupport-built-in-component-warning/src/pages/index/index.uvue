@@ -1,0 +1,13 @@
+<template>
+  <view>
+    <text>111</text>
+    <map
+      style="width: 100%; height: 300px;background: red;"
+      :latitude="39.909"
+      :longitude="116.39742">
+      <text>text in map</text>
+    </map>
+    <text>222</text>
+    <navigator url="/pages/index/about">about</navigator>
+  </view>
+</template>
