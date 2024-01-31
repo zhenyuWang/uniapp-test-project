@@ -1,0 +1,34 @@
+<template>
+  <view>
+    <ListViewWrapper>
+      <list-item v-for="(item, index) in dataList" :key="index">
+        {{ item }}
+      </list-item>
+    </ListViewWrapper>
+    <button @click="empty">empty</button>
+    <button @click="add">add</button>
+  </view>
+</template>
+
+<script lang="uts">
+import ListViewWrapper from './ListViewWrapper.uvue'
+export default {
+    components: {ListViewWrapper},
+		data() {
+			return {
+				dataList: ['1', '2'] as string[]
+			}
+		},
+    // onReady(){
+    //   setTimeout(() => {this.dataList = []}, 1000)
+    // },
+		methods: {
+			empty(){
+        this.dataList = [];
+      },
+      add(){
+        this.dataList.push('4');
+      }
+		}
+	}
+</script>
