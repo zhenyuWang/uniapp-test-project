@@ -16,7 +16,7 @@
 	<web-view></web-view>
 	<web-view></web-view>
 	<web-view></web-view> -->
-  <text>123123123123</text>
+  <text>123123</text>
 </template>
 
 <script>

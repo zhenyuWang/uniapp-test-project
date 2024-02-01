@@ -1,18 +1,19 @@
 <script lang="uts">
 	let firstBackTime = 0
 	export default {
-		globalData: {
-			globalNum: 100,
-      headHeight: 0,
-		},
-		onLaunch: function () {
-			const app = getApp()
-			console.log('app.globalData.globalNum', app.globalData.globalNum)
-			app.globalData.globalNum = 200
+		// globalData: {
+		// 	globalNum: 100,
+  //     headHeight: 0,
+		// },
+		onLaunch: function (options) {
+      console.log('App.uvue onLaunch options', options)
+			// const app = getApp()
+			// console.log('app.globalData.globalNum', app.globalData.globalNum)
+			// app.globalData.globalNum = 200
 			console.log('App Launch')
 		},
-		onShow: function () {
-			console.log('App Show')
+		onShow: function (options) {
+			console.log('App Show', options)
 		},
 		onHide: function () {
 			console.log('App Hide')

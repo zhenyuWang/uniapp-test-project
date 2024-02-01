@@ -5,7 +5,8 @@ module.exports = {
         "options": {
             "headless": false
         },
-        "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        // "executablePath": "/Applications/Google Chrome.app/Contents/MacOS/Google Chrome"
+        "executablePath": ""
     },
     "mp-weixin": {
         "port": 9420,
@@ -28,10 +29,10 @@ module.exports = {
             "executablePath": ""
         },
         "uni-app-x": {
-            "version": "/Applications/HBuilderX-Dev-2.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
+            "version": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
             "android": {
                 "id": "emulator-5554",
-                "executablePath": "/Applications/HBuilderX-Dev-2.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
+                "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
             }
         }
     }

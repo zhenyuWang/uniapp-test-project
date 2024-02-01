@@ -2,6 +2,7 @@
 	<view class="content" :key='key'>
 		<text>start</text><text id="test-id">  this is index page </text><text>end</text>
 		<Foo class="foo" />
+    <button @click="goErrorPage">goErrorPage</button>
 	</view>
 </template>
 
@@ -23,8 +24,19 @@
 			}
 		},
 		methods: {
-			test(){
-				
+			goErrorPage(){
+				uni.navigateTo({
+				  url: 'a/b/c',
+          success(){
+            console.log('uni.navigateTo success')
+          },
+          fail(){
+            console.log('uni.navigateTo fail')
+          },
+          complete(){
+            console.log('uni.navigateTo complete')
+          }
+				})
 			}
 		}
 	}	

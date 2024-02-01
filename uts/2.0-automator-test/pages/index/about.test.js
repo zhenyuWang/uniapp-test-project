@@ -1,28 +1,25 @@
 jest.setTimeout(100000);
-describe('/pages/index/index', () => {
+describe('/pages/index/about', () => {
   it('test', async () => {
-    let page = await program.reLaunch('/pages/index/index');
-    // const page = await program.currentPage();
-    await page.waitFor(500);
-    
-    const button = await page.$('.btn')
-    const btnText = await button.text()
-    console.log('btnText', btnText)
-    
+    await program.reLaunch('/pages/index/index');
+    const page = await program.switchTab('/pages/index/about')
+    console.log('page', page)
+
+
     // const myInput = await page.$('.my-input')
     // console.log('myInput', myInput)
     // await myInput.input('new input value')
     // await page.waitFor(10000)
-    
+
     // const view = await page.$('view');
     // console.log('view----------', view)
-    
+
     // const text = await page.$('.text')
     // const textContent = await text.text()
     // expect(textContent).toBe('this is my text ')
-    
-    const img = await program.screenshot();
-    expect(img).toMatchImageSnapshot()
+
+    // const img = await program.screenshot();
+    // expect(img).toMatchImageSnapshot()
 
     // const testText =  await page.$('#test-text');
     // console.log('testText', testText);

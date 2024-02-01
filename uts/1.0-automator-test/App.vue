@@ -1,10 +1,10 @@
 <script>
 	export default {
-		onLaunch: function() {
-			console.log('App Launch')
+		onLaunch: function(options) {
+			console.log('App Launch', options)
 		},
-		onShow: function() {
-			console.log('App Show')
+		onShow: function(options) {
+			console.log('App Show', options)
 			var args = plus.runtime.arguments;
 			if (args) {
 				console.log('args------', args)
