@@ -1,0 +1,57 @@
+{
+    "name" : "2.0-teleport-dynamic-to",
+    "appid" : "__UNI__AE3E3A8",
+    "description" : "",
+    "versionName" : "1.0.0",
+    "versionCode" : "100",
+    "uni-app-x" : {},
+    /* 快应用特有相关 */
+    "quickapp" : {},
+    /* 小程序特有相关 */
+    "mp-weixin" : {
+        "appid" : "",
+        "setting" : {
+            "urlCheck" : false
+        },
+        "usingComponents" : true
+    },
+    "mp-alipay" : {
+        "usingComponents" : true
+    },
+    "mp-baidu" : {
+        "usingComponents" : true
+    },
+    "mp-toutiao" : {
+        "usingComponents" : true
+    },
+    "uniStatistics" : {
+        "enable" : false
+    },
+    "vueVersion" : "3",
+    "h5": {
+      "sdkConfigs" : {
+          "maps" : {
+              "qqmap" : {},
+              // "key" : "JMRBZ-R4HCD-X674O-PXLN4-B7CLH-42BSB"
+              "google" : {},
+              // "key" : "AIzaSyDSIuMzLOPmHFc50609sp2U5l4cExOyfl4"
+              "amap" : {
+                  "key" : "3379fdc239f9886c383f9bde0ca095d9",
+                  "securityJsCode" : "9a18f0c922ee5cc244016a10c7a033fa"
+              }
+          }
+      }
+    },
+    "app" : {
+        "distribute" : {
+            "icons" : {
+                "android" : {
+                    "hdpi" : "",
+                    "xhdpi" : "",
+                    "xxhdpi" : "",
+                    "xxxhdpi" : ""
+                }
+            }
+        }
+    }
+}
