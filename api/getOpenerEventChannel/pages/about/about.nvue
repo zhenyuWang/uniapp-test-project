@@ -1,0 +1,51 @@
+<template>
+  <view>
+    this is about
+  </view>
+</template>
+
+<script>
+  export default {
+    onReady() {
+      const eventChannel = this.getOpenerEventChannel();
+
+      eventChannel.emit('acceptDataFromOpenedPage', {
+        data: 'data from test page'
+      });
+
+      eventChannel.emit('someEvent', {
+        data: 'data from test page for someEvent'
+      });
+
+      eventChannel.on('acceptDataFromOpenerPage', function(data) {
+        console.log('acceptDataFromOpenerPage', data)
+      })
+    }
+  }
+</script>
+
+
+// <script setup>
+  //   import {
+  //     onMounted,
+  //     getCurrentInstance
+  //   } from 'vue';
+
+  //   onMounted(() => {
+  //     const instance = getCurrentInstance().proxy
+  //     const eventChannel = instance.getOpenerEventChannel();
+
+  //     eventChannel.emit('acceptDataFromOpenedPage', {
+  //       data: 'data from test page'
+  //     });
+
+  //     eventChannel.emit('someEvent', {
+  //       data: 'data from test page for someEvent'
+  //     });
+
+  //     eventChannel.on('acceptDataFromOpenerPage', function(data) {
+  //       console.log('acceptDataFromOpenerPage', data)
+  //     })
+  //   })
+  // 
+</script>
