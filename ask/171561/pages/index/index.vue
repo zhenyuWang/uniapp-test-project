@@ -1,12 +1,12 @@
 <template>
   <view class="content">
     <image class="logo" src="/static/logo.png"></image>
-    <map style="width: 100%; height: 300px;" :latitude="39.909" :longitude="116.39742">
+    <!-- <map style="width: 100%; height: 300px;" :latitude="39.909" :longitude="116.39742">
     </map>
     <view class="text-area" style="margin-bottom: 1000px;">
       <text class="title" id="test">{{title}}</text>
     </view>
-    <button id="test123">test</button>
+    <button id="test123">test</button> -->
   </view>
 </template>
 

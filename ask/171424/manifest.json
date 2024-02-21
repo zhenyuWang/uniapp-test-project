@@ -56,6 +56,12 @@
         },
         "usingComponents" : true
     },
+    "h5" : {
+        "router" : {
+            "base" : "/admin/",
+            "mode" : "hash"
+        }
+    },
     "mp-alipay" : {
         "usingComponents" : true
     },
@@ -68,5 +74,5 @@
     "uniStatistics" : {
         "enable" : false
     },
-    "vueVersion" : "3"
+    "vueVersion" : "2"
 }
