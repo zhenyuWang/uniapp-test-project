@@ -1,21 +1,28 @@
-jest.setTimeout(100000);
+jest.setTimeout(30000);
 describe('/pages/index/index', () => {
 	it('test', async () => {
 		const page = await program.navigateTo('/pages/index/index');
-		await page.waitFor(500);
+		await page.waitFor(1000);
 		const testId =  await page.$('#test-id');
 		console.log('testId', testId);
 		const testIdText = await testId.text();
 		console.log('testIdText', testIdText);
-    expect(testIdText).toBe('this is index page ')
-		// await page.setData({
-		// 	data: "string",
-		// 	header: {
-		// 		"Content-Type": "application/x-www-form-urlencoded",
-		// 	}
-		// })
-		// const pageData = await page.data()
-		// console.log('pageData', pageData)
+    expect(testIdText).toBe('this is index page')
+    
+    // const myInput = await page.$('.my-input')
+    // await myInput.input('new val for input')
+    
+		await page.setData({
+			data: "string",
+			header: {
+				"Content-Type": "application/x-www-form-urlencoded",
+			}
+		})
+		const pageData = await page.data()
+		console.log('pageData', pageData)
+    
+    const img = await program.screenshot();
+    expect(img).toMatchImageSnapshot()
 		// await program.screenshot()
 		// const button = await page.$('button');
 		// console.log('button', button);

@@ -15,5 +15,6 @@ module.exports = {
     moduleFileExtensions: ['js', 'json'],
     rootDir: __dirname,
     testMatch: ["<rootDir>/pages/index/index.test.js"],
+    setupFilesAfterEnv: ['<rootDir>/jest-setup.js'],
     testPathIgnorePatterns: ['/node_modules/']
 }

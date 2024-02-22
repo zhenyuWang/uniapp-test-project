@@ -19,13 +19,13 @@ module.exports = {
     },
     "app-plus": {
         "android": {
-            "id": "bc75caa3",
-            "executablePath": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/launcher/base/android_base.apk"
+            "id": "emulator-5554",
+            "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/launcher/base/android_base.apk"
         },
-        "version": "/Applications/HBuilderX-dev.app/Contents/HBuilderX/plugins/launcher/base/version.txt",
+        "version": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/launcher/base/version.txt",
         "ios": {
-            "id": "",
-            "executablePath": ""
+            "id": "F01B89BE-6BA8-43FA-AC54-442BC6BD4937",
+            "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/launcher/base/Pandora_simulator.app"
         }
     }
 }
