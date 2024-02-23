@@ -1,0 +1,23 @@
+<template>
+	<view class="content">
+		<text class="title">{{title}}</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		}
+	}
+</script>
+
+<style>
+  .title{
+    padding-top: 10px;
+    font-size: 18px;
+    text-align: center;
+  }
+</style>
