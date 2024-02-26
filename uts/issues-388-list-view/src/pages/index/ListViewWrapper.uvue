@@ -1,3 +1,9 @@
 <template>
-  <list-view><slot /></list-view>
+  <list-view>
+    <list-item>start</list-item>
+    <slot name="default" />
+    <list-item>middle</list-item>
+    <slot name="second" />
+    <list-item>end</list-item>
+  </list-view>
 </template>

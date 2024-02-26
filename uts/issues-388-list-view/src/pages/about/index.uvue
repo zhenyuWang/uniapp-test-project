@@ -1,19 +1,17 @@
 <template>
   <view>
-    <button @click="goAbout">goAbout</button>
     <button @click="empty">empty</button>
     <button @click="add">add</button>
     <ListViewWrapper>
-      <template #default>
-        <list-item v-for="(item, index) in dataList" :key="index">
-          {{ item }}
-        </list-item>
-      </template>
-      <template #second>
-        <list-item v-for="(item, index) in dataList" :key="index">
-          {{ item }}
-        </list-item>
-      </template>
+      <list-item>start</list-item>
+      <list-item v-for="(item, index) in dataList" :key="index">
+        {{ item }}
+      </list-item>
+      <list-item>middle</list-item>
+      <list-item v-for="(item, index) in dataList" :key="index+10">
+        {{ item }}
+      </list-item>
+      <list-item>end</list-item>
     </ListViewWrapper>
   </view>
 </template>
@@ -31,11 +29,6 @@ export default {
     //   setTimeout(() => {this.dataList = []}, 1000)
     // },
 		methods: {
-      goAbout(){
-        uni.navigateTo({
-          url: '/pages/about/index'
-        })
-      },
 			empty(){
         this.dataList = [];
       },
