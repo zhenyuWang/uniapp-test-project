@@ -3,11 +3,17 @@ describe('/pages/index/index', () => {
   it('test', async () => {
     let page = await program.reLaunch('/pages/index/index');
     // const page = await program.currentPage();
-    await page.waitFor(500);
+    await page.waitFor(1000);
+    // await page.waitFor(35000);
     
-    const button = await page.$('.btn')
-    const btnText = await button.text()
-    console.log('btnText', btnText)
+    // const myText = await page.$('.my-text')
+    // console.log('myText', myText)
+    // const myTextText = await myText.text()
+    // console.log('myTextText', myTextText)
+    
+    // const button = await page.$('#btn')
+    // const btnText = await button.text()
+    // console.log('btnText', btnText)
     
     // const myInput = await page.$('.my-input')
     // console.log('myInput', myInput)

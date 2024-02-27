@@ -1,6 +1,8 @@
 <template>
   <view>
-    <view :style="styleMap" :class="classMap"></view>
+    <view style="height:40px;background-color: blue;"></view>
+    <text>{{title}}</text>
+    <text style="font-family: uViewFamily;">{{icon}}</text>
   </view>
 </template>
 
@@ -8,9 +10,18 @@
   export default {
     data() {
       return {
+        icon: '\ue62c',
+        title: 'default title',
+        isShow: true,
         styleMap: new Map<string, string>([['border', '2px solid red'], ['background-color', 'green']]),
         classMap: new Map<string, boolean>([['w-100', true], ['h-100', true], ['rounded', false]])
       }
+    },
+    onReady() {
+      uni.loadFontFace({
+        family: 'uViewFamily',
+        source: 'url("/static/uview.ttf")'
+      })
     }
   }
 </script>

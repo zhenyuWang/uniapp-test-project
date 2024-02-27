@@ -2,7 +2,8 @@
   "pages": [{
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "index"
+        "navigationBarTitleText": "index",
+        "navigationStyle": "custom"
       }
     },
     // {
