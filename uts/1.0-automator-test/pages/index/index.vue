@@ -5,6 +5,7 @@
     <input class="my-input" type="text" v-model="title">
     <text>title: {{title}}</text>
     <button @click="goErrorPage">goErrorPage</button>
+    <button @click="screenShot">test screen shot</button>
   </view>
 </template>
 
@@ -50,6 +51,35 @@
             console.log('uni.navigateTo complete')
           }
         })
+      },
+      screenShot() {
+        const pages = getCurrentPages();
+        const len = pages.length;
+        if (len) {
+          const page = pages[len - 1];
+          if (page) {
+            const webview = page.$getAppWebview();
+            const bitmap = new plus.nativeObj.Bitmap(
+              "captureScreenshot",
+              "captureScreenshot.jpeg"
+            );
+            webview.draw(
+              bitmap,
+              (res) => {
+                console.log('res-------------', res)
+                const data = bitmap
+                  .toBase64Data()
+                bitmap.clear();
+                console.log('data-------------', data)
+              },
+              (err) => {
+                reject(Error(`captureScreenshot fail: ${err.message}`));
+              }, {
+                wholeContent: true,
+              }
+            );
+          }
+        }
       }
     }
   }

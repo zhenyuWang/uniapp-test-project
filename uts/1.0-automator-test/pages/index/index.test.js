@@ -1,28 +1,71 @@
 jest.setTimeout(30000);
 describe('/pages/index/index', () => {
-	it('test', async () => {
-		const page = await program.navigateTo('/pages/index/index');
+  let page
+  beforeAll(async () => {
+		page = await program.navigateTo('/pages/index/index');
 		await page.waitFor(1000);
-		const testId =  await page.$('#test-id');
-		console.log('testId', testId);
-		const testIdText = await testId.text();
-		console.log('testIdText', testIdText);
-    expect(testIdText).toBe('this is index page')
+  });
+  
+  it('test save file and image 1', async () => {
+    const img1 = await program.screenshot();
+    expect(img1).toSaveImageSnapshot()
+  
+    const img2 = await program.screenshot();
+    expect(img2).toSaveImageSnapshot()
+  
+    const testText1 = 'index-111' + Date.now()
+    expect(testText1).toSaveSnapshot()
+    const testText2 = 'index-222' + Date.now()
+    expect(testText2).toSaveSnapshot()
+    const testText3 = 'index-333' + Date.now()
+    expect(testText3).toSaveSnapshot()
+  })
+  
+  it('test save file and image 2', async () => {
+    const testText1 = 'index-111' + Date.now()
+    expect(testText1).toSaveSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__',
+      fileName: 'index-111.txt'
+    })
+    const testText2 = 'index-222' + Date.now()
+    expect(testText2).toSaveSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__'
+    })
+  
+    const img1 = await program.screenshot();
+    expect(img1).toSaveImageSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
+      customSnapshotIdentifier() {
+        return 'index-111.png';
+      },
+    })
+  
+    const img2 = await program.screenshot();
+    expect(img2).toSaveImageSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
+    })
+  })
+  
+	// it('test', async () => {
+	// 	const testId =  await page.$('#test-id');
+	// 	console.log('testId', testId);
+	// 	const testIdText = await testId.text();
+	// 	console.log('testIdText', testIdText);
+ //    expect(testIdText).toBe('this is index page')
     
-    // const myInput = await page.$('.my-input')
-    // await myInput.input('new val for input')
     
-		await page.setData({
-			data: "string",
-			header: {
-				"Content-Type": "application/x-www-form-urlencoded",
-			}
-		})
-		const pageData = await page.data()
-		console.log('pageData', pageData)
+	// 	await page.setData({
+	// 		data: "string",
+	// 		header: {
+	// 			"Content-Type": "application/x-www-form-urlencoded",
+	// 		}
+	// 	})
+	// 	const pageData = await page.data()
     
-    const img = await program.screenshot();
-    expect(img).toMatchImageSnapshot()
+ //    expect(pageData.data).toBe('string')
+     
+ //    const img = await program.screenshot();
+ //    expect(img).toMatchImageSnapshot()
 		// await program.screenshot()
 		// const button = await page.$('button');
 		// console.log('button', button);
@@ -46,5 +89,5 @@ describe('/pages/index/index', () => {
 		// console.log('text', text);
 		// const fooRes = await Foo.callMethod('foo');
 		// console.log('fooRes', fooRes);
-	})
+	// })
 });
