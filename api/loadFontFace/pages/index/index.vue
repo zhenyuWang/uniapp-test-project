@@ -4,9 +4,16 @@
       <text class="font-size-20">全局加载字体：</text>
       <text class="font-size-20 line-height-40" style="font-family: UniFontFamily">font-family: uni.ttf</text>
       <view style="flex-direction: row;">
+        <text class="font-size-20" style="font-family: UniFontFamily;">&#xe100;</text>
+        <text>1111111111</text>
+        <text v-if="showIcon" class="font-size-20" style="font-family: UniFontFamily;">{{
+         uniIcon0
+       }}</text>
+        <text v-if="showIcon">1.555</text>
+        <text>22222222</text>
         <text class="font-size-20" style="font-family: UniFontFamily;">{{
-          uniIcon1
-        }}</text>
+         uniIcon1
+       }}</text>
         <text style="margin-left:5px;margin-right: 20px;line-height:22px;">\ue100</text>
         <text class="font-size-20" style="font-family: UniFontFamily;">{{
           uniIcon2
@@ -28,26 +35,32 @@
   export default {
     data() {
       return {
+        uniIcon0: '&#xe100;',
         uniIcon1: '\ue100',
         uniIcon2: '\ue101',
+        showIcon: true
       }
     },
     onLoad() {
-      uni.loadFontFace({
-        global: true,
-        family: 'UniFontFamily',
-        source: "url(/static/font/uni.ttf)",
-        success() {
-          console.log('global loadFontFace uni.ttf success')
-        },
-        fail(error) {
-          console.warn('global loadFontFace uni.ttf fail', error.errMsg)
-        },
-      })
+      // const self = this
+      // uni.loadFontFace({
+      //   global: true,
+      //   family: 'UniFontFamily',
+      //   source: "url(/static/font/uni.ttf)",
+      //   success() {
+      //     console.log('global loadFontFace uni.ttf success')
+      //     setTimeout(() => {
+      //       self.showIcon = true
+      //       console.log('1111111111111111111111')
+      //     }, 2000)
+      //   },
+      //   fail(error) {
+      //     console.warn('global loadFontFace uni.ttf fail', error.errMsg)
+      //   },
+      // })
       uni.loadFontFace({
         family: 'AlimamaDaoLiTiTTF',
-        source:
-          "url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf')",
+        source: "url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf')",
         success() {
           console.log('loadFontFace Remote AlimamaDaoLiTi.ttf success')
         },
@@ -103,5 +116,14 @@
 
   .line-height-40 {
     line-height: 40px;
+  }
+
+  @font-face {
+    font-family: "UniFontFamily";
+    src: url("/static/font/uni.ttf")
+  }
+
+  .icon {
+    font-family: "UniFontFamily";
   }
 </style>
