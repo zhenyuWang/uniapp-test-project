@@ -1,11 +1,50 @@
 jest.setTimeout(100000);
 describe('/pages/index/about', () => {
-  it('test', async () => {
-    await program.reLaunch('/pages/index/index');
-    const page = await program.switchTab('/pages/index/about')
-    console.log('page', page)
-
-
+  beforeAll(async () => {
+    let page = await program.reLaunch('/pages/index/about');
+    await page.waitFor(1000);
+  })
+  
+  it('test save file and image 1', async () => {
+    const img1 = await program.screenshot();
+    expect(img1).toSaveImageSnapshot()
+  
+    const img2 = await program.screenshot();
+    expect(img2).toSaveImageSnapshot()
+  
+    const testText1 = '111' + Date.now()
+    expect(testText1).toSaveSnapshot()
+    const testText2 = '222' + Date.now()
+    expect(testText2).toSaveSnapshot()
+    const testText3 = '333' + Date.now()
+    expect(testText3).toSaveSnapshot()
+  })
+  
+  it('test save file and image 2', async () => {
+    const testText1 = '111' + Date.now()
+    expect(testText1).toSaveSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__',
+      fileName: 'about-111.txt'
+    })
+    const testText2 = '222' + Date.now()
+    expect(testText2).toSaveSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__'
+    })
+  
+    const img1 = await program.screenshot();
+    expect(img1).toSaveImageSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__',
+      customSnapshotIdentifier() {
+        return 'about-111.png';
+      },
+    })
+  
+    const img2 = await program.screenshot();
+    expect(img2).toSaveImageSnapshot({
+      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__',
+    })
+  })
+  // it('test', async () => {
     // const myInput = await page.$('.my-input')
     // console.log('myInput', myInput)
     // await myInput.input('new input value')
@@ -87,5 +126,5 @@ describe('/pages/index/about', () => {
     // console.log('FooList', FooList);
     // const Foo0Data = await FooList[0].data();
     // console.log('Foo0Data', Foo0Data);
-  })
+  // })
 });

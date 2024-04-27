@@ -1,34 +1,68 @@
 jest.setTimeout(100000);
 describe('/pages/index/index', () => {
-  it('test', async () => {
-    let page = await program.reLaunch('/pages/index/index');
+  let page
+  beforeAll(async () => {
+    page = await program.reLaunch('/pages/index/index');
     // const page = await program.currentPage();
     await page.waitFor(1000);
     // await page.waitFor(35000);
-    
+  })
+
+  // it('test button tap', async () => {
+  //   const myButton = await page.$('#my-button')
+  //   await myButton.tap()
+  // })
+
+  it('test', async () => {
+    // const numberInput = await page.$('#number-input')
+    // let numberInputValue = await numberInput.property('value')
+    // expect(numberInputValue).toBe('default title')
+    // await numberInput.input('2000')
+    // numberInputValue = await numberInput.property('value')
+    // expect(numberInputValue).toBe('2000')
+
+
     // const myText = await page.$('.my-text')
     // console.log('myText', myText)
     // const myTextText = await myText.text()
-    // console.log('myTextText', myTextText)
-    
-    // const button = await page.$('#btn')
+    // expect(myTextText).toBe('default title')
+    // const myTextList = await page.$$('.my-text')
+    // console.log('myTextList', myTextList)
+    // expect(await myTextList[0].text()).toBe('default title')
+    // expect(await myTextList[1].text()).toBe('default title')
+
+    // const box = await page.$('.box')
+    // const myTextInBox = await box.$('.my-text')
+    // console.log('myTextInBox', myTextInBox)
+    // const myTextInBoxText = await myTextInBox.text()
+    // expect(myTextInBoxText).toBe('default title')
+    // const myTextInBoxList = await box.$$('.my-text')
+    // console.log('myTextInBoxList', myTextInBoxList)
+    // expect(await myTextInBoxList[0].text()).toBe('default title')
+    // expect(await myTextInBoxList[1].text()).toBe('default title')
+
+    // const button = await page.$('#my-button')
+    // console.log('button', button)
     // const btnText = await button.text()
-    // console.log('btnText', btnText)
-    
+    // expect(btnText).toBe('my button')
+
+    // const progress = await page.$('.progress')
+    // console.log('progress', progress);
+
     // const myInput = await page.$('.my-input')
     // console.log('myInput', myInput)
     // await myInput.input('new input value')
     // await page.waitFor(10000)
-    
+
     // const view = await page.$('view');
     // console.log('view----------', view)
-    
+
     // const text = await page.$('.text')
     // const textContent = await text.text()
     // expect(textContent).toBe('this is my text ')
-    
-    const img = await program.screenshot();
-    expect(img).toMatchImageSnapshot()
+
+    // const img = await program.screenshot();
+    // expect(img).toMatchImageSnapshot()
 
     // const testText =  await page.$('#test-text');
     // console.log('testText', testText);
@@ -73,7 +107,10 @@ describe('/pages/index/index', () => {
     // console.log('textElement', textElement);
 
     // const Foo = await page.$('Foo');
-    // console.log('Foo', Foo);
+    const Foo = await page.$('.foo');
+    console.log('Foo', Foo);
+    const fooData = await Foo.data()
+    console.log('fooData', fooData)
     // const switchInput = await Foo.$('.uni-switch-input');
     // console.log('switchInput', switchInput);
     // const switchInputText = await switchInput.text();
@@ -96,5 +133,45 @@ describe('/pages/index/index', () => {
     // console.log('FooList', FooList);
     // const Foo0Data = await FooList[0].data();
     // console.log('Foo0Data', Foo0Data);
+    // })
+
+    // it('test save file and image 1', async () => {
+    //   const img1 = await program.screenshot();
+    //   expect(img1).toSaveImageSnapshot()
+
+    //   const img2 = await program.screenshot();
+    //   expect(img2).toSaveImageSnapshot()
+
+    //   const testText1 = '111' + Date.now()
+    //   expect(testText1).toSaveSnapshot()
+    //   const testText2 = '222' + Date.now()
+    //   expect(testText2).toSaveSnapshot()
+    //   const testText3 = '333' + Date.now()
+    //   expect(testText3).toSaveSnapshot()
+    // })
+
+    // it('test save file and image 2', async () => {
+    //   const testText1 = '111' + Date.now()
+    //   expect(testText1).toSaveSnapshot({
+    //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__',
+    //     fileName: 'index-111.txt'
+    //   })
+    //   const testText2 = '222' + Date.now()
+    //   expect(testText2).toSaveSnapshot({
+    //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__'
+    //   })
+
+    //   const img1 = await program.screenshot();
+    //   expect(img1).toSaveImageSnapshot({
+    //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__',
+    //     customSnapshotIdentifier() {
+    //       return 'index-111.png';
+    //     },
+    //   })
+
+    //   const img2 = await program.screenshot();
+    //   expect(img2).toSaveImageSnapshot({
+    //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__',
+    //   })
   })
 });

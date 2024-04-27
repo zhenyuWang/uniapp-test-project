@@ -1,27 +1,96 @@
 <template>
-  <view>
+  <view class="box" style="padding:30px;">
+    <!--    <text class="my-text">{{title}}</text>
+    <text class="my-text">{{title}}</text>
     <view style="height:40px;background-color: blue;"></view>
+    <text>{{title}}</text> -->
+    <!-- <abc /> -->
+    <!--    <text>111</text>
+    <text style="font-family: UniFontFamily;">{{uniIcon0}}</text>
+    <text>111</text>
+    <text style="font-family: UniFontFamily;" :decode="true">{{uniIcon0}}</text>
+    <text>111</text>
+    <text style="font-family: UniFontFamily;">&#xe100;</text>
+    <text style="font-family: uViewFamily;">{{icon}}</text> -->
+    <!-- <text class="agreement-text">
+      1、欢迎使用APP，为了更好地保障您的个人权益，请您充分阅读并理解
+      <text>《用户服务协议》</text>
+      和
+      <text>《隐私政策条款》</text>
+    的全部内容，同意并接受全部条款后开始使用我们的产品和服务。
+    </text> -->
+    <!--    <progress class="progress" ref="progress"></progress>
+    <text>1</text>
     <text>{{title}}</text>
-    <text style="font-family: uViewFamily;">{{icon}}</text>
+    <text>2</text>
+    <button>{{title}}</button>
+    <text>3</text>
+    <input v-model="title" />
+    <text>4</text> -->
+    <text>{{title}}</text>
+    <button id="my-button" @click="goAbout">my button</button>
+    <!-- <input ref='number-input' id="number-input" v-model="title" @input="handleInput" /> -->
+    <Foo class="foo" />
+    <keep
+    <!-- <Bar class="bar" /> -->
   </view>
 </template>
 
 <script lang="uts">
+  import Foo from './Foo.uvue'
   export default {
+    components: { Foo },
     data() {
       return {
+        uniIcon0: '&#xe100;',
         icon: '\ue62c',
-        title: 'default title',
+        title: '123',
         isShow: true,
         styleMap: new Map<string, string>([['border', '2px solid red'], ['background-color', 'green']]),
         classMap: new Map<string, boolean>([['w-100', true], ['h-100', true], ['rounded', false]])
       }
     },
     onReady() {
-      uni.loadFontFace({
-        family: 'uViewFamily',
-        source: 'url("/static/uview.ttf")'
-      })
+      // const numberInput = this.$refs['number-input'] as UniElement
+      // let value = numberInput.getAnyAttribute('value')
+      // console.log('value111', value)
+      // const inputDetail = new UniInputEvent('input', { detail: { value: 'new value' } })
+      // inputDetail.detail.value = 'new value'
+      // console.log('inputDetail', inputDetail)
+      // numberInput.dispatchEvent('input', inputDetail)
+      // value = numberInput.getAnyAttribute('value')
+      // console.log('numberInput222', numberInput)
+      // console.log('value2222', value)
+      // uni.loadFontFace({
+      //   global: true,
+      //   family: 'UniFontFamily',
+      //   source: "url('/static/uni.ttf')",
+      //   success() {
+      //     console.log('global loadFontFace uni.ttf success')
+      //   },
+      //   fail(error) {
+      //     console.warn('global loadFontFace uni.ttf fail', error.errMsg)
+      //   },
+      // })
+      // const tagName = (this.$refs['progress'] as UniProgressElement).tagName
+      // console.log('tagName--------------------------------', tagName);
+      // uni.loadFontFace({
+      //   family: 'uViewFamily',
+      //   source: 'url("/static/uview.ttf")'
+      // })
+      // uni.redirectTo({url: '/pages/index/about'})
+    },
+    methods: {
+      goAbout() {
+        console.log('11111111111111111111111')
+        this.title = '456'
+        // uni.navigateTo({
+        //   url: '/pages/index/about?name=1&age=2'
+        // })
+      },
+      handleInput(e : UniInputEvent) {
+        console.log('handleInput e', e)
+      }
     }
   }
 </script>

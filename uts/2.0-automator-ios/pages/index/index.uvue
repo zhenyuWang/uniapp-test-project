@@ -1,0 +1,102 @@
+<template>
+<!--  <web-view id="webview-screenshot-comparison" class="webview-screenshot-comparison" :webview-styles="webviewStyles"
+    :src="src" @loaded="loaded1" @error="error">
+  </web-view>
+  <view id="test-view"><text>test text</text><text>test text</text><text>test text</text><text>test text</text></view> -->
+  <scroll-view style="flex:1">
+    <view style="height: 1000px;" class="content">
+      <text class="title">{{title}}</text>
+      <text v-for="num in 100" :key="num">{{num}}</text>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        src: 'http://test.dcloud.io/unix_h5_build/98_dev_hello-uni-app-x/#/pages/API/choose-image/choose-image',
+        webviewContext: null as WebviewContext | null,
+        webviewStyles: {
+          progress: false
+        },
+        loaded: false,
+        title: 'Hello'
+      }
+    },
+    onReady() {
+      // uni.pageScrollTo({
+      //   scrollTop: 100,
+      //   duration: 300,
+      //   success: () => {
+      //     console.log('pageScrollTo success')
+      //   },
+      //   fail: (err) => {
+      //     console.log('pageScrollTo fail', err)
+      //   }
+      // })
+      // console.log('page onReady, before view to temp file path')
+      
+       
+      // const url = "/Users/wangzhenyu/Downloads/雪山.jpg";
+      // uni.uploadFile({
+      //   url: "http://192.168.31.96:3456/upload",
+      //   filePath: url,
+      //   name: "test uts ios",
+      //   success: (res : any) => {
+      //     console.log("uts ios 截图成功", res);
+      //     resolve({ data: "uts ios 截图已通过 uploadFile 上传" });
+      //   },
+      //   fail: (err : any) => {
+      //     console.log("uts ios 截图失败", err);
+      //     reject(
+      //       Error(
+      //         `captureScreenshot fail: uts ios 截图后 uploadFile 失败`
+      //       )
+      //     );
+      //   },
+      // });
+      setTimeout(() => {
+        this.loaded1()
+      },1000)
+    },
+    methods: {
+      loaded1() {
+        console.log('loaded--------------------')
+        this.loaded = true
+        const pages = getCurrentPages()
+        const page = pages[pages.length - 1]
+        // @ts-ignore
+        page.$viewToTempFilePath({
+          id: null,
+          offsetX: '0',
+          offsetY: '0',
+          path: 'screenshot',
+          overwrite: true,
+          wholeContent: true,
+          success: (res : any) => {
+            console.log('viewToTempFilePath res', res, res.tempFilePath)
+            // @ts-ignore
+            nativeFileManager.readFile({
+              encoding: 'base64',
+              filePath: res.tempFilePath,
+              success(readFileRes : any) {
+                console.log('readFile success', readFileRes)
+              },
+              fail(error : any) {
+                console.log('readFile fail', error)
+              },
+            })
+          },
+          fail: (err : any) => {
+            console.log('viewToTempFilePath err')
+            console.log(JSON.stringify(err))
+          }
+        })
+      },
+      error(event : WebViewErrorEvent) {
+        console.log('webview load error', JSON.stringify(event.detail));
+      }
+    }
+  }
+</script>

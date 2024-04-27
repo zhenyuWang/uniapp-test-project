@@ -3,7 +3,7 @@ module.exports = {
     "compile": true,
     "h5": {
         "options": {
-            "headless": false
+            "headless": true
         },
         "executablePath": ""
     },
@@ -15,7 +15,7 @@ module.exports = {
         "launch": true,
         "teardown": "disconnect",
         "remote": false,
-        "executablePath": "/Applications/wechatwebdevtools.app/Contents/MacOS/cli"
+        "executablePath": ""
     },
     "app-plus": {
         "android": {

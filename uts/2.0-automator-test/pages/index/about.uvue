@@ -16,7 +16,7 @@
 	<web-view></web-view>
 	<web-view></web-view>
 	<web-view></web-view> -->
-  <text>123123</text>
+  <text>22</text>
 </template>
 
 <script>
@@ -26,6 +26,9 @@
 				title: 'about page'
 			}
 		},
+    onLoad(options: OnLoadOptions) {
+      console.log('wzf----OnLoadOptions',options)
+    }
 		// onReady() {
 		// 	console.log('about this.msg', this.msg)
 		// 	console.log('about this.bool', this.bool)	
