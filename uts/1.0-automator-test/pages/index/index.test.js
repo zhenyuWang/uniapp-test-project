@@ -6,52 +6,52 @@ describe('/pages/index/index', () => {
 		await page.waitFor(1000);
   });
   
-  it('test save file and image 1', async () => {
-    const img1 = await program.screenshot();
-    expect(img1).toSaveImageSnapshot()
+  // it('test save file and image 1', async () => {
+  //   const img1 = await program.screenshot();
+  //   expect(img1).toSaveImageSnapshot()
   
-    const img2 = await program.screenshot();
-    expect(img2).toSaveImageSnapshot()
+  //   const img2 = await program.screenshot();
+  //   expect(img2).toSaveImageSnapshot()
   
-    const testText1 = 'index-111' + Date.now()
-    expect(testText1).toSaveSnapshot()
-    const testText2 = 'index-222' + Date.now()
-    expect(testText2).toSaveSnapshot()
-    const testText3 = 'index-333' + Date.now()
-    expect(testText3).toSaveSnapshot()
-  })
+  //   const testText1 = 'index-111' + Date.now()
+  //   expect(testText1).toSaveSnapshot()
+  //   const testText2 = 'index-222' + Date.now()
+  //   expect(testText2).toSaveSnapshot()
+  //   const testText3 = 'index-333' + Date.now()
+  //   expect(testText3).toSaveSnapshot()
+  // })
   
-  it('test save file and image 2', async () => {
-    const testText1 = 'index-111' + Date.now()
-    expect(testText1).toSaveSnapshot({
-      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__',
-      fileName: 'index-111.txt'
-    })
-    const testText2 = 'index-222' + Date.now()
-    expect(testText2).toSaveSnapshot({
-      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__'
-    })
+  // it('test save file and image 2', async () => {
+  //   const testText1 = 'index-111' + Date.now()
+  //   expect(testText1).toSaveSnapshot({
+  //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__',
+  //     fileName: 'index-111.txt'
+  //   })
+  //   const testText2 = 'index-222' + Date.now()
+  //   expect(testText2).toSaveSnapshot({
+  //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__file_snapshots__'
+  //   })
   
-    const img1 = await program.screenshot();
-    expect(img1).toSaveImageSnapshot({
-      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
-      customSnapshotIdentifier() {
-        return 'index-111.png';
-      },
-    })
+  //   const img1 = await program.screenshot();
+  //   expect(img1).toSaveImageSnapshot({
+  //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
+  //     customSnapshotIdentifier() {
+  //       return 'index-111.png';
+  //     },
+  //   })
   
-    const img2 = await program.screenshot();
-    expect(img2).toSaveImageSnapshot({
-      customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
-    })
-  })
+  //   const img2 = await program.screenshot();
+  //   expect(img2).toSaveImageSnapshot({
+  //     customSnapshotsDir: '/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/1.0-automator-test/__image_snapshots__',
+  //   })
+  // })
   
-	// it('test', async () => {
-	// 	const testId =  await page.$('#test-id');
-	// 	console.log('testId', testId);
-	// 	const testIdText = await testId.text();
-	// 	console.log('testIdText', testIdText);
- //    expect(testIdText).toBe('this is index page')
+	it('test', async () => {
+		// const testId =  await page.$('#test-id');
+		// console.log('testId', testId);
+		// const testIdText = await testId.text();
+		// console.log('testIdText', testIdText);
+  //   expect(testIdText).toBe('this is index page')
     
     
 	// 	await page.setData({
@@ -60,9 +60,15 @@ describe('/pages/index/index', () => {
 	// 			"Content-Type": "application/x-www-form-urlencoded",
 	// 		}
 	// 	})
-	// 	const pageData = await page.data()
+		const pageData = await page.data()
     
- //    expect(pageData.data).toBe('string')
+    expect(pageData.title).toBe('index page')
+    
+    const foo = await page.$('.foo')
+    console.log('foo', foo)
+    const fooData = await foo.data()
+    console.log('fooData', fooData)
+    expect(fooData.title).toBe('Hello')
      
  //    const img = await program.screenshot();
  //    expect(img).toMatchImageSnapshot()
@@ -89,5 +95,5 @@ describe('/pages/index/index', () => {
 		// console.log('text', text);
 		// const fooRes = await Foo.callMethod('foo');
 		// console.log('fooRes', fooRes);
-	// })
+	})
 });
