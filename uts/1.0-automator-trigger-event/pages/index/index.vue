@@ -1,0 +1,84 @@
+<template>
+  <view class="container">
+    <text>this is index page</text>
+    <button id="trigger-click-btn" @click="handleClick">click</button>
+    <input id="my-input" class="my-input" type="text" @input="handleInput" @focus="handleFocus" @blur="handleBlur" />
+    <view id="my-block" class="my-block" @touchstart="handleTouchStart" @touchcancel="handleTouchCancel"
+      @touchmove="handleTouchMove" @touchend="handleTouchend" @longpress="handleLongPress">
+      <view><text>trigger touch</text></view>
+      <view><text>trigger longpress</text></view>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        clickTriggered: false,
+        inputTriggered: false,
+        focusTriggered: false,
+        blurTriggered: false,
+        touchStartTriggered: false,
+        touchCancelTriggered: false,
+        touchMoveTriggered: false,
+        touchEndTriggered: false,
+        longPressTriggered: false,
+      }
+    },
+    methods: {
+      handleClick(e) {
+        console.log('handleClick e', e)
+        this.clickTriggered = true
+      },
+      handleInput(e) {
+        console.log('handleInput e', e)
+        this.inputTriggered = true
+      },
+      handleFocus(e) {
+        console.log('handleFocus e', e)
+        this.focusTriggered = true
+      },
+      handleBlur(e) {
+        console.log('handleBlur e', e)
+        this.blurTriggered = true
+      },
+      handleTouchStart(e) {
+        console.log('handleTouchStart e', e)
+        this.touchStartTriggered = true
+      },
+      handleTouchCancel(e) {
+        console.log('handleTouchCancel e', e)
+        this.touchCancelTriggered = true
+      },
+      handleTouchMove(e) {
+        console.log('handleTouchMove e', e)
+        this.touchMoveTriggered = true
+      },
+      handleTouchend(e) {
+        console.log('handleTouchend e', e)
+        this.touchEndTriggered = true
+      },
+      handleLongPress(e) {
+        console.log('handleLongPress e', e)
+        this.longPressTriggered = true
+      }
+    }
+  }
+</script>
+
+<style>
+  .container{padding: 10px;}
+  .my-input {
+    margin: 10px 0;
+    padding: 4px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+
+  .my-block {
+    width: 300px;
+    height: 200px;
+    background-color: red;
+  }
+</style>
