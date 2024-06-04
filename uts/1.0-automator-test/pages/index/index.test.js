@@ -3,7 +3,7 @@ describe('/pages/index/index', () => {
   let page
   beforeAll(async () => {
 		page = await program.navigateTo('/pages/index/index');
-		await page.waitFor(1000);
+		await page.waitFor('view');
   });
   
   // it('test save file and image 1', async () => {

@@ -1,5 +1,5 @@
 <template>
-	<div>
+	<div class="content">
 		<div class="title">Foo title: {{title}}</div>
 		<button @click="foo">click me</button>
 	</div>

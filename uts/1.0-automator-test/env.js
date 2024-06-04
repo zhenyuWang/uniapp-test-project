@@ -5,7 +5,6 @@ module.exports = {
         "options": {
             "headless": false
         },
-        "executablePath": ""
     },
     "mp-weixin": {
         "port": 9420,
