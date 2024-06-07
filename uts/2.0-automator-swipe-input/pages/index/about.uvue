@@ -1,0 +1,30 @@
+<template>
+  <view>
+    <div class="block"></div>
+    <view v-for="item in 100" :key="item">
+      <view><text>{{item}}</text></view>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello',
+        isChecked: false
+      }
+    },
+  }
+</script>
+
+<style>
+  .block {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 20px;
+    height: 200px;
+    background-color: red;
+  }
+</style>

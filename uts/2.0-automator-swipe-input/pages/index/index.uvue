@@ -1,0 +1,37 @@
+<template>
+  <!-- #ifdef APP -->
+  <scroll-view style="flex:1;">
+  <!-- #endif -->
+    <view class="block"></view>
+    <view v-for="item in 100" :key="item">
+      <view><text>{{item}}</text></view>
+    </view>
+  <!-- #ifdef APP -->
+  </scroll-view>
+  <!-- #endif -->
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello',
+        isChecked: false
+      }
+    },
+    methods: {
+      handleClick() {
+        console.log('handleClick')
+      }
+    }
+  }
+</script>
+
+<style>
+  .block {
+    position: absolute;
+    width: 20px;
+    height: 200px;
+    background-color: red;
+  }
+</style>
