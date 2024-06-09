@@ -1,0 +1,14 @@
+<template>
+  <view><text>about</text></view>
+  <Foo />
+</template>
+
+<script setup lang="uts">
+  import Foo from './Foo.uvue'
+  // onAppShow((options: OnShowOptions) => {
+  //   console.log('on APP show in about')
+  // })
+  // onAppHide(() => {
+  //   console.log('on APP hide in about')
+  // })
+</script>

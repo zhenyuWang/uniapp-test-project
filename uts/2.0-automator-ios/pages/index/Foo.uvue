@@ -1,0 +1,12 @@
+<template>
+  <view><text>Foo</text></view>
+</template>
+
+<script setup lang="uts">
+  // onAppShow((options: OnShowOptions) => {
+  //   console.log('on APP show in Foo')
+  // })
+  // onAppHide(() => {
+  //   console.log('on APP hide in Foo')
+  // })
+</script>
