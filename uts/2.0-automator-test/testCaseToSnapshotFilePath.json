@@ -1,0 +1,29 @@
+{
+  "pages/index/index.test.js": [
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-1-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-1-2.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-1-1.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-1-2.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-1-3.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__/index-111.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-2-1.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__/index-111.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__/index-test-js--pages-index-index-test-save-file-and-image-2-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/index-test-js--pages-index-index-test-1.png"
+  ],
+  "pages/index/about.test.js": [
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-1-1.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__image_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-1-2.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-1-1.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-1-2.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/pages/index/__file_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-1-3.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__/about-111.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__file_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-2-1.txt",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__/about-111.png",
+    "/Users/wangzhenyu/work/DCloud/git/uniapp-test-project/uts/2.0-automator-test/__image_snapshots__/about-test-js--pages-index-about-test-save-file-and-image-2-1.png"
+  ]
+}

@@ -30,9 +30,7 @@
     <text>{{title}}</text>
     <button id="my-button" @click="goAbout">my button</button>
     <!-- <input ref='number-input' id="number-input" v-model="title" @input="handleInput" /> -->
-    <Foo class="foo" />
-    <keep
-    <!-- <Bar class="bar" /> -->
+    <Foo v-if="title==='123'" class="foo" />
   </view>
 </template>
 

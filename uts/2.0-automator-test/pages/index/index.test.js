@@ -2,7 +2,7 @@ jest.setTimeout(100000);
 describe('/pages/index/index', () => {
   let page
   beforeAll(async () => {
-    page = await program.reLaunch('/pages/index/index');
+    page = await program.navigateTo('/pages/index/index');
     // const page = await program.currentPage();
     await page.waitFor(1000);
     // await page.waitFor(35000);
@@ -14,6 +14,8 @@ describe('/pages/index/index', () => {
   // })
 
   it('test', async () => {
+    const image = await program.screenshot({fullPage: true});
+    expect(image).toSaveImageSnapshot();
     // const numberInput = await page.$('#number-input')
     // let numberInputValue = await numberInput.property('value')
     // expect(numberInputValue).toBe('default title')
@@ -111,14 +113,18 @@ describe('/pages/index/index', () => {
     console.log('Foo', Foo);
     const fooData = await Foo.data()
     console.log('fooData', fooData)
-    // const switchInput = await Foo.$('.uni-switch-input');
-    // console.log('switchInput', switchInput);
-    // const switchInputText = await switchInput.text();
-    // console.log('switchInputText', switchInputText);
-    // const FooTitle = await Foo.$('.title');
-    // console.log('FooTitle', FooTitle);
-    // const FooTitleText = await FooTitle.text();
-    // console.log('FooTitleText', FooTitleText);
+    const Bar = await page.$('.my-bar')
+    console.log('Bar', Bar);
+    const barData = await Bar.data()
+    console.log('barData', barData)
+    const switchInput = await Foo.$('.uni-switch-input');
+    console.log('switchInput', switchInput);
+    const switchInputText = await switchInput.text();
+    console.log('switchInputText', switchInputText);
+    const FooTitle = await Foo.$('.title');
+    console.log('FooTitle', FooTitle);
+    const FooTitleText = await FooTitle.text();
+    console.log('FooTitleText', FooTitleText);
 
     // let FooData = await Foo.data();
     // console.log('FooData', FooData);

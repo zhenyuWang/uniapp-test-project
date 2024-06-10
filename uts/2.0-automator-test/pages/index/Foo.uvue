@@ -6,12 +6,15 @@
 			<text class="uni-switch-input uni-switch-input-checked">uni-switch-input uni-switch-input-checked</text>
 		</view>
 		<text>newFoo: {{newFoo}}</text>
+    <Bar class="my-bar" />
 	</view>
 </template>
 
 <script>
+  import Bar from './Bar.uvue'
 	export default {
 		name: 'Foo',
+    components: {Bar},
 		data() {
 			return {
 				title: 'Hello'

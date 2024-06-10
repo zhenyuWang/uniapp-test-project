@@ -8,6 +8,11 @@
 <script>
   export default {
     name: 'Bar',
+    data(){
+      return {
+        age: 19
+      }
+    },
     methods: {
       test(){
         const defaultSlot = this.$slots['default'] as () => UniElement[]
