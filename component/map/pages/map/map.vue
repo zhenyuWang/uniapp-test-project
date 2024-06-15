@@ -67,47 +67,6 @@
 						// display: 'BYCLICK',
 						display: 'ALWAYS',
 					}
-				}, {
-					id: 213,
-					latitude: 39.90,
-					longitude: 116.4,
-					width: 40,
-					height: 40,
-					iconPath: '../../static/logo.png',
-					label: {
-						content: "Hello Label222Hello Label222Hello Label222Hello Label222",
-						color: "#ff0000",
-						x: -100,
-						y: 20,
-						fontSize: 26,
-						borderColor: 'red',
-						borderRadius: 100,
-						borderWidth: 2,
-						bgColor: "#09c",
-						padding: 10,
-					},
-					callout: {
-						content: '222222',
-						color: '#00BFFF',
-						fontSize: 10,
-						borderRadius: 4,
-						borderWidth: 1,
-						borderColor: '#333300',
-						bgColor: '#CCFF99',
-						padding: '5',
-						display: 'ALWAYS',
-					},
-					calloutCopy: {
-						content: '222222',
-						color: '#00BFFF',
-						fontSize: 10,
-						borderRadius: 4,
-						borderWidth: 1,
-						borderColor: '#333300',
-						bgColor: '#CCFF99',
-						padding: '5',
-						display: 'ALWAYS',
-					}
 				}],
 				includePoints: [{
 						latitude: 40.989631,
@@ -387,7 +346,7 @@
 					item.position.height += 5
 					item.position.width += 5
 				})
-			},
+			}
 		}
 	}
 </script>
