@@ -47,11 +47,11 @@ describe('/pages/index/index', () => {
   // })
   
 	it('test', async () => {
-		// const testId =  await page.$('#test-id');
-		// console.log('testId', testId);
-		// const testIdText = await testId.text();
-		// console.log('testIdText', testIdText);
-  //   expect(testIdText).toBe('this is index page')
+		const testId =  await page.$('#test-id');
+		console.log('testId', testId);
+		const testIdText = await testId.text();
+		console.log('testIdText', testIdText);
+    expect(testIdText).toBe('this is index page')
     
     
 	// 	await page.setData({
@@ -60,15 +60,15 @@ describe('/pages/index/index', () => {
 	// 			"Content-Type": "application/x-www-form-urlencoded",
 	// 		}
 	// 	})
-		const pageData = await page.data()
+		// const pageData = await page.data()
     
-    expect(pageData.title).toBe('index page')
+  //   expect(pageData.title).toBe('index page')
     
-    const foo = await page.$('.foo')
-    console.log('foo', foo)
-    const fooData = await foo.data()
-    console.log('fooData', fooData)
-    expect(fooData.title).toBe('Hello')
+  //   const foo = await page.$('.foo')
+  //   console.log('foo', foo)
+  //   const fooData = await foo.data()
+  //   console.log('fooData', fooData)
+  //   expect(fooData.title).toBe('Hello')
      
  //    const img = await program.screenshot();
  //    expect(img).toMatchImageSnapshot()

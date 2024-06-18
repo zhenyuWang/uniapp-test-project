@@ -4,7 +4,7 @@ module.exports = {
     "h5": {
         "options": {
             "headless": false
-        },
+        }
     },
     "mp-weixin": {
         "port": 9420,
