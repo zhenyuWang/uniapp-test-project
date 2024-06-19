@@ -1,25 +1,53 @@
 <template>
-  <view>
-    <!-- <text v-text="title"></text>
-    <view v-text="title"></view> -->
-    <text>num: {{num}}</text>
-    <text>typeof num: {{typeof num}}</text>
-    <input v-model.number="num" type="text" />
-    <text>str: {{str}}</text>
-    <text>str.length: {{str.length}}</text>
-    <!-- <input v-model.trim="str" type="text" /> -->
-    <input v-model.lazy="str" type="text" />
+  <view class="page">
+    <view class="flex justify-between flex-row mb-10">
+      <text>ref count:</text>
+      <text id="ref-count">{{ refCount }}</text>
+    </view>
+    <view class="flex justify-between flex-row mb-10">
+      <text>isRef ref count:</text>
+      <text id="is-ref-ref-count">{{ isRefRefCount }}</text>
+    </view>
+    <view class="flex justify-between flex-row mb-10">
+      <text>count:</text>
+      <text id="count">{{ count }}</text>
+    </view>
+    <view class="flex justify-between flex-row mb-10">
+      <text>isRef count:</text>
+      <text id="is-ref-count">{{ isRefCount }}</text>
+    </view>
+    <view class="flex justify-between flex-row mb-10">
+      <text>obj.num:</text>
+      <text id="obj-num">{{ obj.num }}</text>
+    </view>
+    <view class="flex justify-between flex-row mb-10">
+      <text>toValue(() => obj.num):</text>
+      <text id="to-value-obj-num">{{ toValueObjNum }}</text>
+    </view>
+    <button class="mt-10" id="increment-btn" @click="increment">
+      increment obj.num
+    </button>
   </view>
 </template>
 
-<script>
-  export default {
-    data() {
-      return {
-        title: 'Hello',
-        num: 1,
-        str: 'abc'
-      }
-    }
-  }
+<script setup lang="ts">
+  import {ref, isRef, toValue, reactive} from 'vue'
+const refCount = ref<number>(0);;
+const isRefRefCount = isRef(refCount);
+const count = toValue(refCount);
+const isRefCount = isRef(count);
+
+type Obj = {
+  num : number
+}
+const obj = reactive({
+  num: 0
+} as Obj)
+
+let toValueObjNum = toValue(() : number => obj.num)
+
+const increment = () => {
+  obj.num++;
+  toValueObjNum++;
+}
 </script>
