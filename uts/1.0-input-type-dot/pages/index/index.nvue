@@ -1,0 +1,16 @@
+<template>
+	<view class="content">
+		<input type="text" />
+		<input type="digit" />
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		},
+	}
+</script>
