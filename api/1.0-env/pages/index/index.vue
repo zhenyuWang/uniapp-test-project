@@ -1,6 +1,9 @@
 <template>
   <view>
     <text>{{title}}</text>
+    <block v-if="true">
+      <text>{{title}}</text>
+    </block>
   </view>
 </template>
 
