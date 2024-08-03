@@ -4,7 +4,6 @@
     <block v-if="true">
       <text>{{title}}</text>
     </block>
-    <navigator url="/pages/index/about">go about</navigator>
   </view>
 </template>
 
