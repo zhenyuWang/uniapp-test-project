@@ -1,0 +1,50 @@
+<template>
+  <view>
+    <text class="title">{{title}}</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'index'
+      }
+    },
+    onLoad() {
+      console.log('index onLoad')
+    },
+    onReady() {
+      // uni.navigateTo({
+      //   url: '/pages/index/setting',
+      //   success(res) {
+      //     console.log('navigateTo setting success')
+      //   },
+      //   fail(res) {
+      //     console.log('navigateTo setting fail 1', res)
+      //   }
+      // })
+      // uni.navigateTo({
+      //   url: '/pages/index/setting',
+      //   success(res) {
+      //     console.log('navigateTo setting success')
+      //   },
+      //   fail(res) {
+      //     console.log('navigateTo setting fail 2', res)
+      //   }
+      // })
+      // uni.navigateTo({
+      //   url: '/pages/index/setting',
+      //   success(res) {
+      //     console.log('navigateTo setting success')
+      //   },
+      //   fail(res) {
+      //     console.log('navigateTo setting fail 3', res)
+      //   }
+      // })
+    },
+    methods: {
+
+    }
+  }
+</script>

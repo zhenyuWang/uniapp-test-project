@@ -1,0 +1,25 @@
+<template>
+  <view>
+    <text class="title">{{title}}</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'setting'
+      }
+    },
+    onLoad() {
+      console.log('setting onLoad')
+    },
+    onReady(){
+      const pages = getCurrentPages()
+      console.log('setting onReady', pages.length)
+    },
+    methods: {
+
+    }
+  }
+</script>
