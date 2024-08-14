@@ -1,0 +1,19 @@
+/**
+ * 错误主题
+ */
+export const UniErrorSubject = 'uni-showActionSheet2';
+
+
+/**
+ * 错误对象实现
+ */
+export class ShowActionSheet2Impl extends UniError  {
+  /**
+   * 错误对象构造函数
+   */
+  constructor() {
+    super();
+    this.errSubject = UniErrorSubject;
+    this.errMsg = 'showActionSheet:fail cancel'
+  }
+}

@@ -1,0 +1,10 @@
+import { ShowActionSheet2Options } from '../interface.uts'
+
+let id = 0
+
+export const showActionSheet2 = function (options: ShowActionSheet2Options) {
+  console.log('wzf-------------- showActionSheet2', options)
+  uni.openDialogPage({
+    url: `/pages/index/actionSheet?title=title&`,
+  })
+}
