@@ -1,0 +1,10 @@
+<script setup lang="uts">
+defineOptions({
+  render(): VNode {
+    const originalVNode = h('view', { class: 'original' }, [
+      h('text', {}, 'Hello World'),
+    ])
+    return originalVNode
+  }
+})
+</script>
