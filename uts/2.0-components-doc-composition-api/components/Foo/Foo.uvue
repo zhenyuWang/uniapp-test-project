@@ -1,0 +1,20 @@
+<template>
+  <view></view>
+</template>
+
+<script setup lang="uts">
+  const foo1 = () => {
+    console.log("foo1 triggered");
+  }
+  const foo2 = (num : number) => {
+    console.log('foo2 triggered by num:', num);
+  }
+  const foo3 = (callback : (() => void)) => {
+    callback()
+  }
+  defineExpose({
+    foo1,
+    foo2,
+    foo3,
+  })
+</script>
