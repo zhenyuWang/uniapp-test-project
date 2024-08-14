@@ -1,0 +1,23 @@
+<template>
+  <view>
+    <button @click="handleClick">handle click</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello'
+      }
+    },
+    onLoad() {
+      throw Error('error in page onLoad')
+    },
+    methods: {
+      handleClick() {
+        throw Error('error in handleClick')
+      }
+    }
+  }
+</script>
