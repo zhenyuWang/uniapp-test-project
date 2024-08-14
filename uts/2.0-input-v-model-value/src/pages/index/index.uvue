@@ -1,0 +1,25 @@
+<template>
+  <view style='padding: 10px;'>
+    <input
+      class="my-input"
+      type="text"
+      value="default value" />
+    <input class="my-input" v-model="testValue" value="default value" />
+    <text>test value: {{ testValue }}</text>
+    <textarea class="my-input" v-model="testValue" value="default value" />
+  </view>
+</template>
+
+<script setup lang="uts">
+const testValue = ref('123')
+</script>
+
+<style>
+.my-input {
+  width: 100%;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  border: 1px solid red;
+  border-radius: 4px;
+}
+</style>
