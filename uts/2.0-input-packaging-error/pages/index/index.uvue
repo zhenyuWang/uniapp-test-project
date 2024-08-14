@@ -1,0 +1,28 @@
+<template>
+  <view>
+    <text>title: {{title}}</text>
+    <MyInput v-model="title" />
+    <text>formData.name: {{formData.name}}</text>
+    <MyInput v-model="formData.name as string" />
+  </view>
+</template>
+
+<script lang='uts'>
+  import MyInput from './MyInput.uvue'
+  
+  type FormData = {
+    name: string
+  }
+  
+  export default {
+    components: { MyInput },
+    data() {
+      return {
+        title: 'Hello',
+        formData: {
+          name: 'default name'
+        } as FormData
+      }
+    }
+  }
+</script>

@@ -1,0 +1,105 @@
+<script setup>
+const props = withDefaults(defineProps<{
+	type?: 'textarea' | 'text' | 'number' | 'digit' | 'tel' | 'safe-password' | 'nickname'
+	autoHeight?: boolean
+	size?: number
+	fontSize?: number
+	radius?: number
+	lineHeight?: number
+	borderWidth?: number
+	paddingX?: number
+}>(), {
+	type: 'text',
+	autoHeight: true,
+	size: 80,
+	fontSize: 32,
+	radius: 8,
+	lineHeight: 40,
+	borderWidth: 2,
+	paddingX: 30,
+});
+const model = defineModel();
+
+const isTextarea = computed<boolean>((): boolean => props.type == 'textarea');
+const borderWidthPx = computed<number>((): number => uni.rpx2px(props.borderWidth));
+const height = computed<string>((): string => uni.rpx2px(props.size) - borderWidthPx.value * 2 + 'px');
+const myInputWrapperStyle = computed<UTSJSONObject>((): UTSJSONObject => {
+	const style = {} as UTSJSONObject;
+	style['border-radius'] = uni.rpx2px(props.radius) + 'px';
+	style['border-width'] = borderWidthPx.value + 'px';
+	return style;
+});
+const myInputStyle = computed<UTSJSONObject>((): UTSJSONObject => {
+	const style = {} as UTSJSONObject;
+	style['font-size'] = uni.rpx2px(props.fontSize) + 'px';
+	style['padding-left'] = uni.rpx2px(props.paddingX) + 'px';
+	style['padding-right'] = style['padding-left'];
+	return style;
+});
+
+const isFocus = ref<boolean>(false);
+function focus() {
+	isFocus.value = true;
+}
+function blur() {
+	isFocus.value = false;
+}
+
+defineExpose({
+	focus,
+	blur,
+});
+</script>
+
+<template>
+	<view class="my_input_wrapper" :style="myInputWrapperStyle" @click="focus()">
+		<view class="my_input_prefix" :style="{height}">
+			<slot name="prefix"></slot>
+		</view>
+		
+		<textarea 
+			v-if="isTextarea" 
+			v-model="model" 
+			class="my_input is_textarea" 
+			:style="myInputStyle" 
+			v-bind="$attrs"
+			:auto-height="props.autoHeight"
+			:focus="isFocus"
+			@blur="blur"
+		/>
+		<input 
+			v-else 
+			v-model="model" 
+			class="my_input is_input" 
+			:style="myInputStyle" 
+			v-bind="$attrs"
+			:type="type"
+			:focus="isFocus"
+			@blur="blur"
+		/>
+		
+		<view class="my_input_suffix" :style="{height}">
+			<slot name="suffix"></slot>
+		</view>
+	</view>
+</template>
+
+<style lang="scss">
+.my_input_wrapper {
+	width: 100%;
+	flex-direction: row;
+	border-style: solid;
+	border-color: $uni-border-color;
+	align-items: center;
+}
+
+.my_input_prefix,
+.my_input_suffix {
+	flex-direction: row;
+	align-items: center;
+}
+
+.my_input {
+	flex: 1;
+}
+</style>
