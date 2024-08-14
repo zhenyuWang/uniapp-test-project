@@ -1,0 +1,38 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "index"
+			}
+		},
+    {
+    	"path": "pages/index/about",
+    	"style": {
+    		"navigationBarTitleText": "about"
+    	}
+    },
+    {
+    	"path": "pages/index/test",
+    	"style": {
+    		"navigationBarTitleText": "test"
+    	}
+    }
+	],
+  // "condition": {
+  // 	"current": 0,
+  // 	"list": [
+  // 		{
+  // 			"name": "test condition test",
+  // 			"path": "pages/index/test?name=testname"
+  // 		}
+  // 	]
+  // },
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app x",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

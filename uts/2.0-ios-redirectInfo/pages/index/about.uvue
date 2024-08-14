@@ -1,0 +1,29 @@
+<template>
+  <view class="content">
+    <text class="title">{{title}}</text>
+    <button @click="goTest">goTest</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'about1234'
+      }
+    },
+    onLoad(options){
+      console.log('about page onLoad options', options)
+    },
+    methods: {
+      goTest(){
+        uni.navigateTo({
+          url: '/pages/index/test',
+          complete(res) {
+            console.log('navigateTo complete', res)
+          }
+        })
+      }
+    }
+  }
+</script>

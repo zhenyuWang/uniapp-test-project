@@ -1,0 +1,20 @@
+<template>
+  <view>
+    <text>{{(obj!)['name']}}</text>
+    <text>{{(obj!)['age']}}</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    props: {
+      obj: {
+        type: Object as PropType<UTSJSONObject>,
+      }
+    }
+  }
+</script>
+
+<style>
+
+</style>

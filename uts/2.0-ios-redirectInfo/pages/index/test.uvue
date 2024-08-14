@@ -1,0 +1,32 @@
+<template>
+  <view class="content">
+    <text class="title">{{title}}</text>
+    <button @click="reLaunchIndex">reLaunchIndex</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'test1'
+      }
+    },
+    onLoad(options){
+      console.log('test page onLoad options', options)
+    },
+    methods: {
+      reLaunchIndex(){
+        uni.reLaunch({
+          url: '/pages/index/index',
+          success(res) {
+            console.log('reLaunch success', res)
+          },
+          fail(err) {
+            console.log('reLaunch fail', err)
+          }
+        })
+      }
+    }
+  }
+</script>
