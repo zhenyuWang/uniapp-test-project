@@ -4,8 +4,7 @@ module.exports = {
     "h5": {
         "options": {
             "headless": false
-        },
-        // "executablePath": "/Applications/Google Chrome.app"
+        }
     },
     "mp-weixin": {
         "port": 9420,
@@ -29,13 +28,13 @@ module.exports = {
         },
         "uni-app-x": {
             "version": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",
-            "android": {
-                "id": "emulator-5554",
-                "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
-            },
             "ios": {
                 "id": "F01B89BE-6BA8-43FA-AC54-442BC6BD4937",
                 "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/Pandora_simulator.app"
+            },
+            "android": {
+                "id": "emulator-5554",
+                "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/android_base.apk"
             }
         }
     }

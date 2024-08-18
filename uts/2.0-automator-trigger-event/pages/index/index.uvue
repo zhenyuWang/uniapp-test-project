@@ -8,6 +8,7 @@
       <view><text>trigger touch</text></view>
       <view><text>trigger longpress</text></view>
     </view>
+    <navigator url="/pages/index/about">go about</navigator>
   </view>
 </template>
 
@@ -26,16 +27,19 @@
         longPressTriggered: false,
       }
     },
+    onLoad(){
+      console.log('index page onLoad')
+    },
     methods: {
       handleClick(e : any) {
         console.log('handleClick e', e)
-        this.clickTriggered = true
-        const myInput = document.getElementsByClassName('my-input')[0].getElementsByTagName('input')[0]
-        console.log('myInput', myInput)
-        myInput?.focus()
-        setTimeout(() => {
-          myInput?.blur()
-        }, 1000)
+        // this.clickTriggered = true
+        // const myInput = document.getElementsByClassName('my-input')[0].getElementsByTagName('input')[0]
+        // console.log('myInput', myInput)
+        // myInput?.focus()
+        // setTimeout(() => {
+        //   myInput?.blur()
+        // }, 1000)
       },
       handleInput(e : any) {
         console.log('handleInput e', e)
