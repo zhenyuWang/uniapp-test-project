@@ -1,0 +1,38 @@
+<template>
+  <view>
+    <view :class="myClass" style="padding: 20px 10px;">
+      <button @click="toggleClass">toggle class</button>
+    </view>
+    <Foo />
+    <Bar />
+  </view>
+</template>
+
+<script>
+  import Foo from './Foo.nvue'
+  import Bar from './Bar.vue'
+  
+  export default {
+    components: {Foo, Bar},
+    data() {
+      return {
+        myClass: 'bg-red'
+      }
+    },
+    methods: {
+      toggleClass() {
+        this.myClass = this.myClass === 'bg-red' ? 'bg-green' : 'bg-red'
+      }
+    }
+  }
+</script>
+
+<style>
+  .bg-red {
+    background-color: red;
+  }
+
+  .bg-green {
+    background-color: green;
+  }
+</style>

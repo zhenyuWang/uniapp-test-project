@@ -1,0 +1,31 @@
+<template>
+  <view :class="myClass" style="padding: 20px 10px;">
+    <text>this is Foo nvue</text>
+    <button @click="toggleClass">toggle class</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        myClass: 'bg-red-foo'
+      }
+    },
+    methods: {
+      toggleClass() {
+        this.myClass = this.myClass === 'bg-red-foo' ? 'bg-green-foo' : 'bg-red-foo'
+      }
+    }
+  }
+</script>
+
+<style>
+  .bg-red-foo {
+    background-color: red;
+  }
+
+  .bg-green-foo {
+    background-color: green;
+  }
+</style>
