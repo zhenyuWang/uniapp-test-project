@@ -1,0 +1,15 @@
+<template>
+  <scroll-view scroll-y="true" style="flex: 1">
+    <view v-for="item in 100" :key="item">{{item}}</view>
+  </scroll-view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello'
+      }
+    },
+  }
+</script>
