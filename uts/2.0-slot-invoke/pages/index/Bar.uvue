@@ -1,0 +1,20 @@
+<template>
+  <view class="content">
+    <slot></slot>
+    <button @click="test">test</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    name: 'Bar',
+    methods: {
+      test(){
+        const defaultSlot = this.$slots['default'] as () => UniElement[]
+        console.log('defaultSlot', defaultSlot)
+        const node = defaultSlot()
+        console.log('node', node)
+      }
+    },
+  }
+</script>

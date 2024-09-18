@@ -1,0 +1,14 @@
+<template>
+  <view class="content">
+    <text>index page</text>
+    <Bar><text>text in bar default slot</text></Bar>
+  </view>
+</template>
+
+<script>
+  import Bar from './Bar.uvue'
+  
+  export default {
+    components: {Bar}
+  }
+</script>
