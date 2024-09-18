@@ -1,5 +1,5 @@
 declare namespace UniNamespace {
-  interface GetBatteryInfoSuccess {
+  interface ShowActionSheet2Success {
     // 用户点击的按钮，从上到下的顺序，从0开始
     tapIndex : number
     errMsg : string
@@ -19,7 +19,7 @@ declare namespace UniNamespace {
     /**
       * 接口调用结束的回调函数（调用成功、失败都会执行）
       */
-    success ?: (res : GetBatteryInfoSuccess) => void
+    success ?: (res : ShowActionSheet2Success) => void
     /**
       * 接口调用失败的回调函数
       */

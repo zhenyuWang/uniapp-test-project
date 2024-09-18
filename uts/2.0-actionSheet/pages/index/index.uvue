@@ -2,6 +2,7 @@
   <view>
     <text class="title">{{title}}</text>
     <button @click="showActionSheet1">showActionSheet1</button>
+    <button @click="showActionSheet2">showActionSheet2</button>
   </view>
 </template>
 
@@ -12,30 +13,13 @@
         title: 'Hello'
       }
     },
-    onReady() {
-      uni.showActionSheet2({
-        title: 'this is title', 
-        itemList: ['1','2','3','4'],
-        itemColor: 'red',
-        cancelText: 'custom cancel',
-        success(res){
-          console.log('showActionSheet2 success', res)
-        },
-        fail(res){
-          console.log('showActionSheet2 fail', res)
-        },
-        complete(res){
-          console.log('showActionSheet2 complete', res)
-        }
-      })
-    },
     methods: {
-      showActionSheet1(){
+      showActionSheet1() {
         uni.showActionSheet({
           title: '1',
           // 这 web 也不生效啊？
           // alertText: '2',
-          itemList: ['11','22','33','44'],
+          itemList: ['11', '22', '33', '44'],
           // android 无效
           itemColor: 'red',
           // android 编译报错 应该是 web 判断大屏， app pad 时生效
@@ -44,18 +28,35 @@
           // popupWidth.value = windowWidth
           // popupHeight.value = windowHeight + (windowTop || 0)
           // popover: {top: 0,left: 10, width: 300, height: 500} as Propover,
-          success(res){
+          success(res) {
             // errMsg: "showActionSheet:ok"
             // errSubject: "showActionSheet"
             // tapIndex: 0
             console.log('showActionSheet1 success', res)
           },
-          fail(err){
+          fail(err) {
             // UniError showActionSheet:fail cancel
             console.log('showActionSheet1 fail', err)
           },
-          complete(res){
+          complete(res) {
             console.log('showActionSheet1 complete', res)
+          }
+        })
+      },
+      showActionSheet2() {
+        uni.showActionSheet2({
+          title: 'this is title',
+          itemList: ['1', '2', '3', '4'],
+          itemColor: 'red',
+          cancelText: 'custom cancel',
+          success(res) {
+            console.log('showActionSheet2 success', res)
+          },
+          fail(res) {
+            console.log('showActionSheet2 fail', res)
+          },
+          complete(res) {
+            console.log('showActionSheet2 complete', res)
           }
         })
       }

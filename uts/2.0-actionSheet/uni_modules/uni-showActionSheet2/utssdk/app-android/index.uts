@@ -1,8 +1,43 @@
-import { ShowActionSheet2Options } from '../interface.uts'
+import { ShowActionSheet2Options, ShowActionSheet2Success } from '../interface.uts'
+import { ShowActionSheet2Impl } from '../unierror.uts'
 
-export const showActionSheet2 = function (options: ShowActionSheet2Options) {
-  console.log('wzf-------------- showActionSheet2', options)
-  uni.openDialogPage({
-    url: '/pages/index/actionSheet?title=title'
+export const showActionSheet2 = function (options : ShowActionSheet2Options) {
+  const dialogPage = uni.openDialogPage({
+    url: '/pages/index/actionSheet',
+    success() {
+      setTimeout(function () {
+        uni.$emit('showActionSheet2Options', options)
+      }, 100);
+    }
+  })
+
+  uni.$once('closeDialog', () => {
+    uni.$off('actionSheet2ItemClick')
+    uni.$off('actionSheet2CancelClick')
+    setTimeout(() => {
+      uni.closeDialogPage({
+        dialogPage, success() {
+          const res = new ShowActionSheet2Impl()
+          options.fail?.(res)
+          options.complete?.(res)
+        }
+      })
+    }, 300)
+  })
+  uni.$once('actionSheet2ItemClick', (tapIndex : number) => {
+    uni.closeDialogPage({ dialogPage })
+    const res = { errMsg: "showActionSheet2: ok", errSubject: 'showActionSheet2', tapIndex } as ShowActionSheet2Success
+    options.success?.(res)
+    options.complete?.(res)
+    uni.$off('actionSheet2CancelClick')
+    uni.$off('closeDialog')
+  })
+  uni.$once('actionSheet2CancelClick', () => {
+    uni.closeDialogPage({ dialogPage })
+    const res = new ShowActionSheet2Impl()
+    options.fail?.(res)
+    options.complete?.(res)
+    uni.$off('actionSheet2ItemClick')
+    uni.$off('closeDialog')
   })
 }

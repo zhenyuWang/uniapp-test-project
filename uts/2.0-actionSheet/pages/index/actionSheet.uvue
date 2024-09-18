@@ -1,26 +1,63 @@
 <template>
   <view class="dialog-container">
-      <view class="dialog-content">
-        <text>title: {{title}}</text>
+    <view class="dialog-marker" @click="handleMarkerClick"></view>
+    <view :style="{transform: contentTransform}" class="dialog-content">
+      <view v-if="title !== null" class="title">
+        <text class="title-text text">{{title}}</text>
+      </view>
+      <view class="item" v-for="(item, index) in itemList" :key="index" @click="handleItemClick(index)">
+        <text :style="{color: itemColor}" class="text">{{item}}</text>
+      </view>
+      <view class="cancel-container" @click="handleCancelClick">
+        <text class="text">{{cancelText}}</text>
       </view>
     </view>
+  </view>
 </template>
 
 <script>
+  import type { ShowActionSheet2Options } from '../../uni_modules/uni-showActionSheet2/utssdk/interface.uts'
+
   export default {
     data() {
       return {
-        title: ''
+        title: null as string | null,
+        itemList: [] as string[],
+        itemColor: '#ccc',
+        cancelText: '取消',
+        contentTransform: 'translateY(100%)'
       }
     },
-    onLoad(options: OnLoadOptions) {
-      console.log('actionSheet onLoad options', options)
-      if(options['title'] !== null){
-        this.title = options['title']
-      }
+    onLoad() {
+      uni.$once('showActionSheet2Options', (options : ShowActionSheet2Options) => {
+        if (options.title !== null) {
+          this.title = options.title!
+        }
+        this.itemList = options.itemList
+        if (options.itemColor !== null) {
+          this.itemColor = options.itemColor!
+        }
+        if (options.cancelText !== null) {
+          this.cancelText = options.cancelText!
+        }
+      })
+    },
+    onReady() {
+      setTimeout(() => {
+        this.contentTransform = 'translateY(0)'
+      }, 100)
     },
     methods: {
-      
+      handleMarkerClick() {
+        this.contentTransform = 'translateY(100%)'
+        uni.$emit('closeDialog', null)
+      },
+      handleItemClick(index : number) {
+        uni.$emit('actionSheet2ItemClick', index)
+      },
+      handleCancelClick() {
+        uni.$emit('actionSheet2CancelClick', null)
+      }
     }
   }
 </script>
@@ -29,20 +66,53 @@
   .dialog-container {
     width: 100%;
     height: 100%;
+  }
+
+  .dialog-marker {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     background-color: rgba(0, 0, 0, 0.3);
-    display: flex;
-    justify-content: center;
-    align-items: center;
   }
 
   .dialog-content {
-    width: 80%;
-    padding: 10px;
-    background-color: #fff;
-    border-radius: 6px;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+    background-color: #f8f8f8;
+    transition: transform;
+    transition-duration: 0.3s;
+    transition-timing-function: linear;
   }
 
-  .mt-10 {
+  .title {
+    padding: 16px 0;
+    background-color: #fff;
+  }
+
+  .title-text {
+    font-size: 14px;
+    color: #747474;
+  }
+
+  .item {
+    padding: 16px 0;
+    border-top: 1px solid #ccc;
+    background-color: #fff;
+  }
+
+  .text {
+    text-align: center;
+  }
+
+  .cancel-container {
     margin-top: 10px;
+    padding: 16px 0;
+    background-color: #fff;
   }
 </style>
