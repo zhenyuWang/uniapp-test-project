@@ -1,0 +1,21 @@
+<script lang="uts">
+	export default {
+		onShow: function () {
+			console.log('App Show')
+		},
+		onThemeChange(options: OnThemeChangeOptions){
+      console.log('App onThemeChange', options)
+    }
+	}
+</script>
+
+<style>
+	/*每个页面公共css */
+	.uni-row {
+		flex-direction: row;
+	}
+
+	.uni-column {
+		flex-direction: column;
+	}
+</style>

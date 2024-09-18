@@ -1,0 +1,21 @@
+<template>
+  <view>
+    <text>index</text>
+    <button @click="handleClick">trigger click</button>
+  </view>
+</template>
+
+<script setup lang="uts">
+  onLoad((options : OnLoadOptions) => {
+    throw Error('wzf test error onLoad')
+  })
+  onPageShow(() => {
+    throw Error('wzf test error onPageShow')
+  })
+  onReady(() => {
+    throw Error('wzf test error onReady')
+  })
+  const handleClick = () => {
+    throw Error('wzf test error handleClick')
+  }
+</script>
