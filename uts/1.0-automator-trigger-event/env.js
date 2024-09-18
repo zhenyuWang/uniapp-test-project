@@ -22,10 +22,10 @@ module.exports = {
             "id": "",
             "executablePath": ""
         },
-        "version": "",
+        "version": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/launcher/base/version.txt",
         "ios": {
-            "id": "",
-            "executablePath": ""
+            "id": "F01B89BE-6BA8-43FA-AC54-442BC6BD4937",
+            "executablePath": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/launcher/base/Pandora_simulator.app"
         },
         "uni-app-x": {
             "version": "/Applications/HBuilderX-Dev.app/Contents/HBuilderX/plugins/uniappx-launcher/base/version.txt",

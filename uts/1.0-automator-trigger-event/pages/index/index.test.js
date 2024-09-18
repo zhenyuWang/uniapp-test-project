@@ -5,12 +5,12 @@ describe('test trigger event', () => {
     await page.waitFor('view');
   });
 
-  // it('click', async () => {
-  //   const triggerClickBtn = await page.$('#trigger-click-btn')
-  //   await triggerClickBtn.tap();
-  //   const clickTriggered = await page.data('clickTriggered')
-  //   expect(clickTriggered).toBe(true)
-  // });
+  it('click', async () => {
+    const triggerClickBtn = await page.$('#trigger-click-btn')
+    await triggerClickBtn.tap();
+    const clickTriggered = await page.data('clickTriggered')
+    expect(clickTriggered).toBe(true)
+  });
 
   // it('input', async () => {
   //   const myInput = await page.$('#my-input')
