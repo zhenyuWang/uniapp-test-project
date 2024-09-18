@@ -1,0 +1,52 @@
+<template>
+  <view>
+    <image class="logo" src="/static/logo.png"></image>
+    <view class="text-area">
+      <text class="title">{{title}}</text>
+    </view>
+    <button @click="test1">test1</button>
+    <button @click="test2">test2</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello'
+      }
+    },
+    onLoad() {
+
+    },
+    onHide() {
+      console.log('index page onHide');
+    },
+    methods: {
+      test1() {
+        uni.chooseImage({
+      
+        })
+      },
+      test2() {
+        uni.chooseLocation({
+      
+        })
+      }
+    }
+  }
+</script>
+
+<style>
+  .logo {
+    height: 100px;
+    width: 100px;
+    margin: 100px auto 25px auto;
+  }
+
+  .title {
+    font-size: 18px;
+    color: #8f8f94;
+    text-align: center;
+  }
+</style>
