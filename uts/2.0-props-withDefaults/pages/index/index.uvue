@@ -1,0 +1,10 @@
+<template>
+  <view>
+    <text>index page</text>
+    <Foo msg='new msg' />
+  </view>
+</template>
+
+<script setup>
+  import Foo from './Foo.uvue'
+</script>
