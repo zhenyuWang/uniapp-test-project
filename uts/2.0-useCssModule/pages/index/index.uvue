@@ -1,0 +1,43 @@
+<template>
+  <view>
+    <view>useCssModule123123</view>
+    <view :class="$style.default1">1</view>
+    <view :class="$style.default2">2</view>
+    <view :class="test.test1">3</view>
+    <view :class="test.test2">4</view>
+  </view>
+</template>
+
+<script setup>
+  const defaultModuleCss = useCssModule()
+  console.log('defaultModuleCss', defaultModuleCss)
+  const testModuleCss = useCssModule('test')
+  console.log('testModuleCss', testModuleCss)
+</script>
+
+<style module>
+  .default1 {
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+
+  .default2 {
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+  }
+</style>
+<style module='test'>
+  .test1 {
+    width: 100px;
+    height: 100px;
+    background-color: green;
+  }
+
+  .test2 {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+  }
+</style>
