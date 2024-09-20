@@ -1,0 +1,9 @@
+<template>
+  <view class="page">
+    <Foo :limit="5" />
+  </view>
+</template>
+
+<script setup lang='uts'>
+  import Foo from './Foo.uvue'
+</script>

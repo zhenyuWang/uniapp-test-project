@@ -1,0 +1,19 @@
+<template>
+  <view>
+    <text>this is Foo: {{limit}}</text>
+    <Foo v-if="limit>1" :limit="limit-1" />
+  </view>
+</template>
+
+<script setup lang="uts">
+  defineOptions({
+    name: 'Foo'
+  })
+
+  defineProps({
+    limit: {
+      type: Number,
+      default: 0
+    }
+  })
+</script>
