@@ -1,0 +1,41 @@
+<template>
+  <view>
+    <text class="title">{{title}}</text>
+    <button @click="goAbout">go about</button>
+    <button @click="goSetting">go setting</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'this is index',
+        route: 'page data route',
+        $vm: 'test $vm'
+      }
+    },
+    onLoad() {
+      const pages = getCurrentPages()
+      const currentPage = pages[pages.length-1]
+      console.log('wzf--- index onLoad pages', pages.length)
+      console.log('this.route', this.route)
+      console.log('currentPage.route', currentPage.route)
+      console.log('this.options', this.options)
+    },
+    onReady(){
+      const pages = getCurrentPages()
+      console.log('wzf--- index onReady pages', pages.length)
+    },
+    methods: {
+      goAbout(){
+        uni.switchTab({
+          url: '/pages/index/about'
+        })
+      },
+      goSetting(){
+        uni.navigateTo({url: '/pages/index/setting'})
+      }
+    }
+  }
+</script>
