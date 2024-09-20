@@ -1,0 +1,46 @@
+<template>
+  <view>
+    <text id="title">{{title}}</text>
+    <button @click="testGetCurrentPages">getCurrentPages</button>
+    <button @click="testGetPage">test getPage</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'about23'
+      }
+    },
+    onLoad(){
+      console.log('about onLoad');
+    },
+    onShow(){
+      console.log('about onShow');
+    },
+    onReady(){
+      console.log('about onReady');
+    },
+    onHide(){
+      console.log('about onHide');
+    },
+    onUnload(){
+      console.log('about onUnload');
+    },
+    methods: {
+      testGetCurrentPages() {
+        const pages = getCurrentPages()
+        console.log('pages', pages)
+        console.log('pages.length', pages.length)
+        console.log('pages.length', pages[pages.length-1].route)
+        console.log('pages.length', pages[pages.length-1].options)
+      },
+      testGetPage(){
+        const title = uni.getElementById('title')
+        // const elPage = title.getPage()
+        // console.log('title elPage', elPage)
+      }
+    }
+  }
+</script>

@@ -1,0 +1,10 @@
+<template>
+  <view>
+    <text>this is foo</text>
+    <text>msg: {{msg}}</text>
+  </view>
+</template>
+
+<script setup lang='uts'>
+  const msg = inject<string | null>('msg', null)
+</script>

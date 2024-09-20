@@ -1,0 +1,95 @@
+<template>
+  <view>
+    <button @click="testGetCurrentPages">getCurrentPages</button>
+    <button id='go-about' @click="goAbout">goAbout</button>
+    <button @click="testGetPage">test getPage</button>
+    <Foo />
+    <view class="my-view"><text>test css v-bind</text></view>
+  </view>
+</template>
+
+<script>
+  import Foo from './Foo.uvue'
+  export default {
+    components: {Foo},
+    provide: {
+      msg: 'msg from index'
+    },
+    data() {
+      return {
+        title: 'Hello',
+        bgRed: 'red'
+      }
+    },
+    onLoad() {
+      console.log('index onLoad');
+    },
+    onShow() {
+      console.log('index onShow');
+    },
+    onReady() {
+      console.log('index onReady');
+    },
+    onHide() {
+      console.log('index onHide');
+    },
+    onUnload() {
+      console.log('index onUnload');
+    },
+    methods: {
+      testGetCurrentPages() {
+        const pages = getCurrentPages()
+        console.log('pages', pages)
+        console.log('pages.length', pages.length)
+        const currentPage = pages[pages.length - 1]
+        console.log('currentPage.route', currentPage.route)
+        console.log('currentPage.options', currentPage.options)
+        const fn1 = (args : any | null) => {
+          console.log('this is fn1', args)
+        }
+        const fn2 = (args : any | null) => {
+          console.log('this is fn2', args)
+        }
+        const fn11 = (args : any | null) => {
+          console.log('this is fn11', args)
+        }
+
+        currentPage.on('test1', fn1)
+        currentPage.on('test1', fn11)
+        currentPage.once('test2', fn2)
+
+        currentPage.emit('test1', { name: '111' })
+        currentPage.emit('test1', { age: '222' })
+        currentPage.off('test1', fn1)
+        currentPage.emit('test1', null)
+
+        currentPage.emit('test2', { name: '111' })
+        currentPage.emit('test2', { age: '222' })
+        currentPage.emit('test2', null)
+        const androidView = currentPage.getAndroidView()
+        console.log('page.androidView', androidView == null)
+        console.log('page.getElementById', currentPage.getElementById('go-about'))
+        uni.setNavigationBarColor({
+          frontColor: '#ffffff',
+          backgroundColor: '#ff0000'
+        })
+        uni.showToast({ title: 'test' })
+      },
+      goAbout() {
+        uni.navigateTo({ url: '/pages/index/about?test=123' })
+        // uni.switchTab({url: '/pages/index/about?test=123'})
+      },
+      testGetPage() {
+        const goAboutBtn = uni.getElementById('go-about')
+        const elPage = goAboutBtn.getPage()
+        console.log('goAboutBtn elPage', elPage)
+      }
+    }
+  }
+</script>
+
+<style>
+  .my-view {
+    background-color: v-bind(bgRed);
+  }
+</style>
