@@ -1,0 +1,37 @@
+<template>
+  <view style="flex: 1;">
+    <web-view
+      ref="webview"
+      id="webview"
+      style="flex: 1;"
+      :webview-styles="webviewStyles"
+      :src="src"
+    />
+  </view>
+</template>
+
+<script>
+export default {
+	data() {
+		return {
+			src: 'http://test.dcloud.io/unix_h5_build/111_dev_hello-uni-app-x-app-webview/#/pages/component/button/button',
+			webviewElement: null as UniWebViewElement | null,
+			webviewContext: null as WebviewContext | null,
+			webviewStyles: {
+				progress: false
+      },
+      statusBarHeight: 0
+		}
+	},
+  onReady() {
+    const windowInfo = uni.getWindowInfo()
+    this.statusBarHeight = windowInfo.statusBarHeight
+		this.webviewElement = this.$refs['webview'] as UniWebViewElement
+		this.webviewContext = uni.createWebviewContext('webview', this)
+
+	},
+	methods: {
+		
+	}
+}
+</script>
