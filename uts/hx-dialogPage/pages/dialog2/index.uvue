@@ -1,0 +1,109 @@
+<template>
+  <view class="dialog-container">
+    <view class="dialog-content">
+      <text>title: {{title}}</text>
+      <text>onBackPress return null</text>
+      <button @click="goAbout">goAbout</button>
+      <button @click="goSetting">goSetting</button>
+      <button @click="openDialogPage1">openDialogPage1</button>
+      <button @click="closeDialogPage">closeDialogPage no options</button>
+      <button @click="closeThisDialogPage">closeThisDialogPage</button>
+      <button @click="closeThisDialogPage1">closeDialogPage1</button>
+      <button @click="back">back</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'this is dialog2'
+      }
+    },
+    onLoad(options : OnLoadOptions) {
+      console.log('wzf--------dialog2 onLoad', options)
+    },
+    onShow() {
+      console.log('wzf--------dialog2 onShow')
+    },
+    onReady() {
+      const currentPages = getCurrentPages()
+      console.log('wzf--------dialog2 onReady currentPages.length', currentPages.length)
+      const parentPage = this.$getParentPage()!
+      console.log('wzf--------dialog2 onReady parentPage', parentPage)
+      const grandParentPage = parentPage.$getParentPage()
+      console.log('wzf--------dialog2 onReady grandParentPage', grandParentPage)
+      const parentDialogPages = parentPage.$getDialogPages()
+      console.log('wzf--------dialog2 onReady parentDialogPages', parentDialogPages)
+      const dialogPages = parentPage.$getDialogPages()
+      console.log('wzf--------dialog2 onReady dialogPages', dialogPages)
+    },
+    onHide() {
+      console.log('wzf--------dialog2 onHide')
+    },
+    onUnload() {
+      console.log('wzf--------dialog2 onUnload')
+    },
+    onBackPress(options : OnBackPressOptions) : boolean | null {
+      console.log('onBackPress', options)
+      return null
+    },
+    methods: {
+      goAbout() {
+        uni.switchTab({ url: '/pages/about/index' })
+      },
+      goSetting() {
+        uni.navigateTo({ url: '/pages/setting/index?name=test' })
+      },
+      openDialogPage1(){
+        uni.openDialogPage({ url: '/pages/dialog1/index' })
+      },
+      closeDialogPage() {
+        uni.closeDialogPage()
+      },
+      closeThisDialogPage() {
+        uni.closeDialogPage({
+          dialogPage: this.$dialogPage,
+          complete(res) {
+            console.log('closeThisDialogPagecomplete', res)
+          }
+        })
+      },
+      closeThisDialogPage1(){
+        const parentPage = this.$getParentPage()!
+        const dialogPages = parentPage.$getDialogPages()
+        const dialogPage1 = dialogPages[1]
+        console.log('wzf--------dialog2 dialogPage1',dialogPage1)
+        uni.closeDialogPage({
+          dialogPage: dialogPage1,
+          complete(res) {
+            console.log('closeThisDialogPage1', res)
+          }
+        })
+      },
+      back() {
+        uni.navigateBack({complete(res){
+          console.log('dialog2 back', res)
+        }})
+      }
+    }
+  }
+</script>
+
+<style>
+  .dialog-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dialog-content {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 6px;
+  }
+</style>

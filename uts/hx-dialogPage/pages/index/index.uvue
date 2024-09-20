@@ -1,0 +1,86 @@
+<template>
+  <view>
+    <text>{{title}}</text>
+    <button @click="goAbout">goAbout</button>
+    <button @click="goSetting">goSetting</button>
+    <button @click="openDialogPage1">openDialogPage1 disableEscBack true</button>
+    <button @click="triggerGlobalFn">trigger global fn</button>
+  </view>
+</template>
+
+<script lang="uts">
+  export default {
+    data() {
+      return {
+        title: 'index1234',
+        myUrl: 'setting/index'
+      }
+    },
+    onLoad() {
+      console.log('wzf--------index onLoad')
+    },
+    onShow() {
+      console.log('wzf--------index onShow')
+    },
+    onReady() {
+      console.log('wzf--------index onReady')
+    },
+    onHide() {
+      console.log('wzf--------index onHide')
+    },
+    methods: {
+      goAbout() {
+        uni.switchTab({
+          url: '/pages/about/index',
+          success(res) {
+            console.log('goAbout success', res)
+          },
+          fail(res) {
+            console.log('goAbout fail', res)
+          },
+          complete(res) {
+            console.log('goAbout complete', res)
+          }
+        })
+      },
+      goSetting() {
+        uni.navigateTo({
+          // url: '/pages/setting/index',
+          url: '/pages/' + this.myUrl,
+          animationType: 'slide-in-bottom',
+          success(res) {
+            console.log('navigateTo setting success', res)
+          }
+        })
+      },
+      openDialogPage1() {
+        const dialogPage1 = uni.openDialogPage({
+          url: '/pages/dialog1/index',
+          disableEscBack: true,
+          success(res) {
+            console.log('openDialogPage1 success', res)
+            setTimeout(() => {
+              const dialog1 = uni.getElementById('dialog1')
+              console.log('uni.getElementById dialog1', dialog1);
+
+              const dialog1Title = uni.getElementById('dialog1-title')
+              console.log('uni.getElementById dialog1Title', dialog1Title);
+            }, 2000)
+          },
+          fail(res) {
+            console.log('openDialogPage1 fail', res)
+          },
+          complete(res) {
+            console.log('openDialogPage1 complete', res)
+          }
+        })
+        console.log('dialogPage1', dialogPage1)
+      },
+      triggerGlobalFn() {
+        const app = getApp()
+        app.globalFn()
+      }
+    }
+
+  }
+</script>

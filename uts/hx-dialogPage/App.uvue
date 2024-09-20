@@ -1,0 +1,45 @@
+<script lang="uts">
+  let firstBackTime = 0
+  export default {
+    onLaunch: function () {
+      console.log('App Launch')
+      // const dialogPage = uni.openDialogPage({ url: '/pages/dialog-for-launch/index?name=launch' })
+      // console.log('dialogPage in App', dialogPage)
+      // setTimeout(() => {
+      //   const parentPage = dialogPage!.$getParentPage()!
+      //   console.log('parentPage in App', parentPage)
+      //   const currentPages = getCurrentPages()
+      //   console.log('currentPages in App', currentPages)
+      //   console.log('parentPage === currentPages[0]', parentPage === currentPages[0])
+      //   const dialogPages = parentPage.$getDialogPages()
+      //   console.log('dialogPages in App', dialogPages)
+      //   console.log('parentPage.$getDialogPages()[0] === dialogPage', dialogPages[0] === dialogPage)
+      // }, 1000)
+    },
+    onShow: function () {
+      console.log('App Show')
+    },
+    onHide: function () {
+      console.log('App Hide')
+    },
+    onError: function (err: any) {
+      console.log('App onError', err)
+    },
+    methods: {
+      globalFn(){
+        console.log('this is global fn')
+      }
+    }
+  }
+</script>
+
+<style>
+  /*每个页面公共css */
+  .uni-row {
+    flex-direction: row;
+  }
+
+  .uni-column {
+    flex-direction: column;
+  }
+</style>

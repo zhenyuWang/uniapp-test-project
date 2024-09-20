@@ -1,0 +1,101 @@
+<template>
+  <view class="dialog-container">
+    <view class="dialog-content">
+      <text>title: {{title}}</text>
+      <text>onBackPress return false</text>
+      <button @click="goAbout">goAbout</button>
+      <button @click="goSetting">goSetting</button>
+      <button @click="closeDialogPage">closeDialogPage</button>
+      <button @click="closeThisDialogPage">closeThisDialogPage</button>
+      <button @click="openDialogPage1">openDialogPage1</button>
+      <button @click="back">back</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'dialog for App onLunch',
+      }
+    },
+    onLoad(options : OnLoadOptions) {
+      console.log('wzf--------dialog for App onLunch onLoad', options)
+    },
+    onShow() {
+      console.log('wzf--------dialog for App onLunch onShow')
+    },
+    onReady() {
+      const currentPages = getCurrentPages()
+      console.log('wzf--------dialog for App onLunch onReady currentPages.length', currentPages.length)
+      const parentPage = this.$getParentPage()!
+      console.log('wzf--------dialog for App onLunch parentPage', parentPage)
+      console.log('wzf--------dialog for App onLunch parentPage === currentPages[0]', parentPage === currentPages[0])
+      const grandParentPage = parentPage.$getParentPage()
+      console.log('wzf--------dialog for App onLunch grandParentPage', grandParentPage)
+      const parentDialogPages = parentPage.$getDialogPages()
+      console.log('wzf--------dialog for App onLunch parentDialogPages', parentDialogPages)
+      console.log('wzf--------dialog for App onLunch this.$dialogPage', this.$dialogPage)
+      console.log('wzf--------dialog for App onLunch parentDialogPages[0] === this.$dialogPage', parentDialogPages[0] === this.$dialogPage)
+    },
+    onHide() {
+      console.log('wzf--------dialog for App onLunch onHide')
+    },
+    onUnload() {
+      console.log('wzf--------dialog for App onLunch onUnload')
+    },
+    onBackPress(options : OnBackPressOptions) : boolean | null {
+      console.log('onBackPress', options)
+      return false
+    },
+    methods: {
+      goAbout() {
+        uni.switchTab({ url: '/pages/about/index' })
+      },
+      goSetting() {
+        uni.navigateTo({ url: '/pages/setting/index?name=test' })
+      },
+      openDialogPage1() {
+        const dialogPage1 = uni.openDialogPage({ url: '/pages/dialog1/index' })
+        console.log('dialogPage1', dialogPage1)
+      },
+      closeDialogPage() {
+        uni.closeDialogPage({
+          complete(res) {
+            console.log('closeDialogPage complete', res)
+          }
+        })
+      },
+      closeThisDialogPage() {
+        uni.closeDialogPage({
+          dialogPage: this.$dialogPage,
+          complete(res) {
+            console.log('closeThisDialogPagecomplete', res)
+          }
+        })
+      },
+      back() {
+        uni.navigateBack()
+      }
+    }
+  }
+</script>
+
+<style>
+  .dialog-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dialog-content {
+    width: 80%;
+    height: 380px;
+    background-color: #fff;
+    border-radius: 6px;
+  }
+</style>

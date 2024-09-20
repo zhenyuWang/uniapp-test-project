@@ -1,0 +1,139 @@
+<template>
+  <view id="dialog1" class="dialog-container">
+    <view class="dialog-content">
+      <text id="dialog1-title">title: {{title}}</text>
+      <text>onBackPress return true</text>
+      <button @click="goAbout">goAbout</button>
+      <button @click="goSetting">goSetting</button>
+      <button @click="closeDialogPage">closeDialogPage</button>
+      <button @click="closeThisDialogPage">closeThisDialogPage</button>
+      <button @click="openDialogPage1">openDialogPage1</button>
+      <button @click="openDialogPage2">openDialogPage2</button>
+      <button @click="back">back</button>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'this is dialog1',
+      }
+    },
+    onLoad(options : OnLoadOptions) {
+      console.log('wzf--------dialog1 onLoad', options)
+    },
+    onShow() {
+      console.log('wzf--------dialog1 onShow')
+    },
+    onReady() {
+      // const currentPages = getCurrentPages()
+      // console.log('wzf--------dialog1 onReady currentPages.length', currentPages.length)
+      // const parentPage = this.$getParentPage()!
+      // console.log('wzf--------dialog1 onReady parentPage', parentPage)
+      // const grandParentPage = parentPage.$getParentPage()
+      // console.log('wzf--------dialog1 onReady grandParentPage', grandParentPage)
+      // const parentDialogPages = parentPage.$getDialogPages()
+      // console.log('wzf--------dialog1 onReady parentDialogPages', parentDialogPages)
+      // const thisDialogPage = this.$dialogPage
+      // console.log('wzf--------dialog1 onReady this', this)
+      // console.log('wzf--------dialog1 onReady thisDialogPage', thisDialogPage)
+      // console.log('wzf--------dialog1 onReady parentDialogPages[1] === this.$dialogPage', parentDialogPages[1] === thisDialogPage)
+    },
+    onHide() {
+      console.log('wzf--------dialog1 onHide')
+    },
+    onUnload() {
+      console.log('wzf--------dialog1 onUnload')
+    },
+    onBackPress(options : OnBackPressOptions) : boolean | null {
+      console.log('onBackPress', options)
+      return true
+    },
+    methods: {
+      goAbout() {
+        uni.switchTab({ url: '/pages/about/index' })
+      },
+      goSetting() {
+        uni.navigateTo({ url: '/pages/setting/index?name=test' })
+      },
+      openDialogPage1() {
+        const dialogPage1 = uni.openDialogPage({
+          url: '/pages/dialog1/index',
+          complete(res){
+            console.log('openDialogPage1 complete', res)
+          }
+        })!
+        console.log('dialogPage1', dialogPage1)
+        const fn1 = (args:any) => {
+          console.log('this is fn1', args)
+        }
+        const fn2 = (args:any) => {
+          console.log('this is fn2', args)
+        }
+        const fn11 = (args:any) => {
+          console.log('this is fn11', args)
+        }
+        
+        dialogPage1.on('test1', fn1)
+        dialogPage1.on('test1', fn11)
+        dialogPage1.once('test2', fn2)
+        setTimeout(() => {
+          dialogPage1.emit('test1', {name: '111'})
+          dialogPage1.emit('test1', {age: '222'})
+          dialogPage1.off('test1', fn1)
+          dialogPage1.emit('test1', null)
+          
+          dialogPage1.emit('test2', {name: '111'})
+          dialogPage1.emit('test2', {age: '222'})
+          dialogPage1.emit('test2', null)
+        }, 1000)
+      },
+      openDialogPage2() {
+        const dialogPage2 = uni.openDialogPage({ url: '/pages/dialog2/index' })
+        console.log('dialogPage2', dialogPage2)
+      },
+      closeDialogPage() {
+        uni.closeDialogPage({
+          complete(res) {
+            console.log('closeDialogPage complete', res)
+          }
+        } as CloseDialogPageOptions)
+      },
+      closeThisDialogPage() {
+        uni.closeDialogPage({
+          dialogPage: this.$dialogPage,
+          fail(res) {
+            console.log('closeThisDialogPage fail', res)
+          },
+          complete(res) {
+            console.log('closeThisDialogPage complete', res)
+          }
+        })
+      },
+      back() {
+        uni.navigateBack({complete(res){
+          console.log('dialog1 back', res)
+        }})
+      }
+    }
+  }
+</script>
+
+<style>
+  .dialog-container {
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .dialog-content {
+    width: 80%;
+    background-color: #fff;
+    border-radius: 6px;
+  }
+</style>

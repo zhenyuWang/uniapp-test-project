@@ -1,0 +1,59 @@
+<template>
+  <view>
+    <text>title: {{title}}</text>
+    <button @click="goIndex">goIndex</button>
+    <button @click="goAbout">goAbout</button>
+    <button @click="goSetting">goSetting</button>
+    <button @click="openDialogPage">openDialogPage</button>
+    <button @click="openDialogPageToHome">openDialogPageToHome</button>
+    <button @click="back">back</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'this is setting'
+      }
+    },
+    onShow() {
+      const pages = getCurrentPages()
+      console.log('pages.length in setting onShow', pages.length)
+    },
+    onReady(){
+      console.log('setting onReady')
+    },
+    onHide(){
+      console.log('setting onHide')
+    },
+    onUnload(){
+      console.log('setting onUnload')
+    },
+    methods: {
+      goIndex() {
+        uni.switchTab({ url: '/pages/index/index' })
+      },
+      goAbout() {
+        uni.switchTab({ url: '/pages/about/index' })
+      },
+      goSetting() {
+        uni.navigateTo({ url: '/pages/setting/index' })
+      },
+      openDialogPage() {
+        console.log('openDialogPage in setting')
+        uni.openDialogPage({ url: '/pages/dialog1/index' })
+      },
+      openDialogPageToHome() {
+        const pages = getCurrentPages()
+        const homePage = pages[0]
+        uni.openDialogPage({ url: '/pages/dialog1/index', parentPage: homePage, complete(res) {
+          console.log('openDialogPageToHome complete', res)
+        }})
+    },
+    back(){
+      uni.navigateBack()
+    }
+  }
+  }
+</script>

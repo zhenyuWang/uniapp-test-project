@@ -1,0 +1,30 @@
+<template>
+	<view>
+		<text>title: {{title}}</text>
+    <button @click="goIndex">goIndex</button>
+    <button @click="goSetting">goSetting</button>
+    <button @click="openDialogPage1">openDialogPage1</button>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'this is about'
+			}
+		},
+		methods: {
+      goIndex(){
+        uni.switchTab({url: '/pages/index/index'})
+      },
+      goSetting(){
+        uni.navigateTo({url: '/pages/setting/index'})
+      },
+      openDialogPage1() {
+        const dialogPage1 = uni.openDialogPage({ url: '/pages/dialog1/index' })
+        console.log('dialogPage1', dialogPage1)
+      }
+		}
+	}
+</script>
