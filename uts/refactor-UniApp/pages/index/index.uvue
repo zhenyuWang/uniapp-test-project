@@ -1,0 +1,95 @@
+<template>
+  <view class="page-container">
+   <!-- <button class="mb-10" @click="checkGlobalData">check globalData</button>
+    <button class="mb-10" @click="checkAppFunction">check app funtion</button>
+    <button class="mb-10" @click="checkEventBus">check eventBus</button>
+    <button class="mb-10" @click="checkGetAndroidApplication">check getAndroidApplication</button> -->
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello'
+      }
+    },
+    onReady() {
+      setTimeout(() => {
+        throw new Error('666666666666666')
+        // const arr = [1]
+        // console.log('111111111111111', arr[2])
+      }, 100)
+    },
+    methods: {
+      // checkGlobalData() : boolean {
+      //   const app = getApp()
+      //   const res = app.globalData.num == 100 && app.globalData.str == 'globalData str' && app.globalData == app.$vm!.globalData && app.globalData == app.vm!.globalData
+      //   console.log('checkGlobalData', res)
+      //   return res
+      // },
+      // checkAppFunction() : boolean {
+      //   const app = getApp()
+      //   const fn1Res = app.vm!.fn1()
+      //   const fn2Res = app.vm!.fn2(1, 2)
+      //   const res = fn1Res == 'fn1 triggerd' && fn2Res == 3
+      //   console.log('checkAppFunction', res)
+      //   return res
+      // },
+      // checkEventBus() : boolean {
+      //   const app = getApp()
+      //   let num = 0
+      //   const fn1 = (args : any | null) => {
+      //     console.log('fn1 triggred', args)
+      //     num++
+      //   }
+      //   const fn2 = (args : any | null) => {
+      //     console.log('fn2 triggred', args)
+      //     num++
+      //   }
+      //   const fn3 = (args : any | null) => {
+      //     console.log('fn3 triggred', args)
+      //     num++
+      //   }
+
+      //   app.on('fn12', fn1)
+      //   app.on('fn12', fn2)
+      //   app.once('fn3', fn3)
+
+      //   app.emit('fn12', { name: 'name' })
+      //   app.emit('fn12', { age: 20 })
+      //   app.off('fn12', fn1)
+      //   app.emit('fn12', null)
+
+      //   app.emit('fn3', { name: 'name' })
+      //   app.emit('fn3', { age: 20 })
+      //   app.emit('fn3', null)
+
+      //   const res = num == 6
+      //   console.log('checkEventBus', res)
+      //   return res
+      // },
+      // checkGetAndroidApplication() : boolean {
+      //   const app = getApp()
+      //   const androidApplication = app.getAndroidApplication()
+      //   // #ifdef APP-ANDROID
+      //   const res = androidApplication != null
+      //   // #endif
+      //   // #ifndef APP-ANDROID
+      //   const res = androidApplication == null
+      //   // #endif
+      //   console.log('checkGetAndroidApplication', res)
+      //   return res
+      // }
+    }
+  }
+</script>
+<style>
+  .page-container {
+    padding: 10px;
+  }
+
+  .mb-10 {
+    margin-bottom: 10px;
+  }
+</style>

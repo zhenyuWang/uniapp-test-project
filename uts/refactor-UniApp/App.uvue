@@ -1,0 +1,35 @@
+<script lang="uts">
+  export default {
+    globalData: {
+      num: 100,
+      str: 'globalData str'
+    },
+    onLaunch: function () {
+      console.log('App Launch')
+    },
+    onShow: function () {
+      console.log('App Show')
+    },
+    onHide: function () {
+      console.log('App Hide')
+    },
+    onExit: function () {
+      console.log('App Exit')
+    },
+    onError: function (err: any) {
+      console.log('App Error', err)
+    },
+    methods: {
+      fn1(): string {
+        const res = 'fn1 triggerd'
+        console.log('fn1 res in App.uvue', res)
+        return res
+      },
+      fn2(a: number, b:number): number {
+        const res = a + b
+        console.log('fn2 res in App.uvue', res)
+        return res
+      }
+    }
+  }
+</script>

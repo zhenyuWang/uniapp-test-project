@@ -1,0 +1,11 @@
+import App from './App.uvue'
+
+import { createSSRApp } from 'vue'
+// const arr = [1]
+// console.log('111111111111111', arr[2])
+export function createApp() {
+	const app = createSSRApp(App)
+	return {
+		app
+	}
+}
