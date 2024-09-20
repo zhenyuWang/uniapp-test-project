@@ -1,0 +1,114 @@
+<template>
+	<view class="dialog-container">
+		<view class="dialog-content">
+			<text>title: {{ title }}</text>
+      <text>onBackPress return true</text>
+			<button @click="goAbout">goAbout</button>
+			<button @click="goSetting">goSetting</button>
+			<button @click="testGetCurrentPages">testGetCurrentPages</button>
+			<button @click="close">close</button>
+			<button @click="closeAll">close all</button>
+			<button @click="back">back</button>
+			<button @click="openDialogPage">openDialogPage</button>
+		</view>
+	</view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      title: 'this is dialog1 page'
+    }
+  },
+  onLoad(options: OnLoadOptions){
+    console.log('wzf--------dialog1 onLoad', options)
+  },
+  onShow(){
+    console.log('wzf--------dialog1 onShow')
+    const dialogPages = this.$page.getParentPage()!.getDialogPages()
+    console.log('wzf----- dialogPages.length', dialogPages!.length)
+  },
+  onReady(){
+  const currentPages = getCurrentPages()
+    console.log('wzf--------dialog1 onReady currentPages.length', currentPages.length)
+    const parentPage = this.getParentPage()
+    console.log('wzf--------dialog1 onReady parentPage', parentPage)
+  },
+  onHide(){
+    console.log('wzf--------dialog1 onHide')
+  },
+  onUnload(){
+    console.log('wzf--------dialog1 onUnload')
+  },
+  onBackPress(options : OnBackPressOptions) : boolean | null {
+		console.log('onBackPress', options)
+		return true
+	},
+  methods: {
+    goAbout(){
+      uni.switchTab({url: '/pages/about/index'})
+    },
+    goSetting(){
+      uni.navigateTo({url: '/pages/setting/index'})
+    },
+    testGetCurrentPages(){
+      const pages = getCurrentPages()
+      console.log('wzf-----getCurrentPages', pages)
+      const myAndroidView = pages[0].getAndroidView()
+      console.log('wzf-----getCurrentPages[0].getAndroidView', myAndroidView)
+      const dialogPage = this.$page
+      console.log('wzf-----dialogPage', dialogPage)
+      const parentPage = dialogPage!.getParentPage()
+      console.log('wzf-----parentPage', parentPage)
+    },
+    close(){
+      // console.log('wzf---this',this)
+      // uni.closeDialogPage(null)
+      uni.closeDialogPage({dialogPage: this.$page as UniDialogPage, animationType: 'slide-out-top'})
+    },
+    closeAll(){
+      uni.closeDialogPage({animationType: 'slide-out-bottom', success(res){
+        console.log('wzf-----closeDialogPage success', res)
+      },fail(err){
+        console.log('wzf-----closeDialogPage fail', err)
+      },complete(res){
+        console.log('wzf-----closeDialogPage complete', res)
+      }})
+    },
+    back(){
+      uni.navigateBack()
+    },
+    openDialogPage() {
+      // uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'pop-in'})
+      // uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'slide-in-bottom'})
+      const dialogPage = uni.openDialogPage({url: '/pages/dialog2/index?test=111', animationType: 'fade-in'})
+      // setTimeout(() => {
+      //   uni.closeDialogPage({dialogPage: dialogPage, animationType: 'fade-out', success(res){
+      //     console.log('wzf--------closeDialogPage success', res)
+      //   }, fail(err){
+      //     console.log('wzf--------closeDialogPage fail', err)
+      //   }, complete(res){
+      //     console.log('wzf--------closeDialogPage complete', res)
+      //   }})
+      // }, 3000)
+    }
+  }
+}
+</script>
+
+<style>
+.dialog-container {
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.3);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.dialog-content {
+	width: 80%;
+	background-color: #fff;
+	border-radius: 6px;
+}
+</style>

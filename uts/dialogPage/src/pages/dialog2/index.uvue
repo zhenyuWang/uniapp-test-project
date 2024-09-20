@@ -1,0 +1,79 @@
+<template>
+  <view class="dialog-container">
+    <view class="dialog-content">
+      <text>title: {{ title }}</text>
+      <button @click="goAbout">goAbout</button>
+      <button @click="goSetting">goSetting</button>
+      <button @click="close">close</button>
+      <button @click="back">back</button>
+      <button @click="openDialogPage">openDialogPage</button>
+    </view>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      title: 'this is dialog2 page'
+    }
+  },
+  onLoad(options: OnLoadOptions){
+    console.log('wzf--------dialog2 onLoad', options)
+  },
+  onShow(){
+    console.log('wzf--------dialog2 onShow')
+    const dialogPages = this.$page.getParentPage()!.getDialogPages()
+    console.log('wzf----- dialogPages.length', dialogPages!.length)
+  },
+  onReady(){
+  const currentPages = getCurrentPages()
+    console.log('wzf--------dialog2 onReady currentPages.length', currentPages.length)
+    const parentPage = this.getParentPage()
+    console.log('wzf--------dialog2 onReady parentPage', parentPage)
+  },
+  onHide(){
+    console.log('wzf--------dialog2 onHide')
+  },
+  onUnload(){
+    console.log('wzf--------dialog2 onUnload')
+  },
+  methods: {
+    goAbout(){
+      uni.switchTab({url: '/pages/about/index'})
+    },
+    goSetting(){
+      uni.navigateTo({url: '/pages/setting/index'})
+    },
+    close(){
+      // uni.closeDialogPage(null)
+      uni.closeDialogPage({dialogPage: this.$page as UniDialogPage, animationType: 'slide-out-top'})
+    },
+    back(){
+      uni.navigateBack()
+    },
+    openDialogPage() {
+      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'pop-in'})
+      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'slide-in-bottom'})
+      uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in'})
+    }
+  }
+}
+</script>
+
+<style>
+.dialog-container {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.3);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dialog-content {
+  width: 80%;
+  height: 300px;
+  background-color: #fff;
+  border-radius: 6px;
+}
+</style>

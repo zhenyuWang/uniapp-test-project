@@ -1,0 +1,31 @@
+<template>
+  <view>
+    <text>this is user</text>
+    <button @click='openDialogPage'>openDialogPage</button>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  onLoad() {
+    println('wzf--------user onLoad')
+  },
+  onShow() {
+    println('wzf--------user onShow')
+  },
+  onReady() {
+    println('wzf--------user onReady')
+  },
+  onHide() {
+    println('wzf--------user onHide')
+  },
+  onUnload() {
+    println('wzf--------user onUnload')
+  },
+  methods: {
+    openDialogPage() {
+      uni.openDialogPage({url: '/pages/dialog1/index', animationType: 'pop-in'})
+    }
+  }
+}
+</script>

@@ -1,0 +1,40 @@
+<template>
+	<view>
+		<text>title: {{ title }}</text>
+		<button @click="openDialogPage1ToHomePage">openDialogPage1ToHomePage</button>
+		<button @click="testGetCurrentPages">testGetCurrentPages</button>
+	</view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      title: 'this is about page'
+    }
+  },
+  methods: {
+    openDialogPage1ToHomePage() {
+      const pages = getCurrentPages()
+      console.log('wzf openDialogPage1ToHomePage', pages[0].route)
+      uni.openDialogPage({
+        parentPage: pages[0],
+        url: '/pages/dialog1/index?name=dialog1',
+        success(res) {
+          console.log('wzf openDialogPage1ToHomePage success', res)
+        },
+        fail(err) {
+          console.log('wzf openDialogPage1ToHomePage fail', err)
+        },
+        complete(res) {
+          console.log('wzf openDialogPage1ToHomePage complete', res)
+        }
+      })
+    },
+    testGetCurrentPages(){
+      const currentPages = getCurrentPages()
+      console.log('wzf--------about onReady currentPages.length', currentPages.length)
+    }
+  },
+}
+</script>

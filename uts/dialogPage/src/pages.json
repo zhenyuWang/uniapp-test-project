@@ -1,0 +1,61 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "index",
+        "enablePullDownRefresh": true
+      }
+    },
+    {
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "about"
+      }
+    },
+    {
+      "path": "pages/setting/index",
+      "style": {
+        "navigationBarTitleText": "setting"
+      }
+    },
+    {
+      "path": "pages/user/index",
+      "style": {
+        "navigationBarTitleText": "user"
+      }
+    },
+    {
+      "path": "pages/dialog1/index",
+      "style": {
+        "navigationBarTitleText": "dialog1"
+      }
+    },{
+      "path": "pages/dialog2/index",
+      "style": {
+        "navigationBarTitleText": "dialog2"
+      }
+    }
+  ],
+  // "tabBar": {
+  //   "list": [
+  //     {
+  //       "pagePath": "pages/index/index",
+  //       "iconPath": "static/logo.png",
+  //       "selectedIconPath": "static/logo.png",
+  //       "text": "index"
+  //     },
+  //     {
+  //       "pagePath": "pages/about/index",
+  //       "iconPath": "static/logo.png",
+  //       "selectedIconPath": "static/logo.png",
+  //       "text": "about"
+  //     }
+  //   ]
+  // },
+  "globalStyle": {
+    "navigationBarTitleText": "uni-app",
+    "backgroundColor": "#ff0000",
+    "backgroundColorContent": "#09c"
+  }
+}

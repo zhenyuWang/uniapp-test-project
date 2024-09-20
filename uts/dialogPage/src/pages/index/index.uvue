@@ -1,0 +1,96 @@
+<template>
+	<view class="page">
+		<text>this is index</text>
+		<button @click="goAbout">goAbout</button>
+		<button @click="goSetting">goSetting</button>
+		<button @click="openDialogPage">openDialogPage</button>
+		<button @click="testGetApp">testGetApp</button>
+	</view>
+</template>
+
+<script lang="uts">
+export default {
+  onLoad() {
+    console.log('wzf--------index onLoad')
+  },
+  onShow() {
+    console.log('wzf--------index onShow')
+  },
+  onReady() {
+    const currentPages = getCurrentPages()
+    console.log('wzf--------index onReady currentPages.length', currentPages.length)
+  },
+  onHide() {
+    console.log('wzf--------index onHide')
+  },
+  methods: {
+    goAbout() {
+      // uni.switchTab({ url: '/pages/about/index?test=456' })
+      uni.navigateTo({ url: '/pages/about/index?test=456' })
+    },
+    goSetting() {
+      uni.navigateTo({ url: '/pages/setting/index' })
+    },
+    openDialogPage() {
+      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'pop-in'})
+      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'slide-in-bottom'})
+      const dialogPage1InIndex = uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in'})!
+      console.log('dialogPage1InIndex', dialogPage1InIndex)
+      const fn1 = (args:any | null) => {
+          console.log('this is fn1', args)
+        }
+        const fn2 = (args:any | null) => {
+          console.log('this is fn2', args)
+        }
+        const fn11 = (args:any | null) => {
+          console.log('this is fn11', args)
+        }
+
+        dialogPage1InIndex.on('test1', fn1)
+        dialogPage1InIndex.on('test1', fn11)
+        dialogPage1InIndex.once('test2', fn2)
+        setTimeout(() => {
+          dialogPage1InIndex.emit('test1', {name: '111'})
+          dialogPage1InIndex.emit('test1', {age: '222'})
+          dialogPage1InIndex.off('test1', fn1)
+          dialogPage1InIndex.emit('test1', null)
+
+          dialogPage1InIndex.emit('test2', {name: '111'})
+          dialogPage1InIndex.emit('test2', {age: '222'})
+          dialogPage1InIndex.emit('test2', null)
+        }, 1000)
+      // const dialogPage = uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in', success(res){
+      // const dialogPage = uni.openDialogPage({url: '/pages/dialog11/index?test=111', animationType: 'fade-in', success(res){
+      // const dialogPage2 = uni.openDialogPage({parentPage: dialogPage1, url: '/pages/dialog2/index?test=111', animationType: 'fade-in', success(res){
+      //   console.log('wzf-----openDialogPage success', res)
+      // },fail(err){
+      //   console.log('wzf-----openDialogPage fail', err)
+      // },complete(res){
+      //   console.log('wzf-----openDialogPage complete', res)
+      // }})
+      // console.log('wzf------ dialogPage1', dialogPage1)
+      // const parentPage = dialogPage1!.getParentPage()
+      // console.log('wzf------ parentPage', parentPage)
+      // const dialogPages = this.getDialogPages()
+      // console.log('wzf------ dialogPages', dialogPages)
+      // setTimeout(() => {
+      //   // uni.closeDialogPage({dialogPage: dialogPage1, animationType: 'fade-out', success(res){
+      //   uni.closeDialogPage({dialogPage: parentPage, animationType: 'fade-out', success(res){
+      //     console.log('wzf--------closeDialogPage success', res)
+      //   }, fail(err){
+      //     console.log('wzf--------closeDialogPage fail', err)
+      //   }, complete(res){
+      //     console.log('wzf--------closeDialogPage complete', res)
+      //   }})
+      // }, 3000)
+    },
+    testGetApp(){
+      const app = getApp()
+      console.log('wzf testGetApp', app)
+      setTimeout(() => {
+        throw new Error('hahahaha')
+      }, 1000)
+    }
+  }
+}
+</script>

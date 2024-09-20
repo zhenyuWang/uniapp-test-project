@@ -1,0 +1,55 @@
+<template>
+  <view>
+    <text>this is setting</text>
+    <button @click="goIndex">goIndex</button>
+    <button @click="goUser">goUser</button>
+    <button @click="openDialogPage">openDialogPage</button>
+    <button @click="openDialogPageToHome">openDialogPageToHome</button>
+  </view>
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      testClass: 'cred',
+      modelValue: 'default value'
+    }
+  },
+  onReady() {
+    const currentPages = getCurrentPages()
+    console.log('wzf--------setting onReady currentPages.length', currentPages.length)
+  },
+  onHide() {
+    println('wzf----setting onHide')
+  },
+  onUnload() {
+    println('swzf----etting onUnload')
+  },
+  onBackPress(options : OnBackPressOptions) : boolean | null {
+		console.log('onBackPress', options)
+		return true
+	},
+  methods: {
+    goIndex(){
+      uni.switchTab({
+        url: '/pages/index/index',
+      })
+    },
+    goUser(){
+      uni.navigateTo({url: '/pages/user/index'})
+    },
+    openDialogPage() {
+      uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'slide-in-bottom'})
+    },
+    openDialogPageToHome(){
+      const pages = getCurrentPages()
+      const homePage = pages[0]
+      const dialogPage = uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'slide-in-bottom', parentPage: homePage})
+      setTimeout(() => {
+        uni.closeDialogPage({dialogPage: dialogPage, animationType: 'slide-out-bottom'})
+      }, 2000)
+    }
+  }
+}
+</script>
