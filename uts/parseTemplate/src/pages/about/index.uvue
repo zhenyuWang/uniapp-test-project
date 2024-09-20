@@ -1,55 +1,31 @@
 <template>
   <view>
-    <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
-    <text style="font-family: AlimamaDaoLiTiTTF;">123ABC阿斯蒂芬</text>
-    <button @click="goSetting">go setting</button>
-    <button @click="test">test</button>
+    <text>title: {{ title }}</text>
+    <input type="text" v-model='title' />
+    <button @click="getInfo">getInfo</button>
   </view>
-  <text>123123</text>
 </template>
 
 <script lang="uts">
 export default {
   data() {
     return {
-      testClass: 'cred',
+      title: 'this is about page'
     }
   },
-  onLoad() {
-    println('about onLoad-------------------------------------')
+  onload(){
+    console.log('wzf--------about onLoad')
   },
-  onShow() {
-    println('about onShow-------------------------------------')
-  },
-  onReady() {
-    println('about onReady-------------------------------------')
-  },
-  onHide() {
-    println('about onHide-------------------------------------')
-  },
-  onUnload() {
-    println('about onUnload-------------------------------------')
+  onReady(){
+    console.log('wzf--------about onReady')
   },
   methods: {
-    goSetting() {
-      uni.navigateTo({
-        url: '/pages/setting/index',
-        success() {
-          uni.navigateBack()
-        }
-      })
-    },
-    test(){
-      // uni.switchTab({url: '/pages/about/about'})
-      uni.navigateBack()
+    getInfo(){
+      const pages = getCurrentPages()
+      const pagesInfo = pages.map((page: UniPage): string => page.route)
+      console.log('wzf-------- pagesInfo in about onReady', pagesInfo)
+      console.log('wzf-------- pagesInfo.length in about onReady', pagesInfo.length)
     }
-  }
+  },
 }
 </script>
-
-<style>
-	@font-face {
-	  font-family: AlimamaDaoLiTiTTF;
-	  src: url('https://native-res.dcloud.net.cn/uni-app-x/static/font/AlimamaDaoLiTi.ttf');
-	}
-</style>

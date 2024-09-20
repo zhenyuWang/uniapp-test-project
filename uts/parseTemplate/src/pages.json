@@ -3,10 +3,17 @@
     {
       "path": "pages/index/index",
       "style": {
-        "navigationBarTitleText": "index",
-        "enablePullDownRefresh": true
+        "navigationBarTitleText": "index"
       }
     },
+    // {
+    //   "path": "pages/dialog/index",
+    //   "style": {
+    //     "navigationBarTitleText": "dialog",
+    //     "navigationStyle": "custom",
+    //     "backgroundColorContent": "transparent"
+    //   }
+    // },
     {
       "path": "pages/about/index",
       "style": {

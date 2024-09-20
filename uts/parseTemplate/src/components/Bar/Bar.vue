@@ -12,6 +12,12 @@ export default {
   mounted() {
     console.log('wzf-------- Bar mounted')
   },
+  beforeUpdate() {
+    console.log('wzf-------- Bar beforeUpdate')
+  },
+  updated() {
+    console.log('wzf-------- Bar updated')
+  },
   activated() {
     console.log('wzf-------- Bar activated')
   },

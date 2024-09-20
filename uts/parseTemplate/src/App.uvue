@@ -1,0 +1,145 @@
+<script lang="uts">
+let firstBackTime = 0
+export default {
+  globalData: {
+    num: 123,
+    str: '123'
+  },
+  onLaunch: function (options) {
+    console.log("wzf App Launch ---", options);
+    // uni.navigateTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- navigateTo success 1', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- navigateTo fail 1', err)
+    //   }
+    // })
+    // uni.navigateTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- navigateTo success 2', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- navigateTo fail 2', err)
+    //   }
+    // })
+    // uni.navigateTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- navigateTo success 3', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- navigateTo fail 3', err)
+    //   }
+    // })
+
+    // uni.redirectTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- redirectTo success 1', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- redirectTo fail 1', err)
+    //   }
+    // })
+    // uni.redirectTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- redirectTo success 2', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- redirectTo fail 2', err)
+    //   }
+    // })
+    // uni.redirectTo({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- redirectTo success 3', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- redirectTo fail 3', err)
+    //   }
+    // })
+
+    // uni.reLaunch({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- reLaunch success 1', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- reLaunch fail 1', err)
+    //   }
+    // })
+    // uni.reLaunch({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- reLaunch success 2', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- reLaunch fail 2', err)
+    //   }
+    // })
+    // uni.reLaunch({
+    //   url: '/pages/setting/index',
+    //   success(res){
+    //     console.log('wzf--- reLaunch success 3', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- reLaunch fail 3', err)
+    //   }
+    // })
+
+    // uni.switchTab({
+    //   url: '/pages/about/index',
+    //   success(res){
+    //     console.log('wzf--- switchTab success 1', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- switchTab fail 1', err)
+    //   }
+    // })
+    // uni.switchTab({
+    //   url: '/pages/about/index',
+    //   success(res){
+    //     console.log('wzf--- switchTab success 2', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- switchTab fail 2', err)
+    //   }
+    // })
+    // uni.switchTab({
+    //   url: '/pages/about/index',
+    //   success(res){
+    //     console.log('wzf--- switchTab success 3', res)
+    //   },
+    //   fail(err){
+    //     console.log('wzf--- switchTab fail 3', err)
+    //   }
+    // })
+  },
+  onShow: function () {
+    console.log("wzf App Show ---")
+  },
+  onHide: function () {
+    console.log("wzf App Hide ---")
+  },
+  methods: {
+    fn():string {
+      const res = 'fn in App.uvue'
+      console.log('wzf--- fn in App.vue', res)
+      return res
+    }
+  }
+};
+</script>
+
+<style>
+.content {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+}
+</style>

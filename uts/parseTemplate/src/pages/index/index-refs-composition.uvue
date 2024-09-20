@@ -1,0 +1,46 @@
+<template>
+  <view class="page">
+    <view class="row">
+      <text>existTextItems:</text>
+      <text>{{ dataInfo.existTextItems }}</text>
+    </view>
+    <view>
+      <text v-for="item in dataInfo.textItemsExpectNum" ref="textItems" :key="item">{{
+        item
+      }}</text>
+    </view>
+  </view>
+</template>
+
+<script setup lang="uts">
+
+type DataInfo = {
+  textItemsExpectNum: number
+  existTextItems: boolean
+}
+
+const dataInfo = reactive<DataInfo>({
+  textItemsExpectNum: 3,
+  existTextItems: false
+})
+
+const textItems = ref<UniElement[] | null>(null)
+
+onReady(() => {
+  console.log('wzf---textItems', textItems.value)
+  dataInfo.existTextItems = textItems.value?.length === dataInfo.textItemsExpectNum
+})
+
+defineExpose({
+  dataInfo
+})
+</script>
+
+<style>
+.row {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+</style>

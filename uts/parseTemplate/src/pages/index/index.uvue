@@ -1,15 +1,70 @@
 <template>
-  <view>
-    <Foo ref="test-foo" />
-  </view>
+	<view>
+		<text>1111</text>
+		<keep-alive>
+			<component :is="aliveComp" />
+		</keep-alive>
+		<button @click="changeAliveComp">changeAliveComp</button>
+		<button @click="goAbout">goAbout</button>
+		<button @click="testGetApp">testGetApp</button>
+	</view>
 </template>
 
 <script lang="uts">
-export default {
-  data() {
-    return {
-      test: 'test msg'
+import Bar from '@/components/Bar/Bar.vue'
+
+  export default {
+    data(){
+      return {
+        aliveComp: Bar
+      }
+    },
+    onLoad(){
+      console.log('wzf---index onLoad');
+    },
+    onShow(){
+      console.log('wzf---index onShow');
+    },
+    onReady(){
+      console.log('wzf---index onReady');
+    },
+    methods: {
+      changeAliveComp(){
+        this.aliveComp = this.aliveComp == null ? Bar : null
+      },
+      goAbout(){
+        uni.navigateTo({url: '/pages/about/index'})
+      },
+      testGetApp(){
+        const app = getApp()
+        console.log('app in index getApp', app.globalData)
+        console.log('app in index getApp', app.$vm)
+        console.log('app in index getApp', app.vm)
+        console.log('app in index getApp', app.vm!.fn())
+
+        const fn1 = (args : any | null) => {
+          console.log('this is fn1', args)
+        }
+        const fn2 = (args : any | null) => {
+          console.log('this is fn2', args)
+        }
+        const fn11 = (args : any | null) => {
+          console.log('this is fn11', args)
+        }
+
+        app.on('test1', fn1)
+        app.on('test1', fn11)
+        app.once('test2', fn2)
+        
+        app.emit('test1', { name: '111' })
+        app.emit('test1', { age: '222' })
+        app.off('test1', fn1)
+        app.emit('test1', null)
+        
+        app.emit('test2', { name: '111' })
+        app.emit('test2', { age: '222' })
+        app.emit('test2', null)
+      }
     }
-  },
-}
+  }
 </script>

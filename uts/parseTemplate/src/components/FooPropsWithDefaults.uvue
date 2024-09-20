@@ -1,0 +1,18 @@
+<template>
+  <view>
+    <text>{{props.msg}}</text>
+    <text>{{JSON.stringify(props.labels)}}</text>
+  </view>
+</template>
+
+<script setup lang='uts'>
+  interface FooProps {
+    msg : string
+    labels : string[]
+  }
+
+  const props = withDefaults(defineProps<FooProps>(), {
+    msg: 'hello',
+    labels: () : string[] => ['one', 'two']
+  })
+</script>

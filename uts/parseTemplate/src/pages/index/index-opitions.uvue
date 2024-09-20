@@ -1,0 +1,24 @@
+<template>
+  <view>
+    <text>{{ test }}</text>
+    <input v-model="test" />
+    <button @click="goAbout">goAbout</button>
+  </view>
+</template>
+
+<script lang="uts">
+  export default {
+    data() {
+      return {
+        test: 'test msg'
+      }
+    },
+    methods: {
+      goAbout() {
+        uni.navigateTo({
+          url: '/pages/about/index?name=123&age=456',
+        })
+      }
+    }
+  }
+</script>

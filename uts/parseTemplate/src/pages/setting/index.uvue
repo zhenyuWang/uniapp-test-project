@@ -1,8 +1,9 @@
 <template>
-  <view>
-    <text :style="{ color: true ? 'blue' : 'red' }">test style</text>
-    <button @click="test">test</button>
-  </view>
+	<view>
+		<text :style="{ color: true ? 'blue' : 'red' }">test style</text>
+		<button @click="test">test</button>
+		<input type="text" v-model="modelValue" />
+	</view>
 </template>
 
 <script lang="uts">
@@ -10,6 +11,7 @@ export default {
   data() {
     return {
       testClass: 'cred',
+      modelValue: 'default value'
     }
   },
   onLoad() {
@@ -29,7 +31,10 @@ export default {
     println('setting onShow-------------------------------------')
   },
   onReady() {
-    println('setting onReady-------------------------------------')
+    const pages = getCurrentPages()
+    const pagesInfo = pages.map((page: Page): string => page.route)
+    console.log('wzf-------- pagesInfo in setting onReady', pagesInfo)
+    console.log('wzf-------- pagesInfo.length in setting onReady', pagesInfo.length)
   },
   onHide() {
     println('setting onHide-------------------------------------')
