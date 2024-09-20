@@ -1,0 +1,45 @@
+<template>
+  <view>
+    <!-- <text v-text="title"></text>
+    <view v-text="title"></view> -->
+    <text>num: {{num}}</text>
+    <text>typeof num: {{typeof num}}</text>
+    <input v-model.number="num" type="text" />
+    <text>str: {{str}}</text>
+    <text>str.length: {{str.length}}</text>
+    <input v-model.trim="str" type="text" />
+    <input v-model.lazy="str" type="text" />
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello',
+        num: 1,
+        str: 'abc'
+      }
+    },
+    onReady(){
+      const num = import.meta.env.VITE_TEST_NUM
+      const str = import.meta.env.VITE_TEST_STR
+      console.log('num', num)
+      console.log('str', str)
+    }
+  }
+</script>
+
+<!-- <template>
+  <view v-html="html" />
+</template>
+
+<script lang="uts">
+export default {
+  data() {
+    return {
+      html: '<p class="p" style="color: red;">hello world!</p>'
+    }
+  }
+}
+</script> -->
