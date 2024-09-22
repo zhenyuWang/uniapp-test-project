@@ -11,6 +11,7 @@
 				@updated="onUpdated" :include-points="includePoints">
 			</map>
 		</view>
+    <view>markerTapNum: {{markerTapNum}}</view>
 		<button @click="changeLatLng">changeLatLng</button>
 		<button type="primary" @click="removeControls">removeControls</button>
 		<button type="primary" @click="addControls">addControls</button>
@@ -23,6 +24,7 @@
 		data() {
 			return {
 				title: 'Hello-3',
+        markerTapNum: 0,
 				latitude: 39.909,
 				longitude: 116.39742,
 				scale: 12,
@@ -300,6 +302,8 @@
 			markerTap(e) {
 				console.log('marker tap vue2', e)
 				const markerId = e.detail.markerId
+        console.log('markerId', markerId)
+        this.markerTapNum++
 			},
 			mapRegionchange(e) {
 				console.log('map regionchange', e);

@@ -7,6 +7,7 @@
 		<button @click="changeAliveComp">changeAliveComp</button>
 		<button @click="goAbout">goAbout</button>
 		<button @click="testGetApp">testGetApp</button>
+		<button @click="testEventBusId">testEventBusId</button>
 	</view>
 </template>
 
@@ -55,15 +56,31 @@ import Bar from '@/components/Bar/Bar.vue'
         app.on('test1', fn1)
         app.on('test1', fn11)
         app.once('test2', fn2)
-        
+
         app.emit('test1', { name: '111' })
         app.emit('test1', { age: '222' })
         app.off('test1', fn1)
         app.emit('test1', null)
-        
+
         app.emit('test2', { name: '111' })
         app.emit('test2', { age: '222' })
         app.emit('test2', null)
+      },
+      testEventBusId(){
+        const fn1 = (args : any | null) => {
+          console.log('fn1', args)
+        }
+
+        const id1 = uni.$on('test-id', fn1)
+        console.log('test-id id1', id1)
+        uni.$emit('test-id', '触发 test-id fn1')
+        uni.$off('test-id', id1)
+        uni.$emit('test-id', '触发 test-id fn1')
+
+        const id2 = uni.$once('test-id', fn1)
+        console.log('test-id id2', id2)
+        uni.$emit('test-id', '触发 test-id fn1')
+        uni.$emit('test-id', '触发 test-id fn1')
       }
     }
   }
