@@ -1,0 +1,16 @@
+<template>
+	<view>
+		<text>title: {{title}}</text>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'this is about page',
+			}
+		}
+	}
+</script>
+

@@ -1,0 +1,31 @@
+<template>
+	<view>
+		<input id="my-input" @click="inputClick" :focus="isFocus" type="digit" v-model="myValue" />
+    <button id="toggle-button" @click="isFocus = !isFocus">toggle isFocus</button>
+    <button @click="goAbout">go about</button>
+    <input type="text" class="my-input" value="test value" />
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				myValue: '1',
+        isFocus: true
+			}
+		},
+    methods: {
+      inputClick(e:any){console.log('inputClick e', e)},
+      goAbout(){
+        uni.navigateTo({url: '/pages/index/about'})
+      }
+    }
+	}
+</script>
+
+<style>
+  .my-input{
+    font-weight: bold;
+  }
+</style>
