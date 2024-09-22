@@ -1,0 +1,22 @@
+<template>
+  <view class="box" @click="handleClick">
+    <text>1111</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    methods: {
+      handleClick(){
+        console.log('wzf-handleClick',Date.now())
+      }
+    }
+  }
+</script>
+<style>
+  .box{
+    width: 100%;
+    height: 2000px;
+    background-color: red;
+  }
+</style>

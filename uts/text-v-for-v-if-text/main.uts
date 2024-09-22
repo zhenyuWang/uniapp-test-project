@@ -1,0 +1,9 @@
+import App from './App.uvue'
+console.log('this is main.uts')
+import { createSSRApp } from 'vue'
+export function createApp() {
+	const app = createSSRApp(App)
+	return {
+		app
+	}
+}
