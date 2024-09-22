@@ -1,0 +1,91 @@
+<template>
+    <view class="box">
+      <button @click="onTest1">on test fn1</button>
+      <button @click="onTest2">on test fn2</button>
+      <button @click="onceTest1">once test fn1</button>
+      <button @click="offTest1">off test fn1</button>
+      <button @click="offTestAll">off test all</button>
+      <button @click="emitTest">emit test</button>
+      <button @click="clear">清空消息</button>
+      <view class="box">
+        <view>收到的消息：</view>
+        <view>
+          <view v-for="(item, index) in log" :key="index">{{ item }}</view>
+        </view>
+        <button @click="onTestObj">on test obj</button>
+        <button @click="emitTestObj">emit test obj</button>
+        <view class="box">
+          <text>接收到的 obj 参数：</text>
+          <text>{{JSON.stringify(objArg)}}</text>
+        </view>
+      </view>
+      <button @click="testId">test eventBus id</button>
+    </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        log: [],
+        objArg: {},
+      }
+    },
+    methods: {
+      fn1(res) {
+        this.log.push(`fn1-${res}`)
+      },
+      fn2(res) {
+        this.log.push(`fn2-${res}`)
+      },
+      onTest1() {
+        uni.$on('test', this.fn1)
+      },
+      onTest2() {
+        uni.$on('test', this.fn2)
+      },
+      onceTest1() {
+        uni.$once('test', this.fn1)
+      },
+      offTest1() {
+        uni.$off('test', this.fn1)
+      },
+      offTestAll() {
+        uni.$off('test')
+      },
+      emitTest() {
+        uni.$emit('test', 'msg:' + Date.now())
+      },
+      onTestObj() {
+        uni.$on('test-obj', (res) => {
+          this.objArg = res
+        })
+      },
+      emitTestObj() {
+        uni.$emit('test-obj', { a: 1, b: 2 })
+      },
+      clear() {
+        this.log.length = 0
+        this.objArg = {}
+      },
+      testId(){
+        const id1 = uni.$on('test-id', this.fn1)
+        console.log('test-id id1', id1)
+        uni.$emit('test-id', '触发 test-id fn1')
+        uni.$off('test-id', id1)
+        uni.$emit('test-id', '触发 test-id fn1')
+        
+        const id2 = uni.$once('test-id', this.fn1)
+        console.log('test-id id2', id2)
+        uni.$emit('test-id', '触发 test-id fn1')
+        uni.$emit('test-id', '触发 test-id fn1') 
+      }
+    },
+  }
+</script>
+
+<style>
+  .box {
+    padding: 10px;
+  }
+</style>
