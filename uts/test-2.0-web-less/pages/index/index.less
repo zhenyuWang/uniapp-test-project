@@ -1,0 +1,24 @@
+@white-color: #fff;
+@primary-color: #3498db;
+@border-width: 2px;
+
+/* #ifdef WEB */
+@notice-info-background: green;
+/* #endif */
+/* #ifdef APP */
+@notice-info-background: red;
+/* #endif */
+
+/* #ifdef WEB */
+@notice-info-text-color: blue;
+/* #endif */
+/* #ifdef APP */
+@notice-info-text-color: green;
+/* #endif */
+
+.notice-info {
+  background-color: @notice-info-background;
+  .text {
+    color: @notice-info-text-color;
+  }
+}

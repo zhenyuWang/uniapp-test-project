@@ -1,0 +1,29 @@
+<template>
+	<view class="content">
+		<view class="text-area">
+			<text class="title"> web 应该是绿色背景，蓝色字体</text>
+		</view>
+	</view>
+</template>
+
+<script>
+	export default {
+		data() {
+			return {
+				title: 'Hello'
+			}
+		}
+	}
+</script>
+
+<style lang="less">
+	@import './index.less';
+  
+  .text-area{
+    background-color: @notice-info-background;
+  }
+  .title{
+    color: @notice-info-text-color;
+  }
+  
+</style>
