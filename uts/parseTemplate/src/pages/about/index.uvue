@@ -3,6 +3,7 @@
     <text>title: {{ title }}</text>
     <input type="text" v-model='title' />
     <button @click="getInfo">getInfo</button>
+    <text>myOptions: {{ myOptions }}</text>
   </view>
 </template>
 
@@ -10,11 +11,20 @@
 export default {
   data() {
     return {
-      title: 'this is about page'
+      title: 'this is about page111',
+      str: '',
+      myOptions: {}
     }
   },
-  onload(){
-    console.log('wzf--------about onLoad')
+  onLoad(options: OnLoadOptions){
+    console.log('wzf--------about onLoad options', options)
+    console.log('wzf--------about onLoad options instanceof UTSJSONObject', options instanceof UTSJSONObject)
+    console.log('wzf--------about onLoad options.get name', options.get('name'))
+    console.log('wzf--------about onLoad options.get test', options.get('test'))
+    console.log('wzf--------about onLoad options.size', options.size)
+    this.myOptions = options
+    this.title = options['name']!
+    this.str = options.get('name')!
   },
   onReady(){
     console.log('wzf--------about onReady')
