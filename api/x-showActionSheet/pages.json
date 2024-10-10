@@ -1,0 +1,23 @@
+{
+	"pages": [
+		{
+			"path": "pages/index/index",
+			"style": {
+				"navigationBarTitleText": "index"
+			}
+		},
+    {
+    	"path": "pages/index/actionsheet-dialog",
+    	"style": {
+    		"navigationBarTitleText": "actionsheet-dialog"
+    	}
+    }
+	],
+	"globalStyle": {
+		"navigationBarTextStyle": "black",
+		"navigationBarTitleText": "uni-app x",
+		"navigationBarBackgroundColor": "#F8F8F8",
+		"backgroundColor": "#F8F8F8"
+	},
+	"uniIdRouter": {}
+}

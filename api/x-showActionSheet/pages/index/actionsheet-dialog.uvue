@@ -1,0 +1,211 @@
+<template>
+  <view>
+    <view class="uni-actionsheet_dialog__mask" :class="{ 'uni-actionsheet_dialog__mask__show': show }"
+      @click="closeActionSheet"></view>
+    <view class="uni-actionsheet_dialog" :class="{ 'uni-actionsheet_dialog__show': show }">
+      <view :style="{
+					backgroundColor: showActionSheetOptions.backgroundColor,
+				}" v-if="showActionSheetOptions.title" class="uni-actionsheet_dialog__title">
+        <text :style="{
+					color: showActionSheetOptions.titleColor
+				}" class="uni-actionsheet_dialog__title__text">{{ showActionSheetOptions.title }}</text>
+      </view>
+      <view class="uni-actionsheet_dialog__menu" :style="{
+					backgroundColor: showActionSheetOptions.backgroundColor,
+				}">
+        <view class="uni-actionsheet_dialog__cell" v-for="(item, index) in showActionSheetOptions.itemList" :key="index"
+          @click="handleMenuItemClick(index)">
+          <text :style="{color: showActionSheetOptions.itemColor}"
+            class="uni-actionsheet_dialog__cell__text">{{ item }}</text>
+        </view>
+      </view>
+      <view :style="{
+					backgroundColor: showActionSheetOptions.backgroundColor,
+				}" class="uni-actionsheet_dialog__action" @click="handleCancelBtnClick">
+        <text :style="{
+					color: showActionSheetOptions.cancelColor
+				}" class="uni-actionsheet_dialog__action__text">{{ showActionSheetOptions.cancelText }}</text>
+      </view>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        show: false,
+        baseName: '',
+        showActionSheetOptions: {
+          title: '',
+          itemList: [],
+          itemColor: '#000000',
+          cancelText: '取消',
+          titleColor: '#666',
+          cancelColor: '#000000',
+          backgroundColor: '#ffffff',
+        } as ShowActionSheetOptions,
+      }
+    },
+    onLoad(options) {
+      console.log('dialogPage onLoad')
+      this.baseName = `$action_sheet_dialog_${options['uuid']}`
+      uni.$on(`${this.baseName}_options`, (data : ShowActionSheetOptions) => {
+        console.log('on options', data)
+        this.showActionSheetOptions = Object.assign(this.showActionSheetOptions, data)
+      })
+      console.log('before emit ready baseName', this.baseName)
+      uni.$emit(`${this.baseName}_ready`, {})
+    },
+    onReady() {
+      setTimeout(() => {
+        this.show = true
+      }, 10)
+    },
+    onUnload() {
+      uni.$off(`${this.baseName}_options`)
+      uni.$off(`${this.baseName}_ready`)
+    },
+    methods: {
+      closeActionSheet() {
+        this.show = false
+        setTimeout(() => {
+          console.log('before closeActionSheet')
+          uni.closeDialogPage({ dialogPage: this.$page, systemDialog: true })
+        }, 300)
+      },
+      handleMenuItemClick(tapIndex) {
+        this.closeActionSheet()
+        const callbackOptions = {
+          errMsg: "showActionSheet:ok",
+          tapIndex
+        }
+        this.showActionSheetOptions.success?.(callbackOptions)
+        this.showActionSheetOptions.complete?.(callbackOptions)
+      },
+      handleCancelBtnClick() {
+        this.closeActionSheet()
+        const callbackOptions = {
+          errMsg: "showActionSheet:fail cancel",
+        }
+        this.showActionSheetOptions.fail?.(callbackOptions)
+        this.showActionSheetOptions.complete?.(callbackOptions)
+      }
+    }
+  }
+</script>
+
+<style>
+  .uni-actionsheet_dialog__mask {
+    position: fixed;
+    z-index: 999;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    opacity: 0;
+    background-color: rgba(0, 0, 0, 0.6);
+    transition: opacity 0.3s;
+  }
+
+  .uni-actionsheet_dialog__mask__show {
+    opacity: 1;
+  }
+
+  .uni-actionsheet_dialog {
+    position: fixed;
+    width: 100%;
+    overflow: hidden;
+    left: 0;
+    bottom: 0;
+    z-index: 999;
+    visibility: hidden;
+    backface-visibility: hidden;
+    transform: translate(0, 100%);
+    /* #ifdef APP */
+    transition: transform 0.3s;
+    /* #endif */
+    /* #ifndef APP */
+    transition: transform 0.3s, visibility 0.3s;
+    /* #endif */
+    border-top-left-radius: 24rpx;
+    border-top-right-radius: 24rpx;
+    background-color: #f7f7f7;
+  }
+
+  .uni-actionsheet_dialog.uni-actionsheet_dialog__show {
+    visibility: visible;
+    transform: translate(0, 0);
+  }
+
+  .uni-actionsheet_dialog__title,
+  .uni-actionsheet_dialog__cell,
+  .uni-actionsheet_dialog__action {
+    display: block;
+    padding: 32rpx;
+    cursor: pointer;
+    text-align: center;
+  }
+
+  .uni-actionsheet_dialog__title__text,
+  .uni-actionsheet_dialog__cell__text,
+  .uni-actionsheet_dialog__action__text {
+    line-height: 1.4;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .uni-actionsheet_dialog__cell {
+    border-top: 1px solid #e5e5e5;
+  }
+
+
+  .uni-actionsheet_dialog__action {
+    margin-top: 16rpx;
+  }
+
+  @media screen and (min-width: 500px) and (min-height: 500px) {
+    .uni-actionsheet_dialog__mask {
+      background: none;
+    }
+
+    .uni-actionsheet_dialog {
+      width: 300px;
+      position: fixed;
+      left: 50%;
+      right: auto;
+      top: 50%;
+      bottom: auto;
+      z-index: 999;
+      opacity: 0;
+      visibility: hidden;
+      backface-visibility: hidden;
+      border-radius: 10rpx;
+      transform: translate(-50%, -50%);
+      transition: opacity 0.3s, visibility 0.3s;
+      box-shadow: 0 0 20px 5px rgba(0, 0, 0, 0.3);
+    }
+
+    .uni-actionsheet_dialog__show {
+      visibility: visible;
+      opacity: 1;
+      transform: translate(-50%, -50%) !important;
+    }
+
+    .uni-actionsheet_dialog__action {
+      display: none;
+    }
+
+    .uni-actionsheet_dialog__title {
+      font-size: 15px;
+    }
+
+    .uni-actionsheet_dialog__title,
+    .uni-actionsheet_dialog__cell,
+    .uni-actionsheet_dialog__action {
+      padding: 16px;
+    }
+  }
+</style>
