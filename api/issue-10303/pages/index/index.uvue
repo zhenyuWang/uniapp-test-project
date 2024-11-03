@@ -1,0 +1,16 @@
+<template>
+	<view>
+		issue 10303
+	</view>
+</template>
+
+<script setup>
+	const getList = () => {console.log('my getList')}
+  
+  onLoad((options: OnLoadOptions) => {
+    console.log('onLoad start', options)
+    getList()
+    console.log('onLoad end')
+  })
+</script>
+
