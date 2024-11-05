@@ -1,0 +1,25 @@
+<template>
+  <view>
+    this is setting
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+
+      }
+    },
+    onLoad() {
+      const pages = getCurrentPages()
+      console.log('pages', pages)
+      console.log('pages.length', pages.length)
+      console.log('pages[0]', pages[0].$page.path)
+    },
+  }
+</script>
+
+<style>
+
+</style>
