@@ -1,26 +1,65 @@
 <template>
   <view>
+    <button @click="myGetCurrentPages">myGetCurrentPages</button>
+    <button @click="openActionSheetDialog">openActionSheetDialog</button>
     <button @click="myShowActionSheet">myShowActionSheet</button>
+    <button @click="originShowActionSheet">originShowActionSheet</button>
+    <button @click="goAbout">goAbout</button>
+    <scroll-view class="my-scroll-view">
+      <view v-for="item in 20" :key="item">{{item}}</view>
+    </scroll-view>
   </view>
 </template>
 
 <script>
   export default {
+    data(){
+      return {
+      }
+    },
+    onResize(){
+      console.log('onResize in index page');
+    },
     methods: {
+      myGetCurrentPages() {
+        const pages = getCurrentPages()
+        console.log('myGetCurrentPages pages', pages)
+        uni.openDialogPage({ url: '/pages/index/actionsheet-dialog' })
+      },
+      openActionSheetDialog() {
+        uni.openDialogPage({
+          url: '/pages/index/actionsheet-dialog?aa=bb',
+          success(res: AsyncApiSuccessResult) {
+            console.log('success', res);
+          },
+          complete(res) {
+            console.log('complete', res);
+          }
+        })
+        // uni.showActionSheet({itemList: ['a','b','c']})
+      },
       myShowActionSheet() {
-        // #ifdef APP
+        console.log('myShowActionSheet')
         uni.showActionSheet2({
           title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
-          alertText: 'my alertText',
-          itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
-          itemColor: '#0000ff',
+          // alertText: 'my alertText',
+          // itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
+          itemList: ['1', '2', '3', '4','5','6','7','8'],
+          // cancelText: 'my cancel',
+          // titleColor: 'red',
+          // itemColor: '#0000ff',
           // itemColor: 'red',
-          cancelText: 'my cancel',
-          titleColor: 'red',
-          cancelColor: 'yellow',
-          backgroundColor: 'green',
+          // cancelColor: 'yellow',
+          // backgroundColor: 'green',
+          popover: {
+            top: 100,
+            left: 10,
+            width: 400,
+            height: 300,
+          },
           success: function (res) {
             console.log('my showActionSheet success', res)
+            uni.setAppTheme({theme: 'dark'})
           },
           fail: function (err) {
             console.log('my showActionSheet fail', err)
@@ -29,40 +68,36 @@
             console.log('my showActionSheet complete', res)
           }
         })
-        // #endif
-        // #ifndef APP
-        uni.showActionSheet({
-          title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
-          alertText: 'my alertText',
-          itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
-          itemColor: '#0000ff',
-          // itemColor: 'red',
-          cancelText: 'my cancel',
-          titleColor: 'red',
-          cancelColor: 'yellow',
-          backgroundColor: 'green',
-          success: function (res) {
-            console.log('my showActionSheet success', res)
-          },
-          fail: function (err) {
-            console.log('my showActionSheet fail', err)
-          },
-          complete: function (res) {
-            console.log('my showActionSheet complete', res)
-          }
-        })
-        // #endif
+
+        // setTimeout(() => {
+        //   uni.showActionSheet2({itemList: ['a','b']})
+        //   setTimeout(() => {
+        //     uni.hideActionSheet2()
+        //   }, 2000)
+        // }, 2000)
+
         const pages = getCurrentPages()
         const currentPage = pages[pages.length - 1]
         setTimeout(() => {
           const dialogPages = currentPage.getDialogPages()
-          console.log('currentPage dialogPages', dialogPages, dialogPages.length)
+          console.log('currentPage dialogPages-------------', dialogPages, dialogPages.length)
+          // #ifdef WEB
+          uni.setLocale('en')
+          // #endif
         }, 1000)
       },
+      originShowActionSheet(){
+        uni.showActionSheet({title: '1111111111111111111111111111111', itemList: ['a','b','c','d']})
+      },
+      goAbout() {
+        uni.navigateTo({ url: '/pages/index/about', complete(res){console.log('navigateTo about complete', res)} })
+        uni.navigateTo({ url: '/pages/index/about', complete(res){console.log('navigateTo about complete', res)} })
+      }
     }
   }
 </script>
-
 <style>
-
+  .my-scroll-view{
+    max-height: 100px;
+  }
 </style>

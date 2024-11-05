@@ -5,6 +5,11 @@
 			"style": {
 				"navigationBarTitleText": "index"
 			}
+		},{
+			"path": "pages/index/about",
+			"style": {
+				"navigationBarTitleText": "about"
+			}
 		},
     {
     	"path": "pages/index/actionsheet-dialog",
@@ -17,7 +22,8 @@
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app x",
 		"navigationBarBackgroundColor": "#F8F8F8",
-		"backgroundColor": "#F8F8F8"
+		"backgroundColor": "#F8F8F8",
+    "pageOrientation": "auto"
 	},
 	"uniIdRouter": {}
 }

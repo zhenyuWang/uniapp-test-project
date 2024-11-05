@@ -1,51 +1,31 @@
 <script lang="uts">
   export default {
+    globalData: {
+      a: 'a',
+      b: 'b'
+    },
     onLaunch: function () {
       console.log('App Launch')
-      // #ifdef APP
-      uni.showActionSheet2({
-        title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
-        alertText: 'my alertText',
-        itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
-        // itemColor: '#0000ff',
-        // itemColor: 'red',
-        cancelText: 'my cancel',
-        // titleColor: 'red',
-        // cancelColor: 'yellow',
-        // backgroundColor: 'green',
-        success: function (res) {
-          console.log('my showActionSheet success', res)
-        },
-        fail: function (err) {
-          console.log('my showActionSheet fail', err)
-        },
-        complete: function (res) {
-          console.log('my showActionSheet complete', res)
-        }
-      })
-      // #endif
-      // #ifndef APP
-      uni.showActionSheet({
-        title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
-        alertText: 'my alertText',
-        itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
-        // itemColor: '#0000ff',
-        // itemColor: 'red',
-        cancelText: 'my cancel',
-        // titleColor: 'red',
-        // cancelColor: 'yellow',
-        // backgroundColor: 'green',
-        success: function (res) {
-          console.log('my showActionSheet success', res)
-        },
-        fail: function (err) {
-          console.log('my showActionSheet fail', err)
-        },
-        complete: function (res) {
-          console.log('my showActionSheet complete', res)
-        }
-      })
-      // #endif
+      // uni.showActionSheet2({
+      //   title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
+      //   alertText: 'my alertText',
+      //   itemList: ['A title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title', 'B', 'C'],
+      //   // itemColor: '#0000ff',
+      //   // itemColor: 'red',
+      //   cancelText: 'my cancel',
+      //   // titleColor: 'red',
+      //   // cancelColor: 'yellow',
+      //   // backgroundColor: 'green',
+      //   success: function (res) {
+      //     console.log('my showActionSheet success', res)
+      //   },
+      //   fail: function (err) {
+      //     console.log('my showActionSheet fail', err)
+      //   },
+      //   complete: function (res) {
+      //     console.log('my showActionSheet complete', res)
+      //   }
+      // })
     },
     onShow: function () {
       console.log('App Show')

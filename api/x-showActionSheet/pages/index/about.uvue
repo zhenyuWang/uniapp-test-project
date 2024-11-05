@@ -1,0 +1,34 @@
+<template>
+  <view>
+    <text>this is about</text>
+    <button @click="showActionSheet">showActionSheet</button>
+    <button @click="reLaunchIndex">reLaunchIndex</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        
+      }
+    },
+    methods: {
+      showActionSheet(){
+        // uni.showActionSheet2({itemList: ['a','b','c']})
+        // setTimeout(() => {
+        //   this.reLaunchIndex()
+        // },1000)
+      },
+      reLaunchIndex(){
+        uni.reLaunch({
+          url: '/pages/index/index',
+        })
+      }
+    }
+  }
+</script>
+
+<style>
+
+</style>
