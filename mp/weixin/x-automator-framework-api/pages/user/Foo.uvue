@@ -1,0 +1,35 @@
+<template>
+  <view>
+    <view class="mt-10 uni-row">
+      <text>title: </text>
+      <text>{{title}}</text>
+    </view>
+    <view class="mt-10 uni-row">
+      <text>num: </text>
+      <text id="foo-num">{{num}}</text>
+    </view>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Foo component',
+        num: 0
+      }
+    },
+    methods: {
+      increaseNum() {
+        this.num++
+      },
+      increaseNumByArg(value : number) {
+        this.num += value
+      }
+    }
+  }
+</script>
+
+<style>
+
+</style>

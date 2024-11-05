@@ -1,0 +1,130 @@
+<template>
+  <view class="page-container">
+    <text>{{title}}</text>
+    <Foo id="component-foo" />
+    <video id="foo-video" class="mt-10" :src="videoSrc" @play="handleVideoPlay" />
+    <text>video has played: {{videoHasPlayed}}</text>
+    <!-- TODO: scroll-x y 的编译支持 -->
+    <scroll-view class="mt-10 user-scroll-view" direction="vertical" :scroll-y="true" :scroll-x="true"
+      @scroll="handleScrollViewScroll">
+      <view class="user-scroll-view__item mt-10" v-for="item in 20" :key="item">{{item}}</view>
+    </scroll-view>
+    <text>scroll-view scrolled: {{scrollViewScrolled}}</text>
+    <swiper class="mt-10 user-swiper" @change="handleSwiperChange">
+      <swiper-item item-id="A">
+        <view class="swiper-item bg-red"><text class="swiper-item-Text">A</text></view>
+      </swiper-item>
+      <swiper-item item-id="B">
+        <view class="swiper-item bg-green"><text class="swiper-item-Text">B</text></view>
+      </swiper-item>
+      <swiper-item item-id="C">
+        <view class="swiper-item bg-blue"><text class="swiper-item-Text">C</text></view>
+      </swiper-item>
+    </swiper>
+    <!-- #ifdef MP-WEIXIN -->
+    <movable-area class="mt-10 user-movable-area">
+      <movable-view class="user-movable-view" direction="all" @change="handleMovableViewChange" />
+    </movable-area>
+    <view class="mt-10 uni-row">
+      <text>movableView X: </text>
+      <text>{{movableViewX}}</text>
+    </view>
+    <view class="mt-10 uni-row">
+      <text>movableView Y: </text>
+      <text>{{movableViewY}}</text>
+    </view>
+    <!-- #endif -->
+     <slider id="user-slider" :value="sliderValue" @change="handleSliderChange" />
+     <view class="mt-10 uni-row">
+       <text>slider value: </text>
+       <text>{{sliderValue}}</text>
+     </view>
+     
+  </view>
+</template>
+
+<script>
+  import Foo from './Foo.uvue'
+
+  export default {
+    components: { Foo },
+    data() {
+      return {
+        title: 'user page',
+        videoSrc: "https://qiniu-web-assets.dcloud.net.cn/video/sample/2minute-demo.mp4",
+        videoHasPlayed: false,
+        scrollViewScrolled: false,
+        swiperCurrent: 0,
+        swiperCurrentItemId: 'A',
+        movableViewX: 0,
+        movableViewY: 0,
+        sliderValue: 20
+      }
+    },
+    methods: {
+      handleVideoPlay() {
+        this.videoHasPlayed = true
+      },
+      handleScrollViewScroll() {
+        this.scrollViewScrolled = true
+      },
+      handleSwiperChange(e : UniSwiperChangeEvent) {
+        this.swiperCurrent = e.detail.current
+        this.swiperCurrentItemId = e.detail.currentItemId!
+      },
+      handleMovableViewChange(e: any) {
+        this.movableViewX = e.detail.x
+        this.movableViewY = e.detail.y
+      },
+      handleSliderChange(e: UniSliderChangeEvent){
+        console.log('handleSliderChange', e)
+        this.sliderValue = e.detail.value
+      }
+    }
+  }
+</script>
+
+<style>
+  .user-scroll-view {
+    height: 100px;
+  }
+
+  .user-scroll-view__item {
+    width: 120%;
+    background-color: aquamarine;
+  }
+
+  .user-swiper,
+  .swiper-item {
+    width: 100%;
+    height: 100px;
+  }
+
+  .bg-red {
+    background-color: red;
+  }
+
+  .bg-blue {
+    background-color: blue;
+  }
+
+  .bg-green {
+    background-color: green;
+  }
+
+  .swiper-item-Text {
+    text-align: center;
+  }
+
+  .user-movable-area {
+    width: 100%;
+    height: 100px;
+    border: 1px solid green;
+  }
+
+  .user-movable-view {
+    width: 50px;
+    height: 50px;
+    background-color: aqua;
+  }
+</style>

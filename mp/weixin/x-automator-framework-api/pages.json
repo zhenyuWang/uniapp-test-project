@@ -1,0 +1,49 @@
+{
+  "pages": [{
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "index"
+      }
+    },
+    {
+      "path": "pages/about/about",
+      "style": {
+        "navigationBarTitleText": "about"
+      }
+    },
+    {
+      "path" : "pages/setting/setting",
+      "style" : 
+      {
+        "navigationBarTitleText" : "setting"
+      }
+    },
+    {
+      "path" : "pages/user/user",
+      "style" : 
+      {
+        "navigationBarTitleText" : "user"
+      }
+    }
+  ],
+  "tabBar": {
+    "list": [{
+      "iconPath": "static/logo.png",
+      "selectedIconPath": "static/logo.png",
+      "pagePath": "pages/index/index",
+      "text": "index"
+    }, {
+      "iconPath": "static/logo.png",
+      "selectedIconPath": "static/logo.png",
+      "pagePath": "pages/about/about",
+      "text": "about"
+    }]
+  },
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "uni-app x",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "uniIdRouter": {}
+}

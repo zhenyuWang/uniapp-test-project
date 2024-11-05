@@ -1,0 +1,18 @@
+<template>
+  <view class="page-container">
+    <text>{{title}}</text>
+    <navigator url="/pages/about/about">go about</navigator>
+    <navigator url="/pages/setting/setting">go setting</navigator>
+    <navigator url="/pages/user/user">go user</navigator>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'index page'
+      }
+    }
+  }
+</script>

@@ -1,0 +1,43 @@
+<template>
+  <view class="page-container">
+    <text class="title">{{title}}</text>
+    <text v-for="item in list" :key="item" class="list-item-text">{{item}}</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        defaultTitle: 'about page',
+        title: 'about page',
+        list: ['0', '1', '2']
+      }
+    },
+    onLoad() {
+
+    },
+    methods: {
+      setTitle(value : string) {
+        this.title = value
+      },
+      resetTitle() {
+        this.title = this.defaultTitle
+      }
+    }
+  }
+</script>
+
+<style>
+  .page-container {
+    height: 2000px;
+  }
+
+  .title {
+    color: red;
+  }
+
+  .list-item-text {
+    color: greenyellow;
+  }
+</style>
