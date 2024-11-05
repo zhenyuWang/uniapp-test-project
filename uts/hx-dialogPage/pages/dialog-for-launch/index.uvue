@@ -29,15 +29,15 @@
     onReady() {
       const currentPages = getCurrentPages()
       console.log('wzf--------dialog for App onLunch onReady currentPages.length', currentPages.length)
-      const parentPage = this.$getParentPage()!
+      const parentPage = this.$page.getParentPage()!
       console.log('wzf--------dialog for App onLunch parentPage', parentPage)
       console.log('wzf--------dialog for App onLunch parentPage === currentPages[0]', parentPage === currentPages[0])
-      const grandParentPage = parentPage.$getParentPage()
+      const grandParentPage = parentPage.getParentPage()
       console.log('wzf--------dialog for App onLunch grandParentPage', grandParentPage)
-      const parentDialogPages = parentPage.$getDialogPages()
+      const parentDialogPages = parentPage.getDialogPages()
       console.log('wzf--------dialog for App onLunch parentDialogPages', parentDialogPages)
-      console.log('wzf--------dialog for App onLunch this.$dialogPage', this.$dialogPage)
-      console.log('wzf--------dialog for App onLunch parentDialogPages[0] === this.$dialogPage', parentDialogPages[0] === this.$dialogPage)
+      console.log('wzf--------dialog for App onLunch this.$page', this.$page)
+      console.log('wzf--------dialog for App onLunch parentDialogPages[0] === this.$dialogPage', parentDialogPages[0] === this.$page)
     },
     onHide() {
       console.log('wzf--------dialog for App onLunch onHide')
@@ -69,7 +69,7 @@
       },
       closeThisDialogPage() {
         uni.closeDialogPage({
-          dialogPage: this.$dialogPage,
+          dialogPage: this.$page as UniDialogPage,
           complete(res) {
             console.log('closeThisDialogPagecomplete', res)
           }

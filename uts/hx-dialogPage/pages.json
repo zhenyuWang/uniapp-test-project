@@ -32,17 +32,17 @@
 			}
 		}
 	],
-  // "tabBar": {
-  //   "list": [
-  //     {
-  //       "text": "index",
-  //       "pagePath": "pages/index/index"
-  //     },{
-  //       "text": "about",
-  //       "pagePath": "pages/about/index"
-  //     }
-  //   ]
-  // },
+  "tabBar": {
+    "list": [
+      {
+        "text": "index",
+        "pagePath": "pages/index/index"
+      },{
+        "text": "about",
+        "pagePath": "pages/about/index"
+      }
+    ]
+  },
 	"globalStyle": {
 		"navigationBarTextStyle": "black",
 		"navigationBarTitleText": "uni-app x",

@@ -31,7 +31,8 @@
     methods: {
       goAbout() {
         uni.switchTab({
-          url: '/pages/about/index',
+        // uni.navigateTo({
+          url: '/pages/about/index?from=index',
           success(res) {
             console.log('goAbout success', res)
           },
@@ -55,7 +56,7 @@
       },
       openDialogPage1() {
         const dialogPage1 = uni.openDialogPage({
-          url: '/pages/dialog1/index',
+          url: '/pages/dialog1/index?from=index',
           disableEscBack: true,
           success(res) {
             console.log('openDialogPage1 success', res)
@@ -78,7 +79,8 @@
       },
       triggerGlobalFn() {
         const app = getApp()
-        app.globalFn()
+        console.log('app', app)
+        app.vm!.globalFn()
       }
     }
 

@@ -30,13 +30,13 @@
     onReady() {
       const currentPages = getCurrentPages()
       console.log('wzf--------dialog2 onReady currentPages.length', currentPages.length)
-      const parentPage = this.$getParentPage()!
+      const parentPage = this.$page.getParentPage()!
       console.log('wzf--------dialog2 onReady parentPage', parentPage)
-      const grandParentPage = parentPage.$getParentPage()
+      const grandParentPage = parentPage.getParentPage()
       console.log('wzf--------dialog2 onReady grandParentPage', grandParentPage)
-      const parentDialogPages = parentPage.$getDialogPages()
+      const parentDialogPages = parentPage.getDialogPages()
       console.log('wzf--------dialog2 onReady parentDialogPages', parentDialogPages)
-      const dialogPages = parentPage.$getDialogPages()
+      const dialogPages = parentPage.getDialogPages()
       console.log('wzf--------dialog2 onReady dialogPages', dialogPages)
     },
     onHide() {
@@ -64,15 +64,15 @@
       },
       closeThisDialogPage() {
         uni.closeDialogPage({
-          dialogPage: this.$dialogPage,
+          dialogPage: this.$page as UniDialogPage,
           complete(res) {
             console.log('closeThisDialogPagecomplete', res)
           }
         })
       },
       closeThisDialogPage1(){
-        const parentPage = this.$getParentPage()!
-        const dialogPages = parentPage.$getDialogPages()
+        const parentPage = this.$page.getParentPage()!
+        const dialogPages = parentPage.getDialogPages()
         const dialogPage1 = dialogPages[1]
         console.log('wzf--------dialog2 dialogPage1',dialogPage1)
         uni.closeDialogPage({

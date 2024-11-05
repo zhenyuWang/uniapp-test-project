@@ -23,6 +23,7 @@
     },
     onLoad(options : OnLoadOptions) {
       console.log('wzf--------dialog1 onLoad', options)
+            console.log('wzf--------dialog1 onLoad options instanceof UTSJSONObject', options instanceof UTSJSONObject)
     },
     onShow() {
       console.log('wzf--------dialog1 onShow')
@@ -66,29 +67,6 @@
           }
         })!
         console.log('dialogPage1', dialogPage1)
-        const fn1 = (args:any) => {
-          console.log('this is fn1', args)
-        }
-        const fn2 = (args:any) => {
-          console.log('this is fn2', args)
-        }
-        const fn11 = (args:any) => {
-          console.log('this is fn11', args)
-        }
-        
-        dialogPage1.on('test1', fn1)
-        dialogPage1.on('test1', fn11)
-        dialogPage1.once('test2', fn2)
-        setTimeout(() => {
-          dialogPage1.emit('test1', {name: '111'})
-          dialogPage1.emit('test1', {age: '222'})
-          dialogPage1.off('test1', fn1)
-          dialogPage1.emit('test1', null)
-          
-          dialogPage1.emit('test2', {name: '111'})
-          dialogPage1.emit('test2', {age: '222'})
-          dialogPage1.emit('test2', null)
-        }, 1000)
       },
       openDialogPage2() {
         const dialogPage2 = uni.openDialogPage({ url: '/pages/dialog2/index' })
@@ -103,7 +81,7 @@
       },
       closeThisDialogPage() {
         uni.closeDialogPage({
-          dialogPage: this.$dialogPage,
+          dialogPage: this.$page as UniDialogPage,
           fail(res) {
             console.log('closeThisDialogPage fail', res)
           },

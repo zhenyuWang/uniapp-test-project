@@ -14,6 +14,10 @@
 				title: 'this is about'
 			}
 		},
+    onLoad(options : OnLoadOptions) {
+      console.log('wzf--------about onLoad options', options)
+      console.log('wzf--------about onLoad options instanceof UTSJSONObject', options instanceof UTSJSONObject)
+    },
 		methods: {
       goIndex(){
         uni.switchTab({url: '/pages/index/index'})
