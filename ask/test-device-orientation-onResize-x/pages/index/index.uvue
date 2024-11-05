@@ -1,0 +1,27 @@
+<template>
+  <view>
+    <text>title: {{title}}</text>
+    <text>isLandscape: {{isLandscape}}</text>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello',
+        isLandscape: false,
+        appPlatform: ['ios', 'android', 'harmonyos']
+      }
+    },
+    onLoad() {
+      const systemInfo = uni.getSystemInfoSync()
+      this.isLandscape = systemInfo.deviceOrientation == 'landscape'
+    },
+    onResize() {
+      const systemInfo = uni.getSystemInfoSync()
+      console.log('wzf--- onResize systemInfo.deviceOrientation', systemInfo.deviceOrientation);
+      this.isLandscape = systemInfo.deviceOrientation == 'landscape'
+    }
+  }
+</script>
