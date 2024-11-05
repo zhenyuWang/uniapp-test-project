@@ -30,7 +30,8 @@
       "style": {
         "navigationBarTitleText": "dialog1"
       }
-    },{
+    },
+    {
       "path": "pages/dialog2/index",
       "style": {
         "navigationBarTitleText": "dialog2"
@@ -56,6 +57,7 @@
   "globalStyle": {
     "navigationBarTitleText": "uni-app",
     "backgroundColor": "#ff0000",
-    "backgroundColorContent": "#09c"
+    "backgroundColorContent": "#09c",
+    "pageOrientation": "auto"
   }
 }

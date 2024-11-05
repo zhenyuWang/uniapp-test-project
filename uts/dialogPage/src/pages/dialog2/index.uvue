@@ -47,15 +47,13 @@ export default {
     },
     close(){
       // uni.closeDialogPage(null)
-      uni.closeDialogPage({dialogPage: this.$page as UniDialogPage, animationType: 'slide-out-top'})
+      uni.closeDialogPage({dialogPage: this.$page})
     },
     back(){
       uni.navigateBack()
     },
     openDialogPage() {
-      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'pop-in'})
-      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'slide-in-bottom'})
-      uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in'})
+      uni.openDialogPage({url: '/pages/dialog1/index?test=111'})
     }
   }
 }

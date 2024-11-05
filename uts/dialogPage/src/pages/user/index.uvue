@@ -24,7 +24,7 @@ export default {
   },
   methods: {
     openDialogPage() {
-      uni.openDialogPage({url: '/pages/dialog1/index', animationType: 'pop-in'})
+      uni.openDialogPage({url: '/pages/dialog1/index'})
     }
   }
 }

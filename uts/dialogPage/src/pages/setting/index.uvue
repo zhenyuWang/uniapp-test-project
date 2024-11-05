@@ -40,14 +40,14 @@ export default {
       uni.navigateTo({url: '/pages/user/index'})
     },
     openDialogPage() {
-      uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'slide-in-bottom'})
+      uni.openDialogPage({url: '/pages/dialog2/index'})
     },
     openDialogPageToHome(){
       const pages = getCurrentPages()
       const homePage = pages[0]
-      const dialogPage = uni.openDialogPage({url: '/pages/dialog2/index', animationType: 'slide-in-bottom', parentPage: homePage})
+      const dialogPage = uni.openDialogPage({url: '/pages/dialog2/index', parentPage: homePage})
       setTimeout(() => {
-        uni.closeDialogPage({dialogPage: dialogPage, animationType: 'slide-out-bottom'})
+        uni.closeDialogPage({dialogPage: dialogPage})
       }, 2000)
     }
   }

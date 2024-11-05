@@ -1,10 +1,12 @@
 <template>
 	<view class="page">
 		<text>this is index</text>
+		<button @click="showActionSheet">showActionSheet</button>
 		<button @click="goAbout">goAbout</button>
 		<button @click="goSetting">goSetting</button>
 		<button @click="openDialogPage">openDialogPage</button>
 		<button @click="testGetApp">testGetApp</button>
+		<!-- <button @click="testShowModal2">testShowModal2</button> -->
 	</view>
 </template>
 
@@ -19,11 +21,67 @@ export default {
   onReady() {
     const currentPages = getCurrentPages()
     console.log('wzf--------index onReady currentPages.length', currentPages.length)
+    const parentPage = this.$page.getParentPage()
+    console.log('wzf--------index onReady parentPage', parentPage)
   },
   onHide() {
     console.log('wzf--------index onHide')
   },
   methods: {
+    showActionSheet(){
+      // uni.showActionSheet2({
+      //   // title: 'my title',
+      //   title: 'my title title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title test title',
+      //   itemList: ['1','2','3','4','5'],
+      //   cancelText: 'my cancel',
+      //   titleColor: 'red',
+      //   itemColor: '#0000ff',
+      //   cancelColor: 'yellow',
+      //   backgroundColor: 'green',
+      //   // popover: {
+      //   //   top: 100,
+      //   //   left: 10,
+      //   //   width: 400,
+      //   //   height: 300,
+      //   // },
+      //   success(res){
+      //     console.log('wzf showActionSheet2 success', res)
+      //   },
+      //   fail(res){
+      //     console.log('wzf showActionSheet2 fail', res)
+      //   },
+      //   complete(res){
+      //     console.log('wzf showActionSheet2 complete', res)
+      //   }
+      // })
+      setTimeout(() => {
+        // const pages = getCurrentPages()
+        // const page = pages[pages.length-1]
+        // console.log('wzf showActionSheet2 currentPage', page)
+        // const dialogPages = page.getDialogPages()
+        // console.log('wzf showActionSheet2 dialogPages.length', dialogPages.length)
+        // uni.showActionSheet2({
+        //   // title: 'my title',
+        //   itemList: ['1','2'],
+        //   backgroundColor: '#ff00ff',
+        //   cancelText: 'my calcel',
+        //   // itemColor: '#0000ff',
+        //   // cancelColor: '#ff0000',
+        //   success(res){
+        //     console.log('wzf showActionSheet2 success', res)
+        //   },
+        //   fail(res){
+        //     console.log('wzf showActionSheet2 fail', res)
+        //   },
+        //   complete(res){
+        //     console.log('wzf showActionSheet2 complete', res)
+        //   }
+        // })
+        // setTimeout(() => {
+        //   uni.hideActionSheet2()
+        // }, 2000)
+      }, 2000)
+    },
     goAbout() {
       // uni.switchTab({ url: '/pages/about/index?test=456' })
       uni.navigateTo({ url: '/pages/about/index?test=456' })
@@ -32,57 +90,13 @@ export default {
       uni.navigateTo({ url: '/pages/setting/index' })
     },
     openDialogPage() {
-      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'pop-in'})
-      // uni.openDialogPage({url: '/pages/dialog/index', animationType: 'slide-in-bottom'})
-      const dialogPage1InIndex = uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in'})!
+      const dialogPage1InIndex = uni.openDialogPage({url: '/pages/dialog1/index?test=111'})!
       console.log('dialogPage1InIndex', dialogPage1InIndex)
-      const fn1 = (args:any | null) => {
-          console.log('this is fn1', args)
-        }
-        const fn2 = (args:any | null) => {
-          console.log('this is fn2', args)
-        }
-        const fn11 = (args:any | null) => {
-          console.log('this is fn11', args)
-        }
-
-        dialogPage1InIndex.on('test1', fn1)
-        dialogPage1InIndex.on('test1', fn11)
-        dialogPage1InIndex.once('test2', fn2)
-        setTimeout(() => {
-          dialogPage1InIndex.emit('test1', {name: '111'})
-          dialogPage1InIndex.emit('test1', {age: '222'})
-          dialogPage1InIndex.off('test1', fn1)
-          dialogPage1InIndex.emit('test1', null)
-
-          dialogPage1InIndex.emit('test2', {name: '111'})
-          dialogPage1InIndex.emit('test2', {age: '222'})
-          dialogPage1InIndex.emit('test2', null)
-        }, 1000)
-      // const dialogPage = uni.openDialogPage({url: '/pages/dialog1/index?test=111', animationType: 'fade-in', success(res){
-      // const dialogPage = uni.openDialogPage({url: '/pages/dialog11/index?test=111', animationType: 'fade-in', success(res){
-      // const dialogPage2 = uni.openDialogPage({parentPage: dialogPage1, url: '/pages/dialog2/index?test=111', animationType: 'fade-in', success(res){
-      //   console.log('wzf-----openDialogPage success', res)
-      // },fail(err){
-      //   console.log('wzf-----openDialogPage fail', err)
-      // },complete(res){
-      //   console.log('wzf-----openDialogPage complete', res)
-      // }})
       // console.log('wzf------ dialogPage1', dialogPage1)
       // const parentPage = dialogPage1!.getParentPage()
       // console.log('wzf------ parentPage', parentPage)
       // const dialogPages = this.getDialogPages()
       // console.log('wzf------ dialogPages', dialogPages)
-      // setTimeout(() => {
-      //   // uni.closeDialogPage({dialogPage: dialogPage1, animationType: 'fade-out', success(res){
-      //   uni.closeDialogPage({dialogPage: parentPage, animationType: 'fade-out', success(res){
-      //     console.log('wzf--------closeDialogPage success', res)
-      //   }, fail(err){
-      //     console.log('wzf--------closeDialogPage fail', err)
-      //   }, complete(res){
-      //     console.log('wzf--------closeDialogPage complete', res)
-      //   }})
-      // }, 3000)
     },
     testGetApp(){
       const app = getApp()
@@ -90,7 +104,10 @@ export default {
       setTimeout(() => {
         throw new Error('hahahaha')
       }, 1000)
-    }
+    },
+    // testShowModal2(){
+    //   uni.showModal2({title: 'dialog modal'})
+    // }
   }
 }
 </script>

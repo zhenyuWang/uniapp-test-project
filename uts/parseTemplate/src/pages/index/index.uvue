@@ -1,6 +1,6 @@
 <template>
 	<view>
-		<text>1111</text>
+		<!-- <text>1111</text>
 		<keep-alive>
 			<component :is="aliveComp" />
 		</keep-alive>
@@ -8,6 +8,10 @@
 		<button @click="goAbout">goAbout</button>
 		<button @click="testGetApp">testGetApp</button>
 		<button @click="testEventBusId">testEventBusId</button>
+		<button @click="testPageStyle">test page $set & getPageStyle</button>
+		<button @click="">test page $set & getPageStyle</button> -->
+		<button @click="toggleVisible">toggleVisible</button>
+		<text v-show="visible" class="my-box">{{ visible }}</text>
 	</view>
 </template>
 
@@ -17,7 +21,8 @@ import Bar from '@/components/Bar/Bar.vue'
   export default {
     data(){
       return {
-        aliveComp: Bar
+        aliveComp: Bar,
+        visible: false
       }
     },
     onLoad(){
@@ -30,11 +35,24 @@ import Bar from '@/components/Bar/Bar.vue'
       console.log('wzf---index onReady');
     },
     methods: {
+      toggleVisible(){
+        this.visible = !this.visible
+        uni.$on('test1', () => {
+          console.log('uni.$on test1')
+        })
+        uni.$on('test2', (num: number, str: string) => {
+          console.log('uni.$on test2', num, str)
+        })
+        setTimeout(() => {
+        uni.$emit('test1')
+        uni.$emit('test2', 100, 'my str')
+        }, 1000)
+      },
       changeAliveComp(){
         this.aliveComp = this.aliveComp == null ? Bar : null
       },
       goAbout(){
-        uni.navigateTo({url: '/pages/about/index?name=wzf'})
+        uni.navigateTo({url: '/pages/about/index?from=index'})
       },
       testGetApp(){
         const app = getApp()
@@ -42,16 +60,6 @@ import Bar from '@/components/Bar/Bar.vue'
         console.log('app in index getApp', app.$vm)
         console.log('app in index getApp', app.vm)
         console.log('app in index getApp', app.vm!.fn())
-
-        const fn1 = (args : any | null) => {
-          console.log('this is fn1', args)
-        }
-        const fn2 = (args : any | null) => {
-          console.log('this is fn2', args)
-        }
-        const fn11 = (args : any | null) => {
-          console.log('this is fn11', args)
-        }
       },
       testEventBusId(){
         const fn1 = (args : any | null) => {
@@ -68,7 +76,32 @@ import Bar from '@/components/Bar/Bar.vue'
         console.log('test-id id2', id2)
         uni.$emit('test-id', '触发 test-id fn1')
         uni.$emit('test-id', '触发 test-id fn1')
+      },
+      testPageStyle(){
+        const pages = getCurrentPages()
+        const currentPage = pages[pages.length-1]
+        let currentStyle = currentPage.$getPageStyle()
+        console.log('wzf -------- currentStyle1', currentStyle)
+        currentPage.$setPageStyle({
+          enablePullDownRefresh: true
+        })
+        currentStyle = currentPage.$getPageStyle()
+        console.log('wzf -------- currentStyle2', currentStyle)
+        currentPage.$setPageStyle({
+          enablePullDownRefresh: false
+        })
+        currentStyle = currentPage.$getPageStyle()
+        console.log('wzf -------- currentStyle3', currentStyle)
       }
     }
   }
 </script>
+
+<style>
+.my-box {
+	display: flex;
+	width: 100px;
+	height: 100px;
+	background-color: gold;
+}
+</style>

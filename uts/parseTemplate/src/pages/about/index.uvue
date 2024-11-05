@@ -18,6 +18,10 @@ export default {
   },
   onLoad(options: OnLoadOptions){
     console.log('wzf--------about onLoad options', options)
+    const pages = getCurrentPages()
+    const currentPage = pages[pages.length-1]
+    const from: string | null = currentPage.options['from']
+    console.log('wzf--------about onLoad options.from', from)
     console.log('wzf--------about onLoad options instanceof UTSJSONObject', options instanceof UTSJSONObject)
     console.log('wzf--------about onLoad options.get name', options.get('name'))
     console.log('wzf--------about onLoad options.get test', options.get('test'))
