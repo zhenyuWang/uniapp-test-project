@@ -1,0 +1,17 @@
+<template>
+  <view>this is setting</view>
+</template>
+
+<script setup>
+  const instance = getCurrentInstance()
+  console.log('instance', instance)
+  const currentPage1 = instance?.proxy?.$page
+  console.log('currentPage1', currentPage1)
+  setTimeout(() => {
+    const pages = getCurrentPages()
+    console.log('pages.length', pages.length);
+    const currentPage2 = pages[pages.length-1]
+    console.log('currentPage2', currentPage2.route)
+    console.log('currentPage1=currentPage2', currentPage1==currentPage2)
+  }, 0)
+</script>

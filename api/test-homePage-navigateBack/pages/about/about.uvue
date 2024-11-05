@@ -1,0 +1,25 @@
+<template>
+	<view>
+    <input type="text" v-model="inputValue" />
+		<button @click="back">back</button>
+		<button @click="back2">back20</button>
+	</view>
+</template>
+
+<script>
+	export default {
+    data(){
+      return {
+        inputValue: 'about'
+      }
+    },
+		methods: {
+      back(){
+        uni.navigateBack()
+      },
+      back2(){
+        uni.navigateBack({delta: 20})
+      }
+		}
+	}
+</script>

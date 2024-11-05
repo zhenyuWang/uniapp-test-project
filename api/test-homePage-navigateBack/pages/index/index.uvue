@@ -1,0 +1,70 @@
+<template>
+  <scroll-view id="my-scroll-view" class="my-scroll-view">
+    <view class="container">
+      <input type="text" v-model="inputValue" />
+      <button @click="back">back</button>
+      <button @click="back2">back2</button>
+      <button @click="goAbout">goAbout</button>
+      <button @click="goSetting">goSetting</button>
+      <canvas id="canvas" class="canvas"></canvas>
+      <view v-for="item in 100" :key="item">{{item}}</view>
+    </view>
+  </scroll-view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        inputValue: 'index'
+      }
+    },
+    onReady() {
+      const scrollView = uni.getElementById('my-scroll-view')!
+      scrollView.scrollTo(0, 100)
+      // let canvas = uni.getElementById("canvas") as UniCanvasElement
+      // let canvasContext = canvas.getContext("2d");
+      // console.log('canvasContext',canvasContext);
+      const pages = getCurrentPages()
+      const page = pages[pages.length-1]
+      let canvas = page.getElementById("canvas") as UniCanvasElement
+      let canvasContext = canvas.getContext("2d");
+      console.log('canvasContext',canvasContext);
+      console.log('this.$page.route',this.$page.route)
+      console.log('this.$page = page',this.$page == page)
+    },
+    methods: {
+      back() {
+        uni.navigateBack()
+      },
+      back2() {
+        uni.navigateBack({ delta: 2 })
+      },
+      goAbout() {
+        uni.switchTab({ url: '/pages/about/about' })
+      },
+      goSetting(){
+        uni.navigateTo({
+          url: '/pages/setting/setting'
+        })
+      }
+    }
+  }
+</script>
+
+<style>
+  .my-scroll-view {
+    height: 100%;
+  }
+
+  .container {
+    height: 2000px;
+    background-color: aqua;
+  }
+
+  .canvas {
+    width: 300px;
+    height: 100px;
+    border: 1px solid #ccc;
+  }
+</style>
