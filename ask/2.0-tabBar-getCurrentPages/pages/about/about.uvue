@@ -1,0 +1,38 @@
+<template>
+  <view>
+    <text>this is about</text>
+    <button @click="goSetting">goSetting</button>
+    <button @click="openDialogPage">openDialogPage</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    data() {
+      return {
+        title: 'Hello'
+      }
+    },
+    onLoad() {
+      const pages = getCurrentPages()
+      console.log('pages', pages)
+      console.log('pages.length', pages.length)
+      console.log('pages[0]', pages[0].route)
+    },
+    methods: {
+      goSetting() {
+        uni.navigateTo({
+          url: '/pages/setting/setting'
+        })
+      },
+      openDialogPage(){
+        uni.openDialogPage({
+          url: '/pages/dialog/dialog'
+        })
+        setTimeout(() => {
+          uni.switchTab({url: '/pages/index/index'})
+        }, 2000)
+      }
+    }
+  }
+</script>
