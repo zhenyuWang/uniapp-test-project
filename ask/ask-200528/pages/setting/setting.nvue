@@ -1,0 +1,24 @@
+<template>
+	<view class="content">
+    <text>this is setting</text>
+    <button @click="back">back</button>
+	</view>
+</template>
+
+<script>
+  export default {
+    onShow(){
+      console.log('setting onShow');
+    },
+    onHide(){
+      console.log('setting onHide');
+    },
+    methods: {
+      back(){
+        uni.navigateBack({complete(res){
+          console.log('setting navigateBack res', res);
+        }})
+      }
+    }
+  }
+</script>
