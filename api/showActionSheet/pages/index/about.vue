@@ -2,7 +2,6 @@
 	<view class="content">
 		<button @click="myShowActionSheet">myShowActionSheet</button>
 		<button @click="myShowModal">myShowModal</button>
-		<button @click="goAbout">goAbout</button>
 	</view>
 </template>
 
@@ -34,19 +33,20 @@
           }
         })
         setTimeout(() => {
-          uni.showActionSheet({
-            itemList:['1','2','3'],
-            itemColor:'#0000ff',
-            success: function (res) {
-              console.log('success', res)
-            },
-            fail: function (err) {
-              console.log('fail', err)
-            },
-            complete: function (res) {
-              console.log('complete', res)
-            }
-          })
+          // uni.showActionSheet({
+          //   itemList:['1','2','3'],
+          //   itemColor:'#0000ff',
+          //   success: function (res) {
+          //     console.log('success', res)
+          //   },
+          //   fail: function (err) {
+          //     console.log('fail', err)
+          //   },
+          //   complete: function (res) {
+          //     console.log('complete', res)
+          //   }
+          // })
+          uni.navigateBack()
         }, 3000)
       },
       myShowModal(){
@@ -59,11 +59,6 @@
             title:'222'
           })
         },3000)
-      },
-      goAbout(){
-        uni.navigateTo({
-          url:'/pages/index/about'
-        })
       }
 		}
 	}
