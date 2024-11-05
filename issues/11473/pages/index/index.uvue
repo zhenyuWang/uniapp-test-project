@@ -1,0 +1,40 @@
+<template>
+  <view>
+    <text>{{title}}</text>
+    <text>{{visible}}</text>
+    <button @click="toggleVisible">toggleVisible</button>
+    <view v-show="visible" class="my-box"></view>
+    <button @click="goAbout">goAbout</button>
+  </view>
+</template>
+
+<script>
+  // patchClass
+  // invokeDirectiveHook beforeMount
+  // setDisplay
+  export default {
+    data() {
+      return {
+        title: 'Hello',
+        visible: false
+      }
+    },
+    methods: {
+      toggleVisible() {
+        this.visible = !this.visible
+      },
+      goAbout(){
+        uni.navigateTo({url: '/pages/about/about'})
+      }
+    }
+  }
+</script>
+
+<style>
+  .my-box{
+    display: flex;
+    width: 100px;
+    height: 100px;
+    background-color: red;
+  }
+</style>
