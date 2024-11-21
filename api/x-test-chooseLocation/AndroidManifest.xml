@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android" xmlns:tools="http://schemas.android.com/tools"
+>
+	<application>
+
+		<!-- 将申请到的 key 配置在 android:value 属性中 -->
+		<meta-data android:name="TencentMapSDK" android:value="L5FBZ-IVCCB-22FUM-J7PKP-TZHF7-4SBAT" />
+
+	</application>
+
+</manifest>

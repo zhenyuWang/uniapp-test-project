@@ -1,0 +1,37 @@
+<template>
+  <view>
+    <button @click="test">chooseLocation</button>
+    <navigator url="/pages/about/about">go about</navigator>
+  </view>
+</template>
+
+<script>
+  export default {
+    methods: {
+      test() {
+        uni.chooseLocation({
+          latitude: 39.951372,
+          longitude: 116.39747,
+          keyword: '公园',
+          success: (res) => {
+            console.log('chooseLocationRes: ', res);
+          },
+          fail: (err) => {
+            console.log('err: ', err)
+            console.log('err: ', err.errCode)
+            console.log('err: ', JSON.stringify(err))
+          },
+          complete: (res) => {
+            console.log('complete: ', res)
+          }
+        })
+        setTimeout(() => {
+          const pages = getCurrentPages()
+          const page = pages[pages.length-1]
+          const dialogPages = page.getDialogPages()
+          console.log('dialogPages.length', dialogPages.length)
+        }, 2000)
+      }
+    }
+  }
+</script>

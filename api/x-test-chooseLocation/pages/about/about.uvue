@@ -1,0 +1,44 @@
+<template>
+  <view>
+    <button @click="chooseLocation">chooseLocation</button>
+    <button @click="openDialog">openDialog</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    methods: {
+      chooseLocation() {
+        uni.chooseLocation({
+          latitude: 39.951372,
+          longitude: 116.39747,
+          keyword: '公园',
+          success: (res) => {
+            console.log('chooseLocationRes: ', res);
+          },
+          fail: (err) => {
+            console.log('err: ', err)
+          },
+          complete: (res) => {
+            console.log('complete: ', res)
+          }
+        })
+        setTimeout(() => {
+          const pages = getCurrentPages()
+          const page = pages[pages.length-1]
+          const dialogPages = page.getDialogPages()
+          console.log('dialogPages.length', dialogPages.length)
+        }, 2000)
+      },
+      openDialog(){
+        uni.openDialogPage({url: '/pages/dialog/dialog'})
+        setTimeout(() => {
+          const pages = getCurrentPages()
+          const page = pages[pages.length-1]
+          const dialogPages = page.getDialogPages()
+          console.log('dialogPages.length', dialogPages.length)
+        }, 2000)
+      }
+    }
+  }
+</script>
