@@ -1,0 +1,13 @@
+<script lang="uts">
+export default {
+  onLaunch: function (options) {
+    console.log("wzf App Launch ---", options);
+  },
+  onShow: function () {
+    console.log("wzf App Show ---")
+  },
+  onHide: function () {
+    console.log("wzf App Hide ---")
+  }
+};
+</script>

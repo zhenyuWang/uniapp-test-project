@@ -1,0 +1,20 @@
+{
+  "pages": [
+    {
+      "path": "pages/index/index",
+      "style": {
+        "navigationBarTitleText": "index"
+      }
+    },{
+      "path": "pages/about/index",
+      "style": {
+        "navigationBarTitleText": "about"
+      }
+    }
+  ],
+  "globalStyle": {
+    "navigationBarTitleText": "uni-app",
+    "backgroundColor": "#ff0000",
+    "backgroundColorContent": "#09c"
+  }
+}

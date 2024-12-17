@@ -1,0 +1,24 @@
+<template>
+	{{ msg }}
+	<view
+		><text>{{ msg }}</text>
+	</view>
+</template>
+
+<script>
+export default {
+	name: 'Bar',
+	props: {
+		msg: {
+			type: String,
+			default: 'bar default msg',
+		},
+	},
+	beforeUpdate() {
+		console.log('wzf-------- Bar beforeUpdate')
+	},
+	updated() {
+		console.log('wzf-------- Bar updated')
+	},
+}
+</script>

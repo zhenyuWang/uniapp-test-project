@@ -1,0 +1,25 @@
+<script>
+import Foo from '@/components/Foo/Foo.uvue'
+export default {
+	data() {
+		return {
+			msg: 'Hello World',
+		}
+	},
+	render(): VNode {
+		return h('view', {}, [
+			h(Foo, { msg: this.msg }),
+			h('button', {onClick: this.updateMsg}, this.msg),
+			h('button', {onClick: this.goAbout}, 'goAbout')
+		])
+  },
+  methods: {
+    updateMsg() {
+      this.msg = `${this.msg}_1`
+    },
+    goAbout() {
+      uni.navigateTo({url: '/pages/about/index'})
+    }
+  }
+}
+</script>

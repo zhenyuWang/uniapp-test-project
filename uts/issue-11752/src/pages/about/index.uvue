@@ -1,0 +1,27 @@
+<template>
+	<view>
+		<text>start</text>
+		<keep-alive>
+			<component :is="aliveComp" />
+		</keep-alive>
+		<text>end</text>
+		<button @click="changeAliveComp">changeAliveComp</button>
+	</view>
+</template>
+
+<script lang="uts">
+import Bar from '@/components/Bar/Bar.uvue'
+
+  export default {
+    data(){
+      return {
+        aliveComp: Bar,
+      }
+    },
+    methods: {
+      changeAliveComp(){
+        this.aliveComp = this.aliveComp == null ? Bar : null
+      }
+    }
+  }
+</script>
