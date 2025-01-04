@@ -1,0 +1,51 @@
+<template>
+  <view>
+    <button @click="test1">dialog and chooseLocation</button>
+    <button @click="test2">chooseLocation and dialog</button>
+    <button @click="openDialog">openDialog trigger hide</button>
+    <button @click="openDialogNotTriggerHide">openDialog not trigger hide</button>
+    <button @click="chooseLocation">chooseLocation</button>
+  </view>
+</template>
+
+<script>
+  export default {
+    onShow() {
+      console.log('parent page Show');
+    },
+    onHide() {
+      console.log('parent page Hide');
+    },
+    methods: {
+      test1() {
+        this.openDialog()
+        setTimeout(() => {
+          this.chooseLocation()
+        }, 1000)
+      },
+      test2() {
+        this.chooseLocation()
+        setTimeout(() => {
+          this.openDialog()
+        }, 1000)
+      },
+      openDialog(){
+        uni.openDialogPage({
+          url: '/pages/index/dialog',
+          triggerParentHide: true
+        })
+      },
+      openDialogNotTriggerHide() {
+        uni.openDialogPage({
+          url: '/pages/index/dialog'
+        })
+      },
+      chooseLocation() {
+        uni.chooseLocation({
+          latitude: 39.951372,
+          longitude: 116.39747,
+        })
+      }
+    }
+  }
+</script>
