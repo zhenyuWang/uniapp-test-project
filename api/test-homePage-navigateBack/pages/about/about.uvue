@@ -3,6 +3,7 @@
     <input type="text" v-model="inputValue" />
 		<button @click="back">back</button>
 		<button @click="back2">back20</button>
+		<button @click="redirectToSetting">redirectToSetting</button>
 	</view>
 </template>
 
@@ -19,6 +20,9 @@
       },
       back2(){
         uni.navigateBack({delta: 20})
+      },
+      redirectToSetting(){
+        uni.redirectTo({url: '/pages/setting/setting'})
       }
 		}
 	}

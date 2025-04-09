@@ -16,15 +16,24 @@
     },
     methods: {
       test() {
-        uni.chooseLocation({
-          success: (res) => {
-            console.log('chooseLocationRes: ', res);
-          },
-          fail: (err) => {
-            console.log('err: ', err)
-          },
-          complete: (res) => {
-            console.log('complete: ', res)
+        // uni.chooseLocation({
+        //   success: (res) => {
+        //     console.log('chooseLocationRes: ', res);
+        //   },
+        //   fail: (err) => {
+        //     console.log('err: ', err)
+        //   },
+        //   complete: (res) => {
+        //     console.log('complete: ', res)
+        //   }
+        // })
+        uni.showActionSheet({
+          itemList: ['1','2','3'],
+          success(res){
+            console.log('showActionSheet 1 success', res)
+            uni.showActionSheet({
+              itemList:['a','b','c']
+            })
           }
         })
       }

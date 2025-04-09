@@ -20,16 +20,8 @@
       }
     },
     onReady() {
-      const scrollView = uni.getElementById('my-scroll-view')!
-      scrollView.scrollTo(0, 100)
-      // let canvas = uni.getElementById("canvas") as UniCanvasElement
-      // let canvasContext = canvas.getContext("2d");
-      // console.log('canvasContext',canvasContext);
       const pages = getCurrentPages()
       const page = pages[pages.length-1]
-      let canvas = page.getElementById("canvas") as UniCanvasElement
-      let canvasContext = canvas.getContext("2d");
-      console.log('canvasContext',canvasContext);
       console.log('this.$page.route',this.$page.route)
       console.log('this.$page = page',this.$page == page)
     },
@@ -41,7 +33,7 @@
         uni.navigateBack({ delta: 2 })
       },
       goAbout() {
-        uni.switchTab({ url: '/pages/about/about' })
+        uni.navigateTo({ url: '/pages/about/about' })
       },
       goSetting(){
         uni.navigateTo({
