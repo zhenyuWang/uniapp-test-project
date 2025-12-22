@@ -1,0 +1,104 @@
+<template>
+	<scroll-view style="flex: 1;">
+		<view style="padding: 10px 10px 100px 10px;">
+			<text>native-input：</text>
+			<!-- <text style="height: 2000px;">native-view input：</text> -->
+			<native-input class="input" placeholder="disabled true" :disabled="true" v-if="showInput" />
+			<text @click="toggleShowInput" class="btn">toggle showInput</text>
+			<native-input class="input" value="default value" placeholder="with default value" />
+			<native-input class="input" placeholder="auto-focus true" value="12345" :selection-start="1" :selection-end="3" :auto-focus="true" />
+			<native-input class="input" placeholder="cursor 2" value="cursor 2" :cursor="2" :focus="true" />
+			<native-input class="input" placeholder="auto-focus true" value="12345" :selection-start="1" :selection-end="3" :focus="focus" />
+			<text @click="toggleFocus" class="btn">toggle focus</text>
+			<native-input class="input" placeholder="type none" type="none" />
+			<native-input class="input" placeholder="type search" type="search" />
+			<native-input class="input" placeholder="type email" type="email" />
+			<native-input class="input" placeholder="type url" type="url" />
+			<native-input class="input" placeholder="type text" type="text" />
+			<native-input class="input" placeholder="type number" type="number" />
+			<native-input class="input" placeholder="type digit" type="digit" />
+			<native-input class="input" placeholder="type tel" type="tel" />
+			<native-input class="input" placeholder="type safe-password" type="safe-password" />
+			<native-input class="input" placeholder="type password" type="password" />
+			<native-input class="input" placeholder="请输入..." />
+			<native-input class="input" placeholder-class="uni-placeholder-class" placeholder="占位符为蓝色" />
+			<native-input class="input" placeholder-style="color:red" placeholder="占位符为红色" />
+			<native-input class="input" placeholder="maxlength 5" :maxlength="5" />
+			<native-input class="input" placeholder="cursor-color red" cursor-color="red" />
+			<native-input class="input" placeholder="password true" :password="true" />
+			<native-input class="input" placeholder="confirm-type send" confirm-type="send" />
+			<native-input class="input" placeholder="confirm-type search" confirm-type="search" />
+			<native-input class="input" placeholder="confirm-type next" confirm-type="next" />
+			<native-input class="input" placeholder="confirm-type go" confirm-type="go" />
+			<native-input class="input" placeholder="confirm-type done" confirm-type="done" />
+			<native-input class="input" placeholder="confirm-hold true" :confirm-hold="true" />
+			<native-input class="input" placeholder="adjust-position false" :adjust-position="false" />
+			<native-input class="input" placeholder="adjust-position true" :adjust-position="true" />
+			<!-- inputmode app 不支持 -->
+			<!-- hold-keyboard dom1 通过监听页面的 touch 事件根据属性值决定 input 是否失焦, dom2 等颜总定规范，强哥实现组件中给页面绑 touchend 事件监听 -->
+			<native-input class="input" :hold-keyboard="true" placeholder="hold keyboard " />
+		<native-input class="input" placeholder="bind event" :value="testValue" @input="handleInput" @focus="handleFocus" @blur="handleBlur"
+				@keyboardheightchange="handleKeyboardHeightChange" @change="handleChange" @confirm="handleConfirm" />
+				<text @click="toggleTestValue" class="btn">toggle test value</text>
+		</view>
+	</scroll-view>
+</template>
+
+<script lang="ts" setup>
+	const showInput = ref(true)
+	const toggleShowInput = () => {
+		showInput.value = !showInput.value
+	}
+	
+	const focus = ref(false)
+	const toggleFocus = () => {
+		focus.value = !focus.value
+	}
+	
+	const testValue = ref('test value')
+	
+	const toggleTestValue = () => {
+		testValue.value = testValue.value === 'test value' ? 'another value' : 'test value'
+	}
+	
+	const handleInput = (e) => {
+		console.log('handleInput e.detail', e.detail);
+	}
+	const handleFocus = (e) => {
+		console.log('handleFocus e.detail', e.detail);
+	}
+	const handleBlur = (e) => {
+		console.log('handleBlur e.detail', e.detail);
+	}
+	const handleKeyboardHeightChange = (e) => {
+		console.log('handleKeyboardHeightChange e.detail', e.detail);
+	}
+	const handleChange = (e) => {
+		console.log('handleChange e.detail', e.detail);
+	}
+	const handleConfirm = (e) => {
+		console.log('handleConfirm e.detail', e.detail);
+	}
+</script>
+
+<style>
+	.input {
+		margin-top: 10px;
+		border: 1px solid red;
+	}
+
+	/* TODO: 暂不支持,发版前会支持 */
+	.input :deep(.uni-placeholder-class){
+		color: blue;
+	}
+	.btn {
+		width: 100%;
+		height: 40px;
+		margin-top: 10px;
+		background-color: aqua;
+		border: 1px solid #09c;
+		border-radius: 4px;
+		text-align: center;
+		line-height: 40px;
+	}
+</style>

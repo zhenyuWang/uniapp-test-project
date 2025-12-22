@@ -1,0 +1,9 @@
+<template>
+	<text style="color:red">
+		<slot>{{a}}</slot>
+	</text>
+</template>
+
+<script setup>
+	const a = ref('fallback')
+</script>

@@ -1,0 +1,20 @@
+<template>
+    <view style="width: 300px;height: 40px;background-color: #cccccc;" @click="test"></view>
+    <view>
+        <view v-if="show" style="flex-direction: row;" v-for="(_,index) in 50" :key="String(index)">
+            <view v-for="(_,i) in 40" :key="index+'-'+i" style="background-color: #85d8b4;margin: 0.5px;">
+                <text style="font-size: 10px;line-height: 10px;">{{i}}</text>
+            </view>
+        </view>
+    </view>
+
+</template>
+
+<script lang="ts" setup>
+    const show = ref(false);
+    const style = ref('')
+
+    function test() {
+        show.value = !show.value;
+    }
+</script>

@@ -1,0 +1,120 @@
+<template>
+	<scroll-view style="flex: 1;">
+		<view style="padding: 10px 10px 100px 10px;">
+			<text>native-textarea：</text>
+			<!-- <text style="height: 2000px;">native-view input：</text> -->
+			<!-- <native-textarea class="textarea" placeholder="disabled" :disabled="true" />
+			<native-textarea class="textarea" placeholder="请输入" value="default value" />
+			<native-textarea class="textarea" placeholder="请输入" />
+			<native-textarea class="textarea" placeholder-style="color: red;" placeholder="placeholder-style color:red" />
+			<native-textarea class="textarea" placeholder-class="custom-placeholder-class" placeholder="placeholder-class color:blue" />
+			<native-textarea class="textarea" placeholder="maxlength 10" :maxlength="10" /> -->
+			
+			<native-textarea class="textarea" placeholder="auto-focus true" :auto-focus="true" @focus="handleFocus" @blur="handleBlur" />
+			<native-textarea class="textarea" placeholder="focus" :focus="focus" @focus="handleFocus" @blur="handleBlur" />
+			<text class="btn" @click="toggleFocus">toggleFocus</text>
+			
+<!-- 			<native-textarea class="textarea" placeholder="confirm-type return" confirm-type="return" />
+			<native-textarea class="textarea" placeholder="confirm-type send" confirm-type="send" />
+			<native-textarea class="textarea" placeholder="confirm-type search" confirm-type="search" />
+			<native-textarea class="textarea" placeholder="confirm-type next" confirm-type="next" />
+			<native-textarea class="textarea" placeholder="confirm-type go" confirm-type="go" />
+			<native-textarea class="textarea" placeholder="confirm-type done" confirm-type="done" />
+			<native-textarea class="textarea" placeholder="confirm-hold true" :confirm-hold="true" confirm-type="done" /> -->
+			<!-- <native-textarea class="textarea" placeholder="cursor 2" value="cursor=2" :focus="true" :cursor="2" /> -->
+			<!-- <native-textarea class="textarea" placeholder="auto-height true" :value="value" :auto-height="true" /> -->
+			
+		<!-- 	<native-textarea class="textarea" placeholder="cursor-color red" cursor-color="red" />
+			<native-textarea class="textarea" placeholder="test selection" value="12345" :selection-start="1" :selection-end="3" :focus="focusForSelection" />
+			<text class="btn" @click="toggleFocusForSelection">toggleFocusForSelection</text>
+			<native-textarea class="textarea" placeholder="adjust-position false" :adjust-position="false" />
+			<native-textarea class="textarea" placeholder="adjust-position true" :adjust-position="true" /> -->
+			
+			<!-- inputmode app 不支持 -->
+			<!-- <native-textarea class="textarea" placeholder="inputmode none" inputmode="none" />
+			<native-textarea class="textarea" placeholder="inputmode text" inputmode="text" />
+			<native-textarea class="textarea" placeholder="inputmode decimal" inputmode="decimal" />
+			<native-textarea class="textarea" placeholder="inputmode numeric" inputmode="numeric" />
+			<native-textarea class="textarea" placeholder="inputmode tel" inputmode="tel" />
+			<native-textarea class="textarea" placeholder="inputmode search" inputmode="search" />
+			<native-textarea class="textarea" placeholder="inputmode email" inputmode="email" />
+			<native-textarea class="textarea" placeholder="inputmode url" inputmode="url" /> -->
+			
+	<!-- 		<native-textarea class="textarea" placeholder="bind event" :value="value" @focus="handleFocus" @keyboardheightchange="handleKeyboardHeightChange" @input="handleInput" @change="handleChange" @linechange="handleLineChange" @blur="handleBlur" />
+			<text class="btn" @click="toggleValue">toggleValue</text>
+			<native-textarea class="textarea" placeholder="bind event" confirm-type="done" @focus="handleFocus" @keyboardheightchange="handleKeyboardHeightChange" @input="handleInput" @change="handleChange" @confirm="handleConfirm" @blur="handleBlur" /> -->
+		</view>
+	</scroll-view>
+</template>
+
+<script lang="ts" setup>
+	const value = ref('123')
+	const toggleValue = () => {
+		value.value = value.value === '123' ? 'another value' : '123'
+	}
+	
+	const showInput = ref(true)
+	const toggleShowInput = () => {
+		showInput.value = !showInput.value
+	}
+	
+	const focus = ref(false)
+	const toggleFocus = () => {
+		focus.value = !focus.value
+	}
+	
+	const focusForSelection = ref(false)
+	const toggleFocusForSelection = () => {
+		focusForSelection.value = !focusForSelection.value
+	}
+	
+	const testValue = ref('test value')
+	
+	const toggleTestValue = () => {
+		testValue.value = testValue.value === 'test value' ? 'another value' : 'test value'
+	}
+	
+	const handleInput = (e) => {
+		console.log('handleInput e.detail', e.detail);
+	}
+	const handleFocus = (e) => {
+		console.log('handleFocus e.detail', e.detail);
+	}
+	const handleBlur = (e) => {
+		console.log('handleBlur e.detail', e.detail);
+	}
+	const handleKeyboardHeightChange = (e) => {
+		console.log('handleKeyboardHeightChange e.detail', e.detail);
+	}
+	const handleChange = (e) => {
+		console.log('handleChange e.detail', e.detail);
+	}
+	const handleLineChange = (e) => {
+		console.log('handleLineChangee.detail', e.detail);
+	}
+	const handleConfirm = (e) => {
+		console.log('handleConfirm e.detail', e.detail);
+	}
+</script>
+
+<style>
+	.textarea {
+		margin-top: 10px;
+		border: 1px solid red;
+	}
+	
+	.custom-placeholder-class{
+		color: blue;
+	}
+
+	.btn {
+		width: 100%;
+		height: 40px;
+		margin-top: 10px;
+		background-color: aqua;
+		border: 1px solid #09c;
+		border-radius: 4px;
+		text-align: center;
+		line-height: 40px;
+	}
+</style>

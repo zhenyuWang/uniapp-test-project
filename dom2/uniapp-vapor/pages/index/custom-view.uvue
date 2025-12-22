@@ -1,0 +1,24 @@
+<template>
+    <!-- <view style="width: 300px;height: 40px;background-color: #33cfbe;" @click="test"></view> -->
+    <text style="width: 300px;height: 40px;" @click="test">
+        <slot>{{props.test}}</slot>
+    </text>
+    <!-- <text>text</text> -->
+</template>
+
+<script setup>
+    const props = defineProps({
+        test: String
+    })
+    const emit = defineEmits<{
+        'test-event' : String
+    }>()
+    function test() {
+        console.log('test', props.test)
+        emit('test-event', 'abc')
+    }
+</script>
+
+<style>
+
+</style>

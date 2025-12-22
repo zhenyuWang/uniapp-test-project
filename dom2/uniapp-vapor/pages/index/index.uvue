@@ -1,0 +1,29 @@
+<template>
+  <!-- #ifdef APP -->
+  <scroll-view style="flex: 1">
+  <!-- #endif -->
+		<view>
+			<text @click="test">test</text>
+		</view>
+  <!-- #ifdef APP -->
+  </scroll-view>
+  <!-- #endif -->
+</template>
+<script setup lang="uts">
+  const test = () => {
+		console.log('test ------------');
+		uni.showActionSheet({
+			itemList: ['a','b','c'],
+			success(res){
+				console.log('showActionSheet success', res);
+			},
+			fail(err){
+				console.log('showActionSheet fail', err);
+			}
+		})
+	}
+</script>
+
+<style scoped>
+	
+</style>

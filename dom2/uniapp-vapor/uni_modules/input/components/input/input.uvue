@@ -1,0 +1,264 @@
+<template>
+	<!-- #ifdef APP -->
+	<view class='uni-input-wrapper' v-bind="$attrs">
+		<view class="uni-input-container">
+			<text class="uni-input-placeholder" v-show="showPlaceholder" :class="placeholderClass"
+				:style="props.placeholderStyle">{{props.placeholder}}</text>
+			<native-view style="height: 100%; width: 100%;" @init="onViewInit"></native-view>
+		</view>
+	</view>
+	<!-- #endif -->
+	<!-- #ifdef WEB -->
+	<input type="text" />
+	<!-- #endif -->
+</template>
+<script setup lang="uts">
+	import { NativeInputView } from "@/uni_modules/input";
+
+	const FORM_KEY = 'UNI_FORM_CTX'
+	interface InputInFormContext {
+	  registerField : (field : {
+	    name : string,
+			getValue : () => string,
+	    reset ?: () => void
+	  }) => void,
+	  unregisterField : (name : string) => void
+	}
+
+	let inputView : NativeInputView | null = null
+
+	defineOptions({
+		externalClasses: ['placeholder-class']
+	})
+
+	interface InputProps {
+		name ?: string;
+		disabled ?: boolean;
+		value ?: string | number;
+		modelValue?: string;
+		type ?: string;
+		password ?: boolean;
+		placeholder ?: string;
+		placeholderStyle ?: string;
+		placeholderClass ?: any;
+		maxlength ?: number;
+		cursorSpacing ?: number;
+		cursorColor ?: string;
+		autoFocus ?: boolean;
+		focus ?: boolean;
+		confirmType ?: string;
+		confirmHold ?: boolean;
+		cursor ?: number;
+		selectionStart ?: number;
+		selectionEnd ?: number;
+		adjustPosition ?: boolean;
+		holdKeyboard ?: boolean;
+	}
+	const props = withDefaults(defineProps<InputProps>(), {
+		name: 'input',
+		disabled: false,
+		value: '',
+		modelValue: '',
+		type: 'text',
+		password: false,
+		placeholder: '',
+		placeholderStyle: '',
+		placeholderClass: '',
+		maxlength: -1,
+		cursorSpacing: 0,
+		cursorColor: '',
+		autoFocus: false,
+		focus: false,
+		confirmType: 'done',
+		confirmHold: false,
+		cursor: 0,
+		selectionStart: -1,
+		selectionEnd: -1,
+		adjustPosition: true,
+		holdKeyboard: false,
+	});
+
+	const emit = defineEmits<{
+		(e : 'update:modelValue', value : string) : void
+		(e : 'input', value : UniInputEvent) : void
+		(e : 'focus', value : UniInputFocusEvent) : void
+		(e : 'blur', value : UniInputBlurEvent) : void
+		(e : 'keyboardheightchange', value : UniInputKeyboardHeightChangeEvent) : void
+		(e : 'change', value : UniInputChangeEvent) : void
+		(e : 'confirm', value : UniInputConfirmEvent) : void
+	}>()
+	
+	function getInitValue() : string {
+		const value = props.modelValue == null || props.modelValue == '' ? props.value : props.modelValue
+		return value.toString()
+	}
+
+	const initialValue = ref<string>(getInitValue())
+	const inputValue = ref<string>(initialValue.value)
+
+	const showPlaceholder = computed(() : boolean => {
+		return inputValue.value == '' && props.placeholder != '';
+	})
+
+	watch(() => props.modelValue, (newValue : string) => {
+		const value = newValue != null ? newValue : ''
+		inputValue.value = value.toString()
+		inputView?.updateValue(newValue)
+	})
+	
+	watch(() => props.value, (newValue : string) => {
+		const value = newValue != null ? newValue : ''
+		inputValue.value = value.toString()
+		inputView?.updateValue(newValue)
+	})
+
+	watch(() => props.disabled, (newValue : boolean) => {
+		inputView?.updateDisabled(newValue)
+	})
+	watch(() => props.type, (newValue : string) => {
+		inputView?.updateType(newValue)
+	})
+	watch(() => props.password, (newValue : boolean) => {
+		inputView?.updatePassword(newValue)
+	})
+	watch(() => props.maxlength, (newValue : number) => {
+		inputView?.updateMaxLength(newValue)
+	})
+	// input 光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
+	watch(() => props.cursorSpacing, (newValue : number) => {
+		inputView?.updateCursorSpacing(newValue)
+	})
+	watch(() => props.cursorColor, (newValue : string) => {
+		inputView?.updateCursorColor(newValue)
+	})
+
+	watch(() => props.focus, (newValue : boolean) => {
+		inputView?.updateFocus(newValue)
+	})
+
+	watch(() => props.confirmType, (newValue : string) => {
+		inputView?.updateConfirmType(newValue)
+	})
+
+	watch(() => props.confirmHold, (newValue : boolean) => {
+		inputView?.updateConfirmHold(newValue)
+	})
+
+	watch(() => props.cursor, (newValue : number) => {
+		inputView?.updateCursor(newValue)
+	})
+
+	watch(() => props.selectionStart, (newValue : number) => {
+		inputView?.updateSelectionStart(newValue)
+	})
+
+	watch(() => props.selectionEnd, (newValue : number) => {
+		inputView?.updateSelectionEnd(newValue)
+	})
+
+	watch(() => props.adjustPosition, (newValue : boolean) => {
+		inputView?.updateAdjustPosition(newValue)
+	})
+
+	watch(() => props.holdKeyboard, (newValue : boolean) => {
+		inputView?.updateHoldKeyboard(newValue)
+	})
+
+	function onViewInit(e : UniNativeViewInitEvent) {
+		inputView = new NativeInputView(e.detail.element);
+		inputView!.updateValue(inputValue.value)
+		inputView!.updateType(props.type)
+		inputView!.updateDisabled(props.disabled)
+		inputView!.updateSelectionStart(props.selectionStart)
+		inputView!.updateSelectionEnd(props.selectionEnd)
+		inputView!.updateAutoFocus(props.autoFocus)
+		inputView!.updateFocus(props.focus)
+		inputView!.updateCursor(props.cursor)
+		inputView!.updateConfirmType(props.confirmType)
+		inputView!.updateConfirmHold(props.confirmHold)
+		inputView!.updateAdjustPosition(props.adjustPosition)
+		inputView!.updateHoldKeyboard(props.holdKeyboard)
+		inputView!.updatePassword(props.password)
+		inputView!.updateMaxLength(props.maxlength)
+		inputView!.updateCursorColor(props.cursorColor)
+		inputView!.updateInputEvent(onInput)
+		inputView!.updateFocusEvent(onFocus)
+		inputView!.updateBlurEvent(onBlur)
+		inputView!.updateKeyboardHeightChangeEvent(onKeyboardHeightChange)
+		inputView!.updateChangeEvent(onChange)
+		inputView!.updateConfirmEvent(onConfirm)
+	}
+
+	function onInput(e : UniInputEvent) {
+		const newValue = e.detail.value
+		if (newValue !== inputValue.value) {
+			inputValue.value = newValue
+			emit('update:modelValue', newValue)
+			emit('input', e)
+		}
+	}
+
+	function onFocus(e : UniInputFocusEvent) {
+		emit('focus', e)
+	}
+
+	function onBlur(e : UniInputBlurEvent) {
+		emit('blur', e)
+	}
+
+	function onKeyboardHeightChange(e : UniInputKeyboardHeightChangeEvent) {
+		emit('keyboardheightchange', e)
+	}
+
+	function onChange(e : UniInputChangeEvent) {
+		emit('change', e)
+	}
+
+	function onConfirm(e : UniInputConfirmEvent) {
+		emit('confirm', e)
+	}
+
+	onMounted(() => {
+		const formCtx = inject<InputInFormContext | null>(FORM_KEY, null)
+		if (formCtx && props.name) {
+		  formCtx.registerField({
+		    name: props.name,
+		    getValue: () => inputValue.value,
+		    reset: () => { inputValue.value = initialValue.value }
+		  })
+		}
+	})
+
+	onUnmounted(() => {
+		const formCtx = inject<{ unregisterField : (name : string) => void } | null>(FORM_KEY, null)
+    if (formCtx && props.name) {
+      formCtx.unregisterField(props.name)
+    }
+		// iOS平台需要主动释放 uts 实例
+		inputView?.destroy()
+	})
+</script>
+
+<style>
+	.uni-input-wrapper {
+		width: 100%;
+		height: 26px;
+		display: flex;
+		align-items: center;
+		overflow: visible;
+	}
+	.uni-input-container{
+		position: relative;
+		overflow: visible;
+	}
+	.uni-input-placeholder {
+		position: absolute;
+		top: 50%;
+		transform: translateY(-50%);
+		left: 0;
+		right: 0;
+		color: #999999;
+		font-size: 16px;
+		font-weight: normal;
+	}
+</style>

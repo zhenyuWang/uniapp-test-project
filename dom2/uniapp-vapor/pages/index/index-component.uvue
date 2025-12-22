@@ -1,0 +1,16 @@
+<template>
+    <view>
+        <CustomView test="xxx" @test-event="test" style="background-color: #33cfbe;height: 20px" class="cv">
+            123
+        </CustomView>
+        <view style="width: 300px;height: 40px;background-color: #333333;"></view>
+    </view>
+</template>
+
+<script lang="ts" setup>
+    import CustomView from './custom-view.uvue'
+    const slotName = ref('test')
+    function test(e : string) {
+        console.log('test-event', e)
+    }
+</script>

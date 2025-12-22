@@ -1,0 +1,20 @@
+<template>
+    <view>
+        <view style="width: 50px;height: 50px;background-color: aqua;" @click="test"></view>
+    </view>
+</template>
+
+<script lang="ts" setup>
+    function test(e : Event) {
+        console.log('init', e)
+        uni.navigateTo({
+            url: '/pages/index/test',
+            success() {
+                console.log('success')
+            },
+            fail(e) {
+                console.log('fail', e)
+            }
+        })
+    }
+</script>

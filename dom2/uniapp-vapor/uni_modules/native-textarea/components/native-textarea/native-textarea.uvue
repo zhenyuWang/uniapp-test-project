@@ -1,0 +1,211 @@
+<template>
+	<view class='uni-textarea-wrapper'>
+		<text class="uni-textarea-placeholder" v-if="showPlaceholder" :class="placeholderClass"
+			:style="props.placeholderStyle">{{props.placeholder}}</text>
+		<native-view style="height: 100%; width: 100%;" @init="onViewInit"></native-view>
+	</view>
+</template>
+<script setup lang="uts">
+	import { NativeTextareaView } from "@/uni_modules/native-textarea";
+
+	let textareaView : NativeTextareaView | null = null
+	
+	defineOptions({
+		externalClasses: ['placeholder-class']
+	})
+
+	interface TextareaProps {
+		name ?: string;
+		disabled ?: boolean;
+		value ?: string;
+		placeholder ?: string;
+		placeholderStyle ?: string;
+		placeholderClass ?: any;
+		maxlength ?: number;
+		cursorSpacing ?: number;
+		cursorColor ?: string;
+		autoFocus ?: boolean;
+		focus ?: boolean;
+		confirmType ?: string;
+		confirmHold ?: boolean;
+		autoHeight ?: boolean;
+		cursor ?: number;
+		selectionStart ?: number;
+		selectionEnd ?: number;
+		adjustPosition ?: boolean;
+		holdKeyboard ?: boolean;
+	}
+	const props = withDefaults(defineProps<TextareaProps>(), {
+		name: 'input',
+		disabled: false,
+		value: '',
+		placeholder: '',
+		placeholderStyle: '',
+		placeholderClass: '',
+		maxlength: -1,
+		cursorSpacing: 0,
+		cursorColor: '',
+		autoFocus: false,
+		focus: false,
+		confirmType: 'return',
+		confirmHold: false,
+		cursor: 0,
+		autoHeight: false,
+		selectionStart: -1,
+		selectionEnd: -1,
+		adjustPosition: true,
+		holdKeyboard: false,
+	});
+
+	const emit = defineEmits<{
+		(e : 'update:modelValue', value : string) : void
+		(e : 'input', value : UniInputEvent) : void
+		(e : 'focus', value : UniTextareaFocusEvent) : void
+		(e : 'blur', value : UniTextareaBlurEvent) : void
+		(e : 'keyboardheightchange', value : UniInputKeyboardHeightChangeEvent) : void
+		(e : 'change', value : UniInputChangeEvent) : void
+		(e : 'linechange', value : UniTextareaLineChangeEvent) : void
+		(e : 'confirm', value : UniInputConfirmEvent) : void
+	}>()
+
+	const textareaValue = ref<string>(props.value)
+
+	const showPlaceholder = computed(() : boolean => {
+		return textareaValue.value == '' && props.placeholder != '';
+	})
+
+	watch(() => props.value, (newValue : string) => {
+		textareaValue.value = newValue
+		textareaView?.updateValue(newValue)
+	})
+
+	watch(() => props.disabled, (newValue : boolean) => {
+		textareaView?.updateDisabled(newValue)
+	})
+	watch(() => props.maxlength, (newValue : number) => {
+		textareaView?.updateMaxLength(newValue)
+	})
+	// input 光标与键盘的距离，单位 px 。取 input 距离底部的距离和 cursor-spacing 指定的距离的最小值作为光标与键盘的距离
+	watch(() => props.cursorSpacing, (newValue : number) => {
+		textareaView?.updateCursorSpacing(newValue)
+	})
+	watch(() => props.cursorColor, (newValue : string) => {
+		textareaView?.updateCursorColor(newValue)
+	})
+
+	watch(() => props.focus, (newValue : boolean) => {
+		textareaView?.updateFocus(newValue)
+	})
+
+	watch(() => props.confirmType, (newValue : string) => {
+		textareaView?.updateConfirmType(newValue)
+	})
+
+	watch(() => props.confirmHold, (newValue : boolean) => {
+		textareaView?.updateConfirmHold(newValue)
+	})
+	
+	watch(() => props.autoHeight, (newValue : boolean) => {
+		textareaView?.updateAutoHeight(newValue)
+	})
+
+	watch(() => props.cursor, (newValue : number) => {
+		textareaView?.updateCursor(newValue)
+	})
+
+	watch(() => props.selectionStart, (newValue : number) => {
+		textareaView?.updateSelectionStart(newValue)
+	})
+
+	watch(() => props.selectionEnd, (newValue : number) => {
+		textareaView?.updateSelectionEnd(newValue)
+	})
+
+	watch(() => props.adjustPosition, (newValue : boolean) => {
+		textareaView?.updateAdjustPosition(newValue)
+	})
+
+	watch(() => props.holdKeyboard, (newValue : boolean) => {
+		textareaView?.updateHoldKeyboard(newValue)
+	})
+
+	function onViewInit(e : UniNativeViewInitEvent) {
+		textareaView = new NativeTextareaView(e.detail.element);
+		textareaView.updateValue(props.value)
+		textareaView.updateDisabled(props.disabled)
+		textareaView.updateSelectionStart(props.selectionStart)
+		textareaView.updateSelectionEnd(props.selectionEnd)
+		textareaView.updateAutoFocus(props.autoFocus)
+		textareaView.updateFocus(props.focus)
+		textareaView.updateCursor(props.cursor)
+		textareaView.updateConfirmType(props.confirmType)
+		textareaView.updateConfirmHold(props.confirmHold)
+		textareaView.updateAutoHeight(props.autoHeight)
+		textareaView.updateAdjustPosition(props.adjustPosition)
+		textareaView.updateHoldKeyboard(props.holdKeyboard)
+		textareaView.updateMaxLength(props.maxlength)
+		textareaView.updateCursorColor(props.cursorColor)
+		textareaView.updateInputEvent(onInput)
+		textareaView.updateFocusEvent(onFocus)
+		textareaView.updateBlurEvent(onBlur)
+		textareaView.updateKeyboardHeightChangeEvent(onKeyboardHeightChange)
+		textareaView.updateChangeEvent(onChange)
+		textareaView.updateLineChangeEvent(onLineChange)
+		textareaView.updateConfirmEvent(onConfirm)
+	}
+
+	function onInput(e : UniInputEvent) {
+		const newValue = e.detail.value
+		textareaValue.value = newValue
+		if (newValue !== props.value) {
+			emit('update:modelValue', newValue)
+			emit('input', e)
+		}
+	}
+
+	function onFocus(e : UniInputFocusEvent) {
+		emit('focus', e)
+	}
+
+	function onBlur(e : UniInputBlurEvent) {
+		emit('blur', e)
+	}
+
+	function onKeyboardHeightChange(e : UniInputKeyboardHeightChangeEvent) {
+		emit('keyboardheightchange', e)
+	}
+
+	function onChange(e : UniInputChangeEvent) {
+		emit('change', e)
+	}
+	
+	function onLineChange(e: UniTextareaLineChangeEvent) {
+		emit('linechange', e)
+	}
+
+	function onConfirm(e : UniInputConfirmEvent) {
+		emit('confirm', e)
+	}
+
+	onUnmounted(() => {
+		textareaView.destroy()
+	})
+</script>
+
+<style>
+	.uni-textarea-wrapper {
+		width: 100%;
+		height: 150px;
+		position: relative;
+	}
+
+	.uni-textarea-placeholder {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		color: #999999;
+		font-size: 16px;
+		font-weight: normal;
+	}
+</style>

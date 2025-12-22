@@ -1,0 +1,12 @@
+<template>
+	<view @click="onChange()">
+		<test>{{msg}}</test>
+	</view>
+</template>
+<script setup>
+	const msg = ref('123123213')
+	function onChange() {
+		msg.value = "" + Date.now()
+		console.log(msg.value)
+	}
+</script>
