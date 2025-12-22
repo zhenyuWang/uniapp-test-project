@@ -1,9 +1,12 @@
 <template>
-	<view class="page">
-		<text @click="handleClick" style="margin: 20px;">button</text>
-		<input type="text" class="input" id="my-input" v-model="value" placeholder="test placeholder" />
-		<textarea class="input" id="my-textarea" v-model="value" placeholder="test placeholder" />
-	</view>
+	<scroll-view>
+		<view class="page">
+			<text @click="handleClick" style="margin: 20px;">button</text>
+			<view class="block"></view>
+			<input type="text" class="input" id="my-input" v-model="value" placeholder="test placeholder" />
+			<textarea class="input" id="my-textarea" v-model="value" placeholder="test placeholder" />
+		</view>
+	</scroll-view>
 </template>
 
 <script setup>
@@ -47,6 +50,12 @@
 </script>
 
 <style>
+	.page{
+		background-color: aquamarine;
+	}
+	.block{
+		height: 1000px;
+	}
 	.input {
 		font-size: 20px;
 		font-weight: bold;

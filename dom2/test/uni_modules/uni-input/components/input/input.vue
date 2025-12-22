@@ -4,7 +4,7 @@
 		<view class="uni-input-container">
 			<text class="uni-input-placeholder" v-if="showPlaceholder" :class="placeholderClass"
 				:style="props.placeholderStyle">{{props.placeholder}}</text>
-			<native-view style="height: 100%; width: 100%;" @init="onViewInit" :keyboardHeight="keyboardHeight" change:keyboardHeight="input.keyboardHeightChange"></native-view>
+			<native-view style="height: 100%; width: 100%;" @init="onViewInit" :keyboardHeight="keyboardHeight" change:keyboardHeight="input.keyboardHeightChange" :ref="input.initElement"></native-view>
 		</view>
 	</view>
 	<!-- #endif -->
@@ -12,7 +12,7 @@
 	<input type="text" />
 	<!-- #endif -->
 </template>
-<script module="test" lang="cpp" class-name="TestCpp" src="../../cppsdk/input.h"></script>
+<script module="input" lang="cpp" class-name="InputCpp" src="../../cppsdk/input.h"></script>
 <script setup lang="uts">
 	import {
 		NativeInputView,
