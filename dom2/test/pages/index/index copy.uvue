@@ -1,0 +1,61 @@
+<template>
+	<view class="page">
+		<text @click="handleClick" style="margin: 20px;">button</text>
+		<input type="text" class="input" id="my-input" v-model="value" placeholder="test placeholder" />
+		<textarea class="input" id="my-textarea" v-model="value" placeholder="test placeholder" />
+	</view>
+</template>
+
+<script setup>
+	const value = ref('default value')
+	const handleClick = () => {
+		const input = uni.getElementById('my-input') as UniInputElement
+		let inputValue1 = input.getAttribute('value')
+		console.log('input value1:', inputValue1)
+		let inputValue2 = input.value
+		console.log('input value2:', inputValue1)
+		
+		input.value = 'new value'
+		
+		inputValue1 = input.getAttribute('value')
+		console.log('input value1:', inputValue1)
+		inputValue2 = input.value
+		console.log('input value2:', inputValue2)
+		
+		const inputType = input.getAttribute('type');
+		console.log('input type:', inputType)
+		const inputPlaceholder = input.getAttribute('placeholder');
+		console.log('input placeholder:', inputPlaceholder)
+		
+		const textarea = uni.getElementById('my-textarea') as UniTextareaElement
+		let textareaValue1 = textarea.getAttribute('value')
+		console.log('textarea value1:', textareaValue1)
+		let textareaValue2 = textarea.value
+		console.log('textarea value2:', textareaValue2)
+		
+		textarea.value = 'new value'
+		
+		textareaValue1 = textarea.getAttribute('value')
+		console.log('textarea value1:', textareaValue1)
+		textareaValue2 = textarea.value
+		console.log('textarea value2:', textareaValue2)
+		
+		const textareaPlaceholder = textarea.getAttribute('placeholder');
+		console.log('textarea placeholder:', textareaPlaceholder)
+		
+	}
+</script>
+
+<style>
+	.input {
+		font-weight: bold;
+		font-style: italic;
+		font-family: 'abc';
+		color: red;
+		line-height: 30px;
+		text-align: right;
+		letter-spacing: 5px;
+		border: 1px solid red;
+		border-radius: 4px;
+	}
+</style>

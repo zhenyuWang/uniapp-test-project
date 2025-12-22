@@ -1,0 +1,497 @@
+import { BuilderNode, UIContext, KeyboardAvoidMode, window } from "@kit.ArkUI";
+import { UniInputOptions, InputBuilder } from './input.ets'
+import { getCurrentMP, toUniNativeColor } from "@dcloudio/uni-runtime";
+
+const INPUT_TYPES = new Map<string, InputType>([
+	// for type
+	['text', InputType.Normal],
+	['number', InputType.Number],
+	['digit', InputType.NUMBER_DECIMAL],
+	['tel', InputType.PhoneNumber],
+	// for password
+	['password', InputType.Password],
+	['safe-password', InputType.Password],
+	// for inputMode
+	['decimal', InputType.NUMBER_DECIMAL],
+	['numeric', InputType.Number],
+	['email', InputType.Email],
+	['url', InputType.URL],
+])
+
+const CONFIRM_TYPES = new Map<string, EnterKeyType>([
+	['return', EnterKeyType.NEW_LINE],
+	['send', EnterKeyType.Send],
+	['search', EnterKeyType.Search],
+	['next', EnterKeyType.Next],
+	['go', EnterKeyType.Go],
+	['done', EnterKeyType.Done],
+])
+
+interface SelectionData {
+	start: number,
+	end: number
+}
+
+type LayoutLength = {
+	value: number
+	unit: number
+}
+
+type InputEventDetail = {
+	value: string
+	cursor: number
+}
+type FocusEventDetail = {
+	height: number
+	value: string
+}
+type BlurEventDetail = InputEventDetail
+type KeyboardHeightChangeEventDetail = {
+	height: number
+	duration: number
+}
+type ChangeEventDetail = {
+	value: string
+}
+type ConfirmEventDetail = ChangeEventDetail
+
+type InputEvent = (e: ESObject) => void
+
+export class NativeInputView {
+	private element: UniNativeViewElement;
+	private harmonyBuilderNode: BuilderNode<[UniInputOptions]> | null = null
+	private uiContext: UIContext | null = null
+	private controller = new TextInputController()
+	private value = ''
+	private params: UniInputOptions = {
+		key: '',
+		value: '',
+		placeholder: '',
+		controller: this.controller,
+		confirmHold: false,
+		handleMountedFocus: this.handleMountedFocus.bind(this),
+		dispatchInput: this.dispatchInput.bind(this),
+		handleFocus: this.handleFocus.bind(this),
+		handleBlur: this.handleBlur.bind(this),
+		dispatchConfirm: this.dispatchConfirm.bind(this),
+	}
+	private cursor = 0
+	private isPassword = false
+	private propsType: string = 'text'
+	private autoFocus = false
+	private isFocusing = false
+	private needFocusWhenMounted = false
+	protected selection: SelectionData = { start: -1, end: -1 }
+	private holdKeyboard = false
+	private adjustPosition = false
+	private mounted = false
+	private inputEvent: InputEvent | null = null
+	private focusEvent: InputEvent | null = null
+	private blurEvent: InputEvent | null = null
+	private keyboardHeightChangeEvent: InputEvent | null = null
+	private changeEvent: InputEvent | null = null
+	private confirmEvent: InputEvent | null = null
+	private currentWindow: window.Window | null = null
+	private keyboardHeight = 0
+
+	constructor(element: UniNativeViewElement) {
+		this.element = element;
+		this.bindView()
+		this.params.key = `${element['id']}`
+		this.updateParams()
+	}
+
+	private bindView() {
+		this.element.bindHarmonyWrappedBuilder(wrapBuilder<[UniInputOptions]>(InputBuilder), {});
+		this.harmonyBuilderNode = (this.element as ESObject).getHarmonyComponentContent()
+	}
+
+	private updateParams() {
+		this.harmonyBuilderNode?.update(this.params)
+	}
+
+	private updateSelection() {
+		if (this.selection.end !== -1 && this.selection.end >= this.selection.start) {
+			this.controller.setTextSelection(this.selection.start, this.selection.end)
+		} else {
+			this.controller.setTextSelection(this.params.value!.length, this.params.value!.length)
+		}
+	}
+
+	updateValue(value: string) {
+		this.params.value = value
+		this.updateParams()
+		if (this.mounted) {
+			if (this.isFocusing) {
+				this.updateSelection()
+			} else {
+				this.dispatchChange(value)
+			}
+		}
+	}
+
+	updateDisabled(value: boolean) {
+		this.params.enabled = !value
+		this.updateParams()
+	}
+
+	updateType(value: string) {
+		if (value === 'none' || value === 'search' || INPUT_TYPES.get(value) !== null) {
+			this.propsType = value
+			if (this.isPassword) {
+				return
+			}
+			if (value === 'none') {
+				// 'none' 设置聚焦不弹起软键盘 https://issuereporter.developer.huawei.com/detail/250428155020088/comment
+			} else if (value === 'search') {
+				this.params.type = INPUT_TYPES.get('text')!
+				this.params.enterKeyType = CONFIRM_TYPES.get(value)!
+			} else {
+				this.params.type = INPUT_TYPES.get(value)!
+			}
+			this.updateParams()
+		}
+	}
+
+	updatePassword(value: boolean) {
+		this.isPassword = value
+		const type = this.isPassword ? 'password' : this.propsType
+		this.params.type = INPUT_TYPES.get(type)!
+		this.updateParams()
+	}
+
+	updateMaxLength(value: number) {
+		this.params.maxLength = value
+		this.updateParams()
+	}
+
+	updateCursorSpacing(value: number) {
+		// harmony 不支持
+	}
+
+	updateCursorColor(value: string) {
+		this.params.caretColor = toUniNativeColor(value, this.params.caretColor)
+		this.updateParams()
+	}
+
+	updateAutoFocus(value: boolean) {
+		this.autoFocus = value
+	}
+
+	handleMountedFocus() {
+		this.mounted = true
+		window.getLastWindow(getContext(this.harmonyBuilderNode)).then(currentWindow => {
+			this.currentWindow = currentWindow
+			currentWindow.on('keyboardHeightChange', this.dispatchKeyboardHeightChange.bind(this))
+		})
+		if (this.needFocusWhenMounted || this.autoFocus) {
+			this.triggerFocus()
+		}
+	}
+
+	updateFocus(value: boolean) {
+		if (value && !this.isFocusing) {
+			if (!this.harmonyBuilderNode) {
+				this.needFocusWhenMounted = true
+				return
+			}
+			this.triggerFocus()
+		} else {
+			if (this.isFocusing) {
+				this.triggerBlur()
+			}
+		}
+	}
+
+	getUIContext() {
+		if (this.uiContext) return this.uiContext
+		const mainWindow = getCurrentMP().window
+		if (!mainWindow) return
+		const uiContext = mainWindow.getUIContext()
+		if (!uiContext) return
+		this.uiContext = uiContext
+		return this.uiContext
+	}
+
+	triggerFocus() {
+		const uiContext = this.getUIContext()
+		if (!uiContext) return
+		// native view init 时聚焦偶发无法上推页面问题，故延时处理
+		setTimeout(() => {
+			uiContext.getFocusController().requestFocus(this.params.key)
+			// 需要在聚焦完成后再设置 selection
+			setTimeout(() => {
+				this.updateSelection()
+			}, 0)
+		}, 0)
+	}
+	triggerBlur() {
+		try {
+			const uiContext = this.getUIContext()
+			if (!uiContext) return
+			uiContext.getFocusController().clearFocus()
+			this.dispatchBlur(this.value, this.cursor)
+		} catch (e) {
+			console.error(e.message)
+		}
+	}
+
+	updateConfirmType(value: string) {
+		if (this.params.type != INPUT_TYPES.get('text')) return
+
+		const type = CONFIRM_TYPES.get(value)
+		if (type !== null) {
+			this.params.enterKeyType = type
+			this.updateParams()
+		}
+	}
+
+	updateConfirmHold(value: boolean) {
+		this.params.confirmHold = value
+		this.updateParams()
+	}
+
+	updateCursor(value: number) {
+		// 需要等 input 聚焦后再设置才生效
+		setTimeout(() => {
+			this.params.caretPosition = value
+			this.updateParams()
+		}, 0)
+	}
+
+	updateSelectionStart(value: number) {
+		this.selection.start = value
+	}
+
+	updateSelectionEnd(value: number) {
+		this.selection.end = value
+	}
+
+	updateAdjustPosition(value: boolean) {
+		this.adjustPosition = value
+	}
+
+	updateHoldKeyboard(value: boolean) {
+		this.holdKeyboard = value
+	}
+
+	updateColor(newVal: number) {
+		if (newVal == null) return
+
+		if (this.params.color != newVal) {
+			this.params.color = newVal
+			this.updateParams()
+		}
+	}
+	// TODO: 以下暂时仅支持 px
+	updateFontSize(value: LayoutLength) {
+		if (value?.unit == 2) {
+			const newValue = `${value.value}vp`
+			if (this.params.fontSize != newValue) {
+				this.params.fontSize = newValue
+				this.updateParams()
+			}
+		}
+	}
+	updateLineHeight(value: LayoutLength) {
+		if (value?.unit == 2) {
+			const newValue = `${value.value}vp`
+			if (this.params.lineHeight != newValue) {
+				this.params.lineHeight = newValue
+				this.updateParams()
+			}
+		}
+	}
+	updateLetterSpacing(value: LayoutLength) {
+		if (value?.unit == 2) {
+			const newValue = `${value.value}vp`
+			if (this.params.letterSpacing != newValue) {
+				this.params.letterSpacing = newValue
+				this.updateParams()
+			}
+		}
+	}
+	
+	updateFontWeight(value: number) {
+		let newValue = FontWeight.Normal
+		switch(value){
+			case 1:
+			newValue = FontWeight.Bold
+			break;
+			case 2:
+			newValue = FontWeight.Lighter
+			break;
+			case 3:
+			newValue = FontWeight.Bolder
+			break;
+		}
+		if (this.params.fontWeight != newValue) {
+			this.params.fontWeight = newValue
+			this.updateParams()
+		}
+	}
+	updateFontStyle(value: number) {
+		let newValue = FontStyle.Normal
+		if(value == 1){
+			newValue = FontStyle.Italic
+		}
+		if (this.params.fontStyle != newValue) {
+			this.params.fontStyle = newValue
+			this.updateParams()
+		}
+	}
+	updateFontFamily(value: string) {
+		if (this.params.fontFamily != value) {
+			this.params.fontFamily = value
+			this.updateParams()
+		}
+	}
+	updateTextAlign(value: number) {
+		let newValue = TextAlign.Start
+		switch(value){
+			case 1:
+			newValue = TextAlign.End
+			break;
+			case 2:
+			newValue = TextAlign.Center
+			break;
+		}
+		if (this.params.textAlign != newValue) {
+			this.params.textAlign = newValue
+			this.updateParams()
+		}
+	}
+
+	handleFocus() {
+		this.isFocusing = true
+		this.dispatchFocus(this.keyboardHeight, this.value)
+		const uiContext = this.getUIContext()
+		if (!uiContext) return
+
+		uiContext.setKeyboardAvoidMode(this.adjustPosition ? KeyboardAvoidMode.OFFSET : KeyboardAvoidMode.NONE)
+	}
+
+	handleBlur() {
+		if (!this.isFocusing) return
+
+		const uiContext = this.getUIContext()
+		if (!uiContext) return
+
+		uiContext.setKeyboardAvoidMode(KeyboardAvoidMode.OFFSET)
+		this.dispatchBlur(this.value, this.cursor)
+	}
+
+	updateInputEvent(event: InputEvent) {
+		this.inputEvent = event
+	}
+	dispatchInput(value: string, cursor?: number | null) {
+		this.value = value
+		if (cursor != null) {
+			this.cursor = cursor
+		}
+		if (!this.isFocusing) return
+		this.inputEvent?.(new UniCustomEvent('input', new UniCustomEventOptions<InputEventDetail>({ value, cursor } as InputEventDetail)))
+	}
+
+	updateFocusEvent(event: InputEvent) {
+		this.focusEvent = event
+	}
+	dispatchFocus(height: number, value: string) {
+		this.focusEvent?.(new UniCustomEvent('focus', new UniCustomEventOptions<FocusEventDetail>({ height, value } as FocusEventDetail)))
+	}
+
+	updateBlurEvent(event: InputEvent) {
+		this.blurEvent = event
+	}
+	dispatchBlur(value: string, cursor: number) {
+		this.isFocusing = false
+		this.blurEvent?.(new UniCustomEvent('blur', new UniCustomEventOptions<BlurEventDetail>({ value, cursor } as BlurEventDetail)))
+	}
+
+	updateKeyboardHeightChangeEvent(event: InputEvent) {
+		this.keyboardHeightChangeEvent = event
+	}
+	dispatchKeyboardHeightChange(height: number) {
+		if (!this.isFocusing) return
+
+		const _height = px2vp(height)
+		this.keyboardHeight = _height
+		this.keyboardHeightChangeEvent?.(new UniCustomEvent('keyboardheightchange', new UniCustomEventOptions<KeyboardHeightChangeEventDetail>({ height: _height, duration: 0 } as KeyboardHeightChangeEventDetail)))
+	}
+
+	updateChangeEvent(event: InputEvent) {
+		this.changeEvent = event
+	}
+	dispatchChange(value: string) {
+		this.changeEvent?.(new UniCustomEvent('change', new UniCustomEventOptions<ChangeEventDetail>({ value } as ChangeEventDetail)))
+	}
+
+	updateConfirmEvent(event: InputEvent) {
+		this.confirmEvent = event
+	}
+	dispatchConfirm(value: string) {
+		this.confirmEvent?.(new UniCustomEvent('confirm', new UniCustomEventOptions<ConfirmEventDetail>({ value } as ConfirmEventDetail)))
+	}
+
+	destroy() {
+		this.harmonyBuilderNode = null
+		this.uiContext = null
+		this.inputEvent = null
+		this.focusEvent = null
+		this.blurEvent = null
+		this.keyboardHeightChangeEvent = null
+		this.changeEvent = null
+		this.confirmEvent = null
+		this.currentWindow = null
+	}
+}
+
+export class UniInputElement extends globalThis.UniVueElement {
+	override tagName: string = 'INPUT'
+	override nodeName: string = 'INPUT'
+
+	_value: string = ''
+	onValueChange: (value: string) => void = () => {}
+
+	updateValue(value: string) {
+		if (this._value === value) {
+			return
+		}
+		this._value = value
+	}
+
+	get value() {
+		return this._value
+	}
+
+	set value(value: string) {
+		if (this._value === value) {
+			return
+		}
+		this._value = value
+		this.onValueChange(value)
+	}
+
+	getAttribute(key: string) {
+		if (key == 'value') {
+			return this._value
+		}
+		return super.getAttribute(key)
+	}
+
+	getAnyAttribute(key: string) {
+		return this.getAttribute(key)
+	}
+
+	setAttribute(key: string, value: string) {
+		if (key == 'value') {
+			this.value = value
+			return
+		}
+		super.setAttribute(key, value)
+	}
+
+	setAnyAttribute(key: string, value: string) {
+		this.setAttribute(key, value)
+	}
+}

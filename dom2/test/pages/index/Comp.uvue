@@ -1,0 +1,12 @@
+<template>
+	<view>
+		<text>Comp</text>
+	</view>
+</template>
+<script setup lang="uts">
+	const style = useComputedStyle({
+		properties: ['font-size', 'color', 'line-height', 'letter-spacing', 'font-weight', 'font-style', 'font-family',  'text-align'],
+		filterProperties: true
+	})
+	console.log('style:', style);
+</script>

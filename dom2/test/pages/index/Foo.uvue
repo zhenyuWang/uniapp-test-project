@@ -1,0 +1,23 @@
+<template>
+  <view>{{ result }}</view>
+</template>
+
+<script setup lang="uts">
+const result = ref<string>('default result')
+
+const instance =  getCurrentInstance()!.proxy!
+
+onMounted(() => {
+	console.log('instance.$callMethod in Foo', instance.$callMethod);
+	instance.$callMethod('foo1');
+})
+
+const foo1 = () => {
+	console.log('foo1 --------------')
+  result.value = 'foo1'
+}
+
+defineExpose({
+  foo1
+})
+</script>
